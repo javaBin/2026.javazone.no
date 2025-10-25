@@ -1,9 +1,9 @@
-function HistoryPage() {
+export default function HistoryPage() {
     const years = [2025, 2024, 2023, 2022];
 
     return (
-        <div className="min-h-screen bg-base-200 flex flex-col items-center py-12">
-            <div className="card w-full max-w-md bg-base-100 shadow-xl">
+        <div className="min-h-screen bg-[#e4d8b4] flex flex-col items-center py-12">
+            <div className="card w-full max-w-md bg-[#ece3ca] shadow-xl">
                 <div className="card-body">
                     <h1 className="card-title text-3xl font-bold text-primary mb-4">
                         ☕ History
@@ -12,14 +12,14 @@ function HistoryPage() {
                         Previous JavaZone conferences:
                     </p>
 
-                    <ul className="menu bg-base-200 rounded-box w-full">
+                    <ul className="menu bg-[#e4d8b4] rounded-box w-full">
                         {years.map((year) => (
                             <li key={year}>
                                 <a
                                     href={`https://${year}.javazone.no`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="justify-between hover:bg-primary hover:text-primary-content"
+                                    className="justify-between hover:bg-[#cfc4a3]"
                                 >
                                     JavaZone {year}
                                     <span className="badge badge-outline">Visit</span>
@@ -30,7 +30,5 @@ function HistoryPage() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
-
-export default HistoryPage;
