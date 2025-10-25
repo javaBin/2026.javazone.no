@@ -6,14 +6,14 @@ function PartnerPage() {
         <div>
           <div className="text-left space-y-4">
             <h2 className="text-3xl font-bold mb-6">
-              First partner meeting for JavaZone 2025
+              First partner meeting for JavaZone 2026
             </h2>
             <p>
               It's time to start planning the next JavaZone. If you're
               interested in being a partner, we'll be holding a meeting to give
               general information about what it means to be a partner with
               JavaZone. We'll be going through some practical details such as
-              pricing and important dates throughout 2025. And of course we'll
+              pricing and important dates throughout 2026. And of course we'll
               answer any questions you might have.
             </p>
             <p>
