@@ -19,7 +19,7 @@ function HistoryPage() {
                                     href={`https://${year}.javazone.no`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="justify-between hover:bg-primary hover:text-primary-content"
+                                    className="justify-between hover:bg-tertiary hover:text-primary-content"
                                 >
                                     JavaZone {year}
                                     <span className="badge badge-outline">Visit</span>
