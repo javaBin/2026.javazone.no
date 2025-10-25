@@ -1,0 +1,20 @@
+applications:
+  - frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci
+        build:
+          commands:
+            - npm run compile --workspace=apps/server
+            - npm run build --workspace=apps/webapp
+      artifacts:
+        baseDirectory: app/webapp/.next
+        files:
+          - "**/*"
+      cache:
+        paths:
+          - .next/cache/**/*
+          - node_modules/**/*
+      buildPath: /
+    appRoot: apps/webapp
