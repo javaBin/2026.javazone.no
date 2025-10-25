@@ -4,18 +4,49 @@ function PartnerPage() {
       <div className="max-w-2xl text-center space-y-30">
         <h1 className="text-5xl font-bold mb-20">Partner page</h1>
         <div>
-          <h2 className="text-2xl font-bold mb-4">First partner meeting</h2>
-          <p>
-            The first partner meeting will take place in December at{" "}
-            <a
-              className="text-blue-500 underline"
-              href="https://maps.app.goo.gl/mApJFGsv4ERNFS7T8"
-            >
-              Rebel
-            </a>
-            . The exact date will be announced later. If you're unable to
-            attend, the meeting will be recorded.
-          </p>
+          <div className="text-left space-y-4">
+            <h2 className="text-3xl font-bold mb-6">
+              First partner meeting for JavaZone 2025
+            </h2>
+            <p>
+              It's time to start planning the next JavaZone. If you're
+              interested in being a partner, we'll be holding a meeting to give
+              general information about what it means to be a partner with
+              JavaZone. We'll be going through some practical details such as
+              pricing and important dates throughout 2025. And of course we'll
+              answer any questions you might have.
+            </p>
+            <p>
+              <strong>Time:</strong> To be decided
+              <br />
+              <strong>Place:</strong> Exposalen at{" "}
+              <a
+                className="text-blue-500 underline"
+                href="https://maps.app.goo.gl/mApJFGsv4ERNFS7T8"
+              >
+                Rebel
+              </a>
+              , Universitetsgata 2, 0164 Oslo
+            </p>
+            <p>
+              Even if you've been a partner before, we have some interesting
+              news to share. As is tradition, we'll be serving Christmas
+              porridge.
+            </p>
+            <p>Please let us know if you'll be attending.</p>
+            <p>
+              We'll also publish all information on our website after the
+              meeting.
+            </p>
+            <div className="mt-6 text-center">
+              <button
+                disabled
+                className="bg-gray-400 text-gray-200 font-bold py-3 px-6 rounded-lg text-lg cursor-not-allowed"
+              >
+                Registrations will be opening soon
+              </button>
+            </div>
+          </div>
         </div>
         <div>
           <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
