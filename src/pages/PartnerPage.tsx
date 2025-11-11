@@ -29,9 +29,7 @@ function PartnerPage() {
               , Universitetsgata 2, 0164 Oslo
             </p>
             <p>
-              Even if you've been a partner before, we have some interesting
-              news to share. As is tradition, we'll be serving Christmas
-              porridge.
+                Even if you've been a partner before, it is still good for you to attend to get the latest information.
             </p>
             <p>Please let us know if you'll be attending.</p>
             <p>
