@@ -2,7 +2,7 @@ function PartnerPage() {
   return (
     <div className="min-h-screen flex justify-center p-8 pt-20">
       <div className="max-w-2xl text-center space-y-30">
-        <h1 className="text-5xl font-bold mb-20">Partner page</h1>
+        <h1 className="text-5xl font-bold mb-20">JavaZone 2026 partner</h1>
         <div>
           <div className="text-left space-y-4">
             <h2 className="text-3xl font-bold mb-6">
@@ -17,9 +17,9 @@ function PartnerPage() {
               answer any questions you might have.
             </p>
             <p>
-              <strong>Time:</strong> To be decided
+              <strong>Time:</strong> December 9th 2025 at 14:00
               <br />
-              <strong>Place:</strong> Exposalen at{" "}
+              <strong>Place:</strong>
               <a
                 className="text-blue-500 underline"
                 href="https://maps.app.goo.gl/mApJFGsv4ERNFS7T8"
@@ -39,12 +39,12 @@ function PartnerPage() {
               meeting.
             </p>
             <div className="mt-6 text-center">
-              <button
-                disabled
-                className="bg-gray-400 text-gray-200 font-bold py-3 px-6 rounded-lg text-lg cursor-not-allowed"
+              <a href={"https://forms.gle/SLHUdVqC1toU6bcw9"}
+
+                className="btn bg-gray-400 text-gray-200 font-bold py-3 px-6 rounded-lg text-lg"
               >
-                Registrations will be opening soon
-              </button>
+                Register here
+              </a>
             </div>
           </div>
         </div>
