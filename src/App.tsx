@@ -7,7 +7,7 @@ import HistoryPage from "./pages/HistoryPage.tsx";
 function App() {
   return (
     <>
-      <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar bg-base-100 shadow-sm fixed z-50">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl" href={"/"}>
             Info
@@ -24,6 +24,7 @@ function App() {
         </div>
       </div>
       <BrowserRouter>
+
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/partner" element={<PartnerPage />} />

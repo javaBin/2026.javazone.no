@@ -1,6 +1,6 @@
 function PartnerPage() {
   return (
-    <div className="min-h-screen flex justify-center p-8 pt-20">
+    <div className="min-h-screen flex justify-center p-8 pt-20 relative z-0">
       <div className="max-w-2xl text-center space-y-30">
         <h1 className="text-5xl font-bold mb-20">JavaZone 2026 partner</h1>
         <div>
@@ -127,6 +127,7 @@ function PartnerPage() {
           </p>
 
         </div>
+          <div className="h-24" aria-hidden="true" />
       </div>
     </div>
   );
