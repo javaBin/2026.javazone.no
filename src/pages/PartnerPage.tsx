@@ -6,7 +6,7 @@ function PartnerPage() {
         <div>
           <div className="text-left space-y-4">
             <h2 className="text-3xl font-bold mb-6">
-              Partner registration opens January 15th at 10:00
+              Partner registration open January 15th at 10:00
             </h2>
             <p>
               Partner registration is done by using a link that will appear on this page. You need to decide what
