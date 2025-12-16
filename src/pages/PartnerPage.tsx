@@ -89,7 +89,7 @@ function PartnerPage() {
                           <section className="rounded-lg border border-base-300 p-6 bg-base-100">
                               <h3 className="text-2xl font-bold">Partner tickets</h3>
                               <p className="mt-2 font-semibold">
-                                  Price: 9 220,- NOK ex VAT <span className="font-normal">(incl ticket fee)</span>
+                                  Price: 9 200,- NOK ex VAT <span className="font-normal">(incl ticket fee)</span>
                               </p>
 
                               <div className="mt-4 space-y-3">
