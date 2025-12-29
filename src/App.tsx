@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage.tsx";
 import PartnerPage from "./pages/PartnerPage.tsx";
 import HistoryPage from "./pages/HistoryPage.tsx";
+import SpeakerRoutes from "./pages/speaker/Routes.tsx";
 function App() {
   return (
     <>
@@ -18,6 +19,9 @@ function App() {
           <a className="btn btn-ghost text-xl" href={"/partner"}>
             Partners
           </a>
+          <a className="btn btn-ghost text-xl" href={"/speaker"}>
+            Speakers
+          </a>
         </div>
         <div className="flex-none">
           <h1>JavaZone</h1>
@@ -29,6 +33,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/partner" element={<PartnerPage />} />
           <Route path="/history" element={<HistoryPage />} />
+          <Route path="/speaker/*" element={<SpeakerRoutes />} />
         </Routes>
       </BrowserRouter>
 
