@@ -6,7 +6,7 @@ function PartnerPage() {
         <div>
           <div className="text-left space-y-4">
             <h2 className="text-3xl font-bold mb-6">
-              Partner registration open January 15th at 10:00
+              Partner registration open January 15th at 10:00am CET
             </h2>
             <p>
               You need to decide what
