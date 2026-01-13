@@ -9,10 +9,15 @@ function PartnerPage() {
               Partner registration open January 15th at 10:00
             </h2>
             <p>
-              Partner registration is done by using a link that will appear on this page. You need to decide what
+              You need to decide what
                 type of stand you want when registering. The formal contract and invoice will be sent to you later.
                 Partner stands are limited and are sold first come first served.
             </p>
+              <div className="pt-4 pb-8">
+                  <a href="https://event.checkin.no/215047/javazone-2026-partnership" className="btn btn-primary btn-lg text-2xl px-12">
+                      Register as partner
+                  </a>
+              </div>
               <h2 className="text-3xl font-bold mb-6">Partner meeting one</h2>
               <div className="mt-8">
                   <h3 className="text-2xl font-bold mb-4">Watch the recording here</h3>
