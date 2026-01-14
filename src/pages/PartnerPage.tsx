@@ -107,7 +107,11 @@ function PartnerPage() {
                                       <li>Round robin distribution on tickets ordered by May 15th</li>
                                       <li>First come first served if tickets are still available after May 15th</li>
                                   </ul>
-                                  <p className="font-medium">Tickets will be available on this page.</p>
+                                  <div className="pt-4 pb-8">
+                                      <a href="https://event.checkin.no/215055/javazone-2026-partner-tickets" className="btn btn-primary px-12">
+                                          Order partner tickets
+                                      </a>
+                                  </div>
                               </div>
                           </section>
                       </div>
