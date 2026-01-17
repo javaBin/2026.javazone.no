@@ -4,7 +4,7 @@ const MainPage = () => {
     return (
         <div className="hero bg-base-200 min-h-screen">
             <BubbleSimple />
-            <div className="hero-content text-center">
+            <div className="hero-content z-40 text-center">
                 <div className="max-w-md text-center">
                     <h1 className="text-5xl font-bold">JavaZone 2026</h1>
                     <div className="h-2" aria-hidden="true"/>
