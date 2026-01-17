@@ -1,6 +1,4 @@
-//import BubbleBackground from "../components/BubbleBackground";
 import BubbleSimple from "../components/BubbleSimple";
-//import BubbleSimple from "../components/Bubble2";
 
 function MainPage() {
     return (
@@ -19,7 +17,7 @@ function MainPage() {
 
                     <p className="text-2xl font-semibold">
                         <a href={"/partner"}
-                           className="link link-primary text-black">Partner registration</a> open January 15th at 10:00
+                           className="link link-primary">Partner registration</a> open January 15th at 10:00
                     </p>
                 </div>
             </div>

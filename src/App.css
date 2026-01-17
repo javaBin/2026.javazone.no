@@ -16,6 +16,13 @@
     --coral-bloom: #F06A6A;
 }
 
+body {
+    background-color: var(--abyss-navy);
+    color: var(--ice-white);
+    margin: 0;
+    padding: 0;
+}
+
 /* Navigation */
 .navbar {
     display: flex;
