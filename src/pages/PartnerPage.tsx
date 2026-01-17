@@ -1,9 +1,9 @@
-function PartnerPage() {
+
+const PartnerPage = () => {
   return (
-    <div className="min-h-screen flex justify-center p-8 pt-20 relative z-0">
-      <div className="max-w-2xl text-center space-y-30">
-        <h1 className="text-5xl font-bold mb-20">JavaZone 2026 partner</h1>
-        <div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-30">
+        <h1 className="text-5xl font-bold mb-20 text-center">JavaZone 2026 partner</h1>
+        <div className="max-w-2xl">
           <div className="text-left space-y-4">
             <h2 className="text-3xl font-bold mb-6">
               Partner registration is open
@@ -13,7 +13,7 @@ function PartnerPage() {
                 type of stand you want when registering. The formal contract and invoice will be sent to you later.
                 Partner stands are limited and are sold first come first served.
             </p>
-              <div className="pt-4 pb-8">
+              <div className="pt-4 pb-8 flex justify-center">
                   <a href="https://event.checkin.no/215047/javazone-2026-partnership" className="btn btn-primary btn-lg text-2xl px-12">
                       Register as partner
                   </a>
@@ -107,7 +107,7 @@ function PartnerPage() {
                                       <li>Round robin distribution on tickets ordered by May 15th</li>
                                       <li>First come first served if tickets are still available after May 15th</li>
                                   </ul>
-                                  <div className="pt-4 pb-8">
+                                  <div className="pt-4 pb-8 flex justify-center">
                                       <a href="https://event.checkin.no/215055/javazone-2026-partner-tickets" className="btn btn-primary px-12">
                                           Order partner tickets
                                       </a>
@@ -116,14 +116,10 @@ function PartnerPage() {
                           </section>
                       </div>
                   </div>
-
               </div>
-
-
-
           </div>
         </div>
-        <div>
+        <div className="max-w-2xl">
           <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
           <p>
             If you have any questions or concerns, please reach out to us at{" "}
@@ -137,7 +133,6 @@ function PartnerPage() {
 
         </div>
           <div className="h-24" aria-hidden="true" />
-      </div>
     </div>
   );
 }

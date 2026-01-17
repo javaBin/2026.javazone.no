@@ -6,11 +6,12 @@ import MainPage from "./pages/MainPage.tsx";
 import PartnerPage from "./pages/PartnerPage.tsx";
 import HistoryPage from "./pages/HistoryPage.tsx";
 import SpeakerRoutes from "./pages/speaker/Routes.tsx";
-function App() {
+
+const App = () => {
   return (
     <>
       <WaveBackground />
-        <div className="navbar fixed z-50 px-2">
+        <div className="navbar fixed z-50 px-2 backdrop-blur-sm">
             <div className="flex-1 overflow-x-auto">
                 <a className="btn btn-ghost text-lg md:text-xl px-2 md:px-4" href={"/"}>
                     Info
