@@ -2,11 +2,11 @@ function HistoryPage() {
     const years = [2025, 2024, 2023, 2022];
 
     return (
-        <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center py-12">
-            <div className="card w-full max-w-md bg-base-100 shadow-xl">
+        <div className="min-h-screen bg-base-200 flex flex-col items-center py-12">
+            <div className="card w-full max-w-lg my-10 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h1 className="card-title text-3xl font-bold mb-4">
-                        ☕ History
+                    <h1 className="card-title text-3xl font-bold text-primary mb-4">
+                        History
                     </h1>
                     <p className="text-base-content/80 mb-4">
                         Previous JavaZone conferences:

@@ -1,21 +1,26 @@
 @import "tailwindcss";
 
-@import "tailwindcss";
-
 :root {
     /* Core - Backgrounds / Surfaces */
     --abyss-navy: #071A2B;
     --deep-ocean: #0B3554;
     --reef-teal: #0F6C77;
     --sea-mist: #BEE8E6;
-
+    
     /* Text */
     --ice-white: #F2FBFF;
     --slate-blue-gray: #8FB2C6;
-
+    
     /* Accents - CTAs / Highlights */
     --sunbeam-gold: #F2C14E;
     --coral-bloom: #F06A6A;
+}
+
+body {
+    background-color: var(--abyss-navy);
+    color: var(--ice-white);
+    margin: 0;
+    padding: 0;
 }
 
 /* Navigation */
@@ -238,6 +243,11 @@
 .dock a:hover {
     background: var(--reef-teal);
     color: var(--ice-white);
+}
+
+.dock-xs {
+    padding: 0.75rem;
+    font-size: 0.875rem;
 }
 
 .dock-xs {
