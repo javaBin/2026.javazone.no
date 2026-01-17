@@ -20,7 +20,7 @@ const SpeakerMainPage = () => {
             September! JavaZone hosts both international and Norwegian speakers.
           </p>
 
-          <p><strong>Submissions opens January 1st!</strong></p>
+          <p><strong>Submissions opens January 1st and closes April 13th</strong></p>
 
           <div className="text-center pt-4">
             <a

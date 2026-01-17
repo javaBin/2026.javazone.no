@@ -1,6 +1,4 @@
-//import BubbleBackground from "../components/BubbleBackground";
 import BubbleSimple from "../components/BubbleSimple";
-//import BubbleSimple from "../components/Bubble2";
 
 const MainPage = () => {
     return (

@@ -16,6 +16,13 @@
     --coral-bloom: #F06A6A;
 }
 
+body {
+    background-color: var(--abyss-navy);
+    color: var(--ice-white);
+    margin: 0;
+    padding: 0;
+}
+
 /* Navigation */
 .navbar {
     display: flex;
@@ -235,6 +242,11 @@
 .dock a:hover {
     background: var(--reef-teal);
     color: var(--cloud-dancer);
+}
+
+.dock-xs {
+    padding: 0.75rem;
+    font-size: 0.875rem;
 }
 
 .dock-xs {

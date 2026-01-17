@@ -1,5 +1,5 @@
 // https://codepen.io/Mark_Bowley/pen/PozwyP
-import '../animation.css'
+import './animation.css'
 
 export default function BubbleBackground() {
     return (
