@@ -1,4 +1,4 @@
-function FamilyTicketPolicyPage() {
+const FamilyTicketPolicyPage = () => {
   return (
     <div className="min-h-screen flex justify-center p-8 pt-20 relative z-0">
       <div className="max-w-2xl text-center space-y-12">

@@ -6,11 +6,11 @@
     --deep-ocean: #0B3554;
     --reef-teal: #0F6C77;
     --sea-mist: #BEE8E6;
-    
+
     /* Text */
-    --ice-white: #F2FBFF;
+    --cloud-dancer: #F0EEE9;
     --slate-blue-gray: #8FB2C6;
-    
+
     /* Accents - CTAs / Highlights */
     --sunbeam-gold: #F2C14E;
     --coral-bloom: #F06A6A;
@@ -18,7 +18,7 @@
 
 body {
     background-color: var(--abyss-navy);
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
     margin: 0;
     padding: 0;
 }
@@ -29,8 +29,7 @@ body {
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    /* background: var(--reef-teal); */
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
     padding: 0.5rem;
 }
 
@@ -39,9 +38,9 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     font-weight: 600;
-    border-radius: 0.5rem;
+    border-radius: 1.5rem;
     border: none;
     cursor: pointer;
     text-decoration: none;
@@ -57,7 +56,7 @@ body {
 
 .btn-ghost {
     background: transparent;
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
 }
 
 .btn-ghost:hover {
@@ -92,7 +91,7 @@ body {
     z-index: 10;
     border-radius: 1rem;
     background-color: var(--deep-ocean);
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
 }
 
 .card-body {
@@ -103,7 +102,7 @@ body {
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
 }
 
 /* Hero Section */
@@ -113,7 +112,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     background-color: var(--abyss-navy);
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
 }
 
 .hero-content {
@@ -139,13 +138,13 @@ body {
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
     text-decoration: none;
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
     transition: all 0.2s ease;
 }
 
 .menu li a:hover {
     background-color: var(--reef-teal);
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
 }
 
 /* Badge */
@@ -166,6 +165,10 @@ body {
     color: var(--sunbeam-gold);
 }
 
+p {
+    text-align: justify;
+}
+
 /* Text Colors */
 .text-primary {
     color: var(--sunbeam-gold);
@@ -176,7 +179,7 @@ body {
 }
 
 .text-base-content {
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
 }
 
 .text-base-content\/80 {
@@ -233,7 +236,7 @@ body {
 }
 
 .dock a {
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -242,7 +245,7 @@ body {
 
 .dock a:hover {
     background: var(--reef-teal);
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
 }
 
 .dock-xs {

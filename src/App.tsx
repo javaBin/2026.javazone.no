@@ -6,7 +6,8 @@ import MainPage from "./pages/MainPage.tsx";
 import PartnerPage from "./pages/PartnerPage.tsx";
 import HistoryPage from "./pages/HistoryPage.tsx";
 import SpeakerRoutes from "./pages/speaker/Routes.tsx";
-function App() {
+
+const App = () => {
   return (
     <>
       <WaveBackground />
