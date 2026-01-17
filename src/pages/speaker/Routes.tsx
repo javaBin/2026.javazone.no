@@ -4,7 +4,7 @@ import FamilyTicketPolicyPage from "./FamilyTicketPolicyPage";
 import ReimbursementPolicyPage from "./ReimbursementPolicyPage";
 import SubmissionTipsPage from "./SubmissionTipsPage";
 
-function SpeakerRoutes() {
+const SpeakerRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<SpeakerMainPage />} />

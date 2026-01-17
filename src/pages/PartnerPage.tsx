@@ -1,14 +1,14 @@
-function PartnerPage() {
+
+const PartnerPage = () => {
   return (
-    <div className="min-h-screen flex justify-center p-8 pt-20 relative z-0">
-      <div className="max-w-2xl text-center space-y-30">
-        <h1 className="text-5xl font-bold mb-20">JavaZone 2026 partner</h1>
-        <div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative z-0 space-y-30">
+        <h1 className="text-5xl font-bold mb-20 text-center">JavaZone 2026 partner</h1>
+        <div className="max-w-2xl">
           <div className="text-left space-y-4">
             <h2 className="text-3xl font-bold mb-6">
               Partner registration open January 15th at 10:00
             </h2>
-            <p>
+            <p className="text-justify">
               Partner registration is done by using a link that will appear on this page. You need to decide what
                 type of stand you want when registering. The formal contract and invoice will be sent to you later.
                 Partner stands are limited and are sold first come first served.
@@ -93,7 +93,7 @@ function PartnerPage() {
                               </p>
 
                               <div className="mt-4 space-y-3">
-                                  <p>
+                                  <p className="text-justify">
                                       You have four flexible stand tickets included in your partnership package. These are intended for
                                       stand personnel, and do not give access to the talks. You must order tickets for all your employees
                                       that want to attend a talk (or if you have more than four who need to be on the stand at once).
@@ -114,7 +114,7 @@ function PartnerPage() {
 
           </div>
         </div>
-        <div>
+        <div className="max-w-2xl">
           <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
           <p>
             If you have any questions or concerns, please reach out to us at{" "}
@@ -128,7 +128,6 @@ function PartnerPage() {
 
         </div>
           <div className="h-24" aria-hidden="true" />
-      </div>
     </div>
   );
 }

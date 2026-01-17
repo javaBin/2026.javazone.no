@@ -2,7 +2,7 @@
 import BubbleSimple from "../components/BubbleSimple";
 //import BubbleSimple from "../components/Bubble2";
 
-function MainPage() {
+const MainPage = () => {
     return (
         <div className="hero bg-base-200 min-h-screen">
             <BubbleSimple />
