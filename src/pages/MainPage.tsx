@@ -18,6 +18,7 @@ function MainPage() {
                     <p className="text-2xl font-semibold">
                         <a href={"/partner"}
                            className="link link-primary">Partner registration</a> open January 15th at 10:00
+
                     </p>
                 </div>
             </div>
