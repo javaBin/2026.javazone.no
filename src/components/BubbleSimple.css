@@ -27,7 +27,7 @@
   height: 20px;
   box-shadow: inset 5px -5px 10px rgba(190, 232, 230, 0.3);
   background: var(--deep-ocean);
-  border: 1px solid var(--sea-mist);
+  border: 1px solid var(--reef-teal);
   animation: bubble-rise 25s linear infinite;
   backdrop-filter: blur(2px);
   bottom: -150px;
