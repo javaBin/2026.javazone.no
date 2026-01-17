@@ -1,6 +1,11 @@
+//import BubbleBackground from "../components/BubbleBackground";
+import BubbleSimple from "../components/BubbleSimple";
+//import BubbleSimple from "../components/Bubble2";
+
 function MainPage() {
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <BubbleSimple />
             <div className="hero-content text-center">
                 <div className="max-w-md">
                     <h1 className="text-5xl font-bold">JavaZone 2026</h1>

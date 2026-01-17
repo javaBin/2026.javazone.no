@@ -1,4 +1,244 @@
 @import "tailwindcss";
-@plugin "daisyui" {
-    themes: light --default, dark --prefersdark, retro;
+
+:root {
+    /* Core - Backgrounds / Surfaces */
+    --abyss-navy: #071A2B;
+    --deep-ocean: #0B3554;
+    --reef-teal: #0F6C77;
+    --sea-mist: #BEE8E6;
+    
+    /* Text */
+    --ice-white: #F2FBFF;
+    --slate-blue-gray: #8FB2C6;
+    
+    /* Accents - CTAs / Highlights */
+    --sunbeam-gold: #F2C14E;
+    --coral-bloom: #F06A6A;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    /* background: var(--reef-teal); */
+    color: var(--ice-white);
+    padding: 0.5rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: var(--sunbeam-gold);
+    color: var(--abyss-navy);
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--ice-white);
+}
+
+.btn-ghost:hover {
+    background: var(--reef-teal);
+    transform: translateY(0);
+}
+
+/* Background Colors */
+.bg-base-100 {
+    background-color: var(--deep-ocean);
+}
+
+.bg-base-200 {
+    background-color: var(--abyss-navy);
+}
+
+.bg-base-300 {
+    background-color: var(--reef-teal);
+}
+
+/* Shadow Utilities */
+.shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.shadow-xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Cards */
+.card {
+    z-index: 10;
+    border-radius: 1rem;
+    background-color: var(--deep-ocean);
+    color: var(--ice-white);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--ice-white);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: var(--abyss-navy);
+    color: var(--ice-white);
+}
+
+.hero-content {
+    max-width: 80rem;
+    padding: 1rem;
+}
+
+/* Menu/List */
+.menu {
+    list-style: none;
+    padding: 0.5rem;
+    margin: 0;
+    background-color: var(--abyss-navy);
+}
+
+.menu li {
+    margin: 0;
+}
+
+.menu li a {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--ice-white);
+    transition: all 0.2s ease;
+}
+
+.menu li a:hover {
+    background-color: var(--reef-teal);
+    color: var(--ice-white);
+}
+
+/* Badge */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background-color: var(--sunbeam-gold);
+    color: var(--abyss-navy);
+}
+
+.badge-outline {
+    background-color: transparent;
+    border: 1px solid var(--sunbeam-gold);
+    color: var(--sunbeam-gold);
+}
+
+/* Text Colors */
+.text-primary {
+    color: var(--sunbeam-gold);
+}
+
+.text-primary-content {
+    color: var(--abyss-navy);
+}
+
+.text-base-content {
+    color: var(--ice-white);
+}
+
+.text-base-content\/80 {
+    color: rgba(242, 251, 255, 0.8);
+}
+
+/* Links */
+.link {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.link:hover {
+    opacity: 0.8;
+}
+
+.link-primary {
+    color: var(--sunbeam-gold);
+}
+
+/* Hover States */
+.hover\:bg-primary:hover {
+    background-color: var(--sunbeam-gold);
+}
+
+.hover\:text-primary-content:hover {
+    color: var(--abyss-navy);
+}
+
+/* Border Colors */
+.border-base-300 {
+    border-color: var(--reef-teal);
+}
+
+/* Rounded Box */
+.rounded-box {
+    border-radius: 1rem;
+}
+
+/* Dock */
+.dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--deep-ocean);
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+    z-index: 40;
+}
+
+.dock a {
+    color: var(--ice-white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.dock a:hover {
+    background: var(--reef-teal);
+    color: var(--ice-white);
+}
+
+.dock-xs {
+    padding: 0.75rem;
+    font-size: 0.875rem;
 }
