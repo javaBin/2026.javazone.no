@@ -165,6 +165,10 @@ body {
     color: var(--sunbeam-gold);
 }
 
+.center-text {
+    text-align: center;
+}
+
 p {
     text-align: justify;
 }
@@ -187,6 +191,10 @@ p {
 }
 
 /* Links */
+a {
+    color: var(--sunbeam-gold);
+}
+
 .link {
     text-decoration: underline;
     cursor: pointer;

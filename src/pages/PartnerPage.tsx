@@ -13,7 +13,7 @@ const PartnerPage = () => {
                 type of stand you want when registering. The formal contract and invoice will be sent to you later.
                 Partner stands are limited and are sold first come first served.
             </p>
-              <div className="pt-4 pb-8">
+              <div className="pt-4 pb-8 flex justify-center">
                   <a href="https://event.checkin.no/215047/javazone-2026-partnership" className="btn btn-primary btn-lg text-2xl px-12">
                       Register as partner
                   </a>
@@ -107,7 +107,7 @@ const PartnerPage = () => {
                                       <li>Round robin distribution on tickets ordered by May 15th</li>
                                       <li>First come first served if tickets are still available after May 15th</li>
                                   </ul>
-                                  <div className="pt-4 pb-8">
+                                  <div className="pt-4 pb-8 flex justify-center">
                                       <a href="https://event.checkin.no/215055/javazone-2026-partner-tickets" className="btn btn-primary px-12">
                                           Order partner tickets
                                       </a>
@@ -116,11 +116,7 @@ const PartnerPage = () => {
                           </section>
                       </div>
                   </div>
-
               </div>
-
-
-
           </div>
         </div>
         <div className="max-w-2xl">
