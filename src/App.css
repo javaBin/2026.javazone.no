@@ -18,7 +18,7 @@
 
 body {
     background-color: var(--abyss-navy);
-    color: var(--ice-white);
+    color: var(--cloud-dancer);
     margin: 0;
     padding: 0;
 }
@@ -163,6 +163,10 @@ body {
     background-color: transparent;
     border: 1px solid var(--sunbeam-gold);
     color: var(--sunbeam-gold);
+}
+
+p {
+    text-align: justify;
 }
 
 /* Text Colors */

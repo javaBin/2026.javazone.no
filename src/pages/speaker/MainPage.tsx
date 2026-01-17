@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const SpeakerMainPage = () => {
   return (
-    <div className="min-h-screen bg-base-200 flex justify-center p-8 pt-20 relative z-0">
+    <div className="min-h-screen flex justify-center p-8 pt-20 relative z-0">
       <div className="max-w-2xl text-center space-y-12">
         <h1 className="text-5xl font-bold mb-20">Call for Speakers</h1>
 

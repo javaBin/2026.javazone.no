@@ -1,7 +1,7 @@
 
 const PartnerPage = () => {
   return (
-    <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center p-8 pt-20 relative space-y-30">
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-30">
         <h1 className="text-5xl font-bold mb-20 text-center">JavaZone 2026 partner</h1>
         <div className="max-w-2xl">
           <div className="text-left space-y-4">
@@ -98,7 +98,7 @@ const PartnerPage = () => {
                               </p>
 
                               <div className="mt-4 space-y-3">
-                                  <p className="text-justify">
+                                  <p>
                                       You have four flexible stand tickets included in your partnership package. These are intended for
                                       stand personnel, and do not give access to the talks. You must order tickets for all your employees
                                       that want to attend a talk (or if you have more than four who need to be on the stand at once).
