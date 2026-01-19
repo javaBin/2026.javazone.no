@@ -6,6 +6,7 @@
     --deep-ocean: #0B3554;
     --reef-teal: #0F6C77;
     --sea-mist: #BEE8E6;
+    --sand: #dab984;
 
     /* Text */
     --cloud-dancer: #F0EEE9;
@@ -21,16 +22,6 @@ body {
     color: var(--cloud-dancer);
     margin: 0;
     padding: 0;
-}
-
-/* Navigation */
-.navbar {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--cloud-dancer);
-    padding: 0.5rem;
 }
 
 /* Buttons */
@@ -238,7 +229,6 @@ a {
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
-    background: var(--deep-ocean);
     box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
     z-index: 40;
 }
@@ -247,7 +237,7 @@ a {
     color: var(--cloud-dancer);
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    border-radius: 1.5rem;
     transition: all 0.2s ease;
 }
 
@@ -261,7 +251,7 @@ a {
     font-size: 0.875rem;
 }
 
-.dock-xs {
-    padding: 0.75rem;
-    font-size: 0.875rem;
+.dock-xs a:hover {
+    background: var(--reef-teal);
+    color: var(--cloud-dancer);
 }

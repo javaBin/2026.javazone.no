@@ -11,23 +11,23 @@ const App = () => {
   return (
     <>
       <WaveBackground />
-        <div className="navbar fixed z-50 px-2 backdrop-blur-sm">
-            <div className="flex-1 overflow-x-auto">
-                <a className="btn btn-ghost text-lg md:text-xl px-2 md:px-4" href={"/"}>
+        <div className="flex w-screen fixed z-50 backdrop-blur-sm p-4">
+            <div className="flex px-2 mx-auto sm:mx-0">
+                <a className="btn-ghost font-semibold text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform transition-opacity duration-200 hover:opacity-90" href={"/"}>
                     Info
                 </a>
-                <a className="btn btn-ghost text-lg md:text-xl px-2 md:px-4" href={"/history"}>
+                <a className="btn-ghost font-semibold text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform transition-opacity duration-200 hover:opacity-90" href={"/history"}>
                     History
                 </a>
-                <a className="btn btn-ghost text-lg md:text-xl px-2 md:px-4" href={"/partner"}>
+                <a className="btn-ghost font-semibold text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform transition-opacity duration-200 hover:opacity-90" href={"/partner"}>
                     Partners
                 </a>
-                <a className="btn btn-ghost text-lg md:text-xl px-2 md:px-4" href={"/speaker"}>
+                <a className="btn-ghost font-semibold text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform transition-opacity duration-200 hover:opacity-90" href={"/speaker"}>
                     Speakers
                 </a>
             </div>
-            <div className="flex-none px-2">
-                <h1 className="font-bold hidden sm:block">JavaZone</h1>
+            <div className="flex-none ml-auto px-2 hidden sm:flex items-center justify-center">
+                <h1 className="font-bold">JavaZone</h1>
             </div>
         </div>
       <BrowserRouter>
@@ -40,7 +40,7 @@ const App = () => {
         </Routes>
       </BrowserRouter>
 
-      <div className="dock dock-xs">
+      <div className="dock dock-xs bg-(--abyss-navy)/50 backdrop-blur-sm">
         <a href={"https://www.java.no"}>Made by javaBin</a>
         <a href={"https://java.no/principles"}>Code of conduct</a>
       </div>
