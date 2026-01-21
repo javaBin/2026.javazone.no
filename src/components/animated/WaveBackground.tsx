@@ -18,10 +18,10 @@ const WaveBackground = () => {
           />
         </defs>
         <g className="parallax">
-          <use xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(7,26,43,0.7)" />
-          <use xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(7,26,43,0.5)" />
-          <use xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(7,26,43,0.3)" />
-          <use xlinkHref="#gentle-wave" x="48" y="7" fill="#071A2B" />
+          <use className="wave1" xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(7,26,43,0.7)" />
+          <use className="wave2" xlinkHref="#gentle-wave" x="48" y="3" fill="rgba(7,26,43,0.5)" />
+          <use className="wave3" xlinkHref="#gentle-wave" x="48" y="5" fill="rgba(7,26,43,0.3)" />
+          <use className="wave4" xlinkHref="#gentle-wave" x="48" y="7" fill="#071A2B" />
         </g>
       </svg>
     </div>

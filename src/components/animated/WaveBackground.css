@@ -1,4 +1,6 @@
 .wave-container {
+  --wave-bg: linear-gradient(180deg, #0F6C77 0%, #0B3554 60%, #071A2B 100%);
+
   position: absolute;
   top: 0;
   left: 0;
@@ -8,7 +10,7 @@
   max-height: 300px;
   z-index: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, #0F6C77 0%, #0B3554 60%, #071A2B 100%);
+  background: var(--wave-bg);
 }
 
 .waves {

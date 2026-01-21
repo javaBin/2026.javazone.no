@@ -25,7 +25,7 @@ const ReimbursementPolicyPage = () => {
             financial support, please reach out to{" "}
             <a
               href="mailto:refund@java.no"
-              className="text-blue-500 underline"
+              className="text-link underline"
             >
               refund@java.no
             </a>{" "}
@@ -54,7 +54,7 @@ const ReimbursementPolicyPage = () => {
             Applications must be confirmed explicitly via{" "}
             <a
               href="mailto:refund@java.no"
-              className="text-blue-500 underline"
+              className="text-link underline"
             >
               refund@java.no
             </a>{" "}

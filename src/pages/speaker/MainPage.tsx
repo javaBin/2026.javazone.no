@@ -148,7 +148,7 @@ const SpeakerMainPage = () => {
 
           <p>
             Over the years, we have gathered some{" "}
-            <Link to="/speaker/tips" className="text-blue-500 underline">
+            <Link to="/speaker/tips" className="text-link underline">
               submission tips
             </Link>
             , which may be useful to both new and experienced speakers.
@@ -215,11 +215,11 @@ const SpeakerMainPage = () => {
                 Please see our{" "}
                 <Link
                   to="/speaker/reimbursement"
-                  className="text-blue-500 underline"
+                  className="text-link underline"
                 >
                   reimbursement policy
                 </Link>{" "}
-                if you have any questions regarding coverage of other expenses. Starting this year, we also have a new <Link to="/speaker/family-ticket" className="text-blue-500 underline">
+                if you have any questions regarding coverage of other expenses. Starting this year, we also have a new <Link to="/speaker/family-ticket" className="text-link underline">
               family ticket policy
             </Link>.
               </p>

@@ -109,7 +109,7 @@ const FamilyTicketPolicyPage = () => {
               Send an email to{" "}
               <a
                 href="mailto:refund@java.no"
-                className="text-blue-500 underline"
+                className="text-link underline"
               >
                 refund@java.no
               </a>{" "}
