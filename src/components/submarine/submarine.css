@@ -404,18 +404,7 @@
 
 /* Mobile responsive */
 @media (max-width: 768px) {
-  .submarine__container {
-    width: 300px;
-    height: 150px;
-  }
-  
-  .submarine__body {
-    width: 200px;
-    height: 60px;
-  }
-  
-  .light {
-    width: 350px;
-    height: 75px;
+  .submarine__flipper {
+    transform: scale(0.33) !important;
   }
 }
