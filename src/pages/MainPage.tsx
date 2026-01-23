@@ -1,9 +1,11 @@
 import BubbleSimple from "../components/BubbleSimple";
+import Submarine from "../components/submarine/submarine";
 
 const MainPage = () => {
     return (
         <div className="hero bg-base-200 min-h-screen">
             <BubbleSimple />
+            <Submarine />
             <div className="hero-content z-40 text-center">
                 <div className="max-w-md text-center">
                     <h1 className="text-5xl font-bold">JavaZone 2026</h1>
