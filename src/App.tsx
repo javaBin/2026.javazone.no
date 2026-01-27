@@ -8,6 +8,8 @@ import MainPage from './pages/MainPage.tsx'
 import PartnerPage from './pages/PartnerPage.tsx'
 import SpeakerRoutes from './pages/speaker/Routes.tsx'
 
+// testing
+
 const App = () => {
   return (
     <>
