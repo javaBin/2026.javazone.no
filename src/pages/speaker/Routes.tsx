@@ -1,8 +1,9 @@
-import { Routes, Route } from "react-router-dom";
-import SpeakerMainPage from "./MainPage";
-import FamilyTicketPolicyPage from "./FamilyTicketPolicyPage";
-import ReimbursementPolicyPage from "./ReimbursementPolicyPage";
-import SubmissionTipsPage from "./SubmissionTipsPage";
+import { Route, Routes } from 'react-router-dom'
+
+import FamilyTicketPolicyPage from './FamilyTicketPolicyPage'
+import SpeakerMainPage from './MainPage'
+import ReimbursementPolicyPage from './ReimbursementPolicyPage'
+import SubmissionTipsPage from './SubmissionTipsPage'
 
 const SpeakerRoutes = () => {
   return (
@@ -12,7 +13,7 @@ const SpeakerRoutes = () => {
       <Route path="/reimbursement" element={<ReimbursementPolicyPage />} />
       <Route path="/tips" element={<SubmissionTipsPage />} />
     </Routes>
-  );
+  )
 }
 
-export default SpeakerRoutes;
+export default SpeakerRoutes

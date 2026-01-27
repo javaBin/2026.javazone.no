@@ -1,4 +1,4 @@
-import "./BubbleSimple.css";
+import './BubbleSimple.css'
 
 const BubbleSimple = () => {
   return (
@@ -27,7 +27,7 @@ const BubbleSimple = () => {
         <li></li>
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default BubbleSimple;
+export default BubbleSimple
