@@ -1,3 +1,4 @@
+// Based on code from https://freefrontend.com/css-bubbles/
 import "./BubbleSimple.css";
 
 const BubbleSimple = () => {
