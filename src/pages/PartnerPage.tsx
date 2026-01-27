@@ -1,7 +1,9 @@
+import {PartnerBanner} from "../components/PartnerBanner.tsx";
 
 const PartnerPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-30">
+        <PartnerBanner/>
         <h1 className="text-5xl font-bold mb-20 text-center">JavaZone 2026 partner</h1>
         <div className="max-w-2xl">
           <div className="text-left space-y-4">
