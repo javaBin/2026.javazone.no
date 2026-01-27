@@ -12,16 +12,16 @@ const App = () => {
   return (
     <>
       <WaveBackground />
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/partner" element={<PartnerPage />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/speaker/*" element={<SpeakerRoutes />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </>
   )
 }

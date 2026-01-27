@@ -1,12 +1,16 @@
+import { useLocation } from 'react-router-dom'
+
 const Footer = () => {
+  const { pathname } = useLocation()
+  const blur = pathname !== '/'
+
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40">
       <div
-        className="
-                pointer-events-none absolute inset-0 backdrop-blur-sm
+        className={`${blur ? 'backdrop-blur-sm' : ''}
+                pointer-events-none absolute inset-0
                 [mask-image:linear-gradient(to_top,black_75%,transparent_100%)]
-                [-webkit-mask-image:linear-gradient(to_top,black_75%,transparent_100%)]
-            "
+                [-webkit-mask-image:linear-gradient(to_top,black_75%,transparent_100%)]`}
       />
 
       <div className="relative bg-transparent flex justify-center gap-4 p-4 shadow-lg">
