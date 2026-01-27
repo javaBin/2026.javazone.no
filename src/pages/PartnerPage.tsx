@@ -25,10 +25,8 @@ const PartnerPage = () => {
         <Heading level="h3" className="mb-4">
           Watch the recording here
         </Heading>
-        <div className="w-full overflow-hidden rounded-lg bg-black">
+        <div className="w-full overflow-hidden rounded-lg bg-black" style={{ position: 'relative', paddingTop: '56.25%' }}>
           {' '}
-          {/*todo: does this need 2 div?*/}
-          <div style={{ position: 'relative', paddingTop: '56.25%' }}>
             <iframe
               src="https://player.vimeo.com/video/1146207302"
               title="Partner meeting video"
@@ -44,7 +42,6 @@ const PartnerPage = () => {
               }}
               allowFullScreen
             />
-          </div>
         </div>
 
         <div className="text-left mt-12">
