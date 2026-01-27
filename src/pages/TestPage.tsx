@@ -5,8 +5,21 @@ import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import {Heading} from "../components";
 
 type Point = { x: number; y: number };
+
+const FAQ = [ /*todo: review text*/
+    {q: 'I don\'t speak Norwegian, what about me?', a: 'You need to be able to communicate in both Norwegian and English to be a volunteer at JavaZone.'},
+    {q: 'Who can be a volunteer at JavaZone?', a: 'All students who are fluent in both Norwegian and English can become volunteers at JavaZone.'},
+    {q: 'What will I do as a volunteer?', a: 'Tasks include hall monitoring, information desk duty, and handing out headsets, among others.'},
+    {q: 'How many volunteers participate at JavaZone?', a: 'Over 50 volunteers participate each year. Interest is high, but it\'s worth applying!'},
+    {q: 'Will I get to attend sessions as a volunteer?', a: 'You get about 50% free time to attend talks, eat great food, and network with IT professionals.'},
+    {q: 'What about travel if I don’t live in Oslo?', a: 'JavaZone does not cover travel or accommodation, but check with your university about travel support.'},
+    {q: 'Can I join AweZone?', a: 'Yes! No work in the evening – just party and fun!'},
+    {q: 'When do I need to show up as a volunteer?', a: 'Training and info will be given on the 1st of September, and you need to show up both the 2nd and the 3rd for the conference.'},
+    {q: 'When is the application deadline?', a: 'The application deadline is TBD.'},
+]
 
 const TestPage = () => {
     const rootRef = useRef<HTMLDivElement | null>(null);
@@ -147,23 +160,38 @@ const TestPage = () => {
                 gsap.to(fish, { rotationY: self.direction === -1 ? 180 : 0, duration: 0.4 });
             };
 
-            // Keep sections as scroll-length "spacers" but no text logic
-            const sections = gsap.utils.toArray<HTMLElement>("section");
+            const makeBubbles = (div: HTMLDivElement | null, i: number): void => {
+                if (!div) return;
+
+                const { top, left } = fish.getBoundingClientRect();
+                gsap.to(div, { opacity: 1, duration: 1 });
+
+                gsap.set(".bubbles", { x: left, y: top });
+
+                if (bubblesTl.paused()) bubblesTl.restart();
+                if (i > 6) gsap.to(".bubbles", { opacity: 0 });
+                else gsap.to(".bubbles", { opacity: 1 });
+            };
+
+            const hideText = (div: HTMLDivElement | null): void => {
+                if (!div) return;
+                gsap.to(div, { opacity: 0, duration: 1 });
+            };
+
+            const sections = q<HTMLElement>(".scroll-section");/*gsap.utils.toArray<HTMLElement>("section");*/
             sections.forEach((section, i) => {
+                const content = section.querySelector<HTMLDivElement>(".scroll-section__content");
+                if (content) gsap.set(content, { opacity: 0 }); // start hidden
+
                 ScrollTrigger.create({
                     trigger: section,
                     start: "top top",
-                    onEnter: () => {
-                        const { top, left } = fish.getBoundingClientRect();
-                        gsap.set(".bubbles", { x: left, y: top });
-
-                        if (bubblesTl.paused()) bubblesTl.restart();
-                        if (i > 6) gsap.to(".bubbles", { opacity: 0 });
-                        else gsap.to(".bubbles", { opacity: 1 });
-                    },
+                    onEnter: () => makeBubbles(content, i),
                     onEnterBack: () => {
-                        if (i <= 6) gsap.to(".bubbles", { opacity: 1 });
+                        if (i <= FAQ.length) gsap.to(".bubbles", { opacity: 1 });
                     },
+                    onLeave: () => hideText(content),
+                    onLeaveBack: () => hideText(content),
                     onUpdate: rotateFish,
                 });
             });
@@ -220,10 +248,13 @@ const TestPage = () => {
                 </div>
             </div>
 
-            <div className="content">
-                {Array.from({ length: 11 }).map((_, i) => (
-                    <section key={i}>
-                        <div className="section__content"/>
+            <div className="scroll-content">
+                {FAQ.map((pair, i) => (
+                    <section key={i} className={"scroll-section"}>
+                        <div className="scroll-section__content">
+                            <Heading level="h2" className="center-text">{pair.q}</Heading>
+                            <Heading level="h3" className="center-text">{pair.a}</Heading>
+                        </div>
                     </section>
                 ))}
             </div>

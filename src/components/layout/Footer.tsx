@@ -3,8 +3,7 @@ const Footer = () => {
     return (
         <div className="fixed bottom-0 left-0 right-0 z-40">
             <div className="
-                pointer-events-none absolute inset-0
-                bg-base-200/50 backdrop-blur-sm
+                pointer-events-none absolute inset-0 backdrop-blur-sm
                 [mask-image:linear-gradient(to_top,black_75%,transparent_100%)]
                 [-webkit-mask-image:linear-gradient(to_top,black_75%,transparent_100%)]
             "/>

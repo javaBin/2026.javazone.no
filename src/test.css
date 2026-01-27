@@ -1,66 +1,42 @@
-body {
-    background: var(--reef-teal);
-}
-
-.wave-container {
-    --wave-bg: linear-gradient(180deg, var(--sea-mist) 0%, rgba(99, 167, 191, 1) 60%, rgba(52, 115, 140, 1) 100%);
-}
-.wave-container svg g .wave1 {
-    fill: var(--reef-teal);
-    opacity: 0.75;
-}
-
-.wave-container svg g .wave2 {
-    fill: var(--reef-teal);
-    opacity: 0.5;
-}
-
-.wave-container svg g .wave3 {
-    fill: var(--reef-teal);
-    opacity: 0.25;
-}
-
-.wave-container svg g .wave4 {
-    fill: var(--reef-teal);
-}
 
 .fish-animation__root {
     background: linear-gradient(
             to bottom,
+            var(--abyss-navy),
             var(--reef-teal),
+            rgba(99, 167, 191, 1),
             rgba(52, 115, 140, 1),
-            rgba(48, 92, 145, 1),
             rgba(39, 82, 145, 1),
             rgba(19, 58, 110, 1),
-            rgba(10, 50, 80, 1),
-            rgba(40, 41, 100, 1),
-            rgba(14, 52, 94, 1),
+            var(--deep-ocean),
             var(--abyss-navy),
             black
     );
+    width: 100%;
+    height: 100%;
     max-width: 100vw;
-    min-height: 70vh;
+    min-height: 75vh;
     overflow-x: hidden;
     position: relative;
-    margin: 30vh 0 0;
+    margin: 25vh 0 0;
 }
 
 .fish-animation__root::after {
     position: fixed;
     content: "";
     pointer-events: none;
-    top: 30vh;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    /*height: 100vh;*/
 }
 
 .fish-wrapper {
     --mask: linear-gradient(180deg, rgba(0, 0, 0, 1), transparent);
     width: 100%;
-    height: 100vh;
+    height: 100%;
     position: fixed;
-    top: 30vh;
+    top: 25vh;
     left: 0;
     perspective: 100rem;
     perspective-origin: center center;
@@ -82,6 +58,7 @@ body {
     height: var(--size);
     transform-style: preserve-3d;
     transform-origin: center;
+    margin-top: 2.5rem;
 }
 
 @media (min-width: 1000px) {
@@ -148,12 +125,6 @@ body {
     transform-origin: center top;
 }
 
-/* NOTE:
-   In SCSS you used &:nth-child(2/3/4).
-   That only works if these .fish__body elements are literally the 2nd/3rd/4th child
-   of .fish__inner, which they are NOT (heads come after, but skeleton is outside).
-   If you want “2nd body / 3rd body / 4th body”, use nth-of-type with a parent qualifier
-   like below. */
 .fish__inner > .fish__body:nth-of-type(2) {
     --i: 2;
     --l: 75%;
@@ -367,43 +338,49 @@ body {
     }
 }
 
-.content {
+.scroll-content {
     position: relative;
-    z-index: 1;
     padding-bottom: 100vh;
+    z-index: 1;
+
+    width: 100%;
 }
 
-section {
+.scroll-section {
     height: 100vh;
     width: 100%;
     margin-top: 100vh;
 }
 
-section:nth-child(4n),
-section:nth-child(4n - 1) {
+.scroll-section:nth-child(4n),
+.scroll-section:nth-child(4n - 1) {
     --col: 3;
 }
 
-.section__content {
+.scroll-section__content {
     width: 100%;
     position: fixed;
     top: 0;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem;
+
+    z-index: 3;
+    pointer-events: none;
 }
 
 @media (min-width: 50rem) {
-    .section__content {
+    .scroll-section__content {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 25rem));
         gap: 2rem;
         padding: 3rem;
     }
 
-    .section__content > * {
+    .scroll-section__content > * {
         grid-column: var(--col, 1);
         opacity: 0;
     }
@@ -411,7 +388,7 @@ section:nth-child(4n - 1) {
 
 .bubbles {
     position: fixed;
-    top: 0;
+    top: 50vh;
     left: 5rem;
     transform-origin: center;
     transform: translate3d(10rem, 5rem, 0) rotateX(20deg) rotateY(0deg);
