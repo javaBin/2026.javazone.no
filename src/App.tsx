@@ -31,13 +31,14 @@ const App = () => {
             </div>
         </div>
       <BrowserRouter>
-
+        <main className="pt-20">
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/partner" element={<PartnerPage />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/speaker/*" element={<SpeakerRoutes />} />
         </Routes>
+        </main>
       </BrowserRouter>
 
       <div className="dock dock-xs">

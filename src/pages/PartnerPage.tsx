@@ -50,6 +50,7 @@ const PartnerPage = () => {
                               <p className="mt-2 font-semibold">Price: 100 000,- NOK ex VAT</p>
                               <ul className="mt-4 list-disc pl-6 space-y-2">
                                   <li>6 square meters (3x2) with back and side wall, in the main conference hall.</li>
+                                  <li>Stand includes one bar table, two bar stools, carpet (grey) and power outlet</li>
                                   <li>
                                       <strong>Profiling:</strong> Logo with link on homepage and profiling in Nova Spektrum
                                   </li>
