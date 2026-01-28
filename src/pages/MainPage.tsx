@@ -1,5 +1,4 @@
-import { BubbleSimple, Heading } from '@/components'
-import Submarine from '@/components/submarine/submarine'
+import { BubbleSimple, Heading, Submarine } from '@/components'
 
 const MainPage = () => {
   return (

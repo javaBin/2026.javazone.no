@@ -1,8 +1,8 @@
-import { Card } from '@/components/index.ts'
+import { Card } from '@/components'
 
 const Packages = () => {
   return (
-    <div className="space-y-8">
+    <>
       <Card title="Standard package" subtitle="Price: 100 000,- NOK ex VAT">
         <ul className="mt-4 list-disc pl-6 space-y-2">
           <li>6 square meters (3x2) with back and side wall, in the main conference hall.</li>
@@ -68,7 +68,7 @@ const Packages = () => {
           </div>
         </div>
       </Card>
-    </div>
+    </>
   )
 }
 

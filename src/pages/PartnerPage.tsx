@@ -2,15 +2,13 @@ import { Heading, Packages } from '@/components'
 
 const PartnerPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-30">
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8">
       <Heading level="h1" className="mb-20">
         JavaZone 2026 partner
       </Heading>
 
-      <div className="max-w-2xl text-left space-y-4 mb-8">
-        <Heading level="h2" className="mb-6">
-          Partner registration is open
-        </Heading>
+      <section className="text-left max-w-2xl w-full space-y-4">
+        <Heading level="h2">Partner registration is open</Heading>
         <p>
           You need to decide what type of stand you want when registering. The formal contract and invoice will be sent to you later. Partner stands
           are limited and are sold first come first served.
@@ -20,11 +18,11 @@ const PartnerPage = () => {
             Register as partner
           </a>
         </div>
+      </section>
 
+      <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">The first partner meeting</Heading>
-        <Heading level="h3" className="mb-4">
-          Watch the recording here
-        </Heading>
+        <Heading level="h3">Watch the recording here</Heading>
         <div className="w-full overflow-hidden rounded-lg bg-black" style={{ position: 'relative', paddingTop: '56.25%' }}>
           {' '}
           <iframe
@@ -43,19 +41,15 @@ const PartnerPage = () => {
             allowFullScreen
           />
         </div>
+      </section>
 
-        <div className="text-left mt-12">
-          <Heading level="h2" className="mb-6">
-            Packages and tickets
-          </Heading>
-          <Packages />
-        </div>
-      </div>
+      <section className="text-left max-w-2xl w-full space-y-4">
+        <Heading level="h2">Packages and tickets</Heading>
+        <Packages />
+      </section>
 
-      <div className="max-w-2xl w-full mb-24">
-        <Heading level="h2" className="mb-4">
-          Contact Us
-        </Heading>
+      <section className="text-left max-w-2xl w-full space-y-4 mb-20">
+        <Heading level="h2">Contact Us</Heading>
         <p>
           If you have any questions or concerns, please reach out to us at{' '}
           <a className="text-link underline" href="mailto:partner@java.no">
@@ -63,7 +57,7 @@ const PartnerPage = () => {
           </a>
           .
         </p>
-      </div>
+      </section>
     </div>
   )
 }

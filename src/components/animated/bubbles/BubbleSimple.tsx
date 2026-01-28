@@ -1,6 +1,6 @@
 // Based on code from https://freefrontend.com/css-bubbles/
 
-import '@/components/animated/BubbleSimple.css'
+import '@/components/animated/bubbles/BubbleSimple.css'
 
 const BubbleSimple = () => {
   return (
