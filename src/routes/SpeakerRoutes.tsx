@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom'
 
-import SpeakerMainPage from '@/pages/MainPage'
-import FamilyTicketPolicyPage from '@/pages/speaker/FamilyTicketPolicyPage'
-import ReimbursementPolicyPage from '@/pages/speaker/ReimbursementPolicyPage'
-import SubmissionTipsPage from '@/pages/speaker/SubmissionTipsPage'
+import FamilyTicketPolicyPage from '@/pages/speaker/FamilyTicketPolicyPage.tsx'
+import SpeakerMainPage from '@/pages/speaker/MainPage.tsx'
+import ReimbursementPolicyPage from '@/pages/speaker/ReimbursementPolicyPage.tsx'
+import SubmissionTipsPage from '@/pages/speaker/SubmissionTipsPage.tsx'
 
 const SpeakerRoutes = () => {
   return (
