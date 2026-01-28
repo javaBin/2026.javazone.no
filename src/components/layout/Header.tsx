@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <div className="fixed top-0 z-50 w-screen">
+    <header className="fixed top-0 z-50 w-screen">
       <div
         className="
                 pointer-events-none absolute inset-0 backdrop-blur-sm
@@ -39,7 +39,7 @@ const Header = () => {
           <h1 className="font-bold">JavaZone</h1>
         </div>
       </div>
-    </div>
+    </header>
   )
 }
 

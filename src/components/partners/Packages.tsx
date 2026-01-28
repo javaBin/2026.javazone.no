@@ -1,11 +1,12 @@
 import { Card } from '@/components/index.ts'
 
-const Packages = ({ wave = false }) => {
+const Packages = () => {
   return (
     <div className="space-y-8">
-      <Card title="Standard package" subtitle="Price: 100 000,- NOK ex VAT" wave={wave} className={wave ? 'aspect-[3/5] md:aspect-[3/2]' : ''}>
+      <Card title="Standard package" subtitle="Price: 100 000,- NOK ex VAT">
         <ul className="mt-4 list-disc pl-6 space-y-2">
           <li>6 square meters (3x2) with back and side wall, in the main conference hall.</li>
+          <li>Stand includes one bar table, two bar stools, carpet (grey) and power outlet</li>
           <li>
             <strong>Profiling:</strong> Logo with link on homepage and profiling in Nova Spektrum
           </li>
@@ -18,7 +19,7 @@ const Packages = ({ wave = false }) => {
         </ul>
       </Card>
 
-      <Card title="Restaurant stand" subtitle="Price: 190 000,- NOK ex VAT" wave={wave} className={wave ? 'aspect-[3/5] md:aspect-[3/1.5]' : ''}>
+      <Card title="Restaurant stand" subtitle="Price: 190 000,- NOK ex VAT">
         <ul className="mt-4 list-disc pl-6 space-y-2">
           <li>All the benefits of the standard package with a restaurant stand</li>
           <li>Approx. 80 square meters with a connected restaurant</li>
@@ -27,7 +28,7 @@ const Packages = ({ wave = false }) => {
         </ul>
       </Card>
 
-      <Card title="Concept stand" subtitle="Price: 190 000,- NOK ex VAT" wave={wave} className={wave ? 'aspect-[0.75] md:aspect-[2]' : ''}>
+      <Card title="Concept stand" subtitle="Price: 190 000,- NOK ex VAT">
         <ul className="mt-4 list-disc pl-6 space-y-2">
           <li>All the benefits of the standard package.</li>
           <li>Stand of approx. 70 square meters</li>
@@ -35,7 +36,7 @@ const Packages = ({ wave = false }) => {
         </ul>
       </Card>
 
-      <Card title="Extended package" subtitle="Price: 160 000,- NOK ex VAT" wave={wave} className={wave ? 'aspect-[1] md:aspect-[6/2]' : ''}>
+      <Card title="Extended package" subtitle="Price: 160 000,- NOK ex VAT">
         <ul className="mt-4 list-disc pl-6 space-y-2">
           <li>Same as Standard upgraded to 12 square meters</li>
         </ul>
@@ -48,8 +49,6 @@ const Packages = ({ wave = false }) => {
             Price: 9 200,- NOK ex VAT <span className="font-normal">(incl ticket fee)</span>
           </>
         }
-        wave={wave}
-        className={wave ? 'aspect-[0.5] md:aspect-[3/2]' : ''}
       >
         <div className="mt-4 space-y-3">
           <p>

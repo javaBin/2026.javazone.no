@@ -1,3 +1,5 @@
+// Based on code from https://freefrontend.com/css-bubbles/
+
 import '@/components/animated/BubbleSimple.css'
 
 const BubbleSimple = () => {

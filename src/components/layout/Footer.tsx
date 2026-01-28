@@ -5,7 +5,7 @@ const Footer = () => {
   const blur = pathname !== '/'
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40">
+    <footer className="fixed bottom-0 left-0 right-0 z-40">
       <div
         className={`${blur ? 'backdrop-blur-sm' : ''}
                 pointer-events-none absolute inset-0
@@ -27,7 +27,7 @@ const Footer = () => {
           Code of conduct
         </a>
       </div>
-    </div>
+    </footer>
   )
 }
 

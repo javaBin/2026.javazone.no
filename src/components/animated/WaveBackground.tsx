@@ -1,3 +1,4 @@
+// Based on code from https://codepen.io/goodkatz/pen/LYPGxQz
 import '@/components/animated/WaveBackground.css'
 
 const WaveBackground = () => {
