@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Heading } from '@/components/index.ts'
 
-type CardProps = {
+interface CardProps {
   title: string
   subtitle?: React.ReactNode
   wave?: boolean

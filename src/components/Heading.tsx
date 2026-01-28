@@ -2,7 +2,7 @@ import React from 'react'
 
 type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
-type HeadingProps = {
+interface HeadingProps {
   level: HeadingLevel
   children: React.ReactNode
   className?: string
