@@ -48,7 +48,7 @@ const PartnerPage = () => {
           <Heading level="h2" className="mb-6">
             Packages and tickets
           </Heading>
-          <Packages wave={false} />
+          <Packages />
         </div>
       </div>
 
