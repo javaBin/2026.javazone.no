@@ -1,5 +1,5 @@
 .wave-container {
-  --wave-bg: linear-gradient(180deg, #0F6C77 0%, #0B3554 60%, #071A2B 100%);
+  --wave-bg: linear-gradient(180deg, #0f6c77 0%, #0b3554 60%, #071a2b 100%);
 
   position: absolute;
   top: 0;
@@ -64,7 +64,7 @@
     height: 20vh;
     min-height: 100px;
   }
-  
+
   .waves {
     height: 40px;
     min-height: 40px;

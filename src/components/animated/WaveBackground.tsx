@@ -1,4 +1,5 @@
-import "./WaveBackground.css";
+// Based on code from https://codepen.io/goodkatz/pen/LYPGxQz
+import '@/components/animated/WaveBackground.css'
 
 const WaveBackground = () => {
   return (
@@ -12,10 +13,7 @@ const WaveBackground = () => {
         shapeRendering="auto"
       >
         <defs>
-          <path
-            id="gentle-wave"
-            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-          />
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
         </defs>
         <g className="parallax">
           <use className="wave1" xlinkHref="#gentle-wave" x="48" y="0" fill="rgba(7,26,43,0.7)" />
@@ -25,7 +23,7 @@ const WaveBackground = () => {
         </g>
       </svg>
     </div>
-  );
-};
+  )
+}
 
-export default WaveBackground;
+export default WaveBackground
