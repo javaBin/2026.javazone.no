@@ -6,7 +6,7 @@ const MainPage = () => {
     <div className="hero bg-base-200 min-h-screen">
       <BubbleSimple />
       <Submarine />
-      <div className="hero-content z-40 text-center">
+      <div className="hero-content z-40">
         <div className="max-w-md text-center">
           <Heading level="h1">JavaZone 2026</Heading>
           <Heading level="h2" className="mt-3 mb-6">

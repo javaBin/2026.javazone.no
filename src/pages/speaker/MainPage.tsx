@@ -199,10 +199,10 @@ const SpeakerMainPage = () => {
 
           <p>We hope to see you at JavaZone 2026 - please feel free to spread the word to your local community!</p>
 
-          <p className="italic">
+          <p>
             Best regards,
             <br />
-            the JavaZone Program Committee
+            <span className="italic">The JavaZone Program Committee</span>
           </p>
         </div>
 

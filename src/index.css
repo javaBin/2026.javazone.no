@@ -170,31 +170,3 @@ p {
 .rounded-box {
   border-radius: 1rem;
 }
-
-.wavy-test {
-  --s: 28px; /* wave size */
-  --k: sqrt(2); /*1.41421356237;*/ /* sqrt(2) as a constant */
-  --pos: 4;
-  --bg: var(--deep-ocean);
-
-  padding: var(--s);
-  border: var(--s) solid var(--reef-teal);
-  box-sizing: border-box;
-  background: var(--bg);
-
-  /* Safari (and sometimes Chrome) */
-  -webkit-mask:
-    radial-gradient(calc(var(--k) * var(--s)) at 50% 50%, var(--bg) calc(100% - 1px), transparent) 0 0 / calc(var(--s) * var(--pos))
-      calc(var(--s) * var(--pos)),
-    conic-gradient(var(--bg) 0%, var(--bg) 100%) content-box,
-    radial-gradient(calc(var(--k) * var(--s)) at 50% 50%, transparent 100%, var(--bg) calc(100% + 1px)) var(--s) var(--s) /
-      calc(var(--s) * var(--pos)) calc(var(--s) * var(--pos)) padding-box;
-
-  /* Firefox */
-  mask:
-    radial-gradient(calc(var(--k) * var(--s)) at 50% 50%, var(--bg) calc(100% - 1px), transparent) 0 0 / calc(var(--s) * var(--pos))
-      calc(var(--s) * var(--pos)),
-    conic-gradient(var(--bg) 0%, var(--bg) 100%) content-box,
-    radial-gradient(calc(var(--k) * var(--s)) at 50% 50%, transparent 100%, var(--bg) calc(100% + 1px)) var(--s) var(--s) /
-      calc(var(--s) * var(--pos)) calc(var(--s) * var(--pos)) padding-box;
-}
