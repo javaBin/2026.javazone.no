@@ -1,3 +1,4 @@
+// glow effect inspired by https://github.com/justalever/tailwind-mouse-glow/tree/main
 import React, { useRef } from 'react'
 
 import { Heading } from '@/components'
@@ -10,7 +11,7 @@ interface CardProps {
   className?: string
 }
 
-const Card = ({ title, subtitle, children, glowColor = '#0F6C77', className = '' }: CardProps) => {
+const Card = ({ title, subtitle, children, glowColor = 'var(--reef-teal)', className = '' }: CardProps) => {
   const ref = useRef<HTMLElement | null>(null)
 
   const onMove = (e: React.MouseEvent<HTMLElement>) => {

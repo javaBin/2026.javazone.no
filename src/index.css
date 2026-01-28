@@ -171,32 +171,14 @@ p {
   border-radius: 1rem;
 }
 
-/* Mouse glow overlay (from the tutorial) */
-.glow-overlay {
+/* Mouse glow overlay */
+.glow-card {
+  position: relative;
   --glow-size: 25rem;
   --glow-opacity: 0;
   --glow-x: 50%;
   --glow-y: 50%;
-  --glow-color: rgba(124, 58, 237, 1);
-
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  user-select: none;
-
-  opacity: var(--glow-opacity);
-
-  mask: radial-gradient(var(--glow-size) var(--glow-size) at var(--glow-x) var(--glow-y), #000 1%, transparent 50%);
-
-  transition:
-    200ms opacity ease,
-    200ms -webkit-mask-position ease,
-    200ms mask-position ease;
-  will-change: -webkit-mask, mask, opacity;
-}
-
-.glow-card {
-  position: relative;
+  --glow-color: var(--sunbeam-gold);
 }
 
 .glow-card::before {
@@ -207,10 +189,10 @@ p {
   opacity: var(--glow-opacity, 0);
 
   /* Mask follows mouse */
-  mask: radial-gradient(25rem 25rem at var(--glow-x, 50%) var(--glow-y, 50%), #000 1%, transparent 50%);
+  mask: radial-gradient(30rem 30rem at var(--glow-x, 50%) var(--glow-y, 50%), #000 4%, transparent 75%);
 
-  /* What shows through the mask (the “glow”) */
-  background: color-mix(in srgb, var(--glow-color, #7c3aed) 18%, transparent);
+  /* What shows through the mask (the glow) */
+  background: color-mix(in srgb, var(--glow-color, var(--reef-teal)) 18%, transparent);
   border-radius: inherit;
-  transition: opacity 150ms ease;
+  transition: opacity 120ms ease;
 }
