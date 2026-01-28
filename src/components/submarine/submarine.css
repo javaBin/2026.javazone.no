@@ -1,23 +1,23 @@
 /* Submarine Color Palette */
 :root {
-/* Subtle Deep-Sea Submarine */
---submarine-body: #0B3554;        /* deep-ocean */
---submarine-sail: #071A2B;        /* abyss-navy */
---submarine-shadow: #04121F;      /* darker abyss */
---submarine-highlight: #1A5F7A;   /* muted reef reflection */
---submarine-periscope: #0F6C77;   /* reef-teal */
+  /* Subtle Deep-Sea Submarine */
+  --submarine-body: #0b3554; /* deep-ocean */
+  --submarine-sail: #071a2b; /* abyss-navy */
+  --submarine-shadow: #04121f; /* darker abyss */
+  --submarine-highlight: #1a5f7a; /* muted reef reflection */
+  --submarine-periscope: #0f6c77; /* reef-teal */
 
---submarine-propeller-dark: #8FB2C6;   /* slate-blue-gray */
---submarine-propeller-light: #BEE8E6;  /* sea-mist */
+  --submarine-propeller-dark: #8fb2c6; /* slate-blue-gray */
+  --submarine-propeller-light: #bee8e6; /* sea-mist */
 
---submarine-window-base: #8FB2C6;
---submarine-window-light: #F0EEE9;
+  --submarine-window-base: #8fb2c6;
+  --submarine-window-light: #f0eee9;
 
---submarine-spotlight: #BEE8E6;
---submarine-bubble: #F0EEE9;
+  --submarine-spotlight: #bee8e6;
+  --submarine-bubble: #f0eee9;
 
-/* Vibrant Accent Submarine */
-/* --submarine-body: #F06A6A;        
+  /* Vibrant Accent Submarine */
+  /* --submarine-body: #F06A6A;        
 --submarine-sail: #C75454;        
 --submarine-shadow: #9E3E3E;      
 --submarine-highlight: #F7A1A1;   
@@ -50,7 +50,8 @@
 }
 
 @keyframes subtle-bob {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(-50%, calc(-50% - 3px));
   }
   50% {
@@ -301,69 +302,19 @@
 @keyframes shadow-change {
   0%,
   100% {
-    background-image: linear-gradient(
-      45deg,
-      #c9e5d9 0%,
-      #c9e5d9 20%,
-      #fff 21%,
-      #fff 39%,
-      #c9e5d9 40%,
-      #fff 41%,
-      #fff 59%,
-      #c9e5d9 60%
-    );
+    background-image: linear-gradient(45deg, #c9e5d9 0%, #c9e5d9 20%, #fff 21%, #fff 39%, #c9e5d9 40%, #fff 41%, #fff 59%, #c9e5d9 60%);
   }
   20% {
-    background-image: linear-gradient(
-      45deg,
-      #c9e5d9 20%,
-      #c9e5d9 40%,
-      #fff 41%,
-      #fff 59%,
-      #c9e5d9 60%,
-      #fff 61%,
-      #fff 79%,
-      #c9e5d9 80%
-    );
+    background-image: linear-gradient(45deg, #c9e5d9 20%, #c9e5d9 40%, #fff 41%, #fff 59%, #c9e5d9 60%, #fff 61%, #fff 79%, #c9e5d9 80%);
   }
   40% {
-    background-image: linear-gradient(
-      45deg,
-      #c9e5d9 40%,
-      #c9e5d9 60%,
-      #fff 61%,
-      #fff 79%,
-      #c9e5d9 80%,
-      #fff 81%,
-      #fff 99%,
-      #c9e5d9 0%
-    );
+    background-image: linear-gradient(45deg, #c9e5d9 40%, #c9e5d9 60%, #fff 61%, #fff 79%, #c9e5d9 80%, #fff 81%, #fff 99%, #c9e5d9 0%);
   }
   60% {
-    background-image: linear-gradient(
-      45deg,
-      #c9e5d9 60%,
-      #c9e5d9 80%,
-      #fff 81%,
-      #fff 99%,
-      #c9e5d9 0%,
-      #fff 1%,
-      #fff 19%,
-      #c9e5d9 20%
-    );
+    background-image: linear-gradient(45deg, #c9e5d9 60%, #c9e5d9 80%, #fff 81%, #fff 99%, #c9e5d9 0%, #fff 1%, #fff 19%, #c9e5d9 20%);
   }
   80% {
-    background-image: linear-gradient(
-      45deg,
-      #c9e5d9 80%,
-      #c9e5d9 0%,
-      #fff 1%,
-      #fff 19%,
-      #c9e5d9 20%,
-      #fff 21%,
-      #fff 39%,
-      #c9e5d9 40%
-    );
+    background-image: linear-gradient(45deg, #c9e5d9 80%, #c9e5d9 0%, #fff 1%, #fff 19%, #c9e5d9 20%, #fff 21%, #fff 39%, #c9e5d9 40%);
   }
 }
 

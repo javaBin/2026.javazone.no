@@ -1,0 +1,172 @@
+:root {
+  /* Core - Backgrounds / Surfaces */
+  --abyss-navy: #071a2b;
+  --deep-ocean: #0b3554;
+  --reef-teal: #0f6c77;
+  --sea-mist: #bee8e6;
+
+  /* Text */
+  --cloud-dancer: #f0eee9;
+  --slate-blue-gray: #8fb2c6;
+
+  /* Accents - CTAs / Highlights */
+  --sunbeam-gold: #f2c14e;
+  --coral-bloom: #f06a6a;
+}
+
+body {
+  background-color: var(--abyss-navy);
+  color: var(--cloud-dancer);
+  margin: 0;
+  padding: 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  border-radius: 1.5rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  background: var(--sunbeam-gold);
+  color: var(--abyss-navy);
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--cloud-dancer);
+}
+
+.btn-ghost:hover {
+  background: var(--reef-teal);
+  transform: translateY(0);
+}
+
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.shadow-xl {
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Cards */
+.card {
+  z-index: 10;
+  border-radius: 1rem;
+  background-color: var(--deep-ocean);
+  color: var(--cloud-dancer);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--cloud-dancer);
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--abyss-navy);
+  color: var(--cloud-dancer);
+}
+
+.hero-content {
+  max-width: 80rem;
+  padding: 1rem;
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background-color: var(--sunbeam-gold);
+  color: var(--abyss-navy);
+}
+
+.badge-outline {
+  background-color: transparent;
+  border: 1px solid var(--sunbeam-gold);
+  color: var(--sunbeam-gold);
+}
+
+.center-text {
+  text-align: center;
+}
+
+p {
+  text-align: justify;
+}
+
+/* Text Colors */
+
+.text-primary-content {
+  color: var(--abyss-navy);
+}
+
+.text-base-content {
+  color: var(--cloud-dancer);
+}
+
+.text-base-content\/80 {
+  color: rgba(242, 251, 255, 0.8);
+}
+
+/* Links */
+
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+.link-primary {
+  color: var(--sunbeam-gold);
+}
+
+/* Hover States */
+.hover\:bg-primary:hover {
+  background-color: var(--sunbeam-gold);
+}
+
+.hover\:text-primary-content:hover {
+  color: var(--abyss-navy);
+}
+
+/* Border Colors */
+.border-base-300 {
+  border-color: var(--reef-teal);
+}
+
+/* Rounded Box */
+.rounded-box {
+  border-radius: 1rem;
+}
