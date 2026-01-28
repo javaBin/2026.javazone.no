@@ -1,4 +1,4 @@
-import './WaveBackground.css'
+import '@/components/animated/WaveBackground.css'
 
 const WaveBackground = () => {
   return (

@@ -2,13 +2,11 @@ import './App.css'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { Footer, Header, WaveBackground } from './components'
-import HistoryPage from './pages/HistoryPage.tsx'
-import MainPage from './pages/MainPage.tsx'
-import PartnerPage from './pages/PartnerPage.tsx'
-import SpeakerRoutes from './pages/speaker/Routes.tsx'
-
-// testing
+import { Footer, Header, WaveBackground } from '@/components'
+import HistoryPage from '@/pages/HistoryPage.tsx'
+import MainPage from '@/pages/MainPage.tsx'
+import PartnerPage from '@/pages/PartnerPage.tsx'
+import SpeakerRoutes from '@/pages/speaker/Routes.tsx'
 
 const App = () => {
   return (

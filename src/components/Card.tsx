@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Heading } from './index.ts'
+import { Heading } from '@/components/index.ts'
 
 type CardProps = {
   title: string

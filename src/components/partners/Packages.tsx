@@ -1,4 +1,4 @@
-import { Card } from '../index.ts'
+import { Card } from '@/components/index.ts'
 
 const Packages = ({ wave = false }) => {
   return (

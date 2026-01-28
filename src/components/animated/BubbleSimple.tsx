@@ -1,4 +1,4 @@
-import './BubbleSimple.css'
+import '@/components/animated/BubbleSimple.css'
 
 const BubbleSimple = () => {
   return (

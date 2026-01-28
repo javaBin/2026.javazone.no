@@ -1,4 +1,4 @@
-import { Heading, Packages } from '../components'
+import { Heading, Packages } from '@/components'
 
 const PartnerPage = () => {
   return (

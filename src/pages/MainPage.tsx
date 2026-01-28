@@ -1,4 +1,4 @@
-import { BubbleSimple, Heading } from '../components'
+import { BubbleSimple, Heading } from '@/components'
 
 const MainPage = () => {
   return (
