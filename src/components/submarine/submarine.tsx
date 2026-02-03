@@ -43,7 +43,7 @@ const Submarine = () => {
           return prev
         }
 
-        const speed = 0.07
+        const speed = 0.1
         const moveAmount = Math.min(speed, distance)
         const dirX = dx / distance
         const dirY = dy / distance

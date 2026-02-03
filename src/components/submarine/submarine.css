@@ -355,7 +355,7 @@
 
 /* Mobile responsive */
 @media (max-width: 768px) {
-  .submarine__flipper {
-    transform: scale(0.33) !important;
+  .submarine__container {
+    transform: scale(0.4) !important;
   }
 }
