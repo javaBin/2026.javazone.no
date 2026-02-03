@@ -66,9 +66,6 @@ const SpeakerMainPage = () => {
               Watch Videos
             </a>
           </div>
-
-
-          
         </div>
 
         <div className="text-left space-y-4">
@@ -114,16 +111,6 @@ const SpeakerMainPage = () => {
                 We will continue the popular workshop concept with a range of
                 sessions on Tuesday, September 1st. The format for the workshops
                 is in-depth, hands-on and interactive.
-              </p>
-            </section>
-
-            <section className="rounded-lg border border-base-300 p-6 bg-base-100">
-              <h3 className="text-2xl font-bold">JavaZone Kids</h3>
-              <p className="mt-4">
-                For those interested in bringing the magic of software
-                development to kids, we have a mini conference for kids the
-                weekend before JavaZone. Please see their separate call for
-                speakers for more information.
               </p>
             </section>
           </div>
