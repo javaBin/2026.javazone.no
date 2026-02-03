@@ -2,7 +2,7 @@ import { Heading, Packages } from '@/components'
 
 const PartnerPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8">
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
       <Heading level="h1" className="mb-20">
         JavaZone 2026 partner
       </Heading>
@@ -48,7 +48,7 @@ const PartnerPage = () => {
         <Packages />
       </section>
 
-      <section className="text-left max-w-2xl w-full space-y-4 mb-20">
+      <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">Contact Us</Heading>
         <p>
           If you have any questions or concerns, please reach out to us at{' '}

@@ -1,14 +1,14 @@
 // animation from https://frontend.horse/articles/swimming-on-scroll-with-gsap/
 'use client'
 
-import '../test.css'
+import '@/test.css'
 
 import { gsap } from 'gsap'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useLayoutEffect, useRef } from 'react'
 
-import { Heading } from '../components'
+import { Heading } from '@/components'
 
 interface Point {
   x: number
