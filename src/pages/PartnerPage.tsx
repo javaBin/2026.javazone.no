@@ -1,3 +1,5 @@
+import { Heading, Packages } from '@/components'
+import { PartnerBanner } from '@/components/PartnerBanner.tsx'
 
 const PartnerPage = () => {
   return (
@@ -5,6 +7,8 @@ const PartnerPage = () => {
       <Heading level="h1" className="mb-20">
         JavaZone 2026 partner
       </Heading>
+
+      <PartnerBanner />
 
       <div className="max-w-2xl text-left space-y-4 mb-8">
         <Heading level="h2" className="mb-6">
