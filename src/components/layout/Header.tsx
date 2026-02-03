@@ -34,6 +34,12 @@ const Header = () => {
           >
             Speakers
           </a>
+          {/* <a
+            className="btn-ghost font-semibold text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform transition-opacity duration-200 hover:opacity-90"
+            href={'/volunteer'}
+          >
+            Volunteer
+          </a> */}
         </div>
         <div className="flex-none ml-auto px-2 hidden sm:flex items-center justify-center">
           <h1 className="font-bold">JavaZone</h1>
