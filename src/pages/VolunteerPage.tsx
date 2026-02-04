@@ -8,7 +8,7 @@ const VolunteerPage = () => {
       </Heading>
       <div className="max-w-2xl text-left space-y-4 mb-8">
         <p className="max-w-2xl text-left mb-8 text-lg">
-          JavaZone is the world's largest community-driven Java conference, with mora than 3000 developers attending every year. Would you like to
+          JavaZone is the world's largest community-driven Java conference, with more than 3000 developers attending every year. Would you like to
           contribute to making this event an amazing experience? Sign up to be a volunteer!
         </p>
         <div className="pt-6 pb-8 w-full flex justify-center">
