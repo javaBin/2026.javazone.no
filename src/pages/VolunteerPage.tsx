@@ -8,8 +8,8 @@ const VolunteerPage = () => {
       </Heading>
       <div className="max-w-2xl text-left space-y-4 mb-8">
         <p className="max-w-2xl text-left mb-8 text-lg">
-          JavaZone is the world's largest community-driven Java conference. Every year, over 3200 developers come to Oslo to participate. Would you
-          like to contribute to making this event an amazing experience? Sign up to be a volunteer!
+          JavaZone is the world's largest community-driven Java conference, with mora than 3000 developers attending every year. Would you like to
+          contribute to making this event an amazing experience? Sign up to be a volunteer!
         </p>
         <div className="pt-6 pb-8 w-full flex justify-center">
           <a href="https://forms.gle/CsR71mRvs4T8wXpq8" className="btn btn-primary btn-lg text-2xl px-12">
@@ -57,7 +57,7 @@ const faq = [
     a: 'You get about 50% free time to attend talks, eat great food, and network with IT professionals.',
   },
   {
-    q: 'What about travel if I don’t live in Oslo?',
+    q: 'What about travel if I don’t live in the area?',
     a: 'JavaZone does not cover travel or accommodation, but check with your university about travel support.',
   },
   {
@@ -66,11 +66,11 @@ const faq = [
   },
   {
     q: 'When do I need to show up as a volunteer?',
-    a: 'Training and info will be given on the 2nd of September, and you need to show up both the 3rd and the 4th for the conference.',
+    a: 'Training and info will be given on the 1st of September, and you need to show up both the 2nd and the 3rd for the conference.',
   },
   {
     q: 'When is the application deadline?',
-    a: 'The application deadline is Sunday, June 8th.',
+    a: 'The application deadline is Sunday, June 7th.',
   },
 ]
 
