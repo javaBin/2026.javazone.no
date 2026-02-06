@@ -13,10 +13,15 @@ const MainPage = () => {
             September 2nd - 3rd, 2026, NOVA Spektrum, Lillestrøm
           </Heading>
           <p className={'text-xl md:text-2xl font-semibold center-text'}>Ticket sales open March 2nd</p>
-
           <div className="pt-6 pb-8">
             <a href="https://event.checkin.no/215047/javazone-2026-partnership" className="btn btn-primary btn-lg text-2xl px-12">
               Register as partner
+            </a>
+          </div>
+          <div className="pt-12 pb-8">
+            <p className="text-lg md:text-xl font-semibold center-text pb-4"> Want to volunteer at this years Javazone?</p>
+            <a href="/volunteer" className="btn btn-primary btn-md text-xl px-8">
+              Take a look here!
             </a>
           </div>
         </div>
