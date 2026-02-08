@@ -6,6 +6,7 @@ import Card from '@/components/Card.tsx'
 import Heading from '@/components/Heading.tsx'
 import Footer from '@/components/layout/Footer.tsx'
 import Header from '@/components/layout/Header.tsx'
+import LinkButton from '@/components/LinkButton.tsx'
 import Packages from '@/components/partners/Packages.tsx'
 
-export { BubbleSimple, Card, Footer, Header, Heading, MouseFollower, Packages, Submarine, WaveBackground }
+export { BubbleSimple, Card, Footer, Header, Heading, LinkButton, MouseFollower, Packages, Submarine, WaveBackground }

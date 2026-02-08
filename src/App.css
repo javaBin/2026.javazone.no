@@ -1,12 +1,14 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-base-100: var(--deep-ocean);
-  --color-base-200: var(--abyss-navy);
-  --color-base-300: var(--reef-teal);
+  --color-deep-ocean: var(--deep-ocean);
+  --color-abyss-navy: var(--abyss-navy);
+  --color-reef-teal: var(--reef-teal);
+  --color-sea-mist: var(--sea-mist);
 
-  --color-primary: var(--cloud-dancer);
-  --color-secondary: var(--slate-blue-gray);
+  --color-cloud-dancer: var(--cloud-dancer);
+  --color-slate-blue-gray: var(--slate-blue-gray);
 
-  --color-link: var(--sunbeam-gold);
+  --color-sunbeam-gold: var(--sunbeam-gold);
+  --color-coral-bloom: var(--coral-bloom);
 }

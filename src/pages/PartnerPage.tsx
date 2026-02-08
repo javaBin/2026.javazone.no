@@ -1,4 +1,4 @@
-import { Heading, Packages } from '@/components'
+import { Heading, LinkButton, Packages } from '@/components'
 
 const PartnerPage = () => {
   return (
@@ -13,10 +13,8 @@ const PartnerPage = () => {
           You need to decide what type of stand you want when registering. The formal contract and invoice will be sent to you later. Partner stands
           are limited and are sold first come first served.
         </p>
-        <div className="pt-4 pb-8 flex justify-center">
-          <a href="https://event.checkin.no/215047/javazone-2026-partnership" className="btn btn-primary btn-lg text-2xl px-12">
-            Register as partner
-          </a>
+        <div className="flex items-center justify-center mt-4">
+          <LinkButton title="Register as partner" size="medium" link="https://event.checkin.no/215047/javazone-2026-partnership" />
         </div>
       </section>
 
@@ -52,7 +50,7 @@ const PartnerPage = () => {
         <Heading level="h2">Contact Us</Heading>
         <p>
           If you have any questions or concerns, please reach out to us at{' '}
-          <a className="text-link underline" href="mailto:partner@java.no">
+          <a className="text-sunbeam-gold underline" href="mailto:partner@java.no">
             partner@java.no
           </a>
           .

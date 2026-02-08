@@ -103,7 +103,7 @@ const SpeakerMainPage = () => {
         </p>
         <p>
           Over the years, we have gathered some{' '}
-          <Link to="/speaker/tips" className="text-link underline">
+          <Link to="/speaker/tips" className="text-sunbeam-gold underline">
             submission tips
           </Link>
           , which may be useful to both new and experienced speakers.
@@ -152,11 +152,11 @@ const SpeakerMainPage = () => {
         <Card title="Coverage of expenses">
           <p className="mt-4">
             Please see our{' '}
-            <Link to="/speaker/reimbursement" className="text-link underline">
+            <Link to="/speaker/reimbursement" className="text-sunbeam-gold underline">
               reimbursement policy
             </Link>{' '}
             if you have any questions regarding coverage of other expenses. Starting this year, we also have a new{' '}
-            <Link to="/speaker/family-ticket" className="text-link underline">
+            <Link to="/speaker/family-ticket" className="text-sunbeam-gold underline">
               family ticket policy
             </Link>
             .

@@ -1,8 +1,8 @@
-import { BubbleSimple, Heading, Submarine } from '@/components'
+import { BubbleSimple, Heading, LinkButton, Submarine } from '@/components'
 
 const MainPage = () => {
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-abyss-navy min-h-screen">
       <BubbleSimple />
       <Submarine />
       <div className="hero-content z-40">
@@ -13,11 +13,7 @@ const MainPage = () => {
           </Heading>
           <p className={'text-xl md:text-2xl font-semibold center-text'}>Ticket sales open March 2nd</p>
 
-          <div className="pt-6 pb-8">
-            <a href="https://event.checkin.no/215047/javazone-2026-partnership" className="btn btn-primary btn-lg text-2xl px-12">
-              Register as partner
-            </a>
-          </div>
+          <LinkButton title="Register as partner" size="large" link="https://event.checkin.no/215047/javazone-2026-partnership" className="mt-6" />
         </div>
       </div>
     </div>

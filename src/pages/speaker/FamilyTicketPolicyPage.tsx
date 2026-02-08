@@ -78,7 +78,7 @@ const FamilyTicketPolicyPage = () => {
           </li>
           <li>
             Send an email to{' '}
-            <a href="mailto:refund@java.no" className="text-link underline">
+            <a href="mailto:refund@java.no" className="text-sunbeam-gold underline">
               refund@java.no
             </a>{' '}
             with the subject line:

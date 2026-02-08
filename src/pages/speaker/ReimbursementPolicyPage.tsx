@@ -21,7 +21,7 @@ const ReimbursementPolicyPage = () => {
         <p>
           The first thing to note is that you need to apply for reimbursement of costs. This is necessary for our budget planning. If you require
           financial support, please reach out to{' '}
-          <a href="mailto:refund@java.no" className="text-link underline">
+          <a href="mailto:refund@java.no" className="text-sunbeam-gold underline">
             refund@java.no
           </a>{' '}
           after your session or workshop is accepted.
@@ -41,7 +41,7 @@ const ReimbursementPolicyPage = () => {
         <Heading level="h2">Confirmation & Reimbursement</Heading>
         <p>
           Applications must be confirmed explicitly via{' '}
-          <a href="mailto:refund@java.no" className="text-link underline">
+          <a href="mailto:refund@java.no" className="text-sunbeam-gold underline">
             refund@java.no
           </a>{' '}
           and are only accepted prior to our conference. Reimbursements are provided after the conference. For this, we require you to send us copies

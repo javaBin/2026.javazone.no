@@ -38,14 +38,14 @@ const Card = ({ title, subtitle, children, glowColor = 'var(--reef-teal)', class
       onMouseLeave={onLeave}
       className={`
         glow-card
-        rounded-3xl border border-base-300 bg-base-100
+        rounded-3xl border border-reef-teal bg-deep-ocean
         p-6 my-8
         ${className}
       `.trim()}
     >
       <div className="flex flex-col justify-center w-full md:px-4">
         <Heading level="h3">{title}</Heading>
-        {subtitle ? <p className="mt-2 font-semibold text-secondary md:text-lg">{subtitle}</p> : null}
+        {subtitle ? <p className="mt-2 font-semibold text-slate-blue-gray md:text-lg">{subtitle}</p> : null}
         {children}
       </div>
     </article>

@@ -16,13 +16,13 @@ const Footer = () => {
       <div className="relative bg-transparent flex justify-center gap-4 p-4 shadow-lg">
         <a
           href="https://www.java.no"
-          className="text-primary hover:bg-base-300 no-underline py-2 px-4 rounded-3xl transition-all duration-200 ease-[ease]"
+          className="text-primary hover:bg-reef-teal no-underline py-2 px-4 rounded-3xl transition-all duration-200 ease-[ease]"
         >
           Made by javaBin
         </a>
         <a
           href="https://java.no/principles"
-          className="text-primary hover:bg-base-300 no-underline py-2 px-4 rounded-3xl transition-all duration-200 ease-[ease]"
+          className="text-primary hover:bg-reef-teal no-underline py-2 px-4 rounded-3xl transition-all duration-200 ease-[ease]"
         >
           Code of conduct
         </a>
