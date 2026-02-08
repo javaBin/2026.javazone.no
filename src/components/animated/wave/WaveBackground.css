@@ -61,12 +61,12 @@
 /* Shrinking for mobile */
 @media (max-width: 768px) {
   .wave-container {
-    height: 20vh;
+    height: 25vh;
     min-height: 100px;
   }
 
   .waves {
-    height: 40px;
+    height: 50px;
     min-height: 40px;
   }
 }

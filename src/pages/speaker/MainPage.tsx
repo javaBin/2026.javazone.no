@@ -78,13 +78,6 @@ const SpeakerMainPage = () => {
             in-depth, hands-on and interactive.
           </p>
         </Card>
-
-        <Card title="JavaZone Kids">
-          <p className="mt-4">
-            For those interested in bringing the magic of software development to kids, we have a mini conference for kids the weekend before
-            JavaZone. Please see their separate call for speakers for more information.
-          </p>
-        </Card>
       </section>
 
       <section className="text-left max-w-2xl w-full space-y-4">
