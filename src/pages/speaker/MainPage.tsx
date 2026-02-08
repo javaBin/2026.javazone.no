@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { Card, Heading } from '@/components'
+import { Card, Heading, LinkButton } from '@/components'
 
 const SpeakerMainPage = () => {
   return (
@@ -23,9 +23,7 @@ const SpeakerMainPage = () => {
         </p>
 
         <div className="text-center pt-4">
-          <a href="https://talks.javazone.no/" className="btn btn-primary btn-lg">
-            Submit talk
-          </a>
+          <LinkButton title="Submit talk" link="https://talks.javazone.no/" />
         </div>
       </section>
 
@@ -49,9 +47,7 @@ const SpeakerMainPage = () => {
         </p>
 
         <div className="text-center pt-4">
-          <a href="https://vimeo.com/javazone" className="btn btn-primary btn-lg">
-            Watch Videos
-          </a>
+          <LinkButton title="Watch Videos" link="https://vimeo.com/javazone" />
         </div>
       </section>
 

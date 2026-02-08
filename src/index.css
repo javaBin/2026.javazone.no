@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 :root {
   /* Core - Backgrounds / Surfaces */
   --abyss-navy: #071a2b;
@@ -14,42 +16,42 @@
   --coral-bloom: #f06a6a;
 }
 
-body {
-  background-color: var(--abyss-navy);
-  color: var(--cloud-dancer);
-  margin: 0;
-  padding: 0;
+@theme {
+  --color-deep-ocean: var(--deep-ocean);
+  --color-abyss-navy: var(--abyss-navy);
+  --color-reef-teal: var(--reef-teal);
+  --color-sea-mist: var(--sea-mist);
+
+  --color-cloud-dancer: var(--cloud-dancer);
+  --color-slate-blue-gray: var(--slate-blue-gray);
+
+  --color-sunbeam-gold: var(--sunbeam-gold);
+  --color-coral-bloom: var(--coral-bloom);
 }
 
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1.5rem;
-  font-weight: 600;
-  border-radius: 1.5rem;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  background: var(--sunbeam-gold);
-  color: var(--abyss-navy);
+@layer base {
+  body {
+    @apply bg-abyss-navy text-cloud-dancer m-0 p-0;
+  }
 }
 
-.btn:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
+@layer components {
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background-color: var(--sunbeam-gold);
+    color: var(--abyss-navy);
+  }
 
-.btn-ghost {
-  background: transparent;
-  color: var(--cloud-dancer);
-}
-
-.btn-ghost:hover {
-  background: var(--reef-teal);
-  transform: translateY(0);
+  .badge-outline {
+    background-color: transparent;
+    border: 1px solid var(--sunbeam-gold);
+    color: var(--sunbeam-gold);
+  }
 }
 
 /* Shadow Utilities todo: put into theme */
@@ -61,25 +63,6 @@ body {
   box-shadow:
     0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-/* Cards */
-.card {
-  z-index: 10;
-  border-radius: 1rem;
-  background-color: var(--deep-ocean);
-  color: var(--cloud-dancer);
-}
-
-.card-body {
-  padding: 2rem;
-}
-
-.card-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--cloud-dancer);
 }
 
 /* Hero Section */
@@ -95,24 +78,6 @@ body {
 .hero-content {
   max-width: 80rem;
   padding: 1rem;
-}
-
-/* Badge */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border-radius: 9999px;
-  background-color: var(--sunbeam-gold);
-  color: var(--abyss-navy);
-}
-
-.badge-outline {
-  background-color: transparent;
-  border: 1px solid var(--sunbeam-gold);
-  color: var(--sunbeam-gold);
 }
 
 .center-text {
@@ -188,7 +153,7 @@ p {
   opacity: var(--glow-opacity, 0);
 
   /* Mask follows mouse */
-  mask: radial-gradient(30rem 30rem at var(--glow-x, 50%) var(--glow-y, 50%), #000 4%, transparent 75%);
+  mask: radial-gradient(var(--glow-size) var(--glow-size) at var(--glow-x, 50%) var(--glow-y, 50%), #000 4%, transparent 75%);
 
   /* What shows through the mask (the glow) */
   background: color-mix(in srgb, var(--glow-color, var(--reef-teal)) 18%, transparent);

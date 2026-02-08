@@ -3,7 +3,7 @@ import { resolveLink } from '@/lib'
 type ButtonVariant = 'primary' | 'primary-outline'
 type ButtonSize = 'small' | 'medium' | 'large'
 
-interface CTAButtonProps {
+interface LinkButtonProps {
   title: string
   link: string
   variant?: ButtonVariant
@@ -22,7 +22,7 @@ const sizes: Record<ButtonSize, string> = {
   large: 'px-12 font-semibold text-xl sm:text-2xl',
 }
 
-const LinkButton = ({ title, link, variant = 'primary', size = 'medium', className = '' }: CTAButtonProps) => {
+const LinkButton = ({ title, link, variant = 'primary', size = 'medium', className = '' }: LinkButtonProps) => {
   const { href, isExternal } = typeof window === 'undefined' ? { href: link, isExternal: false } : resolveLink(link)
   const baseStyle =
     'inline-flex items-center justify-center rounded-3xl py-2 font-semibold no-underline transition-all duration-200 ease-in-out hover:opacity-90 hover:-translate-y-px'
