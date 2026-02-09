@@ -45,7 +45,7 @@ const Card = ({ title, subtitle, children, glowColor = 'var(--reef-teal)', class
     >
       <div className="flex flex-col justify-center w-full md:px-4">
         {title.length === 0 ? null : <Heading level="h3">{title}</Heading>}
-        {subtitle ? <p className="mt-2 font-semibold text-slate-blue-gray md:text-lg">{subtitle}</p> : null}
+        {subtitle ? <p className="mt-2 font-semibold text-tertiary md:text-lg">{subtitle}</p> : null}
         {children}
       </div>
     </article>

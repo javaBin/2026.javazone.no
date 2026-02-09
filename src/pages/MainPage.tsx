@@ -10,7 +10,6 @@ const MainPage = () => {
           <Heading level="h1">JavaZone 2026</Heading>
           <Heading level="h2" className="my-2">
             September 2<sup className="font-semibold">nd</sup> <span className="font-semibold">–</span> 3<sup className="font-semibold">rd</sup> 2026{' '}
-            <br />
             NOVA Spektrum, Lillestrøm
           </Heading>
           <Heading level="h3">
