@@ -12,14 +12,14 @@ interface LinkButtonProps {
 }
 
 const variants: Record<ButtonVariant, string> = {
-  primary: 'bg-sunbeam-gold text-abyss-navy',
-  'primary-outline': 'bg-transparent border-sunbeam-gold border-1 text-sunbeam-gold',
+  primary: 'bg-accent-primary text-base-200',
+  'primary-outline': 'bg-transparent border-accent-primary border text-accent-primary',
 }
 
 const sizes: Record<ButtonSize, string> = {
-  small: 'px-4 font-normal text-base',
-  medium: 'px-6 font-medium text-lg sm:text-xl',
-  large: 'px-12 font-semibold text-xl sm:text-2xl',
+  small: 'px-2 sm:px-4 font-normal text-base sm:text-lg',
+  medium: 'px-6 sm:px-8 font-medium text-lg sm:text-xl',
+  large: 'px-10 sm:px-12 font-semibold text-xl sm:text-2xl',
 }
 
 const LinkButton = ({ title, link, variant = 'primary', size = 'medium', className = '' }: LinkButtonProps) => {

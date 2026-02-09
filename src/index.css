@@ -14,106 +14,58 @@
   /* Accents - CTAs / Highlights */
   --sunbeam-gold: #f2c14e;
   --coral-bloom: #f06a6a;
+  --blue-lagoon: #57c4d1;
 }
 
 @theme {
-  --color-deep-ocean: var(--deep-ocean);
-  --color-abyss-navy: var(--abyss-navy);
-  --color-reef-teal: var(--reef-teal);
-  --color-sea-mist: var(--sea-mist);
+  --color-base-100: var(--deep-ocean);
+  --color-base-200: var(--abyss-navy);
+  --color-base-300: var(--reef-teal);
 
-  --color-cloud-dancer: var(--cloud-dancer);
-  --color-slate-blue-gray: var(--slate-blue-gray);
+  --color-primary: var(--sea-mist);
+  --color-secondary: var(--cloud-dancer);
+  --color-tertiary: var(--slate-blue-gray);
 
-  --color-sunbeam-gold: var(--sunbeam-gold);
-  --color-coral-bloom: var(--coral-bloom);
+  --color-base-content: var(--cloud-dancer);
+
+  --color-accent-primary: var(--sunbeam-gold);
+  --color-accent-secondary: var(--blue-lagoon);
+  --color-accent-tertiary: var(--coral-bloom);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 @layer base {
   body {
-    @apply bg-abyss-navy text-cloud-dancer m-0 p-0;
+    @apply bg-base-200 text-base-content m-0 p-0;
+  }
+
+  p {
+    @apply text-justify text-base-content;
+  }
+
+  a {
+    @apply text-accent-primary underline;
   }
 }
 
 @layer components {
+  .hero {
+    @apply flex items-center justify-center min-h-screen bg-base-200 text-base-content;
+  }
+
+  .hero-content {
+    @apply max-w-7xl p-4 z-40;
+  }
+
   .badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    border-radius: 9999px;
-    background-color: var(--sunbeam-gold);
-    color: var(--abyss-navy);
+    @apply inline-flex items-center px-3 py-1 text-sm font-semibold rounded-full bg-accent-primary text-base-200;
   }
 
   .badge-outline {
-    background-color: transparent;
-    border: 1px solid var(--sunbeam-gold);
-    color: var(--sunbeam-gold);
+    @apply bg-transparent border border-accent-primary text-accent-primary;
   }
-}
-
-/* Shadow Utilities todo: put into theme */
-.shadow-sm {
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-
-.shadow-xl {
-  box-shadow:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-/* Hero Section */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: var(--abyss-navy);
-  color: var(--cloud-dancer);
-}
-
-.hero-content {
-  max-width: 80rem;
-  padding: 1rem;
-}
-
-.center-text {
-  text-align: center;
-}
-
-p {
-  text-align: justify;
-}
-
-/* Text Colors */
-
-.text-primary-content {
-  color: var(--abyss-navy);
-}
-
-.text-base-content {
-  color: var(--cloud-dancer);
-}
-
-.text-base-content\/80 {
-  color: rgba(242, 251, 255, 0.8);
-}
-
-.link {
-  text-decoration: underline;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.link:hover {
-  opacity: 0.8;
-}
-
-.link-primary {
-  color: var(--sunbeam-gold);
 }
 
 /* Hover States */
@@ -128,11 +80,6 @@ p {
 /* Border Colors */
 .border-base-300 {
   border-color: var(--reef-teal);
-}
-
-/* Rounded Box */
-.rounded-box {
-  border-radius: 1rem;
 }
 
 /* Mouse glow overlay */

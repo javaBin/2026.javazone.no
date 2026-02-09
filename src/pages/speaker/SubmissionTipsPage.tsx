@@ -8,12 +8,14 @@ const SubmissionTipsPage = () => {
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">Increase the chance of your talk being accepted</Heading>
 
-        <p>
+        <p className="text-base md:text-lg">
           There is generally a very high correlation between how much work one puts into the creation of a proposal and the chance that the proposal
           is accepted. Even a proposal with an extremely cool theme, entertaining title, and an experienced speaker may be excluded if the description
           is lacking.
         </p>
-        <p>We have gathered some tips that should be considered when writing a JavaZone proposal, and a few reasons why proposals may be rejected.</p>
+        <p className="text-base md:text-lg">
+          We have gathered some tips that should be considered when writing a JavaZone proposal, and a few reasons why proposals may be rejected.
+        </p>
 
         <Card title="Create a good title">
           <p className="mt-4">
@@ -95,7 +97,7 @@ const SubmissionTipsPage = () => {
 
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">Why was my talk rejected?</Heading>
-        <p>
+        <p className="text-base md:text-lg">
           Even though we are rooting for your talk to be accepted, the fact is that some talks must be rejected. Read through these tips to understand
           why this might happen. Even better, if you are reading this before the Call for Speakers deadline, you can go through your proposal and make
           sure you do your best to avoid these common pitfalls.

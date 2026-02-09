@@ -268,10 +268,10 @@ const TestPage = () => {
         {FAQ.map((pair, i) => (
           <section key={i} className={'scroll-section'}>
             <div className="scroll-section__content">
-              <Heading level="h2" className="center-text">
+              <Heading level="h2" className="text-center">
                 {pair.q}
               </Heading>
-              <Heading level="h3" className="center-text">
+              <Heading level="h3" className="text-center">
                 {pair.a}
               </Heading>
             </div>

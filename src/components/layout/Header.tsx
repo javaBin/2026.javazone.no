@@ -9,40 +9,41 @@ const Header = () => {
             "
       />
       <div className="relative flex p-4">
-        <div className="flex px-2 mx-auto sm:mx-0">
+        <div className="flex flex-wrap px-2 mx-auto sm:mx-0">
           <a
-            className="btn-ghost font-semibold text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform transition-opacity duration-200 hover:opacity-90"
+            className="bg-transparent text-primary font-semibold no-underline text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
             href={'/'}
           >
             Info
           </a>
           <a
-            className="btn-ghost font-semibold text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform transition-opacity duration-200 hover:opacity-90"
+            className="bg-transparent text-primary font-semibold no-underline text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
             href={'/history'}
           >
             History
           </a>
           <a
-            className="btn-ghost font-semibold text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform transition-opacity duration-200 hover:opacity-90"
+            className="bg-transparent text-primary font-semibold no-underline text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
             href={'/partner'}
           >
             Partners
           </a>
           <a
-            className="btn-ghost font-semibold text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform transition-opacity duration-200 hover:opacity-90"
+            className="bg-transparent text-primary font-semibold no-underline text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
             href={'/speaker'}
           >
             Speakers
           </a>
-          {/* <a
-            className="btn-ghost font-semibold text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform transition-opacity duration-200 hover:opacity-90"
+          {/*todo: fix hamburger menu*/}
+          <a
+            className="hidden bg-transparent text-primary font-semibold no-underline text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
             href={'/volunteer'}
           >
-            Volunteer
-          </a> */}
+            Volunteers
+          </a>
         </div>
-        <div className="flex-none ml-auto px-2 hidden sm:flex items-center justify-center">
-          <h1 className="font-bold">JavaZone</h1>
+        <div className="absolute right-0 top-0 p-4 flex items-center justify-center">
+          <h1 className="text-transparent sm:text-primary font-semibold text-md md:text-xl py-2">JavaZone</h1>
         </div>
       </div>
     </header>
