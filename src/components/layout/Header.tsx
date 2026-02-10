@@ -5,12 +5,11 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   console.log('is open?', isOpen)
   return (
-    <header className="fixed top-0 z-50 w-screen">
+    <header className={`fixed top-0 z-50 w-screen`}>
       <div
         className="
                 pointer-events-none absolute inset-0 backdrop-blur-sm
                 [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]
-                [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]
             "
       />
       <div className="relative flex items-center">
@@ -68,7 +67,7 @@ const Header = () => {
         </button>
       </div>
       {isOpen ? (
-        <nav className="absolute top-full left-0 w-full !flex sm:!hidden items-start justify-between px-2">
+        <nav className="relative w-full !flex sm:!hidden items-start justify-between px-4 pb-8 -mt-4">
           <a
             className="bg-transparent text-primary font-semibold no-underline text-lg py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
             href={'/'}
