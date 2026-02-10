@@ -1,0 +1,293 @@
+.hover-animation-container {
+  position: relative;
+  display: inline-block;
+}
+
+.animation-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: -1;
+}
+
+/* Bubble animations */
+.bubble {
+  position: absolute;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    inset -5px -5px 10px rgba(255, 255, 255, 0.3),
+    0 0 10px rgba(135, 206, 250, 0.5);
+  animation: bubbleFloat 3s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes bubbleFloat {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(1.5);
+  }
+}
+
+.bubble-1 {
+  width: 15px;
+  height: 15px;
+  top: 50%;
+  left: 40%;
+  --tx: -60px;
+  --ty: -80px;
+  animation-delay: 0s;
+  animation-duration: 2.5s;
+}
+
+.bubble-2 {
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 43%;
+  --tx: 70px;
+  --ty: -70px;
+  animation-delay: 0.2s;
+  animation-duration: 2.8s;
+}
+
+.bubble-3 {
+  width: 12px;
+  height: 12px;
+  top: 50%;
+  left: 46%;
+  --tx: -80px;
+  --ty: -60px;
+  animation-delay: 0.4s;
+  animation-duration: 3s;
+}
+
+.bubble-4 {
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 49%;
+  --tx: 85px;
+  --ty: -50px;
+  animation-delay: 0.1s;
+  animation-duration: 2.7s;
+}
+
+.bubble-5 {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 52%;
+  --tx: 0px;
+  --ty: -90px;
+  animation-delay: 0.5s;
+  animation-duration: 2.9s;
+}
+
+.bubble-6 {
+  width: 14px;
+  height: 14px;
+  top: 50%;
+  left: 55%;
+  --tx: -70px;
+  --ty: 0px;
+  animation-delay: 0.3s;
+  animation-duration: 3.2s;
+}
+
+.bubble-7 {
+  width: 11px;
+  height: 11px;
+  top: 50%;
+  left: 58%;
+  --tx: 75px;
+  --ty: -10px;
+  animation-delay: 0.6s;
+  animation-duration: 2.6s;
+}
+
+.bubble-8 {
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 61%;
+  --tx: 20px;
+  --ty: -15px;
+  animation-delay: 0.15s;
+  animation-duration: 3.1s;
+}
+
+/* Fish animations */
+.fish {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: fishSwim 4s ease-in-out forwards;
+  opacity: 0;
+}
+
+.fish-body {
+  position: relative;
+  width: 30px;
+  height: 15px;
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.9), rgba(255, 165, 0, 0.7));
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  box-shadow:
+    inset -2px -2px 5px rgba(0, 0, 0, 0.2),
+    0 0 8px rgba(255, 140, 0, 0.4);
+}
+
+.fish-tail {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-right: 12px solid rgba(255, 140, 0, 0.8);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  animation: tailWag 0.5s ease-in-out infinite;
+}
+
+.fish-fin {
+  position: absolute;
+  left: 8px;
+  top: -5px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid rgba(255, 140, 0, 0.7);
+  animation: finWave 0.6s ease-in-out infinite;
+}
+
+@keyframes fishSwim {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  25% {
+    transform: translate(var(--fx), var(--fy)) rotate(var(--fr));
+  }
+  50% {
+    transform: translate(calc(var(--fx) * 0.5), calc(var(--fy) * 0.5)) rotate(calc(var(--fr) * 0.5));
+  }
+  75% {
+    transform: translate(calc(var(--fx) * 0.8), calc(var(--fy) * 0.8)) rotate(calc(var(--fr) * 0.8));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--fx), var(--fy)) rotate(var(--fr));
+  }
+}
+
+@keyframes tailWag {
+  0%,
+  100% {
+    transform: translateY(-50%) scaleX(1);
+  }
+  50% {
+    transform: translateY(-50%) scaleX(0.7);
+  }
+}
+
+@keyframes finWave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-15deg);
+  }
+}
+
+.fish-1 {
+  --fx: -100px;
+  --fy: -60px;
+  --fr: -20deg;
+  animation-delay: 0.3s;
+  animation-duration: 3.5s;
+}
+
+.fish-1 .fish-body {
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.9), rgba(255, 165, 0, 0.7));
+}
+/*
+.fish-2 {
+  --fx: 110px;
+  --fy: -50px;
+  --fr: 15deg;
+  animation-delay: 0.7s;
+  animation-duration: 3.8s;
+}
+
+.fish-2 .fish-body {
+  background: linear-gradient(135deg, rgba(30, 144, 255, 0.9), rgba(100, 149, 237, 0.7));
+  transform: scaleX(-1);
+}
+
+.fish-2 .fish-tail {
+  border-right-color: rgba(30, 144, 255, 0.8);
+}
+
+.fish-2 .fish-fin {
+  border-bottom-color: rgba(30, 144, 255, 0.7);
+}
+
+.fish-3 {
+  --fx: -90px;
+  --fy: 70px;
+  --fr: -25deg;
+  animation-delay: 1s;
+  animation-duration: 3.2s;
+}
+
+.fish-3 .fish-body {
+  background: linear-gradient(135deg, rgba(50, 205, 50, 0.9), rgba(144, 238, 144, 0.7));
+}
+
+.fish-3 .fish-tail {
+  border-right-color: rgba(50, 205, 50, 0.8);
+}
+
+.fish-3 .fish-fin {
+  border-bottom-color: rgba(50, 205, 50, 0.7);
+}
+
+.fish-4 {
+  --fx: 95px;
+  --fy: 65px;
+  --fr: 20deg;
+  animation-delay: 0.5s;
+  animation-duration: 3.6s;
+}
+
+.fish-4 .fish-body {
+  background: linear-gradient(135deg, rgba(255, 20, 147, 0.9), rgba(255, 105, 180, 0.7));
+  transform: scaleX(-1);
+}
+
+.fish-4 .fish-tail {
+  border-right-color: rgba(255, 20, 147, 0.8);
+}
+
+.fish-4 .fish-fin {
+  border-bottom-color: rgba(255, 20, 147, 0.7);
+}*/

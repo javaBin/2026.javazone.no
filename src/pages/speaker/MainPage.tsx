@@ -21,6 +21,12 @@ const SpeakerMainPage = () => {
             <strong>Submissions opens January 1st and closes April 13th</strong>
           </p>
 
+          <button style={{ '--content': "'Testing this button'" } as React.CSSProperties}>
+            <div className="left" />
+            Testing this button
+            <div className="right" />
+          </button>
+
           <div className="text-center pt-4">
             <a href="https://talks.javazone.no/" className="btn btn-primary btn-lg">
               Submit talk
