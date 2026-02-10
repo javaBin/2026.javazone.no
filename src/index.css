@@ -112,3 +112,59 @@
   border-radius: inherit;
   transition: opacity 120ms ease;
 }
+
+/* Hamburger menu */
+.hamburger-menu svg {
+  display: block;
+}
+
+.hamburger-menu path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  --length: 24;
+  --offset: -38;
+
+  stroke-dasharray: var(--length) var(--total-length);
+  stroke-dashoffset: var(--offset);
+
+  transition: all 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.hamburger-menu circle {
+  fill: var(--reef-teal);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.hamburger-menu:hover circle {
+  opacity: 1;
+}
+
+.hamburger-menu .line--1,
+.hamburger-menu .line--3 {
+  --total-length: 126.64183044433594;
+}
+.hamburger-menu .line--2 {
+  --total-length: 70;
+}
+
+/* “cross” behavior when open (demo’s .cross input:checked + svg) */
+.hamburger-menu.is-open .line--1,
+.hamburger-menu.is-open .line--3 {
+  --length: 22.627416998;
+}
+.hamburger-menu.is-open .line--2 {
+  --length: 0;
+}
+
+.hamburger-menu.is-open .line--1,
+.hamburger-menu.is-open .line--3 {
+  --offset: -94.1149185097;
+}
+.hamburger-menu.is-open .line--2 {
+  --offset: -50;
+}
