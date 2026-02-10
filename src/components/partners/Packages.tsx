@@ -1,8 +1,8 @@
-import { Card } from '@/components/index.ts'
+import { Card, LinkButton } from '@/components'
 
 const Packages = () => {
   return (
-    <div className="space-y-8">
+    <>
       <Card title="Standard package" subtitle="Price: 100 000,- NOK ex VAT">
         <ul className="mt-4 list-disc pl-6 space-y-2">
           <li>6 square meters (3x2) with back and side wall, in the main conference hall.</li>
@@ -61,14 +61,12 @@ const Packages = () => {
             <li>First come first served if tickets are still available after May 15th</li>
           </ul>
 
-          <div className="pt-4 flex justify-center">
-            <a href="https://event.checkin.no/215055/javazone-2026-partner-tickets" className="btn btn-primary px-12">
-              Order partner tickets
-            </a>
+          <div className="pt-4 flex items-center justify-center">
+            <LinkButton title="Order partner tickets" link="https://event.checkin.no/215055/javazone-2026-partner-tickets" />
           </div>
         </div>
       </Card>
-    </div>
+    </>
   )
 }
 
