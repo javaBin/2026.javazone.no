@@ -1,5 +1,6 @@
 .wave-container {
   --wave-bg: linear-gradient(180deg, #0f6c77 0%, #0b3554 60%, #071a2b 100%);
+  --page-bg: var(--abyss-navy);
 
   position: absolute;
   top: 0;
@@ -13,15 +14,30 @@
   background: var(--wave-bg);
 }
 
+.wave-container::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 80px;
+
+  /* fade waves into page background */
+  background: linear-gradient(to bottom, rgba(7, 26, 43, 0) 0%, var(--page-bg) 100%);
+}
+
 .waves {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 15vh;
-  margin-bottom: -7px; /* Fix for safari gap */
   min-height: 100px;
   max-height: 150px;
+
+  display: block;
+  transform: translateZ(0);
 }
 
 /* Animation */
