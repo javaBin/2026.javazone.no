@@ -11,7 +11,7 @@ interface CardProps {
   className?: string
 }
 
-const Card = ({ title, subtitle, children, glowColor = 'var(--reef-teal)', className = '' }: CardProps) => {
+const Card = ({ title, subtitle, children, glowColor = 'var(--glow-color)', className = '' }: CardProps) => {
   const ref = useRef<HTMLElement | null>(null)
 
   const onMove = (e: React.MouseEvent<HTMLElement>) => {
@@ -37,8 +37,8 @@ const Card = ({ title, subtitle, children, glowColor = 'var(--reef-teal)', class
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       className={`
-        glow-card
-        rounded-3xl border border-base-300 bg-base-100
+        glow-card shadow-xl
+        rounded-3xl bg-base-100 border border-base-300
         p-6 my-8
         ${className}
       `.trim()}

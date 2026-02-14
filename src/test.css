@@ -1,18 +1,5 @@
 /* animation from https://frontend.horse/articles/swimming-on-scroll-with-gsap/ */
 
-.test {
-  --test1: rgba(160, 240, 255, 1);
-  --test2: rgba(120, 220, 255, 1);
-  --test3: rgba(255, 255, 255, 1);
-  --abyss-navy1: rgba(7, 26, 43, 1);
-  --deep-ocean1: rgba(11, 53, 84, 1);
-  --reef-teal1: rgba(15, 108, 119, 1);
-  --sea-mist1: rgba(190, 232, 230, 1);
-  --cloud-dancer1: rgba(240, 238, 233, 1);
-  --slate-blue-gray1: rgba(143, 178, 198, 1);
-  --blue-lagoon1: rgba(87, 196, 209, 1);
-}
-
 .fish-animation__root {
   background: linear-gradient(
     to bottom,

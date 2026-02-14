@@ -2,9 +2,9 @@
 
 :root {
   /* Core - Backgrounds / Surfaces */
-  --abyss-navy: #071a2b;
-  --deep-ocean: #0b3554;
-  --reef-teal: #0f6c77;
+  --abyss-navy: rgb(7, 26, 43);
+  --deep-ocean: rgb(11, 53, 84);
+  --reef-teal: #094d55;
   --sea-mist: #bee8e6;
 
   /* Text */
@@ -15,6 +15,17 @@
   --sunbeam-gold: #f2c14e;
   --coral-bloom: #f06a6a;
   --blue-lagoon: #57c4d1;
+
+  --ocean-linear-gradient: linear-gradient(
+    to bottom,
+    var(--deep-ocean) 0%,
+    var(--deep-ocean) 25%,
+    var(--deep-ocean) 50%,
+    var(--abyss-navy) 80%,
+    black 100%
+  );
+
+  --ocean-radial-gradient: radial-gradient(circle, rgba(20, 81, 126, 0.75) 30%, rgba(11, 53, 84, 0.75) 75%, rgba(7, 26, 43, 0.75) 100%);
 }
 
 @theme {
@@ -40,6 +51,7 @@
   body {
     @apply bg-base-200 text-base-content m-0 p-0;
     font-family: Quicksand, sans-serif;
+    background: var(--ocean-linear-gradient);
   }
 
   h1,
@@ -49,6 +61,34 @@
   h5,
   h6 {
     font-family: Numans, sans-serif;
+  }
+
+  h1 {
+    background: -webkit-linear-gradient(var(--sea-mist), var(--blue-lagoon));
+  }
+
+  h2 {
+    background: -webkit-linear-gradient(var(--blue-lagoon), var(--sea-mist));
+  }
+
+  h1,
+  h2 {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h1 sup {
+    color: var(--sea-mist);
+  }
+
+  h2 sup {
+    color: var(--blue-lagoon);
+  }
+
+  h1 sup,
+  h2 sup {
+    -webkit-text-fill-color: currentColor;
+    background: none;
   }
 
   p {
@@ -61,20 +101,16 @@
 }
 
 @layer components {
-  .hero {
-    @apply flex items-center justify-center min-h-screen bg-base-200 text-base-content;
-  }
-
-  .hero-content {
-    @apply max-w-7xl p-4 z-40;
-  }
-
   .badge {
     @apply inline-flex items-center px-3 py-1 text-sm font-semibold rounded-full bg-accent-primary text-base-200;
   }
 
   .badge-outline {
     @apply bg-transparent border border-accent-primary text-accent-primary;
+  }
+
+  .base-radial-gradient {
+    background: var(--ocean-radial-gradient);
   }
 }
 
@@ -94,7 +130,7 @@
   --glow-opacity: 0;
   --glow-x: 50%;
   --glow-y: 50%;
-  --glow-color: var(--sunbeam-gold);
+  --glow-color: var(--reef-teal);
 }
 
 .glow-card::before {
@@ -108,7 +144,7 @@
   mask: radial-gradient(var(--glow-size) var(--glow-size) at var(--glow-x, 50%) var(--glow-y, 50%), #000 4%, transparent 75%);
 
   /* What shows through the mask (the glow) */
-  background: color-mix(in srgb, var(--glow-color, var(--reef-teal)) 18%, transparent);
+  background: color-mix(in srgb, var(--glow-color, var(--reef-teal)) 30%, transparent);
   border-radius: inherit;
   transition: opacity 120ms ease;
 }
