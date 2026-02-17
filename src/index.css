@@ -54,6 +54,10 @@
     background: var(--ocean-linear-gradient);
   }
 
+  section p {
+    @apply text-base md:text-lg;
+  }
+
   h1,
   h2,
   h3,
@@ -64,15 +68,16 @@
   }
 
   h1 {
-    background: -webkit-linear-gradient(var(--sea-mist), var(--blue-lagoon));
+    --text-gradient: -webkit-linear-gradient(var(--sea-mist), var(--blue-lagoon));
   }
 
   h2 {
-    background: -webkit-linear-gradient(var(--blue-lagoon), var(--sea-mist));
+    --text-gradient: -webkit-linear-gradient(var(--blue-lagoon), var(--sea-mist));
   }
 
   h1,
   h2 {
+    background: var(--text-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

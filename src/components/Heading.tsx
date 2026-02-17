@@ -12,7 +12,7 @@ const defaultClasses: Record<HeadingLevel, string> = {
   h1: 'text-5xl md:text-6xl font-extrabold leading-tight tracking-tight text-primary text-center',
   h2: 'text-3xl md:text-4xl font-bold leading-snug tracking-tight tracking-tight text-primary',
   h3: 'text-2xl md:text-3xl font-semibold leading-snug text-primary',
-  h4: 'text-xl md:text-2xl font-semibold leading-snug text-tertiary',
+  h4: 'text-lg md:text-xl font-semibold leading-snug text-tertiary', // todo: review font sizes below
   h5: 'text-lg md:text-xl font-semibold leading-snug text-primary',
   h6: 'text-base md:text-lg font-medium leading-normal text-secondary',
 }

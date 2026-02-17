@@ -6,7 +6,7 @@ const FamilyTicketPolicyPage = () => {
       <Heading level="h1">Family Ticket Policy</Heading>
 
       <section className="text-left max-w-2xl w-full space-y-4">
-        <p className="text-base md:text-lg">
+        <p>
           We know that speaking at JavaZone can be a big thing for both you and your loved ones, and some of you would like to share a bit of that
           experience with your family. To keep this fair and sustainable, we offer a limited "family ticket" scheme for speakers.
         </p>
@@ -14,25 +14,25 @@ const FamilyTicketPolicyPage = () => {
 
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">Who can apply?</Heading>
-        <p className="text-base md:text-lg">
+        <p>
           Family tickets are available <strong>only</strong> to speakers who have had <strong>a full presentation or a workshop accepted</strong> for
           JavaZone. Lightning talk speakers are not included in this scheme.
         </p>
-        <p className="text-base md:text-lg">
+        <p>
           Family tickets are intended for <strong>close family members</strong>, such as a partner, spouse, or other immediate family. The scheme is
           not meant for colleagues.
         </p>
-        <p className="text-base md:text-lg">
+        <p>
           Each eligible speaker can request <strong>one</strong> family ticket of each type (see below).
         </p>
       </section>
 
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">What we offer</Heading>
-        <p className="text-base md:text-lg">We offer two different kinds of family tickets:</p>
+        <p>We offer two different kinds of family tickets:</p>
 
         <Card title="Short visit family pass" subtitle="(free)">
-          <p className="mt-4">This option is for family members who just want to "see what JavaZone is like" and maybe watch your talk.</p>
+          <p>This option is for family members who just want to "see what JavaZone is like" and maybe watch your talk.</p>
           <ul className="mt-4 list-disc pl-6 space-y-2">
             <li>
               Free badge with <strong>4 hour access</strong> to the conference area on one of the conference days.
@@ -52,7 +52,7 @@ const FamilyTicketPolicyPage = () => {
         </Card>
 
         <Card title="Full conference family ticket" subtitle="(50% discount)">
-          <p className="mt-4">
+          <p>
             If you want your family member to join as a <strong>full participant</strong>, we offer a discounted conference ticket:
           </p>
           <ul className="mt-4 list-disc pl-6 space-y-2">
@@ -72,7 +72,7 @@ const FamilyTicketPolicyPage = () => {
 
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">How to request a family ticket</Heading>
-        <p className="text-base md:text-lg">To request a family ticket, please:</p>
+        <p>To request a family ticket, please:</p>
         <ol className="mt-4 list-decimal pl-6 space-y-3 text-base md:text-lg">
           <li>
             Wait until your <strong>presentation or workshop has been accepted</strong>.

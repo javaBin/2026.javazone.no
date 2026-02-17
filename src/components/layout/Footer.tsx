@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom'
 
 const Footer = () => {
   const { pathname } = useLocation()
-  const blur = pathname !== '/'
+  const blur = pathname !== '/' && pathname !== '/test'
 
   return (
     <footer className="fixed bottom-0 left-0 right-0 z-40">

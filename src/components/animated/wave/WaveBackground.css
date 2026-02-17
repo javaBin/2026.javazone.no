@@ -40,30 +40,37 @@
 }
 
 /* Animation */
-.parallax > use {
+.parallax > g > use {
   animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
 }
 
-.parallax > .wave1,
-.parallax > .crest1 {
+.parallax > g > .crest1,
+.parallax > g > .crest2,
+.parallax > g > .crest3,
+.parallax > g > .crest4 {
+  transition: ease-in-out;
+}
+
+.parallax > g > .wave1,
+.parallax > g > .crest1 {
   animation-delay: -2s;
   animation-duration: 7s;
 }
 
-.parallax > .wave2,
-.parallax > .crest2 {
+.parallax > g > .wave2,
+.parallax > g > .crest2 {
   animation-delay: -3s;
   animation-duration: 10s;
 }
 
-.parallax > .wave3,
-.parallax > .crest3 {
+.parallax > g > .wave3,
+.parallax > g > .crest3 {
   animation-delay: -4s;
   animation-duration: 13s;
 }
 
-.parallax > .wave4,
-.parallax > .crest4 {
+.parallax > g > .wave4,
+.parallax > g > .crest4 {
   animation-delay: -5s;
   animation-duration: 20s;
 }
@@ -85,7 +92,7 @@
   }
 
   .waves {
-    height: 50px;
+    height: 60px;
     min-height: 40px;
   }
 }
