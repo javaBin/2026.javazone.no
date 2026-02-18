@@ -8,11 +8,20 @@ interface CardProps {
   subtitle?: React.ReactNode
   children: React.ReactNode
   glowColor?: string
+  gradientColors?: [string, string]
   className?: string
 }
 
-const Card = ({ title, subtitle, children, glowColor = 'var(--glow-color)', className = '' }: CardProps) => {
+const Card = ({
+  title,
+  subtitle,
+  children,
+  glowColor = 'var(--glow-color)',
+  gradientColors = ['rgb(10,56,90)', 'rgb(7,49,81)'],
+  className = '',
+}: CardProps) => {
   const ref = useRef<HTMLElement | null>(null)
+  const gradient = gradientColors && gradientColors.length > 0 ? `linear-gradient(to bottom, ${gradientColors.join(', ')})` : undefined
 
   const onMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!glowColor) return
@@ -37,11 +46,11 @@ const Card = ({ title, subtitle, children, glowColor = 'var(--glow-color)', clas
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       className={`
-        glow-card shadow-xl
-        rounded-3xl bg-base-100 border border-base-300
-        p-6 my-8
+        glow-card shadow-xl p-6 my-8 rounded-3xl
+        bg-base-200
         ${className}
       `.trim()}
+      style={gradient ? { backgroundImage: gradient } : undefined}
     >
       <div className="flex flex-col justify-center w-full md:px-4 text-base md:text-lg">
         {title.length === 0 ? null : <Heading level="h3">{title}</Heading>}

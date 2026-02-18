@@ -1,5 +1,10 @@
 import { Card, Heading } from '@/components'
 
+const gradients: [string, string][] = [
+  ['rgb(9,65,106)', 'rgb(10,56,90)'],
+  ['rgb(10,56,90)', 'rgb(6,40,66)'],
+]
+
 const FamilyTicketPolicyPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
@@ -31,7 +36,7 @@ const FamilyTicketPolicyPage = () => {
         <Heading level="h2">What we offer</Heading>
         <p>We offer two different kinds of family tickets:</p>
 
-        <Card title="Short visit family pass" subtitle="(free)">
+        <Card title="Short visit family pass" subtitle="(free)" gradientColors={gradients[0]}>
           <p>This option is for family members who just want to "see what JavaZone is like" and maybe watch your talk.</p>
           <ul className="mt-4 list-disc pl-6 space-y-2">
             <li>
@@ -51,7 +56,7 @@ const FamilyTicketPolicyPage = () => {
           <p className="mt-4">Details about where to pick up the badge and exact time limits will be communicated upon acceptance of request.</p>
         </Card>
 
-        <Card title="Full conference family ticket" subtitle="(50% discount)">
+        <Card title="Full conference family ticket" subtitle="(50% discount)" gradientColors={gradients[1]}>
           <p>
             If you want your family member to join as a <strong>full participant</strong>, we offer a discounted conference ticket:
           </p>
@@ -112,7 +117,7 @@ const FamilyTicketPolicyPage = () => {
 
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">Important notes</Heading>
-        <ul className="list-disc pl-6 space-y-3 text-base md:text-lg">
+        <ul className="list-disc pl-6 space-y-3 text-base md:text-lg text-justify">
           <li>
             Family tickets are offered <strong>subject to capacity</strong>. We reserve the right to decline or adjust requests if needed to keep the
             conference logistics manageable.

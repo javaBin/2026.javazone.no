@@ -2,6 +2,15 @@ import { Link } from 'react-router-dom'
 
 import { Card, Heading, LinkButton } from '@/components'
 
+const gradients = [
+  ['rgb(9,65,106)', 'rgb(10,56,90)'],
+  ['rgb(10,56,90)', 'rgb(7,49,81)'],
+  ['rgb(7,49,81)', 'rgb(4,44,74)'],
+  ['rgb(6,42,69)', 'rgb(6,39,64)'],
+  ['rgb(6,39,64)', 'rgb(7, 26, 43)'],
+  ['rgb(7, 26, 43)', 'rgb(4, 20, 34)'],
+]
+
 const SpeakerMainPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
@@ -59,21 +68,21 @@ const SpeakerMainPage = () => {
           your subject? How hands-on do you want to be? We have three formats you can present your material in.
         </p>
 
-        <Card title="Lightning talks" subtitle="(10 or 20 minutes)">
+        <Card title="Lightning talks" subtitle="(10 or 20 minutes)" gradientColors={gradients[0]}>
           <p>
             Are you presenting a great new idea, or want to give the audience a teaser for a cool topic? Then you should strongly consider the
             lightning talk format. Note that the 10-20 minute time limit is strictly enforced!
           </p>
         </Card>
 
-        <Card title="Presentations" subtitle="(45 or 60 minutes)">
+        <Card title="Presentations" subtitle="(45 or 60 minutes)" gradientColors={gradients[1]}>
           <p>
             Presentations at JavaZone can be either 45 or 60 minutes long. This gives you room to elaborate on an idea. When submitting your talk,
             please indicate clearly in the outline how much time is reserved for questions.
           </p>
         </Card>
 
-        <Card title="Workshops" subtitle="(2 hours, 4 hours, 8 hours)">
+        <Card title="Workshops" subtitle="(2 hours, 4 hours, 8 hours)" gradientColors={gradients[2]}>
           <p>
             We will continue the popular workshop concept with a range of sessions on Tuesday, September 1st. The format for the workshops is
             in-depth, hands-on and interactive.
@@ -125,7 +134,7 @@ const SpeakerMainPage = () => {
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">What's in it for me?</Heading>
 
-        <Card title="Accepted presentations, lightning talks, and workshops">
+        <Card title="Accepted presentations, lightning talks, and workshops" gradientColors={gradients[3]}>
           <p>
             As a JavaZone speaker, you get free admission to the conference. Additionally, you are also invited to the speakers' dinner, held on
             September 1<sup>st</sup>.
@@ -136,14 +145,14 @@ const SpeakerMainPage = () => {
           </p>
         </Card>
 
-        <Card title="Coverage of expenses">
+        <Card title="Coverage of expenses" gradientColors={gradients[4]}>
           <p>
             Please see our <Link to="/speaker/reimbursement">reimbursement policy</Link> if you have any questions regarding coverage of other
             expenses. Starting this year, we also have a new <Link to="/speaker/family-ticket">family ticket policy</Link>.
           </p>
         </Card>
 
-        <Card title="Important principles">
+        <Card title="Important principles" gradientColors={gradients[5]}>
           <p>
             JavaZone is proud to be an independent and community-driven conference. It is organized by volunteers from javaBin (the Norwegian Java
             User Group) and is run as a non-profit organization. This means that we have three important principles for selecting talks:

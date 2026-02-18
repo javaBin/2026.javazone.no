@@ -24,8 +24,6 @@
     var(--abyss-navy) 80%,
     black 100%
   );
-
-  --ocean-radial-gradient: radial-gradient(circle, rgba(20, 81, 126, 0.75) 30%, rgba(11, 53, 84, 0.75) 75%, rgba(7, 26, 43, 0.75) 100%);
 }
 
 @theme {
@@ -112,10 +110,6 @@
 
   .badge-outline {
     @apply bg-transparent border border-accent-primary text-accent-primary;
-  }
-
-  .base-radial-gradient {
-    background: var(--ocean-radial-gradient);
   }
 }
 
