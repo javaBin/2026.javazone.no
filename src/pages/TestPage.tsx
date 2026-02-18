@@ -42,7 +42,6 @@ const FAQ = [
 
 const TestPage = () => {
   const rootRef = useRef<HTMLDivElement | null>(null)
-  const lightsArray = [8]
 
   useLayoutEffect(() => {
     const root = rootRef.current
@@ -80,33 +79,33 @@ const TestPage = () => {
       const scaledPath: Point[] = path.map(({ x, y }) => ({ x: x * rx, y: y * ry }))
 
       const q = gsap.utils.selector(root)
-      const bubblesContainer = q<HTMLElement>('.fish-animation__bubbles')[0]
-      const fishContainer = q<HTMLElement>('.fish')[0]
+      const bubblesWrapper = q<HTMLElement>('.scrolling-fish-animation__bubbles-wrapper')[0]
+      const fishContainer = q<HTMLElement>('.scrolling-fish-animation__fish')[0]
 
-      if (!fishContainer || !bubblesContainer) return
+      if (!fishContainer || !bubblesWrapper) return
 
-      const fish = q<HTMLElement>('.fish__inner')[0]
+      const fish = q<HTMLElement>('.fish__body')[0]
       const fishSkeleton = q<HTMLElement>('.fish__skeleton')[0]
-      const fishHeadAndBody = [...q<HTMLElement>('.fish__head'), ...q<HTMLElement>('.fish__body')]
+      const fishHeadAndBody = [...q<HTMLElement>('.fish__head'), ...q<HTMLElement>('.fish__body-segment')]
       const lights = q<HTMLElement>('[data-lights]')
       const bubbles = q<HTMLElement>('.bubbles__bubble')
 
-      gsap.set(bubblesContainer, { autoAlpha: 0, display: 'none' }) // autoAlpha = opacity + visibility
+      gsap.set(bubblesWrapper, { autoAlpha: 0, display: 'none' }) // autoAlpha = opacity + visibility
       gsap.set(bubbles, { opacity: 0, scale: 0, y: 100 })
 
       // bubbles timeline
       const bubblesTl = gsap.timeline({
         paused: true,
         onStart: () => {
-          gsap.set(bubblesContainer, { display: 'block' })
-          gsap.to(bubblesContainer, { autoAlpha: 1, duration: 0.2 })
+          gsap.set(bubblesWrapper, { display: 'block' })
+          gsap.to(bubblesWrapper, { autoAlpha: 1, duration: 0.2 })
         },
         onComplete: () => {
-          gsap.to(bubblesContainer, {
+          gsap.to(bubblesWrapper, {
             autoAlpha: 0,
             duration: 0.2,
             onComplete: () => {
-              gsap.set(bubblesContainer, { display: 'none' })
+              gsap.set(bubblesWrapper, { display: 'none' })
             },
           })
         },
@@ -205,10 +204,10 @@ const TestPage = () => {
         const { top, left } = fishContainer.getBoundingClientRect()
         gsap.to(div, { opacity: 1, duration: 1 })
 
-        gsap.set(bubblesContainer, { x: left, y: top })
+        gsap.set(bubblesWrapper, { x: left, y: top })
 
         if (i <= FAQ.length) bubblesTl.restart()
-        else gsap.set(bubblesContainer, { autoAlpha: 0, display: 'none' })
+        else gsap.set(bubblesWrapper, { autoAlpha: 0, display: 'none' })
       }
 
       const hideText = (div: HTMLDivElement | null): void => {
@@ -216,18 +215,16 @@ const TestPage = () => {
         gsap.to(div, { opacity: 0, duration: 1 })
       }
 
-      const sections = gsap.utils.toArray<HTMLElement>('.scroll-content__section')
+      const sections = gsap.utils.toArray<HTMLElement>('.scrolling-fish-animation__content')
       sections.forEach((section, i) => {
-        const content = section.querySelector<HTMLDivElement>('.section__content')
+        const content = section.querySelector<HTMLDivElement>('.content-inner')
         if (content) gsap.set(content, { opacity: 0 }) // start hidden
 
         ScrollTrigger.create({
           trigger: section,
           start: 'top top',
           onEnter: () => makeBubbles(content, i),
-          /*onEnterBack: () => {
-            if (i <= FAQ.length) gsap.to(bubblesContainer, { autoAlpha: 1, duration: 0.2 })
-          },*/
+          onEnterBack: () => makeBubbles(content, i),
           onLeave: () => hideText(content),
           onLeaveBack: () => hideText(content),
           onUpdate: rotateFish,
@@ -239,18 +236,16 @@ const TestPage = () => {
   }, [])
 
   return (
-    <div ref={rootRef} className="fish-animation">
-      <div className="fish-animation__fish-wrapper">
-        <div className="fish">
+    <div ref={rootRef} className="scrolling-fish-animation">
+      <div className="scrolling-fish-animation__fish-wrapper">
+        <div className="scrolling-fish-animation__fish">
           <div className="fish__skeleton" />
-          <div className="fish__inner">
-            {/* body */}
-            <div className="fish__body" />
-            <div className="fish__body" />
-            <div className="fish__body" />
-            <div className="fish__body" />
+          <div className="fish__body">
+            <div className="fish__body-segment" />
+            <div className="fish__body-segment" />
+            <div className="fish__body-segment" />
+            <div className="fish__body-segment" />
 
-            {/* head */}
             <div className="fish__head" />
             <div className="fish__head fish__head--2" />
             <div className="fish__head fish__head--3" />
@@ -265,26 +260,31 @@ const TestPage = () => {
         </div>
       </div>
 
-      <div className="fish-animation__bubbles">
-        <div className="bubbles__inner">
+      <div className="scrolling-fish-animation__bubbles-wrapper">
+        <div className="scrolling-fish-animation__bubbles">
           <div className="bubbles__bubble" />
           <div className="bubbles__bubble" />
           <div className="bubbles__bubble" />
         </div>
       </div>
 
-      <div className="fish-animation__lights">
-        <div className="lights__group" data-lights="1">
-          {lightsArray.map((_, i) => (
-            <div key={i} className="lights__light" />
-          ))}
+      <div className="scrolling-fish-animation__lights-wrapper">
+        <div className="scrolling-fish-animation__lights" data-lights="1">
+          <div className="lights__light" />
+          <div className="lights__light" />
+          <div className="lights__light" />
+          <div className="lights__light" />
+          <div className="lights__light" />
+          <div className="lights__light" />
+          <div className="lights__light" />
+          <div className="lights__light" />
         </div>
       </div>
 
-      <div className="fish-animation__scroll-content">
+      <div className="scrolling-fish-animation__content-wrapper">
         {FAQ.map((pair, i) => (
-          <section key={i} className={'scroll-content__section'}>
-            <div className="section__content">
+          <section key={i} className={'scrolling-fish-animation__content'}>
+            <div className="content-inner">
               <Heading level="h2" className="text-center">
                 {pair.q}
               </Heading>

@@ -1,13 +1,6 @@
 // Based on code from https://codepen.io/goodkatz/pen/LYPGxQz
 import '@/components/animated/wave/WaveBackground.css'
 
-const layers = [
-  { cls: 'wave1', y: 0, crest: 'crest1', opacity: 0.5 },
-  { cls: 'wave2', y: 3, crest: 'crest2', opacity: 0.4 },
-  { cls: 'wave3', y: 5, crest: 'crest3', opacity: 0.3 },
-  { cls: 'wave4', y: 7, crest: 'crest4', opacity: 0.2 },
-]
-
 const WaveBackground = () => {
   return (
     <div className="wave-container">
@@ -54,26 +47,66 @@ const WaveBackground = () => {
           </filter>
         </defs>
         <g className="parallax">
-          {layers.map(({ cls, y, crest, opacity }) => (
-            <g key={cls}>
-              <use key={`${cls}-wave`} className={cls} xlinkHref="#gentle-wave" x={48} y={y} fill="url(#wave-gradient)" />
-              <use
-                key={`${cls}-crest`}
-                className={crest}
-                xlinkHref="#gentle-wave"
-                x={48}
-                y={y}
-                fill="none"
-                stroke="url(#crest-highlight)"
-                strokeWidth={1.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                mask="url(#crest-mask)"
-                filter="url(#glow)"
-                opacity={opacity}
-              />
-            </g>
-          ))}
+          <use className="wave1" xlinkHref="#gentle-wave" x={48} y={0} fill="url(#wave-gradient)" />
+          <use
+            className="crest1"
+            xlinkHref="#gentle-wave"
+            x={48}
+            y={0}
+            fill="none"
+            stroke="url(#crest-highlight)"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            mask="url(#crest-mask)"
+            filter="url(#glow)"
+            opacity={0.5}
+          />
+          <use className="wave2" xlinkHref="#gentle-wave" x={48} y={3} fill="url(#wave-gradient)" />
+          <use
+            className="crest2"
+            xlinkHref="#gentle-wave"
+            x={48}
+            y={3}
+            fill="none"
+            stroke="url(#crest-highlight)"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            mask="url(#crest-mask)"
+            filter="url(#glow)"
+            opacity={0.4}
+          />
+          <use className="wave3" xlinkHref="#gentle-wave" x={48} y={5} fill="url(#wave-gradient)" />
+          <use
+            className="crest3"
+            xlinkHref="#gentle-wave"
+            x={48}
+            y={5}
+            fill="none"
+            stroke="url(#crest-highlight)"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            mask="url(#crest-mask)"
+            filter="url(#glow)"
+            opacity={0.3}
+          />
+          <use className="wave4" xlinkHref="#gentle-wave" x={48} y={7} fill="url(#wave-gradient)" />
+          <use
+            className="crest4"
+            xlinkHref="#gentle-wave"
+            x={48}
+            y={7}
+            fill="none"
+            stroke="url(#crest-highlight)"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            mask="url(#crest-mask)"
+            filter="url(#glow)"
+            opacity={0.2}
+          />
         </g>
       </svg>
     </div>

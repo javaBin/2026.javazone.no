@@ -33,44 +33,41 @@
   min-height: 100px;
   max-height: 150px;
 
-  display: block;
-  transform: translateZ(0);
-
   mask-image: linear-gradient(to bottom, #000 75%, transparent 100%);
 }
 
 /* Animation */
-.parallax > g > use {
+.parallax > use {
   animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
 }
 
-.parallax > g > .crest1,
-.parallax > g > .crest2,
-.parallax > g > .crest3,
-.parallax > g > .crest4 {
+.parallax > .crest1,
+.parallax > .crest2,
+.parallax > .crest3,
+.parallax > .crest4 {
   transition: ease-in-out;
 }
 
-.parallax > g > .wave1,
-.parallax > g > .crest1 {
+.parallax > .wave1,
+.parallax > .crest1 {
   animation-delay: -2s;
   animation-duration: 7s;
 }
 
-.parallax > g > .wave2,
-.parallax > g > .crest2 {
+.parallax > .wave2,
+.parallax > .crest2 {
   animation-delay: -3s;
   animation-duration: 10s;
 }
 
-.parallax > g > .wave3,
-.parallax > g > .crest3 {
+.parallax > .wave3,
+.parallax > .crest3 {
   animation-delay: -4s;
   animation-duration: 13s;
 }
 
-.parallax > g > .wave4,
-.parallax > g > .crest4 {
+.parallax > .wave4,
+.parallax > .crest4 {
   animation-delay: -5s;
   animation-duration: 20s;
 }
