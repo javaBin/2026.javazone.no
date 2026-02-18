@@ -52,7 +52,9 @@
     background: var(--ocean-linear-gradient);
   }
 
-  section p {
+  section p,
+  section ol,
+  section ul {
     @apply text-base md:text-lg;
   }
 
