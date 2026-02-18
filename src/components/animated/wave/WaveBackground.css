@@ -43,7 +43,7 @@
 }
 
 .parallax .crest {
-  filter: blur(0.03125rem);
+  filter: blur(0.03125rem); /* 0.5px without warning */
 }
 
 .parallax .wave1,
