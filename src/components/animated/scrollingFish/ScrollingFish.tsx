@@ -16,7 +16,7 @@ interface Point {
 }
 
 interface ScrollingFishProps {
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 const FAQ = [
@@ -44,7 +44,7 @@ const FAQ = [
   { q: 'When is the application deadline?', a: 'The application deadline is TBD.' },
 ]
 
-const placeholderChildren = (
+const PlaceholderChildren = () => (
   <>
     {FAQ.map((pair, i) => (
       <section key={i} className={'scrolling-fish-animation__content'}>
@@ -61,7 +61,7 @@ const placeholderChildren = (
   </>
 )
 
-const ScrollingFish = ({ children = placeholderChildren }: ScrollingFishProps) => {
+const ScrollingFish = ({ children }: ScrollingFishProps) => {
   const rootRef = useRef<HTMLDivElement | null>(null)
 
   useLayoutEffect(() => {
@@ -306,7 +306,7 @@ const ScrollingFish = ({ children = placeholderChildren }: ScrollingFishProps) =
         </div>
       </div>
 
-      <div className="scrolling-fish-animation__content-wrapper">{children}</div>
+      <div className="scrolling-fish-animation__content-wrapper">{children ?? <PlaceholderChildren />}</div>
     </div>
   )
 }
