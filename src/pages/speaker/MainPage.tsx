@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { Card, Heading, LinkButton } from '@/components'
 
-const gradients = [
+const gradients: [string, string][] = [
   ['rgb(9,65,106)', 'rgb(10,56,90)'],
   ['rgb(10,56,90)', 'rgb(7,49,81)'],
   ['rgb(7,49,81)', 'rgb(4,44,74)'],
