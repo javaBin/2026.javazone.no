@@ -135,7 +135,9 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  animation: fishSwim 4s ease-in-out forwards;
+  animation:
+    fishSwim 4s ease-in-out forwards,
+    fishOrbit 4s ease-in-out forwards;
   opacity: 0;
 }
 
@@ -157,10 +159,10 @@
   transform: translateY(-50%);
   width: 0;
   height: 0;
-  border-right: 12px solid rgba(255, 140, 0, 0.8);
+  border-right: 12px solid rgba(93, 159, 9, 0.8);
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  animation: tailWag 0.5s ease-in-out infinite;
+  animation: tailWag 1.5s ease-in-out infinite;
 }
 
 .fish-fin {
@@ -171,30 +173,35 @@
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-bottom: 8px solid rgba(255, 140, 0, 0.7);
-  animation: finWave 0.6s ease-in-out infinite;
+  border-bottom: 8px solid rgba(160, 232, 9, 0.7);
+  animation: finWave 1.8s ease-in-out infinite;
 }
 
 @keyframes fishSwim {
   0% {
     opacity: 0;
-    transform: translate(0, 0) rotate(0deg);
   }
-  5% {
+  20% {
     opacity: 1;
   }
-  25% {
-    transform: translate(var(--fx), var(--fy)) rotate(var(--fr));
+  70% {
+    opacity: 1;
   }
-  50% {
-    transform: translate(4px, 5px) rotate(180deg);
-  }
-  75% {
-    transform: translate(calc(var(--fx) * 0.8), calc(var(--fy) * 0.8)) rotate(calc(var(--fr) * 0.8));
-  }
-  100% {
+  85% {
     opacity: 0;
-    transform: translate(var(--fx), var(--fy)) rotate(var(--fr));
+  }
+}
+
+@keyframes fishOrbit {
+  0% {
+    transform: rotate(var(--start-angle)) translateX(0) rotate(calc(-1 * var(--start-angle)));
+  }
+  25% {
+    transform: rotate(var(--start-angle)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--start-angle)));
+  }
+  85% {
+    transform: rotate(calc(var(--start-angle) + var(--orbit-direction) * 180deg)) translateX(var(--orbit-radius))
+      rotate(calc(-1 * (var(--start-angle) + var(--orbit-direction) * 180deg)));
   }
 }
 
@@ -219,75 +226,33 @@
 }
 
 .fish-1 {
-  --fx: -100px;
-  --fy: -60px;
-  --fr: -20deg;
-  animation-delay: 0.3s;
-  animation-duration: 3.5s;
+  --orbit-radius: 80px;
+  --start-angle: 0deg;
+  --orbit-direction: -1;
+  animation-delay: 0.5s;
+  animation-duration: 5s;
 }
 
 .fish-1 .fish-body {
-  background: linear-gradient(135deg, rgba(255, 140, 0, 0.9), rgba(255, 165, 0, 0.7));
+  background: linear-gradient(135deg, rgba(156, 236, 197, 0.9), rgba(123, 255, 0, 0.7));
 }
-/*
+
 .fish-2 {
-  --fx: 110px;
-  --fy: -50px;
-  --fr: 15deg;
-  animation-delay: 0.7s;
-  animation-duration: 3.8s;
+  --orbit-radius: 100px;
+  --start-angle: 180deg;
+  --orbit-direction: -1;
+  animation-delay: 1s;
+  animation-duration: 5s;
 }
 
 .fish-2 .fish-body {
-  background: linear-gradient(135deg, rgba(30, 144, 255, 0.9), rgba(100, 149, 237, 0.7));
-  transform: scaleX(-1);
-}
-
-.fish-2 .fish-tail {
-  border-right-color: rgba(30, 144, 255, 0.8);
+  background: linear-gradient(135deg, rgba(0, 42, 255, 0.9), rgba(71, 255, 240, 0.7));
 }
 
 .fish-2 .fish-fin {
-  border-bottom-color: rgba(30, 144, 255, 0.7);
+  border-bottom-color: rgba(22, 150, 179, 0.7);
 }
 
-.fish-3 {
-  --fx: -90px;
-  --fy: 70px;
-  --fr: -25deg;
-  animation-delay: 1s;
-  animation-duration: 3.2s;
+.fish-2 .fish-tail {
+  border-right-color: rgba(61, 191, 181, 0.8);
 }
-
-.fish-3 .fish-body {
-  background: linear-gradient(135deg, rgba(50, 205, 50, 0.9), rgba(144, 238, 144, 0.7));
-}
-
-.fish-3 .fish-tail {
-  border-right-color: rgba(50, 205, 50, 0.8);
-}
-
-.fish-3 .fish-fin {
-  border-bottom-color: rgba(50, 205, 50, 0.7);
-}
-
-.fish-4 {
-  --fx: 95px;
-  --fy: 65px;
-  --fr: 20deg;
-  animation-delay: 0.5s;
-  animation-duration: 3.6s;
-}
-
-.fish-4 .fish-body {
-  background: linear-gradient(135deg, rgba(255, 20, 147, 0.9), rgba(255, 105, 180, 0.7));
-  transform: scaleX(-1);
-}
-
-.fish-4 .fish-tail {
-  border-right-color: rgba(255, 20, 147, 0.8);
-}
-
-.fish-4 .fish-fin {
-  border-bottom-color: rgba(255, 20, 147, 0.7);
-}*/
