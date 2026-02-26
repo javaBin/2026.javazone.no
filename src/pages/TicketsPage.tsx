@@ -62,7 +62,14 @@ const TicketsPage = () => {
           JavaZone 2026 takes place September 2<sup>nd</sup>–3<sup>rd</sup> at NOVA Spektrum, Lillestrøm. Secure your spot as soon as tickets go on
           sale.
         </p>
-        <div className="flex items-center justify-center mt-6">
+        <p className="text-sm md:text-base mt-4 text-cloud-dancer">
+          If you're buying tickets on behalf of one of our partners this year, see the{' '}
+          <a href="/partner" className="underline hover:opacity-80">
+            partner page
+          </a>{' '}
+          instead.
+        </p>
+        <div className="flex items-center justify-center mt-4">
           <LinkButton title="Buy tickets" size="large" link="https://event.checkin.no/215065/javazone-2026" className="max-w-md" />
         </div>
       </section>
