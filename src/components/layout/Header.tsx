@@ -22,6 +22,12 @@ const Header = () => {
           </a>
           <a
             className="bg-transparent text-primary font-semibold no-underline text-xl sm:text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
+            href={'/tickets'}
+          >
+            Tickets
+          </a>
+          <a
+            className="bg-transparent text-primary font-semibold no-underline text-xl sm:text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
             href={'/history'}
           >
             History
@@ -68,6 +74,12 @@ const Header = () => {
       </div>
       {isOpen ? (
         <nav className="relative w-full !flex sm:!hidden items-start justify-between px-4 pb-8 -mt-4">
+          <a
+            className="bg-transparent text-primary font-semibold no-underline text-lg py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
+            href={'/tickets'}
+          >
+            Tickets
+          </a>
           <a
             className="bg-transparent text-primary font-semibold no-underline text-lg py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
             href={'/history'}

@@ -12,10 +12,7 @@ const MainPage = () => {
             September 2<sup className="font-semibold">nd</sup> <span className="font-semibold">–</span> 3<sup className="font-semibold">rd</sup> 2026{' '}
             NOVA Spektrum, Lillestrøm
           </Heading>
-          <Heading level="h3">
-            Ticket sales open March 2<sup className="font-medium">nd</sup>
-          </Heading>
-
+          <LinkButton title="Buy tickets" size="large" link="/tickets" className="mt-6 max-w-md" />
           <LinkButton
             title="Register as partner"
             size="large"
