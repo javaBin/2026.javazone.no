@@ -11,7 +11,7 @@
   width: 200%;
   height: 200%;
   pointer-events: none;
-  overflow: visible;
+  overflow: hidden;
   z-index: -1;
 }
 
@@ -53,15 +53,75 @@
   animation-duration: 2.5s;
 }
 
-.bubble-2 {
-  width: 10px;
-  height: 10px;
+.bubble-8 {
+  width: 16px;
+  height: 16px;
   top: 50%;
-  left: 43%;
-  --tx: 70px;
-  --ty: -70px;
+  left: 61%;
+  --tx: 20px;
+  --ty: -15px;
+  animation-delay: 0.15s;
+  animation-duration: 3.1s;
+}
+
+/* Jellyfish animations */
+.jellyfish {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  animation: jellyfishSwim 4s ease-in-out forwards;
+}
+
+.jellyfish img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes jellyfishSwim {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px) scale(1);
+  }
+}
+
+.jellyfish-1 {
+  top: 60%;
+  left: 30%;
   animation-delay: 0.2s;
-  animation-duration: 2.8s;
+  animation-duration: 3.5s;
+}
+
+.jellyfish-2 {
+  top: 55%;
+  left: 70%;
+  animation-delay: 0.5s;
+  animation-duration: 4s;
+}
+
+.jellyfish-3 {
+  top: 65%;
+  left: 50%;
+  animation-delay: 0s;
+  animation-duration: 3.8s;
+}
+
+.jellyfish-4 {
+  top: 58%;
+  left: 20%;
+  animation-delay: 0.8s;
+  animation-duration: 3.6s;
 }
 
 .bubble-3 {
@@ -128,131 +188,4 @@
   --ty: -15px;
   animation-delay: 0.15s;
   animation-duration: 3.1s;
-}
-
-/* Fish animations */
-.fish {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  animation:
-    fishSwim 4s ease-in-out forwards,
-    fishOrbit 4s ease-in-out forwards;
-  opacity: 0;
-}
-
-.fish-body {
-  position: relative;
-  width: 30px;
-  height: 15px;
-  background: linear-gradient(135deg, rgba(255, 140, 0, 0.9), rgba(255, 165, 0, 0.7));
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  box-shadow:
-    inset -2px -2px 5px rgba(0, 0, 0, 0.2),
-    0 0 8px rgba(255, 140, 0, 0.4);
-}
-
-.fish-tail {
-  position: absolute;
-  right: -10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  height: 0;
-  border-right: 12px solid rgba(93, 159, 9, 0.8);
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  animation: tailWag 1.5s ease-in-out infinite;
-}
-
-.fish-fin {
-  position: absolute;
-  left: 8px;
-  top: -5px;
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 8px solid rgba(160, 232, 9, 0.7);
-  animation: finWave 1.8s ease-in-out infinite;
-}
-
-@keyframes fishSwim {
-  0% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 0;
-  }
-}
-
-@keyframes fishOrbit {
-  0% {
-    transform: rotate(var(--start-angle)) translateX(0) rotate(calc(-1 * var(--start-angle)));
-  }
-  25% {
-    transform: rotate(var(--start-angle)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--start-angle)));
-  }
-  85% {
-    transform: rotate(calc(var(--start-angle) + var(--orbit-direction) * 180deg)) translateX(var(--orbit-radius))
-      rotate(calc(-1 * (var(--start-angle) + var(--orbit-direction) * 180deg)));
-  }
-}
-
-@keyframes tailWag {
-  0%,
-  100% {
-    transform: translateY(-50%) scaleX(1);
-  }
-  50% {
-    transform: translateY(-50%) scaleX(0.7);
-  }
-}
-
-@keyframes finWave {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-15deg);
-  }
-}
-
-.fish-1 {
-  --orbit-radius: 80px;
-  --start-angle: 0deg;
-  --orbit-direction: -1;
-  animation-delay: 0.5s;
-  animation-duration: 5s;
-}
-
-.fish-1 .fish-body {
-  background: linear-gradient(135deg, rgba(156, 236, 197, 0.9), rgba(123, 255, 0, 0.7));
-}
-
-.fish-2 {
-  --orbit-radius: 100px;
-  --start-angle: 180deg;
-  --orbit-direction: -1;
-  animation-delay: 1s;
-  animation-duration: 5s;
-}
-
-.fish-2 .fish-body {
-  background: linear-gradient(135deg, rgba(0, 42, 255, 0.9), rgba(71, 255, 240, 0.7));
-}
-
-.fish-2 .fish-fin {
-  border-bottom-color: rgba(22, 150, 179, 0.7);
-}
-
-.fish-2 .fish-tail {
-  border-right-color: rgba(61, 191, 181, 0.8);
 }
