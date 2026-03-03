@@ -4,7 +4,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 30vh;
   min-height: 150px;
   max-height: 300px;
