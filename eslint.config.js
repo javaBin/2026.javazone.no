@@ -10,6 +10,10 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 import eslintConfigPrettier from 'eslint-config-prettier'
 
 import importPlugin from 'eslint-plugin-import'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig([
   globalIgnores(['dist', 'node_modules']),
@@ -29,7 +33,7 @@ export default defineConfig([
       sourceType: 'module',
       parserOptions: {
         project: ['./tsconfig.app.json'],
-        tsconfigRootDir: new URL('.', import.meta.url).pathname,
+        tsconfigRootDir: __dirname,
       },
     },
     settings: {

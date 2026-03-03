@@ -1,5 +1,5 @@
 //https://youtube.com/shorts/vt-LXSHITos?si=q6y8JWovl5oLhlFW
-import './submarine.css'
+import '@/components/animated/submarine/submarine.css'
 
 import { useEffect, useRef, useState } from 'react'
 
@@ -23,33 +23,28 @@ const Submarine = () => {
     }
 
     const animate = () => {
-      const dx = targetPosition.current.x - position.x
-
-      if (Math.abs(dx) > 0.5) {
-        const newDirection = dx > 0
-        if (newDirection !== lastDirection.current) {
-          lastDirection.current = newDirection
-          setFacingRight(newDirection)
-        }
-      }
-
       setPosition((prev) => {
         const dx = targetPosition.current.x - prev.x
         const dy = targetPosition.current.y - prev.y
 
-        const distance = Math.sqrt(dx * dx + dy * dy)
-
-        if (distance < 0.1) {
-          return prev
+        // Update facing direction based on current dx (no stale closure)
+        if (Math.abs(dx) > 0.5) {
+          const newDirection = dx > 0
+          if (newDirection !== lastDirection.current) {
+            lastDirection.current = newDirection
+            setFacingRight(newDirection)
+          }
         }
 
-        const speed = 0.07
+        const distance = Math.sqrt(dx * dx + dy * dy)
+        if (distance < 0.1) return prev
+
+        const speed = 0.1
         const moveAmount = Math.min(speed, distance)
         const dirX = dx / distance
         const dirY = dy / distance
 
         const newY = prev.y + dirY * moveAmount
-
         setIsAtTopLimit(newY <= 25.5)
 
         return {

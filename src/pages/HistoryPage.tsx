@@ -13,8 +13,8 @@ const HistoryPage = () => {
                 href={`https://${year}.javazone.no`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between py-3 px-4 rounded-3xl
-                                text-primary transition-colors duration-200 hover:bg-base-300"
+                className="flex items-center justify-between py-3 px-4 rounded-3xl no-underline
+                                text-base-content transition-colors duration-200 hover:bg-base-300"
               >
                 JavaZone {year}
                 <span className="badge badge-outline">Visit</span>
