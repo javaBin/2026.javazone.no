@@ -26,6 +26,7 @@ const navLinks = [
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
+  console.log('is open?', isOpen)
   return (
     <header className={`fixed top-0 z-50 w-screen`}>
       <div
