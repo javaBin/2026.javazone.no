@@ -11,8 +11,12 @@ import seahorse from '@/assets/icons/seahorse.svg'
 import swirledShell from '@/assets/icons/swirled-shell.svg'
 import tritonHead from '@/assets/icons/triton-head.svg'
 import waves from '@/assets/icons/waves.svg'
+import cityscape from '@/assets/jz26-logo-bg-uten-ting-rektangel-transp.png'
 
 export const Assets = {
+  images: {
+    cityscape,
+  },
   animated: {
     fish_1: {
       src: fish_1,

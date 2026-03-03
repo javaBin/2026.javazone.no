@@ -1,4 +1,4 @@
-import { Card, Heading, LinkButton } from '@/components'
+import { Heading, LinkButton } from '@/components'
 
 const VolunteerPage = () => {
   return (
@@ -8,7 +8,7 @@ const VolunteerPage = () => {
       </Heading>
 
       <section className="text-left max-w-2xl w-full space-y-4">
-        <p className="text-base md:text-lg">
+        <p>
           JavaZone is the world's largest community-driven Java conference, with more than 3000 developers attending every year. Would you like to
           contribute to making this event an amazing experience? Sign up to become a volunteer!
         </p>
@@ -20,18 +20,15 @@ const VolunteerPage = () => {
 
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">Frequently Asked Questions</Heading>
-        <Card title="">
-          <div className="px-2 py-6">
-            <dl className="space-y-6">
-              {faq.map((item, idx) => (
-                <div key={idx} className="space-y-2">
-                  <dt className="text-xl md:text-2xl font-semibold text-slate-blue-gray">{item.q}</dt>
-                  <dd className="text-lg md:text-xl text-justify text-cloud-dancer">{item.a}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </Card>
+
+        <dl className="space-y-6">
+          {faq.map((item, idx) => (
+            <div key={idx} className="space-y-2">
+              <dt className="text-xl md:text-2xl font-semibold leading-snug text-primary">{item.q}</dt>
+              <dd className="text-base md:text-lg text-justify text-cloud-dancer">{item.a}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
     </div>
   )

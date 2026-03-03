@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Card, Heading, LinkButton } from '@/components'
+import { Heading, LinkButton } from '@/components'
 
 const faq: { q: string; a: React.ReactNode }[] = [
   {
@@ -53,9 +53,9 @@ const faq: { q: string; a: React.ReactNode }[] = [
 const TicketsPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
+      <Heading level="h1">Tickets</Heading>
       <section className="text-center max-w-2xl w-full space-y-4">
-        <Heading level="h1">Tickets</Heading>
-        <Heading level="h2" className="mt-2">
+        <Heading level="h2" className="mt-2 text-left">
           Sales open March 2<sup className="font-semibold">nd</sup> at 10:00 CET
         </Heading>
         <p className="text-base md:text-lg mt-4">
@@ -76,18 +76,14 @@ const TicketsPage = () => {
 
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">Frequently Asked Questions</Heading>
-        <Card title="">
-          <div className="px-2 py-6">
-            <dl className="space-y-6">
-              {faq.map((item, idx) => (
-                <div key={idx} className="space-y-2">
-                  <dt className="text-xl md:text-2xl font-semibold text-slate-blue-gray">{item.q}</dt>
-                  <dd className="text-lg md:text-xl text-justify text-cloud-dancer">{item.a}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </Card>
+        <dl className="space-y-6">
+          {faq.map((item, idx) => (
+            <div key={idx} className="space-y-2">
+              <dt className="text-xl md:text-2xl font-semibold leading-snug text-primary">{item.q}</dt>
+              <dd className="text-base md:text-lg text-justify text-cloud-dancer">{item.a}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
     </div>
   )
