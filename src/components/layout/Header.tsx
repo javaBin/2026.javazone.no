@@ -22,6 +22,10 @@ const navLinks = [
     name: 'Volunteers',
     href: '/volunteer',
   },
+  {
+    name: 'Tickets',
+    href: '/tickets',
+  },
 ]
 
 const Header = () => {
