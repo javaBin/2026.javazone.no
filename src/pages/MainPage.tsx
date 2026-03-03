@@ -16,14 +16,14 @@ const MainPage = () => {
             Ticket sales open March 2<sup className="font-medium">nd</sup>
           </Heading>
 
-          <LinkButton title="Buy tickets" size="large" link="/tickets" className="mt-6 max-w-md" />
+          <LinkButton title="Buy tickets" size="large" link="/tickets" className="mt-6 max-w-md min-w-[320px]" />
           <LinkButton
             title="Register as partner"
             size="large"
             link="https://event.checkin.no/215047/javazone-2026-partnership"
-            className="mt-6 max-w-md"
+            className="mt-3 max-w-md min-w-[320px]"
           />
-          <LinkButton title="Become a volunteer" size="large" variant="primary-outline" link="/volunteer" className="mt-3 max-w-md" />
+          <LinkButton title="Become a volunteer" size="large" variant="primary-outline" link="/volunteer" className="mt-3 max-w-md min-w-[320px]" />
         </div>
       </div>
     </div>

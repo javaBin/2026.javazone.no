@@ -24,13 +24,6 @@
   background: linear-gradient(to bottom, transparent 0%, rgba(11, 53, 84, 0.65) 100%);
 }
 
-.wave-container__bg-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
 .waves {
   position: absolute;
   bottom: 0;
