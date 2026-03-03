@@ -9,7 +9,7 @@ const PartnerPage = () => {
 
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">Partner registration is open</Heading>
-        <p className="text-base md:text-lg">
+        <p>
           You need to decide what type of stand you want when registering. The formal contract and invoice will be sent to you later. Partner stands
           are limited and are sold first come first served.
         </p>
@@ -47,7 +47,7 @@ const PartnerPage = () => {
 
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">Contact us</Heading>
-        <p className="text-base md:text-lg">
+        <p>
           If you have any questions or concerns, please reach out to us at{' '}
           <a className="text-sunbeam-gold underline" href="mailto:partner@java.no">
             partner@java.no
