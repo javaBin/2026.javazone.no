@@ -17,7 +17,7 @@ export const HoverAnimation = ({ children }: HoverAnimationProps) => {
       {isHovered && (
         <div className="animation-wrapper">
           {/* Bubbles */}
-          {Array.from({ length: 8 }).map((_, i) => (
+          {Array.from({ length: 10 }).map((_, i) => (
             <div key={`bubble-${i}`} className={`bubble bubble-${i + 1}`} />
           ))}
           {/* Jellyfish */}

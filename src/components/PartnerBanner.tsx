@@ -1,13 +1,17 @@
 import './PartnerBanner.css'
 
+import { useMemo } from 'react'
+
 import { partners } from '../assets/partners/partners.ts'
 import { HoverAnimation } from './animated/HoverAnimation'
 
 export const PartnerBanner = () => {
+  const shuffledPartners = useMemo(() => [...partners].sort(() => Math.random() - 0.5), [])
+
   return (
     <div className="block w-screen p-4 ml-[calc(-50vw+50%)] mr-[calc(-50vw+50%)] mt-4">
       <div className="flex flex-wrap justify-center gap-10">
-        {partners.map((partner) => (
+        {shuffledPartners.map((partner) => (
           <HoverAnimation key={partner.name}>
             <a target="_blank" href={partner.homepageUrl}>
               <img
