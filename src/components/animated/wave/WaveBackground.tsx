@@ -1,9 +1,12 @@
 // Based on code from https://codepen.io/goodkatz/pen/LYPGxQz
 import '@/components/animated/wave/WaveBackground.css'
 
+import { Assets } from '@/Assets.ts'
+
 const WaveBackground = () => {
   return (
     <div className="wave-container">
+      <img src={Assets.images.cityscape} width={'100%'} className="wave-container__bg-image" alt="Decorative background image of cityscape" />
       <svg
         className="waves"
         xmlns="http://www.w3.org/2000/svg"
