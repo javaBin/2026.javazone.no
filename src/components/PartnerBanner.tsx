@@ -1,5 +1,3 @@
-import './PartnerBanner.css'
-
 import { useMemo } from 'react'
 
 import { partners } from '../assets/partners/partners.ts'
@@ -13,14 +11,8 @@ export const PartnerBanner = () => {
       <div className="flex flex-wrap justify-center gap-10">
         {shuffledPartners.map((partner) => (
           <HoverAnimation key={partner.name}>
-            <a target="_blank" href={partner.homepageUrl}>
-              <img
-                width={10}
-                height={10}
-                src={partner.logoUrl}
-                alt={partner.name}
-                className="h-16 w-40 transform transition-transform hover:scale-125"
-              />
+            <a target="_blank" href={partner.homepageUrl} rel="noopener noreferrer">
+              <img src={partner.logoUrl} alt={partner.name} className="h-16 w-40 transform transition-transform hover:scale-125" loading="lazy" />
             </a>
           </HoverAnimation>
         ))}

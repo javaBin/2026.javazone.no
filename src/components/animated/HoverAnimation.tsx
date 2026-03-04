@@ -12,7 +12,13 @@ export const HoverAnimation = ({ children }: HoverAnimationProps) => {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <div className="hover-animation-container" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+    <div
+      className="hover-animation-container"
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {children}
       {isHovered && (
         <div className="animation-wrapper">
