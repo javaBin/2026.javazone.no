@@ -32,7 +32,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   console.log('is open?', isOpen)
   return (
-    <header className={`fixed top-0 z-50 w-screen`}>
+    <header className={`fixed top-0 z-50 w-full`}>
       <div
         className="
                 pointer-events-none absolute inset-0 backdrop-blur-sm
