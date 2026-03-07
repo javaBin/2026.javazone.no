@@ -1,4 +1,4 @@
-import { Card } from '@/components'
+import { Card, Heading } from '@/components'
 
 const HistoryPage = () => {
   const years = [2025, 2024, 2023, 2022]
