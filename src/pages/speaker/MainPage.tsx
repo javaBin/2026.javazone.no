@@ -29,7 +29,7 @@ const SpeakerMainPage = () => {
 
         <p className="font-bold">
           Submissions open January 1<sup className="font-normal">st</sup> and close April 13
-          <sup className="font-normal">th</sup>
+          <sup className="font-normal">th</sup>.
         </p>
 
         <div className="text-center pt-4">
