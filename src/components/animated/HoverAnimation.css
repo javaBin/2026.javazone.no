@@ -1,0 +1,217 @@
+.hover-animation-container {
+  position: relative;
+  display: inline-block;
+}
+
+.animation-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Bubble animations */
+.bubble {
+  position: absolute;
+  border: 2px solid #68b6b6;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    inset -5px -5px 10px rgba(255, 255, 255, 0.3),
+    0 0 10px rgba(135, 206, 250, 0.5);
+  animation: bubbleFloat 3s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes bubbleFloat {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--tx) * 0.4), calc(var(--ty) * 0.4)) scale(1.1);
+  }
+}
+
+/* Jellyfish animations */
+.jellyfish {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  animation: jellyfishSwim 4s ease-in-out forwards;
+}
+
+.jellyfish img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes jellyfishSwim {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+  }
+  15% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) scale(1);
+  }
+}
+
+.jellyfish-1 {
+  top: 60%;
+  left: 30%;
+  animation-delay: 0.2s;
+  animation-duration: 3.5s;
+}
+
+.jellyfish-2 {
+  top: 55%;
+  left: 70%;
+  animation-delay: 0.5s;
+  animation-duration: 4s;
+}
+
+.jellyfish-3 {
+  top: 65%;
+  left: 50%;
+  animation-delay: 0s;
+  animation-duration: 3.8s;
+}
+
+.jellyfish-4 {
+  top: 58%;
+  left: 20%;
+  animation-delay: 0.8s;
+  animation-duration: 3.6s;
+}
+
+/* Bubble positions and sizes */
+.bubble-1 {
+  width: 12px;
+  height: 12px;
+  top: 50%;
+  left: 48%;
+  --tx: -120px;
+  --ty: -90px;
+  animation-delay: 0.4s;
+  animation-duration: 3s;
+}
+
+.bubble-2 {
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 50%;
+  --tx: 130px;
+  --ty: -75px;
+  animation-delay: 0.1s;
+  animation-duration: 2.7s;
+}
+
+.bubble-3 {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 52%;
+  --tx: 15px;
+  --ty: -130px;
+  animation-delay: 0.5s;
+  animation-duration: 2.9s;
+}
+
+.bubble-4 {
+  width: 14px;
+  height: 14px;
+  top: 50%;
+  left: 49%;
+  --tx: -110px;
+  --ty: -20px;
+  animation-delay: 0.3s;
+  animation-duration: 3.2s;
+}
+
+.bubble-5 {
+  width: 11px;
+  height: 11px;
+  top: 50%;
+  left: 51%;
+  --tx: 115px;
+  --ty: -30px;
+  animation-delay: 0.6s;
+  animation-duration: 2.6s;
+}
+
+.bubble-6 {
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  --tx: 40px;
+  --ty: -110px;
+  animation-delay: 0.15s;
+  animation-duration: 3.1s;
+}
+
+.bubble-7 {
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 48%;
+  --tx: -95px;
+  --ty: -55px;
+  animation-delay: 0.25s;
+  animation-duration: 2.8s;
+}
+
+.bubble-8 {
+  width: 13px;
+  height: 13px;
+  top: 50%;
+  left: 52%;
+  --tx: 85px;
+  --ty: -50px;
+  animation-delay: 0.35s;
+  animation-duration: 3.3s;
+}
+
+.bubble-9 {
+  width: 9px;
+  height: 9px;
+  top: 50%;
+  left: 49%;
+  --tx: -65px;
+  --ty: -120px;
+  animation-delay: 0.45s;
+  animation-duration: 2.7s;
+}
+
+.bubble-10 {
+  width: 15px;
+  height: 15px;
+  top: 50%;
+  left: 51%;
+  --tx: 100px;
+  --ty: -80px;
+  animation-delay: 0.05s;
+  animation-duration: 3s;
+}
