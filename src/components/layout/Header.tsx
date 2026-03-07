@@ -7,8 +7,8 @@ const navLinks = [
     href: '/',
   },
   {
-    name: 'History',
-    href: '/history',
+    name: 'About',
+    href: '/about',
   },
   {
     name: 'Partners',
@@ -32,7 +32,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   console.log('is open?', isOpen)
   return (
-    <header className={`fixed top-0 z-50 w-screen`}>
+    <header className={`fixed top-0 z-50 w-full`}>
       <div
         className="
                 pointer-events-none absolute inset-0 backdrop-blur-sm
@@ -44,7 +44,7 @@ const Header = () => {
           {navLinks.map((link, id) => (
             <a
               key={id}
-              className="bg-transparent text-primary font-semibold no-underline text-xl sm:text-md md:text-xl py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
+              className="px-3 py-2 text-xl font-semibold no-underline transition-transform duration-200 bg-transparent text-primary sm:text-md md:text-xl md:px-4 rounded-3xl hover:opacity-90 hover:bg-base-300"
               href={link.href}
             >
               {link.name}
@@ -77,7 +77,7 @@ const Header = () => {
           {navLinks.slice(1).map((link, id) => (
             <a
               key={id}
-              className="bg-transparent text-primary font-semibold no-underline text-lg py-2 px-3 md:px-4 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
+              className="px-3 py-2 text-lg font-semibold no-underline transition-transform duration-200 bg-transparent text-primary md:px-4 rounded-3xl hover:opacity-90 hover:bg-base-300"
               href={link.href}
             >
               {link.name}
