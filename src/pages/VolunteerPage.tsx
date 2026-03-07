@@ -24,8 +24,8 @@ const VolunteerPage = () => {
         <dl className="space-y-6">
           {faq.map((item, idx) => (
             <div key={idx} className="space-y-2">
-              <dt className="text-xl md:text-2xl font-semibold leading-snug text-primary">{item.q}</dt>
-              <dd className="text-base md:text-lg text-justify text-cloud-dancer">{item.a}</dd>
+              <h2 className="text-xl md:text-2xl font-semibold leading-snug text-primary">{item.q}</h2>
+              <p className="text-base md:text-lg text-justify text-cloud-dancer">{item.a}</p>
             </div>
           ))}
         </dl>
