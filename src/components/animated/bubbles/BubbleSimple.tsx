@@ -1,33 +1,31 @@
-// Based on code from https://freefrontend.com/css-bubbles/
-
-import '@/components/animated/bubbles/BubbleSimple.css'
+import './BubbleSimple.css'
 
 const BubbleSimple = () => {
   return (
-    <div className="bubble-simple-container">
-      <ul className="bubble-simple">
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-      </ul>
+    <div className="bubble-simple-container" aria-hidden="true">
+      <div className="bubble-simple">
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+        <span className="bubble" />
+      </div>
     </div>
   )
 }

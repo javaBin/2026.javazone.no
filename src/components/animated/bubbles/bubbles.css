@@ -1,5 +1,5 @@
 body {
-  background: var(--abyss-navy, #071a2b);
+  background: transparent;
   color: var(--cloud-dancer, #f2fbff);
   font:
     100% Lato,
