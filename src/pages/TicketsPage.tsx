@@ -56,7 +56,7 @@ const TicketsPage = () => {
       <Heading level="h1">Tickets</Heading>
       <section className="text-center max-w-2xl w-full space-y-4">
         <Heading level="h2" className="mt-2 text-left">
-          Sales open March 2<sup className="font-semibold">nd</sup> at 10:00 CET
+          Ticket sales are now open—dive in and secure your spot!
         </Heading>
         <p className="text-base md:text-lg mt-4">
           JavaZone 2026 takes place September 2<sup>nd</sup>–3<sup>rd</sup> at NOVA Spektrum, Lillestrøm. Secure your spot as soon as tickets go on
