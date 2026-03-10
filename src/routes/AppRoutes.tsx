@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 
+import AboutPage from '@/pages/AboutPage'
 import HistoryPage from '@/pages/HistoryPage.tsx'
 import MainPage from '@/pages/MainPage.tsx'
 import PartnerPage from '@/pages/PartnerPage.tsx'
@@ -16,6 +17,7 @@ const AppRoutes = () => {
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/speaker/*" element={<SpeakerRoutes />} />
       <Route path="/volunteer" element={<VolunteerPage />} />
+      <Route path="/about" element={<AboutPage />} />
     </Routes>
   )
 }
