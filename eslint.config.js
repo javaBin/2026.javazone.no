@@ -53,7 +53,7 @@ export default defineConfig([
       'simple-import-sort/exports': 'error',
       'import/no-duplicates': 'error',
       'import/no-unresolved': 'error',
-      'prettier/prettier': 'error',
+      'prettier/prettier': ['error', { endOfLine: 'auto' }],
       'react/self-closing-comp': 'error',
       'react/jsx-no-useless-fragment': 'error',
       'react/jsx-tag-spacing': [
