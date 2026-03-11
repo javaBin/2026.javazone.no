@@ -18,8 +18,6 @@ const PartnerPage = () => {
         </div>
       </section>
 
-      <PartnerBanner />
-
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">The first partner meeting</Heading>
         <div className="w-full overflow-hidden rounded-lg bg-black" style={{ position: 'relative', paddingTop: '56.25%' }}>
