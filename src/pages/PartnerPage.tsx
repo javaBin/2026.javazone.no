@@ -1,5 +1,4 @@
 import { Heading, LinkButton, Packages } from '@/components'
-import { PartnerBanner } from '@/components/PartnerBanner.tsx'
 
 const PartnerPage = () => {
   return (
