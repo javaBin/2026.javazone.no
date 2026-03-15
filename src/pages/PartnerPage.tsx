@@ -1,4 +1,5 @@
 import { Heading, LinkButton, Packages } from '@/components'
+import { PartnerBanner } from '@/components/PartnerBanner.tsx'
 
 const PartnerPage = () => {
   return (
@@ -16,6 +17,8 @@ const PartnerPage = () => {
           <LinkButton title="Register as partner" size="medium" link="https://event.checkin.no/215047/javazone-2026-partnership" />
         </div>
       </section>
+
+      <PartnerBanner />
 
       <section className="text-left max-w-2xl w-full space-y-4">
         <Heading level="h2">The first partner meeting</Heading>

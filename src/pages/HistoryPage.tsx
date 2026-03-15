@@ -5,7 +5,9 @@ const HistoryPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-12 mx-6 sm:mx-0">
-      <Heading level="h1" className="z-10">JavaZone through the Ages</Heading>
+      <Heading level="h1" className="z-10">
+        JavaZone through the Ages
+      </Heading>
       <Card title="History" subtitle="Previous JavaZone conferences" className="w-full max-w-lg z-10">
         <ul className="bg-base-200 rounded-4xl overflow-hidden w-full m-0 mt-4 py-2 list-none">
           {years.map((year) => (
