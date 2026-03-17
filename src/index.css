@@ -172,7 +172,7 @@
 }
 
 .hamburger-menu circle {
-  fill: var(--reef-teal);
+  fill: rgba(9, 77, 85, 0);
   opacity: 0;
   transition: opacity 200ms ease;
 }

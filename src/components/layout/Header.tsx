@@ -30,7 +30,6 @@ const navLinks = [
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
-  console.log('is open?', isOpen)
   return (
     <header className={`fixed top-0 z-50 w-full`}>
       <div
@@ -44,7 +43,7 @@ const Header = () => {
           {navLinks.map((link, id) => (
             <a
               key={id}
-              className="px-3 py-2 text-xl font-semibold no-underline transition-transform duration-200 bg-transparent text-primary sm:text-md md:text-xl md:px-4 rounded-3xl hover:opacity-90 hover:bg-base-300"
+              className="px-3 py-2 text-xl font-semibold no-underline transition-transform duration-200 bg-transparent text-primary sm:text-md md:text-xl md:px-4 rounded-3xl hover:text-accent-secondary hover:bg-transparent"
               href={link.href}
             >
               {link.name}
@@ -72,19 +71,30 @@ const Header = () => {
           </svg>
         </button>
       </div>
-      {isOpen ? (
-        <nav className="relative w-full !flex sm:!hidden items-start justify-between px-4 pb-8 -mt-4">
-          {navLinks.slice(1).map((link, id) => (
-            <a
-              key={id}
-              className="px-3 py-2 text-lg font-semibold no-underline transition-transform duration-200 bg-transparent text-primary md:px-4 rounded-3xl hover:opacity-90 hover:bg-base-300"
-              href={link.href}
-            >
-              {link.name}
-            </a>
-          ))}
-        </nav>
-      ) : null}
+      <nav
+        className={`
+          relative w-full sm:!hidden flex-col items-start gap-2 px-4 py-4 -mt-2
+          backdrop-blur-lg rounded-b-3xl shadow-xl
+          overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
+          ${isOpen ? 'max-h-[400px] opacity-100 !flex' : 'max-h-0 opacity-0 pointer-events-none'}
+        `}
+      >
+        {navLinks.slice(1).map((link, id) => (
+          <a
+            key={id}
+            className={`
+              w-full px-4 py-3 text-lg font-semibold no-underline
+              bg-transparent text-primary rounded-xl
+              hover:opacity-90 hover:bg-base-300
+              transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]
+              ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0'}
+            `}
+            href={link.href}
+          >
+            {link.name}
+          </a>
+        ))}
+      </nav>
     </header>
   )
 }
