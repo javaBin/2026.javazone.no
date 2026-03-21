@@ -1,4 +1,5 @@
 import Accenture from '../../../public/partners/accenture.svg'
+import Autodesk from '../../../public/partners/autodesk.svg'
 import Bekk from '../../../public/partners/bekk.svg'
 import Bouvet from '../../../public/partners/bouvet.svg'
 import Capra from '../../../public/partners/capra.svg'
@@ -18,9 +19,11 @@ import Kantega from '../../../public/partners/kantega.svg'
 import Kartverket from '../../../public/partners/kartverket.svg'
 import Knowit from '../../../public/partners/knowit.svg'
 import KSDigitaleFellestjenester from '../../../public/partners/ks-digitale-fellestjenester.svg'
+import L321 from '../../../public/partners/L321.svg'
 import NAV from '../../../public/partners/nav.svg'
 import PolitietPIT from '../../../public/partners/politietpit.svg'
 import PostenBring from '../../../public/partners/postenbring.svg'
+import Randstad from '../../../public/partners/randstad-digital.svg'
 import Scelto from '../../../public/partners/scelto.svg'
 import Scienta from '../../../public/partners/scienta.svg'
 import Skatteetaten from '../../../public/partners/skatteetaten.svg'
@@ -43,7 +46,9 @@ interface Partner {
 }
 
 export const partners: Partner[] = [
+  { name: '321', homepageUrl: 'https://www.321.no/', logoUrl: L321 },
   { name: 'Accenture', homepageUrl: 'https://www.accenture.com', logoUrl: Accenture },
+  { name: 'Autodesk', homepageUrl: 'https://www.autodesk.com/no', logoUrl: Autodesk },
   { name: 'Bekk', homepageUrl: 'https://www.bekk.no', logoUrl: Bekk },
   { name: 'Bouvet', homepageUrl: 'https://www.bouvet.no', logoUrl: Bouvet },
   { name: 'Capra', homepageUrl: 'https://www.capraconsulting.no', logoUrl: Capra },
@@ -60,6 +65,7 @@ export const partners: Partner[] = [
   { name: 'Kantega', homepageUrl: 'https://www.kantega.no', logoUrl: Kantega },
   { name: 'Knowit', homepageUrl: 'https://www.knowit.no', logoUrl: Knowit },
   { name: 'Posten Bring', homepageUrl: 'https://www.bring.no', logoUrl: PostenBring },
+  { name: 'Randstad', homepageUrl: 'https://www.randstad.no', logoUrl: Randstad },
   // { name: 'Red Hat', homepageUrl: 'https://www.redhat.com', logoUrl: RedHat },
   { name: 'Scelto', homepageUrl: 'https://www.scelto.no', logoUrl: Scelto },
   { name: 'Scienta', homepageUrl: 'https://www.scienta.no', logoUrl: Scienta },
