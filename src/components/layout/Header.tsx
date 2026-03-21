@@ -87,7 +87,7 @@ const Header = () => {
               w-full px-4 py-3 text-lg font-semibold no-underline
               bg-transparent text-primary rounded-xl
               hover:opacity-90 hover:text-accent-secondary hover:bg-transparent
-              ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0'}
+              ${isOpen ? 'translate-y-0 opacity-100' : 'flex col-auto'}
             `}
             href={link.href}
           >
