@@ -76,8 +76,8 @@ const Header = () => {
           relative w-full sm:!hidden flex-col items-start gap-2 px-4 py-4 -mt-2
           backdrop-blur-lg rounded-b-3xl overflow-hidden transition-all 
           duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] 
-          [mask-image:linear-gradient(to_top,black_85%,transparent_100%)]
-          ${isOpen ? 'max-h-[400px] opacity-100 !flex' : 'max-h-0 opacity-0 pointer-events-none'}
+          [mask-image:linear-gradient(to_top,black_85%,transparent_100%)] !flex
+          ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}
         `}
       >
         {navLinks.slice(1).map((link, id) => (
@@ -87,7 +87,6 @@ const Header = () => {
               w-full px-4 py-3 text-lg font-semibold no-underline
               bg-transparent text-primary rounded-xl
               hover:opacity-90 hover:text-accent-secondary hover:bg-transparent
-              ${isOpen ? 'translate-y-0 opacity-100' : 'flex col-auto'}
             `}
             href={link.href}
           >
