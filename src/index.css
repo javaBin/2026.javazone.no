@@ -20,6 +20,7 @@
   --deep-ocean: rgb(11, 53, 84);
   --reef-teal: #094d55;
   --sea-mist: #bee8e6;
+  --f: rgb(255, 0, 0);
 
   /* Text */
   --cloud-dancer: #f0eee9;
@@ -186,7 +187,7 @@
 }
 
 .hamburger-menu circle {
-  fill: var(--reef-teal);
+  fill: rgba(9, 77, 85, 0);
   opacity: 0;
   transition: opacity 200ms ease;
 }
