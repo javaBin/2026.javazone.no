@@ -18,7 +18,7 @@ const Footer = () => {
           href="https://www.java.no"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-primary hover:bg-base-100 no-underline py-2 px-4 rounded-3xl transition-all duration-200 ease-[ease]"
+          className="text-primary hover:text-accent-secondary hover:bg-transparent no-underline py-2 px-4 rounded-3xl transition-all duration-200 ease-[ease]"
         >
           Made by javaBin
         </a>
@@ -26,7 +26,7 @@ const Footer = () => {
           href="https://java.no/principles"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-primary hover:bg-base-100 no-underline py-2 px-4 rounded-3xl transition-all duration-200 ease-[ease]"
+          className="text-primary hover:text-accent-secondary hover:bg-transparent no-underline py-2 px-4 rounded-3xl transition-all duration-200 ease-[ease]"
         >
           Code of conduct
         </a>
