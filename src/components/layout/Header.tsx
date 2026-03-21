@@ -51,7 +51,7 @@ const Header = () => {
           ))}
         </nav>
         <a
-          className="!flex sm:!hidden bg-transparent text-primary font-semibold no-underline text-xl py-2 px-4 ml-2 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:bg-base-300"
+          className="!flex sm:!hidden bg-transparent text-primary font-semibold no-underline text-xl py-2 px-4 ml-2 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:text-accent-secondary hover:bg-transparent"
           href="/"
         >
           JavaZone
@@ -86,9 +86,8 @@ const Header = () => {
             className={`
               w-full px-4 py-3 text-lg font-semibold no-underline
               bg-transparent text-primary rounded-xl
-              hover:opacity-90 hover:bg-base-300
-              transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]
-              ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0 hidden'}
+              hover:opacity-90 hover:text-accent-secondary hover:bg-transparent
+              ${isOpen ? 'translate-y-0 opacity-100' : '-translate-y-6 opacity-0'}
             `}
             href={link.href}
           >
