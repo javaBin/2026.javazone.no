@@ -28,12 +28,12 @@ const SpeakerMainPage = () => {
         </p>
 
         <p className="font-bold">
-          Submissions open January 1<sup className="font-normal">st</sup> and close April 13
-          <sup className="font-normal">th</sup>.
+          Submissions are closed since April 13<sup className="font-normal">th</sup>. If you wish to change your submission, you can log in and edit
+          your talk
         </p>
 
         <div className="text-center pt-4">
-          <LinkButton title="Submit talk" link="https://talks.javazone.no/" />
+          <LinkButton title="Edit talk" link="https://talks.javazone.no/" />
         </div>
       </section>
 
