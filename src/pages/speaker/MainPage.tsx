@@ -29,7 +29,7 @@ const SpeakerMainPage = () => {
 
         <p className="font-bold">
           Submissions are closed since April 13<sup className="font-normal">th</sup>. If you wish to change your submission, you can log in and edit
-          your talk
+          your talk.
         </p>
 
         <div className="text-center pt-4">
