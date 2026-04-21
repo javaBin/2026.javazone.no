@@ -38,7 +38,7 @@ import STOE from '../../../public/partners/stoe.svg'
 import Storebrand from '../../../public/partners/storebrand.svg'
 import Systek from '../../../public/partners/systek.svg'
 import Telenor from '../../../public/partners/telenor.svg'
-import Tietoevry from '../../../public/partners/tietoevry.svg'
+import Tietobanktech from '../../../public/partners/tietobanktech.svg'
 import Tolletaten from '../../../public/partners/tolletaten.svg'
 import Tomra from '../../../public/partners/tomra.svg'
 import Vaadin from '../../../public/partners/vaadin.svg'
@@ -82,7 +82,7 @@ export const partners: Partner[] = [
   { name: 'Storebrand', homepageUrl: 'https://www.storebrand.no', logoUrl: Storebrand },
   { name: 'Systek', homepageUrl: 'https://www.systek.no', logoUrl: Systek },
   { name: 'Telenor', homepageUrl: 'https://www.telenor.no', logoUrl: Telenor },
-  { name: 'Tietoevry', homepageUrl: 'https://www.tietoevry.com', logoUrl: Tietoevry },
+  { name: 'Tieto banchtech', homepageUrl: 'https://www.tieto.com/en/banktech', logoUrl: Tietobanktech },
   { name: 'Tolletaten', homepageUrl: 'https://www.toll.no', logoUrl: Tolletaten },
   { name: 'Tomra', homepageUrl: 'https://www.tomra.com', logoUrl: Tomra },
   { name: 'Vaadin', homepageUrl: 'https://vaadin.com', logoUrl: Vaadin },
