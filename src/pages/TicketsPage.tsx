@@ -9,7 +9,7 @@ const faq: { q: string; a: React.ReactNode }[] = [
   },
   {
     q: 'How much does a ticket cost?',
-    a: 'Tickets are priced at 10 100 NOK excluding VAT.',
+    a: 'Early bird tickets are priced at 10 100 NOK excluding VAT, available until June 1st. After June 1st the late bird price is 10 900 NOK excluding VAT.',
   },
   {
     q: 'What is included in the ticket?',
