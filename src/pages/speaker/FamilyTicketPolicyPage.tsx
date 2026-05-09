@@ -1,8 +1,8 @@
 import { Card, Heading } from '@/components'
 
 const gradients: [string, string][] = [
-  ['rgb(9,65,106)', 'rgb(10,56,90)'],
-  ['rgb(10,56,90)', 'rgb(6,40,66)'],
+  ['#1a7fd4', '#006bc4'],
+  ['#006bc4', '#004d90'],
 ]
 
 const FamilyTicketPolicyPage = () => {
@@ -84,7 +84,7 @@ const FamilyTicketPolicyPage = () => {
           </li>
           <li>
             Send an email to{' '}
-            <a href="mailto:refund@java.no?subject=Family ticket request – [Your Name]" className="text-sunbeam-gold underline">
+            <a href="mailto:refund@java.no?subject=Family ticket request – [Your Name]" className="text-accent-primary underline">
               refund@java.no
             </a>{' '}
             with the subject line:
@@ -143,3 +143,5 @@ const FamilyTicketPolicyPage = () => {
 }
 
 export default FamilyTicketPolicyPage
+
+

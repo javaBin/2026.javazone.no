@@ -6,6 +6,10 @@ const navLinks = [
     name: 'JavaZone',
     href: '/',
   },
+  // {
+  //   name: 'Program',
+  //   href: '/program',
+  // },
   {
     name: 'About',
     href: '/about',
@@ -43,7 +47,7 @@ const Header = () => {
           {navLinks.map((link, id) => (
             <a
               key={id}
-              className="px-3 py-2 text-xl font-semibold no-underline transition-transform duration-200 bg-transparent text-primary sm:text-md md:text-xl md:px-4 rounded-3xl hover:text-accent-secondary hover:bg-transparent"
+              className="px-3 py-2 text-xl font-medium no-underline transition-transform duration-200 bg-transparent text-primary sm:text-md md:text-xl md:px-4 rounded-3xl hover:text-accent-secondary hover:bg-transparent"
               href={link.href}
             >
               {link.name}
@@ -85,7 +89,7 @@ const Header = () => {
           <a
             key={id}
             className={`
-              w-full px-4 py-3 text-lg font-semibold no-underline
+              w-full px-4 py-3 text-lg font-medium no-underline
               bg-transparent text-primary rounded-xl
               hover:opacity-90 hover:text-accent-secondary hover:bg-transparent
             `}

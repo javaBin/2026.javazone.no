@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\HåkonVadstein\\\\TheSource\\\\Private\\\\Javabin\\\\2026.javazone.no\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object Name)",
+      "Bash(npx tsc *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\HåkonVadstein\\\\TheSource\\\\Private\\\\Javabin\\\\2026.javazone.no\" -Recurse -File)",
+      "Bash(Select-Object -Property FullName)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\HåkonVadstein\\\\TheSource\\\\Private\\\\Javabin\\\\2025.javazone.no-native\" -Recurse -Directory)",
+      "Bash(Select-Object -First 20)",
+      "Bash(Format-Table FullName)",
+      "PowerShell(head *)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\HåkonVadstein\\\\TheSource\\\\Private\\\\Javabin\\\\2025.javazone.no-native\" -File | Where-Object {$_.Extension -in '.ts','.tsx','.js','.json'} | Select-Object Name)",
+      "Bash(powershell -Command ' *)",
+      "Bash(powershell -Command \"\\(Get-Content src\\\\pages\\\\speaker\\\\FamilyTicketPolicyPage.tsx -Raw\\) -replace \\\\\"\\\\\\\\['rgb\\\\\\\\\\(9,65,106\\\\\\\\\\)', 'rgb\\\\\\\\\\(10,56,90\\\\\\\\\\)'\\\\\\\\]\\\\\", \\\\\"['#1a7fd4', '#006bc4']\\\\\" -replace \\\\\"\\\\\\\\['rgb\\\\\\\\\\(10,56,90\\\\\\\\\\)', 'rgb\\\\\\\\\\(6,40,66\\\\\\\\\\)'\\\\\\\\]\\\\\", \\\\\"['#006bc4', '#004d90']\\\\\" | Set-Content src\\\\pages\\\\speaker\\\\FamilyTicketPolicyPage.tsx; Write-Host 'Done'\")"
+    ]
+  }
+}

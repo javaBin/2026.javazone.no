@@ -17,15 +17,14 @@ const WaveBackground = () => {
         <defs>
           <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
           <linearGradient id="wave-gradient" gradientUnits="userSpaceOnUse" x1={0} y1={24} x2={0} y2={52}>
-            <stop offset="0%" stopColor="var(--blue-lagoon)" stopOpacity={0.3} />
-            <stop offset="10%" stopColor="var(--reef-teal)" />
-            <stop offset="30%" stopColor="#11586e" />
-            <stop offset="100%" stopColor="var(--deep-ocean)" />
+            <stop offset="0%" stopColor="var(--color-mid)" stopOpacity={0.95} />
+            <stop offset="25%" stopColor="var(--color-brand)" />
+            <stop offset="100%" stopColor="var(--color-brand)" />
           </linearGradient>
 
           <linearGradient id="crest-highlight" x1="100%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="var(--blue-lagoon)" stopOpacity={0.3} />
-            <stop offset="100%" stopColor="var(--reef-teal)" stopOpacity={0.1} />
+            <stop offset="0%" stopColor="var(--color-lightest)" stopOpacity={0.7} />
+            <stop offset="100%" stopColor="var(--color-light)" stopOpacity={0.2} />
           </linearGradient>
 
           <filter id="glow" filterUnits="userSpaceOnUse" x={-200} y={0} width={600} height={100}>

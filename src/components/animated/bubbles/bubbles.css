@@ -1,8 +1,8 @@
 body {
   background: transparent;
-  color: var(--cloud-dancer, #f2fbff);
+  color: var(--color-lightest, #e6f0ff);
   font:
-    100% Lato,
+    100% 'Montserrat',
     Arial,
     sans-serif;
   height: 100vh;

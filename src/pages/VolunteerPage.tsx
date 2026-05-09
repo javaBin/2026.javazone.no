@@ -25,7 +25,7 @@ const VolunteerPage = () => {
           {faq.map((item, idx) => (
             <div key={idx} className="space-y-2">
               <h3 className="text-xl md:text-2xl font-semibold leading-snug text-primary">{item.q}</h3>
-              <p className="text-base md:text-lg text-justify text-cloud-dancer">{item.a}</p>
+              <p className="text-base md:text-lg text-justify text-secondary">{item.a}</p>
             </div>
           ))}
         </dl>
@@ -74,3 +74,4 @@ const faq = [
 ]
 
 export default VolunteerPage
+

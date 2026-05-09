@@ -49,7 +49,7 @@ const PartnerPage = () => {
         <Heading level="h2">Contact us</Heading>
         <p>
           If you have any questions or concerns, please reach out to us at{' '}
-          <a className="text-sunbeam-gold underline" href="mailto:partner@java.no">
+          <a className="text-accent-primary underline" href="mailto:partner@java.no">
             partner@java.no
           </a>
           .
@@ -60,3 +60,4 @@ const PartnerPage = () => {
 }
 
 export default PartnerPage
+

@@ -62,7 +62,7 @@ const TicketsPage = () => {
           JavaZone 2026 takes place September 2<sup>nd</sup>–3<sup>rd</sup> at NOVA Spektrum, Lillestrøm. Secure your spot as soon as tickets go on
           sale.
         </p>
-        <p className="text-sm md:text-base mt-4 text-cloud-dancer">
+        <p className="text-sm md:text-base mt-4 text-secondary">
           If you're buying tickets on behalf of one of our partners this year, see the{' '}
           <a href="/partner" className="underline hover:opacity-80">
             partner page
@@ -80,7 +80,7 @@ const TicketsPage = () => {
           {faq.map((item, idx) => (
             <div key={idx} className="space-y-2">
               <dt className="text-xl md:text-2xl font-semibold leading-snug text-primary">{item.q}</dt>
-              <dd className="text-base md:text-lg text-justify text-cloud-dancer">{item.a}</dd>
+              <dd className="text-base md:text-lg text-justify text-secondary">{item.a}</dd>
             </div>
           ))}
         </dl>
@@ -90,3 +90,4 @@ const TicketsPage = () => {
 }
 
 export default TicketsPage
+

@@ -1,60 +1,42 @@
 @import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
-@font-face {
-  font-family: 'Quicksand';
-  src: url('./assets/fonts/Quicksand-VariableFont_wght.ttf') format('truetype');
-  font-weight: 300 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Numans';
-  src: url('./assets/fonts/Numans-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-display: swap;
-}
-
+/*
+  Color palette
+  --color-brand (#006bc4) serves as the main dark surface (bg-base-200) in the
+  dark theme, so Tailwind's --color-primary is reserved for light text (#e6f0ff).
+*/
 :root {
-  /* Core - Backgrounds / Surfaces */
-  --abyss-navy: rgb(7, 26, 43);
-  --deep-ocean: rgb(11, 53, 84);
-  --reef-teal: #094d55;
-  --sea-mist: #bee8e6;
-  --f: rgb(255, 0, 0);
+  --color-lightest: #e6f0ff;
+  --color-light:    #aecfff;
+  --color-mid:      #5c9eff;
+  --color-brand:    #006bc4;
+  --color-accent:   #02dfff;
+  --color-pop:      #f0567a;
 
-  /* Text */
-  --cloud-dancer: #f0eee9;
-  --slate-blue-gray: #8fb2c6;
-
-  /* Accents - CTAs / Highlights */
-  --sunbeam-gold: #f2c14e;
-  --coral-bloom: #f06a6a;
-  --blue-lagoon: #57c4d1;
-
-  --ocean-linear-gradient: linear-gradient(
+  --site-gradient: linear-gradient(
     to bottom,
-    var(--deep-ocean) 0%,
-    var(--deep-ocean) 25%,
-    var(--deep-ocean) 50%,
-    var(--abyss-navy) 80%,
-    black 100%
+    var(--color-mid)   0%,
+    var(--color-brand) 20%,
+    var(--color-brand) 80%,
+    color-mix(in srgb, var(--color-brand) 65%, black) 100%
   );
 }
 
 @theme {
-  --color-base-100: var(--deep-ocean);
-  --color-base-200: var(--abyss-navy);
-  --color-base-300: var(--reef-teal);
+  --color-base-100: #5c9eff;
+  --color-base-200: #006bc4;
+  --color-base-300: color-mix(in srgb, #006bc4 65%, black);
 
-  --color-primary: var(--sea-mist);
-  --color-secondary: var(--cloud-dancer);
-  --color-tertiary: var(--slate-blue-gray);
+  --color-primary:   #e6f0ff;
+  --color-secondary: #aecfff;
+  --color-tertiary:  #5c9eff;
 
-  --color-base-content: var(--cloud-dancer);
+  --color-base-content: #e6f0ff;
 
-  --color-accent-primary: var(--sunbeam-gold);
-  --color-accent-secondary: var(--blue-lagoon);
-  --color-accent-tertiary: var(--coral-bloom);
+  --color-accent-primary:   #02dfff;
+  --color-accent-secondary: #f0567a;
+  --color-accent-tertiary:  #5c9eff;
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -63,8 +45,8 @@
 @layer base {
   body {
     @apply bg-base-200 text-base-content m-0 p-0;
-    font-family: Quicksand, sans-serif;
-    background: var(--ocean-linear-gradient);
+    font-family: 'Montserrat', sans-serif;
+    background: var(--site-gradient);
   }
 
   section p,
@@ -79,15 +61,15 @@
   h4,
   h5,
   h6 {
-    font-family: Numans, sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 
   h1 {
-    --text-gradient: -webkit-linear-gradient(var(--sea-mist), var(--blue-lagoon));
+    --text-gradient: var(--color-pop);
   }
 
   h2 {
-    --text-gradient: -webkit-linear-gradient(var(--blue-lagoon), var(--sea-mist));
+    --text-gradient: -webkit-linear-gradient(var(--color-accent), var(--color-lightest));
   }
 
   h1,
@@ -98,11 +80,11 @@
   }
 
   h1 sup {
-    color: var(--sea-mist);
+    color: var(--color-lightest);
   }
 
   h2 sup {
-    color: var(--blue-lagoon);
+    color: var(--color-accent);
   }
 
   h1 sup,
@@ -132,11 +114,11 @@
 
 /* Hover States */
 .hover\:bg-primary:hover {
-  background-color: var(--sunbeam-gold);
+  background-color: var(--color-accent);
 }
 
 .hover\:text-primary-content:hover {
-  color: var(--abyss-navy);
+  color: var(--color-brand);
 }
 
 /* Mouse glow overlay */
@@ -146,7 +128,7 @@
   --glow-opacity: 0;
   --glow-x: 50%;
   --glow-y: 50%;
-  --glow-color: var(--reef-teal);
+  --glow-color: var(--color-mid);
 }
 
 .glow-card::before {
@@ -156,11 +138,8 @@
   pointer-events: none;
   opacity: var(--glow-opacity, 0);
 
-  /* Mask follows mouse */
   mask: radial-gradient(var(--glow-size) var(--glow-size) at var(--glow-x, 50%) var(--glow-y, 50%), #000 4%, transparent 75%);
-
-  /* What shows through the mask (the glow) */
-  background: color-mix(in srgb, var(--glow-color, var(--reef-teal)) 30%, transparent);
+  background: color-mix(in srgb, var(--glow-color, var(--color-mid)) 30%, transparent);
   border-radius: inherit;
   transition: opacity 120ms ease;
 }
@@ -187,7 +166,7 @@
 }
 
 .hamburger-menu circle {
-  fill: rgba(9, 77, 85, 0);
+  fill: rgba(0, 107, 196, 0);
   opacity: 0;
   transition: opacity 200ms ease;
 }
@@ -204,7 +183,6 @@
   --total-length: 70;
 }
 
-/* “cross” behavior when open (demo’s .cross input:checked + svg) */
 .hamburger-menu.is-open .line--1,
 .hamburger-menu.is-open .line--3 {
   --length: 22.627416998;

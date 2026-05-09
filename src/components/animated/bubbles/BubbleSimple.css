@@ -24,9 +24,9 @@
   display: block;
   width: 20px;
   height: 20px;
-  box-shadow: inset 5px -5px 10px rgba(190, 232, 230, 0.3);
-  background: var(--deep-ocean);
-  border: 1px solid var(--reef-teal);
+  box-shadow: inset 5px -5px 10px rgba(92, 158, 255, 0.3);
+  background: var(--color-brand);
+  border: 1px solid var(--color-mid);
   animation: bubble-rise 25s linear infinite;
   backdrop-filter: blur(2px);
   bottom: -150px;

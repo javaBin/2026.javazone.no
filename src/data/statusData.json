@@ -1,0 +1,118 @@
+{
+  "banner": {
+    "active": true,
+    "message": "Welcome to JavaZone 2026! Registration is open at the main entrance. Pick up your badge before attending sessions."
+  },
+  "currentTalks": [
+    {
+      "id": "c1",
+      "room": "Room 1",
+      "title": "Building Scalable Microservices with Spring Boot 3",
+      "speakers": ["Jane Doe", "John Smith"],
+      "startTime": "10:00",
+      "endTime": "10:50",
+      "track": "Architecture"
+    },
+    {
+      "id": "c2",
+      "room": "Room 2",
+      "title": "Deep Dive into Java 25 Virtual Threads",
+      "speakers": ["Anna Berg"],
+      "startTime": "10:00",
+      "endTime": "10:50",
+      "track": "JVM"
+    },
+    {
+      "id": "c3",
+      "room": "Room 3",
+      "title": "React 19 Concurrent Features in Production",
+      "speakers": ["Lars Eriksen"],
+      "startTime": "10:00",
+      "endTime": "10:50",
+      "track": "Frontend"
+    },
+    {
+      "id": "c4",
+      "room": "Room 4",
+      "title": "Securing Kubernetes Clusters at Scale",
+      "speakers": ["Maria Olsen", "Petter Hansen"],
+      "startTime": "10:00",
+      "endTime": "10:50",
+      "track": "Security"
+    },
+    {
+      "id": "c5",
+      "room": "Room 5",
+      "title": "AI-Assisted Development: Where Are We Now?",
+      "speakers": ["Sofie Lindqvist"],
+      "startTime": "10:00",
+      "endTime": "10:50",
+      "track": "AI/ML"
+    },
+    {
+      "id": "c6",
+      "room": "Room 6",
+      "title": "Event-Driven Architecture with Apache Kafka",
+      "speakers": ["Thomas Vik"],
+      "startTime": "10:00",
+      "endTime": "10:50",
+      "track": "Data"
+    }
+  ],
+  "upcomingTalks": [
+    {
+      "id": "u1",
+      "room": "Room 1",
+      "title": "The Future of Cloud-Native Java",
+      "speakers": ["Erik Svendsen"],
+      "startTime": "11:10",
+      "endTime": "12:00",
+      "track": "Cloud"
+    },
+    {
+      "id": "u2",
+      "room": "Room 2",
+      "title": "GraphQL vs REST in 2026",
+      "speakers": ["Ingrid Moe", "Knut Dahl"],
+      "startTime": "11:10",
+      "endTime": "12:00",
+      "track": "API"
+    },
+    {
+      "id": "u3",
+      "room": "Room 3",
+      "title": "Testing Strategies for Distributed Systems",
+      "speakers": ["Hanne Bakke"],
+      "startTime": "11:10",
+      "endTime": "12:00",
+      "track": "Testing"
+    },
+    {
+      "id": "u4",
+      "room": "Room 4",
+      "title": "Zero-Downtime Deployments with Feature Flags",
+      "speakers": ["Ola Christiansen"],
+      "startTime": "11:10",
+      "endTime": "12:00",
+      "track": "DevOps"
+    },
+    {
+      "id": "u5",
+      "room": "Room 5",
+      "title": "Observability-Driven Development",
+      "speakers": ["Silje Haugen", "Rune Thorsen"],
+      "startTime": "11:10",
+      "endTime": "12:00",
+      "track": "Platform"
+    },
+    {
+      "id": "u6",
+      "room": "Room 6",
+      "title": "Domain-Driven Design in Modern Teams",
+      "speakers": ["Magnus Lie"],
+      "startTime": "11:10",
+      "endTime": "12:00",
+      "track": "Architecture"
+    }
+  ]
+}
