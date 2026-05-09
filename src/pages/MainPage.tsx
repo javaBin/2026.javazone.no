@@ -2,7 +2,7 @@ import { BubbleSimple, Heading, LinkButton, Submarine } from '@/components'
 
 const MainPage = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen text-base-content">
+    <div className="flex items-center justify-center flex-1 text-base-content">
       <BubbleSimple />
       <Submarine />
       <div className="max-w-7xl p-4 z-40">
