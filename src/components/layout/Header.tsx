@@ -1,6 +1,8 @@
 // Hamburger menu animation originally written by Tamino Martinius: https://www.sliderrevolution.com/resources/css-hamburger-menu/
 import { useState } from 'react'
 
+import useScrollingUp from '@/hooks/useScrollingUp.ts'
+
 const navLinks = [
   {
     name: 'JavaZone',
@@ -29,15 +31,11 @@ const navLinks = [
 ]
 
 const Header = () => {
+  const scrolled = useScrollingUp()
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <header className={`fixed top-0 z-50 w-full`}>
-      <div
-        className="
-                pointer-events-none absolute inset-0 backdrop-blur-sm
-                [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]
-            "
-      />
+    <header className={`${!scrolled ? 'slideUpHeader' : 'fixed top-0 z-50 w-full transition-transform duration-300 ease-in-out translate-y-0'}`}>
+      <div className="pointer-events-none absolute inset-0 backdrop-blur-sm [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]" />
       <div className="relative flex items-center">
         <nav className="flex-wrap px-2 py-4 mx-auto sm:mx-0 hidden sm:!flex">
           {navLinks.map((link, id) => (
