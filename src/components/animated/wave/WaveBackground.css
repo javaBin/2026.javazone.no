@@ -1,5 +1,12 @@
 .wave-container {
-  --wave-bg: linear-gradient(180deg, var(--color-brand) 0%, var(--color-mid) 25%, var(--color-light) 55%, var(--color-mid) 75%, var(--color-brand) 100%);
+  --wave-bg: linear-gradient(
+    180deg,
+    var(--color-brand) 0%,
+    var(--color-mid) 25%,
+    var(--color-light) 55%,
+    var(--color-mid) 75%,
+    var(--color-brand) 100%
+  );
 
   position: absolute;
   top: 0;
@@ -13,6 +20,11 @@
   background: var(--wave-bg);
   -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+/* Dark mode: replace light sky gradient with deep ocean */
+[data-theme='dark'] .wave-container {
+  --wave-bg: var(--ocean-linear-gradient);
 }
 
 .waves {

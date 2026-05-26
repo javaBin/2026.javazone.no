@@ -1,5 +1,5 @@
 // Hamburger menu animation originally written by Tamino Martinius: https://www.sliderrevolution.com/resources/css-hamburger-menu/
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const navLinks = [
   {
@@ -32,8 +32,62 @@ const navLinks = [
   },
 ]
 
+const MoonIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+)
+
+const SunIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="5" />
+    <line x1="12" y1="1" x2="12" y2="3" />
+    <line x1="12" y1="21" x2="12" y2="23" />
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+    <line x1="1" y1="12" x2="3" y2="12" />
+    <line x1="21" y1="12" x2="23" y2="12" />
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+  </svg>
+)
+
+const getInitialTheme = (): 'light' | 'dark' => {
+  if (typeof window === 'undefined') return 'light'
+  const stored = localStorage.getItem('theme')
+  if (stored === 'dark' || stored === 'light') return stored
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme)
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
+
   return (
     <header className={`fixed top-0 z-50 w-full`}>
       <div
@@ -60,27 +114,37 @@ const Header = () => {
         >
           JavaZone
         </a>
-        <button
-          type="button"
-          onClick={() => setIsOpen((v) => !v)}
-          aria-label="Toggle menu"
-          aria-expanded={isOpen}
-          className={`sm:!hidden ml-auto hamburger-menu text-primary cursor-pointer transition ${isOpen ? 'is-open' : ''}`}
-        >
-          <svg viewBox="0 0 100 100" aria-hidden="true" className="w-20 h-20">
-            <circle cx="50" cy="50" r="30" />
-            <path className="line--1" d="M0 40h62c13 0 6 28-4 18L35 35" />
-            <path className="line--2" d="M0 50h70" />
-            <path className="line--3" d="M0 60h62c13 0 6-28-4-18L35 65" />
-          </svg>
-        </button>
+        <div className="ml-auto flex items-center">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            className="p-3 bg-transparent text-primary cursor-pointer transition-colors duration-200 hover:text-accent-secondary"
+          >
+            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          </button>
+          <button
+            type="button"
+            onClick={() => setIsOpen((v) => !v)}
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
+            className={`sm:!hidden hamburger-menu text-primary cursor-pointer transition ${isOpen ? 'is-open' : ''}`}
+          >
+            <svg viewBox="0 0 100 100" aria-hidden="true" className="w-20 h-20">
+              <circle cx="50" cy="50" r="30" />
+              <path className="line--1" d="M0 40h62c13 0 6 28-4 18L35 35" />
+              <path className="line--2" d="M0 50h70" />
+              <path className="line--3" d="M0 60h62c13 0 6-28-4-18L35 65" />
+            </svg>
+          </button>
+        </div>
       </div>
       <nav
         inert={!isOpen}
         className={`
           relative w-full sm:!hidden flex-col items-start gap-2 px-4 py-4 -mt-2
-          backdrop-blur-lg rounded-b-3xl overflow-hidden transition-all 
-          duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] 
+          backdrop-blur-lg rounded-b-3xl overflow-hidden transition-all
+          duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
           [mask-image:linear-gradient(to_top,black_85%,transparent_100%)] !flex
           ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none '}
         `}

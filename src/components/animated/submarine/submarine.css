@@ -1,19 +1,36 @@
 /* Submarine Color Palette */
 :root {
-  --submarine-body:             #006bc4;
-  --submarine-sail:             color-mix(in srgb, #006bc4 65%, black);
-  --submarine-shadow:           color-mix(in srgb, #006bc4 45%, black);
-  --submarine-highlight:        #5c9eff;
-  --submarine-periscope:        #02dfff;
+  --submarine-body: #1e5fa0;
+  --submarine-sail: color-mix(in srgb, #143f74 65%, black);
+  --submarine-shadow: color-mix(in srgb, #143f74 45%, black);
+  --submarine-highlight: #3a7ec0;
+  --submarine-periscope: #143f74;
 
-  --submarine-propeller-dark:   #aecfff;
-  --submarine-propeller-light:  #e6f0ff;
+  --submarine-propeller-dark: #aecfff;
+  --submarine-propeller-light: #cde6ff;
 
-  --submarine-window-base:      #aecfff;
-  --submarine-window-light:     #e6f0ff;
+  --submarine-window-base: #5c9eff;
+  --submarine-window-light: #aecfff;
 
-  --submarine-spotlight:        #02dfff;
-  --submarine-bubble:           #e6f0ff;
+  --submarine-spotlight: #cde6ff;
+  --submarine-bubble: #5c9eff;
+}
+
+[data-theme='dark'] {
+  --submarine-body: #1a4a7a;
+  --submarine-sail: color-mix(in srgb, #0e3660 65%, black);
+  --submarine-shadow: color-mix(in srgb, #0e3660 45%, black);
+  --submarine-highlight: #2a6aaa;
+  --submarine-periscope: #0e3660;
+
+  --submarine-propeller-dark: #a8c8e8;
+  --submarine-propeller-light: #ddeefa;
+
+  --submarine-window-base: #a8c8e8;
+  --submarine-window-light: #ddeefa;
+
+  --submarine-spotlight: #ddeefa;
+  --submarine-bubble: #a8c8e8;
 }
 
 .submarine__container {
@@ -285,19 +302,69 @@
 @keyframes shadow-change {
   0%,
   100% {
-    background-image: linear-gradient(45deg, #aecfff 0%, #aecfff 20%, #e6f0ff 21%, #e6f0ff 39%, #aecfff 40%, #e6f0ff 41%, #e6f0ff 59%, #aecfff 60%);
+    background-image: linear-gradient(
+      45deg,
+      var(--submarine-window-base) 0%,
+      var(--submarine-window-base) 20%,
+      var(--submarine-window-light) 21%,
+      var(--submarine-window-light) 39%,
+      var(--submarine-window-base) 40%,
+      var(--submarine-window-light) 41%,
+      var(--submarine-window-light) 59%,
+      var(--submarine-window-base) 60%
+    );
   }
   20% {
-    background-image: linear-gradient(45deg, #aecfff 20%, #aecfff 40%, #e6f0ff 41%, #e6f0ff 59%, #aecfff 60%, #e6f0ff 61%, #e6f0ff 79%, #aecfff 80%);
+    background-image: linear-gradient(
+      45deg,
+      var(--submarine-window-base) 20%,
+      var(--submarine-window-base) 40%,
+      var(--submarine-window-light) 41%,
+      var(--submarine-window-light) 59%,
+      var(--submarine-window-base) 60%,
+      var(--submarine-window-light) 61%,
+      var(--submarine-window-light) 79%,
+      var(--submarine-window-base) 80%
+    );
   }
   40% {
-    background-image: linear-gradient(45deg, #aecfff 40%, #aecfff 60%, #e6f0ff 61%, #e6f0ff 79%, #aecfff 80%, #e6f0ff 81%, #e6f0ff 99%, #aecfff 0%);
+    background-image: linear-gradient(
+      45deg,
+      var(--submarine-window-base) 40%,
+      var(--submarine-window-base) 60%,
+      var(--submarine-window-light) 61%,
+      var(--submarine-window-light) 79%,
+      var(--submarine-window-base) 80%,
+      var(--submarine-window-light) 81%,
+      var(--submarine-window-light) 99%,
+      var(--submarine-window-base) 0%
+    );
   }
   60% {
-    background-image: linear-gradient(45deg, #aecfff 60%, #aecfff 80%, #e6f0ff 81%, #e6f0ff 99%, #aecfff 0%, #e6f0ff 1%, #e6f0ff 19%, #aecfff 20%);
+    background-image: linear-gradient(
+      45deg,
+      var(--submarine-window-base) 60%,
+      var(--submarine-window-base) 80%,
+      var(--submarine-window-light) 81%,
+      var(--submarine-window-light) 99%,
+      var(--submarine-window-base) 0%,
+      var(--submarine-window-light) 1%,
+      var(--submarine-window-light) 19%,
+      var(--submarine-window-base) 20%
+    );
   }
   80% {
-    background-image: linear-gradient(45deg, #aecfff 80%, #aecfff 0%, #e6f0ff 1%, #e6f0ff 19%, #aecfff 20%, #e6f0ff 21%, #e6f0ff 39%, #aecfff 40%);
+    background-image: linear-gradient(
+      45deg,
+      var(--submarine-window-base) 80%,
+      var(--submarine-window-base) 0%,
+      var(--submarine-window-light) 1%,
+      var(--submarine-window-light) 19%,
+      var(--submarine-window-base) 20%,
+      var(--submarine-window-light) 21%,
+      var(--submarine-window-light) 39%,
+      var(--submarine-window-base) 40%
+    );
   }
 }
 

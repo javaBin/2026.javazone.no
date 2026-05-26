@@ -24,7 +24,7 @@
   display: block;
   width: 20px;
   height: 20px;
-  box-shadow: inset 5px -5px 10px rgba(92, 158, 255, 0.3);
+  box-shadow: inset 5px -5px 10px color-mix(in srgb, var(--color-light) 30%, transparent);
   background: var(--color-brand);
   border: 1px solid var(--color-mid);
   animation: bubble-rise 25s linear infinite;
@@ -189,6 +189,25 @@
   width: 80px;
   height: 80px;
   animation-duration: 20s;
+}
+
+/* Icon bubbles — light mode only */
+.bubble-simple span.bubble.bubble-icon {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  border-radius: 0;
+}
+
+.bubble-simple span.bubble.bubble-icon img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.65;
+}
+
+[data-theme='dark'] .bubble-simple span.bubble.bubble-icon {
+  display: none;
 }
 
 @keyframes bubble-rise {
