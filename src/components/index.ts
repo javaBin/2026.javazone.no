@@ -1,3 +1,4 @@
+import BubbleIcons from '@/components/animated/bubbles/BubbleIcons.tsx'
 import BubbleSimple from '@/components/animated/bubbles/BubbleSimple.tsx'
 import Submarine from '@/components/animated/submarine/submarine.tsx'
 import WaveBackground from '@/components/animated/wave/WaveBackground.tsx'
@@ -8,4 +9,4 @@ import Header from '@/components/layout/Header.tsx'
 import LinkButton from '@/components/LinkButton.tsx'
 import Packages from '@/components/partners/Packages.tsx'
 
-export { BubbleSimple, Card, Footer, Header, Heading, LinkButton, Packages, Submarine, WaveBackground }
+export { BubbleIcons, BubbleSimple, Card, Footer, Header, Heading, LinkButton, Packages, Submarine, WaveBackground }

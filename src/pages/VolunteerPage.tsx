@@ -1,8 +1,9 @@
-import { Heading, LinkButton } from '@/components'
+import { BubbleIcons, Heading, LinkButton } from '@/components'
 
 const VolunteerPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
+      <BubbleIcons />
       <Heading level="h1" className="mb-20">
         Volunteer at Javazone?
       </Heading>

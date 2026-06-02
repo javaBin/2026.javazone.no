@@ -1,8 +1,9 @@
-import { Heading } from '@/components'
+import { BubbleIcons, Heading } from '@/components'
 
 const ReimbursementPolicyPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
+      <BubbleIcons />
       <Heading level="h1">Reimbursement Policy</Heading>
 
       <section className="text-left max-w-2xl w-full space-y-4">

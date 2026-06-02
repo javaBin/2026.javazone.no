@@ -33,12 +33,9 @@ const AppLayout = () => {
 
 const App = () => {
   return (
-    <>
-      <WaveBackground />
-      <BrowserRouter>
-        <AppLayout />
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <AppLayout />
+    </BrowserRouter>
   )
 }
 

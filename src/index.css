@@ -104,7 +104,7 @@
   }
 
   h1 {
-    --text-gradient: -webkit-linear-gradient(var(--deep-ocean), var(--color-brand));
+    --text-gradient: -webkit-linear-gradient(var(--color-accent), var(--color-lightest));
     padding-top: 1rem;
     padding-bottom: 2rem;
   }

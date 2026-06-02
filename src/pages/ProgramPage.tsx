@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import { Heading } from '@/components'
+import { BubbleIcons, Heading } from '@/components'
 import { fetchProgram, type Session } from '@/lib/fetchProgram'
 
 // ── helpers ───────────────────────────────────────────────────────────────────
@@ -194,6 +194,7 @@ const ProgramPage = () => {
 
   return (
     <div className="min-h-screen pt-20 pb-24">
+      <BubbleIcons />
       <div className="px-4 mx-auto max-w-7xl md:px-8">
         <div className="py-8">
           <Heading level="h1">Program</Heading>

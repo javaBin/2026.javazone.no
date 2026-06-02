@@ -1,4 +1,4 @@
-import { Card, Heading } from '@/components'
+import { BubbleIcons, Card, Heading } from '@/components'
 
 const gradients: [string, string][] = [
   ['#0080e8', '#007adf'],
@@ -24,6 +24,7 @@ const gradients: [string, string][] = [
 const SubmissionTipsPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
+      <BubbleIcons />
       <Heading level="h1">Submission Tips</Heading>
 
       <section className="text-left max-w-2xl w-full space-y-4">
