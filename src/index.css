@@ -61,6 +61,21 @@
 }
 
 @layer base {
+  @keyframes notch-color-scroll {
+    from {
+      background-color: var(--reef-teal);
+    }
+    to {
+      background-color: black;
+    }
+  }
+
+  html {
+    background-color: var(--reef-teal);
+    animation: notch-color-scroll linear both;
+    animation-timeline: scroll(root);
+  }
+
   body {
     @apply bg-base-200 text-base-content m-0 p-0;
     font-family: Quicksand, sans-serif;
@@ -219,4 +234,14 @@
 }
 .hamburger-menu.is-open .line--2 {
   --offset: -50;
+}
+
+.slideUpHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
 }

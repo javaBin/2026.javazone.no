@@ -17,11 +17,13 @@ const App = () => {
         >
           Skip to main content
         </a>
-        <Header />
-        <main id="main-content" tabIndex={-1}>
-          <AppRoutes />
-        </main>
-        <Footer />
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main id="main-content" tabIndex={-1} className="flex flex-col flex-1">
+            <AppRoutes />
+          </main>
+          <Footer />
+        </div>
       </BrowserRouter>
     </>
   )
