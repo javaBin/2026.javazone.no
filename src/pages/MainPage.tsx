@@ -5,12 +5,14 @@ const MainPage = () => {
     <div className="flex items-center justify-center min-h-screen text-base-content">
       <BubbleSimple />
       <Submarine />
-      <div className="max-w-7xl p-4 z-40">
+      <div className="z-40 p-4 max-w-7xl">
         <div className="max-w-[34rem] text-center flex flex-col items-center justify-center">
-          <Heading level="h1">JavaZone 2026</Heading>
+          <Heading level="h1" className="hero-heading">JavaZone 2026</Heading>
           <Heading level="h2" className="my-2">
             September 2<sup className="font-semibold">nd</sup>
-            <span className="font-semibold"> – </span>3<sup className="font-semibold">rd</sup> 2026 NOVA Spektrum, Lillestrøm
+            <span className="font-semibold"> – </span>3<sup className="font-semibold">rd</sup> 2026
+            <br />
+            NOVA Spektrum, Lillestrøm
           </Heading>
           <Heading level="h3" className="my-2 text-secondary">
             Ticket sales are now open — dive in and secure your spot!

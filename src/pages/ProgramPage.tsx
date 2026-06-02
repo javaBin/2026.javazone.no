@@ -121,9 +121,9 @@ const SessionCard = ({ session }: { session: Session }) => {
       onClick={() => setExpanded((v) => !v)}
       className="flex flex-col h-full gap-3 px-5 py-4 shadow-xl cursor-pointer glow-card rounded-3xl bg-base-200"
     >
-      <p className="m-0 text-xs font-medium text-left text-tertiary">{meta}</p>
+      <p className="m-0 text-xs font-medium text-left text-secondary">{meta}</p>
 
-      <h3 className="flex-1 m-0 text-base font-bold leading-snug text-secondary">{session.title}</h3>
+      <h3 className="flex-1 m-0 text-base font-bold leading-snug text-primary">{session.title}</h3>
 
       <div className="flex flex-col gap-0.5">
         {session.speakers.map((s) => (
@@ -134,7 +134,7 @@ const SessionCard = ({ session }: { session: Session }) => {
       </div>
 
       {expanded && session.abstract && (
-        <p className="pt-3 m-0 text-sm leading-relaxed text-left border-t text-secondary/80 border-white/10">{session.abstract}</p>
+        <p className="pt-3 m-0 text-sm leading-relaxed text-left border-t text-primary/80 border-base-content/10">{session.abstract}</p>
       )}
 
       {keywords.length > 0 && (
@@ -203,8 +203,8 @@ const ProgramPage = () => {
 
         {error && (
           <div className="px-5 py-12 text-center rounded-3xl bg-base-200">
-            <p className="m-0 font-semibold text-accent-tertiary">Could not load program</p>
-            <p className="m-0 mt-2 text-sm text-center text-tertiary">{error}</p>
+            <p className="m-0 font-semibold text-primary">Could not load program</p>
+            <p className="m-0 mt-2 text-sm text-center text-secondary">{error}</p>
           </div>
         )}
 
@@ -224,9 +224,9 @@ const ProgramPage = () => {
                     <div key={group.slotKey}>
                       {/* Time slot header */}
                       <div className="flex items-center gap-3 mb-4">
-                        <span className="font-mono text-xl font-bold text-accent-secondary">{group.time}</span>
-                        <div className="flex-1 h-px bg-white/10" />
-                        <span className="text-xs text-tertiary">{group.sessions.length} sessions</span>
+                        <span className="font-mono text-xl font-bold text-primary">{group.time}</span>
+                        <div className="flex-1 h-px bg-base-content/10" />
+                        <span className="text-xs text-secondary">{group.sessions.length} sessions</span>
                       </div>
 
                       {/* Session grid */}

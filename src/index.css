@@ -19,17 +19,10 @@
   --cloud-dancer: #f0eee9;
   --slate-blue-gray: #8fb2c6;
   --sunbeam-gold: #f2c14e;
-  --coral-bloom:  #f06a6a;
-  --blue-lagoon:  #57c4d1;
+  --coral-bloom: #f06a6a;
+  --blue-lagoon: #57c4d1;
 
-  --ocean-linear-gradient: linear-gradient(
-    to bottom,
-    var(--deep-ocean) 0%,
-    var(--deep-ocean) 25%,
-    var(--deep-ocean) 50%,
-    var(--abyss-navy) 80%,
-    black 100%
-  );
+  --ocean-linear-gradient: linear-gradient(to bottom, var(--deep-ocean) 0%, var(--deep-ocean) 50%, var(--abyss-navy) 80%, black 100%);
 
   /* ── Blue palette (light mode raw values used by wave / gradients) ── */
   --color-lightest: #e6f0ff;
@@ -38,6 +31,7 @@
   --color-brand: #006bc4;
   --color-accent: #02dfff;
   --color-pop: #f0567a;
+  --color-pop-secondary: #5c2734;
 
   --site-gradient: linear-gradient(
     to bottom,
@@ -72,21 +66,21 @@
   --color-tertiary: var(--slate-blue-gray);
   --color-base-content: var(--cloud-dancer);
 
-  --color-accent-primary:   var(--sunbeam-gold);
+  --color-accent-primary: var(--sunbeam-gold);
   --color-accent-secondary: var(--blue-lagoon);
-  --color-accent-tertiary:  var(--coral-bloom);
+  --color-accent-tertiary: var(--coral-bloom);
 }
 
 @theme {
-  --color-base-100: #5c9eff;
-  --color-base-200: #006bc4;
-  --color-base-300: color-mix(in srgb, #006bc4 65%, black);
+  --color-base-100: var(--color-mid);
+  --color-base-200: var(--color-brand);
+  --color-base-300: color-mix(in srgb, var(--color-brand) 65%, black);
 
-  --color-primary: #e6f0ff;
-  --color-secondary: #aecfff;
-  --color-tertiary: #5c9eff;
+  --color-primary: var(--color-lightest);
+  --color-secondary: var(--color-light);
+  --color-tertiary: var(--color-mid);
 
-  --color-base-content: #e6f0ff;
+  --color-base-content: var(--color-lightest);
 
   --color-accent-primary: #02dfff;
   --color-accent-secondary: #f0567a;
@@ -98,7 +92,7 @@
 
 @layer base {
   body {
-    @apply p-0 m-0 bg-base-200 text-base-content;
+    @apply p-0 m-0 text-base-content;
     font-family: 'Montserrat', sans-serif;
     background: var(--site-gradient);
   }
@@ -109,17 +103,14 @@
     @apply text-base md:text-lg;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Montserrat', sans-serif;
+  h1 {
+    --text-gradient: -webkit-linear-gradient(var(--deep-ocean), var(--color-brand));
+    padding-top: 1rem;
+    padding-bottom: 2rem;
   }
 
-  h1 {
-    --text-gradient: var(--color-pop);
+  .hero-heading {
+    --text-gradient: -webkit-linear-gradient(var(--color-accent), var(--color-lightest));
   }
 
   h2 {
@@ -133,16 +124,9 @@
     -webkit-text-fill-color: transparent;
   }
 
-  h1 sup {
-    color: var(--color-pop);
-  }
-
-  h2 sup {
-    color: var(--color-accent);
-  }
-
   h1 sup,
   h2 sup {
+    color: var(--color-accent);
     -webkit-text-fill-color: currentColor;
     background: none;
   }
