@@ -2,7 +2,7 @@ import '@/App.css'
 
 import { BrowserRouter, useLocation } from 'react-router-dom'
 
-import { Footer, Header, WaveBackground } from '@/components'
+import { Footer, Header } from '@/components'
 import { AppRoutes, ScrollManager } from '@/routes'
 
 const STATUS_ROUTES = ['/status']
@@ -21,14 +21,12 @@ const AppLayout = () => {
         >
           Skip to main content
         </a>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main id="main-content" tabIndex={-1} className="flex flex-col flex-1">
-            <AppRoutes />
-          </main>
-          <Footer />
-        </div>
-      </BrowserRouter>
+      )}
+      {!isMinimalRoute && <Header />}
+      <main id="main-content" tabIndex={-1} className="relative z-10">
+        <AppRoutes />
+      </main>
+      {!isMinimalRoute && <Footer />}
     </>
   )
 }
