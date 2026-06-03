@@ -21,12 +21,14 @@ const AppLayout = () => {
         >
           Skip to main content
         </a>
-      )}
-      {!isMinimalRoute && <Header />}
-      <main id="main-content" tabIndex={-1} className="relative z-10">
-        <AppRoutes />
-      </main>
-      {!isMinimalRoute && <Footer />}
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main id="main-content" tabIndex={-1} className="flex flex-col flex-1">
+            <AppRoutes />
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
     </>
   )
 }
