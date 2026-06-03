@@ -12,7 +12,7 @@ const AppLayout = () => {
   const isMinimalRoute = STATUS_ROUTES.includes(pathname)
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <ScrollManager />
       {!isMinimalRoute && (
         <a
@@ -23,11 +23,11 @@ const AppLayout = () => {
         </a>
       )}
       {!isMinimalRoute && <Header />}
-      <main id="main-content" tabIndex={-1} className="relative z-10">
+      <main id="main-content" tabIndex={-1} className="relative z-10 flex flex-1 flex-col">
         <AppRoutes />
       </main>
       {!isMinimalRoute && <Footer />}
-    </>
+    </div>
   )
 }
 

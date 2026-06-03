@@ -1,5 +1,5 @@
 // Hamburger menu animation originally written by Tamino Martinius: https://www.sliderrevolution.com/resources/css-hamburger-menu/
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import useScrollingUp from '@/hooks/useScrollingUp.ts'

@@ -2,13 +2,13 @@ import { BubbleSimple, Heading, LinkButton, Submarine, WaveBackground } from '@/
 
 const MainPage = () => {
   return (
-    <div className="flex items-center justify-center flex-1 text-base-content">
+    <div className="flex items-center justify-center flex-1 mt-14 text-base-content">
       <BubbleSimple />
       <Submarine />
       <WaveBackground />
       <div className="z-40 p-4 max-w-7xl">
         <div className="max-w-[34rem] text-center flex flex-col items-center justify-center">
-          <Heading level="h1" className="hero-heading">
+          <Heading level="h1" className="hero-heading ">
             JavaZone 2026
           </Heading>
           <Heading level="h2" className="my-2">
