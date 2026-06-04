@@ -12,10 +12,12 @@ import swirledShell from '@/assets/icons/swirled-shell.svg'
 import tritonHead from '@/assets/icons/triton-head.svg'
 import waves from '@/assets/icons/waves.svg'
 import cityscape from '@/assets/jz26-logo-bg-uten-ting-rektangel-transp.png'
+import dukeLogo from '@/assets/jz26-logo-duke-transparent-large.png'
 
 export const Assets = {
   images: {
     cityscape,
+    dukeLogo,
   },
   animated: {
     fish_1: {

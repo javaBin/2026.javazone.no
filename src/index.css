@@ -30,7 +30,7 @@
   --color-mid: #5c9eff;
   --color-brand: #006bc4;
   --color-accent: #02dfff;
-  --color-pop: #f0567a;
+  --color-pop: #f79497;
   --color-pop-secondary: #5c2734;
 
   --site-gradient: linear-gradient(
@@ -85,6 +85,9 @@
   --color-accent-primary: #02dfff;
   --color-accent-secondary: #f0567a;
   --color-accent-tertiary: #5c9eff;
+
+  --color-pop: var(--color-pop);
+  --color-pop-secondary: var(--color-pop-secondary);
 
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);

@@ -1,14 +1,12 @@
 // Hamburger menu animation originally written by Tamino Martinius: https://www.sliderrevolution.com/resources/css-hamburger-menu/
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
+import { Assets } from '@/Assets'
+import { useTheme } from '@/hooks/useTheme'
 import useScrollingUp from '@/hooks/useScrollingUp.ts'
 
 const navLinks = [
-  {
-    name: 'JavaZone',
-    href: '/',
-  },
   // {
   //   name: 'Program',
   //   href: '/program',
@@ -35,17 +33,11 @@ const navLinks = [
   },
 ]
 
-const MoonIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-  </svg>
-)
-
 const SunIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="18"
-    height="18"
+    width="16"
+    height="16"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -66,12 +58,11 @@ const SunIcon = () => (
   </svg>
 )
 
-const getInitialTheme = (): 'light' | 'dark' => {
-  if (typeof window === 'undefined') return 'light'
-  const stored = localStorage.getItem('theme')
-  if (stored === 'dark' || stored === 'light') return stored
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-}
+const MoonIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+)
 
 const Header = () => {
   const scrolled = useScrollingUp()
@@ -79,44 +70,41 @@ const Header = () => {
   const isMainPage = pathname === '/'
   const hidden = !isMainPage && !scrolled
   const [isOpen, setIsOpen] = useState(false)
-  const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme)
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <header className={`${hidden ? 'slideUpHeader' : 'fixed top-0 z-50 w-full transition-transform duration-300 ease-in-out translate-y-0'}`}>
       <div className="pointer-events-none absolute inset-0 backdrop-blur-sm [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]" />
       <div className="relative flex items-center">
-        <nav className="flex-wrap px-2 py-4 mx-auto sm:mx-0 hidden sm:!flex">
+        <a
+          href="/"
+          aria-label="JavaZone home"
+          className="flex items-center py-2 px-3 ml-1 rounded-2xl transition-opacity duration-200 hover:opacity-75 no-underline"
+        >
+          <img src={Assets.images.dukeLogo} alt="JavaZone" className="h-10 w-auto" />
+        </a>
+
+        <nav className="flex-wrap px-2 py-4 hidden sm:!flex">
           {navLinks.map((link, id) => (
             <a
               key={id}
-              className="px-3 py-2 text-xl font-medium no-underline transition-transform duration-200 bg-transparent text-primary sm:text-md md:text-xl md:px-4 rounded-3xl hover:text-accent-secondary hover:bg-transparent"
+              className="px-3 py-2 text-xl font-medium no-underline transition-all duration-200 bg-transparent text-primary sm:text-md md:text-xl md:px-4 rounded-3xl hover:underline hover:bg-transparent"
               href={link.href}
             >
               {link.name}
             </a>
           ))}
         </nav>
-        <a
-          className="!flex sm:!hidden bg-transparent text-primary font-semibold no-underline text-xl py-2 px-4 ml-2 rounded-3xl transition-transform duration-200 hover:opacity-90 hover:text-accent-secondary hover:bg-transparent"
-          href="/"
-        >
-          JavaZone
-        </a>
+
         <div className="flex items-center ml-auto">
           <button
             type="button"
             onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="p-3 transition-colors duration-200 bg-transparent cursor-pointer text-primary hover:text-accent-secondary"
+            aria-label={theme === 'dark' ? 'Bytt til lys modus' : 'Bytt til mørk modus'}
+            className={`flex items-center gap-2 px-3 py-1.5 mr-1 rounded-full border border-primary/50 text-primary text-sm font-medium cursor-pointer transition-all duration-200 hover:border-primary hover:bg-primary/10 ${theme === 'light' ? 'invisible' : ''}`}
           >
             {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+            <span>{theme === 'dark' ? 'Lys modus' : 'Mørk modus'}</span>
           </button>
           <button
             type="button"
@@ -144,14 +132,10 @@ const Header = () => {
           ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none '}
         `}
       >
-        {navLinks.slice(1).map((link, id) => (
+        {navLinks.map((link, id) => (
           <a
             key={id}
-            className={`
-              w-full px-4 py-3 text-lg font-medium no-underline
-              bg-transparent text-primary rounded-xl
-              hover:opacity-90 hover:text-accent-secondary hover:bg-transparent
-            `}
+            className="w-full px-4 py-3 text-lg font-medium no-underline bg-transparent text-primary rounded-xl hover:opacity-90 hover:underline hover:bg-transparent"
             href={link.href}
           >
             {link.name}

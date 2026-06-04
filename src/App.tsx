@@ -3,6 +3,7 @@ import '@/App.css'
 import { BrowserRouter, useLocation } from 'react-router-dom'
 
 import { Footer, Header } from '@/components'
+import { ThemeProvider } from '@/hooks/useTheme'
 import { AppRoutes, ScrollManager } from '@/routes'
 
 const STATUS_ROUTES = ['/status']
@@ -33,9 +34,11 @@ const AppLayout = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <AppLayout />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <AppLayout />
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
