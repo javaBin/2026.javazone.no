@@ -71,7 +71,7 @@ const TicketsPage = () => {
           instead.
         </p>
         <div className="flex items-center justify-center mt-4">
-          <LinkButton title="Buy tickets" size="large" link="https://event.checkin.no/215065/javazone-2026" className="max-w-md" />
+          <LinkButton title="Buy tickets" size="large" variant="pop" link="https://event.checkin.no/215065/javazone-2026" className="max-w-md" />
         </div>
       </section>
 

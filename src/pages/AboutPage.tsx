@@ -13,7 +13,7 @@ const AboutPage = () => {
           conference experience for you.
         </p>
         <div className="pt-4 text-center">
-          <LinkButton title="Check previous JavaZones" link="/history" />
+          <LinkButton title="Check previous JavaZones" link="/history" variant="pop" />
         </div>
       </section>
 
@@ -28,7 +28,7 @@ const AboutPage = () => {
           exciting stuff!
         </p>
         <div className="pt-4 text-center">
-          <LinkButton title="Read more about us" link="https://www.java.no/" />
+          <LinkButton title="Read more about us" link="https://www.java.no/" variant="pop" />
         </div>
       </section>
 
@@ -41,7 +41,7 @@ const AboutPage = () => {
           accepted.
         </p>
         <div className="pt-4 text-center">
-          <LinkButton title="Read more about our principles" link="https://www.java.no/principles" size="small" className="mx-auto" />
+          <LinkButton title="Read more about our principles" link="https://www.java.no/principles" size="small" variant="pop" className="mx-auto" />
         </div>
 
         <p>

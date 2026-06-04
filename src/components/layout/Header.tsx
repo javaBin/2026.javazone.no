@@ -81,7 +81,7 @@ const Header = () => {
           aria-label="JavaZone home"
           className="flex items-center py-2 px-3 ml-1 rounded-2xl transition-opacity duration-200 hover:opacity-75 no-underline"
         >
-          <img src={Assets.images.dukeLogo} alt="JavaZone" className="h-10 w-auto" />
+          <img src={Assets.images.dukeLogo} alt="JavaZone" className="h-12 w-auto" />
         </a>
 
         <nav className="flex-wrap px-2 py-4 hidden sm:!flex">

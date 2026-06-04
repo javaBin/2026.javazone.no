@@ -15,7 +15,7 @@ const VolunteerPage = () => {
         </p>
 
         <div className="flex items-center justify-center mt-6">
-          <LinkButton title="Sign up here" link="https://forms.gle/CsR71mRvs4T8wXpq8" />
+          <LinkButton title="Sign up here" variant="pop" link="https://forms.gle/CsR71mRvs4T8wXpq8" />
         </div>
       </section>
 

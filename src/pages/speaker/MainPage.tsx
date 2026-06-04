@@ -34,7 +34,7 @@ const SpeakerMainPage = () => {
         </p>
 
         <div className="text-center pt-4">
-          <LinkButton title="Edit talk" link="https://talks.javazone.no/" />
+          <LinkButton title="Edit talk" variant="pop" link="https://talks.javazone.no/" />
         </div>
       </section>
 
@@ -58,7 +58,7 @@ const SpeakerMainPage = () => {
         </p>
 
         <div className="text-center pt-4">
-          <LinkButton title="Watch Videos" link="https://vimeo.com/javazone" />
+          <LinkButton title="Watch Videos" variant="pop" link="https://vimeo.com/javazone" />
         </div>
       </section>
 

@@ -15,7 +15,7 @@ const PartnerPage = () => {
           are limited and are sold first come first served.
         </p>
         <div className="flex items-center justify-center mt-4">
-          <LinkButton title="Register as partner" size="medium" link="https://event.checkin.no/215047/javazone-2026-partnership" />
+          <LinkButton title="Register as partner" size="medium" variant="pop" link="https://event.checkin.no/215047/javazone-2026-partnership" />
         </div>
       </section>
       <PartnerBanner />
