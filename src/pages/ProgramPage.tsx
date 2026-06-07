@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { Heading } from '@/components'
 
 interface Speaker {
   name: string
+  bio?: string
 }
 
 interface Session {
   sessionId: string
   title: string
   format: string
+  abstract?: string
   speakers: Speaker[]
 }
 
@@ -91,9 +94,14 @@ const ProgramPage = () => {
               </button>
               <ul className={`space-y-3 overflow-hidden transition-all duration-300 ${isCollapsed ? 'max-h-0' : 'max-h-[9999px]'}`}>
                 {formatSessions.map((session) => (
-                  <li key={session.sessionId} className="bg-base-200 rounded-2xl p-4">
-                    <p className="text-primary font-semibold">{session.title}</p>
-                    <p className="text-tertiary text-sm">{session.speakers.map((sp) => sp.name).join(', ')}</p>
+                  <li key={session.sessionId}>
+                    <Link
+                      to={`/program/${session.sessionId}`}
+                      className="block bg-base-200 rounded-2xl p-4 no-underline hover:bg-base-300 transition-colors duration-200"
+                    >
+                      <p className="text-primary font-semibold">{session.title}</p>
+                      <p className="text-tertiary text-sm">{session.speakers.map((sp) => sp.name).join(', ')}</p>
+                    </Link>
                   </li>
                 ))}
               </ul>

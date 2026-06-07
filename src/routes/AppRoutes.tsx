@@ -4,6 +4,7 @@ import AboutPage from '@/pages/AboutPage'
 import HistoryPage from '@/pages/HistoryPage.tsx'
 import MainPage from '@/pages/MainPage.tsx'
 import PartnerPage from '@/pages/PartnerPage.tsx'
+import ProgramDetailPage from '@/pages/ProgramDetailPage'
 import ProgramPage from '@/pages/ProgramPage'
 import TicketsPage from '@/pages/TicketsPage.tsx'
 import VolunteerPage from '@/pages/VolunteerPage'
@@ -14,6 +15,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/program" element={<ProgramPage />} />
+      <Route path="/program/:id" element={<ProgramDetailPage />} />
       <Route path="/tickets" element={<TicketsPage />} />
       <Route path="/partner" element={<PartnerPage />} />
       <Route path="/history" element={<HistoryPage />} />
