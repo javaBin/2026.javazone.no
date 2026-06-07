@@ -28,6 +28,7 @@ const ProgramPage = () => {
   const [sessions, setSessions] = useState<Session[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [collapsed, setCollapsed] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     fetch('https://sleepingpill.javazone.no/public/conference/ffbdc06b-b570-4409-bf2f-7d3b5dd2aed3/session')
@@ -53,6 +54,18 @@ const ProgramPage = () => {
 
   const sortedGroups = [...grouped.entries()].sort(([a], [b]) => a.localeCompare(b))
 
+  const toggle = (format: string) => {
+    setCollapsed((prev) => {
+      const next = new Set(prev)
+      if (next.has(format)) {
+        next.delete(format)
+      } else {
+        next.add(format)
+      }
+      return next
+    })
+  }
+
   return (
     <div className="min-h-screen flex flex-col items-center p-8 pt-20 relative space-y-8 mb-20">
       <Heading level="h1">Program</Heading>
@@ -63,19 +76,30 @@ const ProgramPage = () => {
 
       {!loading &&
         !error &&
-        sortedGroups.map(([format, formatSessions]) => (
-          <section key={format} className="w-full max-w-3xl space-y-4">
-            <Heading level="h2">{formatLabel(format)}</Heading>
-            <ul className="space-y-3">
-              {formatSessions.map((session) => (
-                <li key={session.sessionId} className="bg-base-200 rounded-2xl p-4">
-                  <p className="text-primary font-semibold">{session.title}</p>
-                  <p className="text-tertiary text-sm">{session.speakers.map((sp) => sp.name).join(', ')}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
+        sortedGroups.map(([format, formatSessions]) => {
+          const isCollapsed = collapsed.has(format)
+          return (
+            <section key={format} className="w-full max-w-3xl space-y-4">
+              <button
+                type="button"
+                onClick={() => toggle(format)}
+                className="flex items-center gap-3 w-full text-left bg-transparent cursor-pointer group"
+              >
+                <Heading level="h2">{formatLabel(format)}</Heading>
+                <span className="text-tertiary text-sm">({formatSessions.length})</span>
+                <span className={`ml-auto text-tertiary transition-transform duration-300 ${isCollapsed ? '' : 'rotate-180'}`}>▲</span>
+              </button>
+              <ul className={`space-y-3 overflow-hidden transition-all duration-300 ${isCollapsed ? 'max-h-0' : 'max-h-[9999px]'}`}>
+                {formatSessions.map((session) => (
+                  <li key={session.sessionId} className="bg-base-200 rounded-2xl p-4">
+                    <p className="text-primary font-semibold">{session.title}</p>
+                    <p className="text-tertiary text-sm">{session.speakers.map((sp) => sp.name).join(', ')}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        })}
     </div>
   )
 }
