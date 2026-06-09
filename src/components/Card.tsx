@@ -17,7 +17,7 @@ const Card = ({
   subtitle,
   children,
   glowColor = 'var(--glow-color)',
-  gradientColors = ['rgb(10,56,90)', 'rgb(7,49,81)'],
+  gradientColors = ['#1a7fd4', '#006bc4'],
   className = '',
 }: CardProps) => {
   const ref = useRef<HTMLElement | null>(null)

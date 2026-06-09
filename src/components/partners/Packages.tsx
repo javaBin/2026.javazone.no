@@ -1,11 +1,11 @@
 import { Card, LinkButton } from '@/components'
 
 const gradients: [string, string][] = [
-  ['rgb(9,65,106)', 'rgb(10,56,90)'],
-  ['rgb(10,56,90)', 'rgb(7,49,81)'],
-  ['rgb(7,49,81)', 'rgb(6,39,64)'],
-  ['rgb(6,39,64)', 'rgb(7, 26, 43)'],
-  ['rgb(7, 26, 43)', 'rgb(4, 20, 34)'],
+  ['#1a7fd4', '#006bc4'],
+  ['#006bc4', '#005aaa'],
+  ['#005aaa', '#004d90'],
+  ['#004d90', '#003f78'],
+  ['#003f78', '#002d5c'],
 ]
 
 const Packages = () => {

@@ -1,9 +1,10 @@
-import { Heading, LinkButton, Packages } from '@/components'
+import { BubbleIcons, Heading, LinkButton, Packages } from '@/components'
 import { PartnerBanner } from '@/components/PartnerBanner.tsx'
 
 const PartnerPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
+      <BubbleIcons />
       <Heading level="h1" className="mb-20">
         JavaZone 2026 partner
       </Heading>
@@ -14,7 +15,7 @@ const PartnerPage = () => {
           are limited and are sold first come first served.
         </p>
         <div className="flex items-center justify-center mt-4">
-          <LinkButton title="Register as partner" size="medium" link="https://event.checkin.no/215047/javazone-2026-partnership" />
+          <LinkButton title="Register as partner" size="medium" variant="pop" link="https://event.checkin.no/215047/javazone-2026-partnership" />
         </div>
       </section>
       <PartnerBanner />
@@ -49,7 +50,7 @@ const PartnerPage = () => {
         <Heading level="h2">Contact us</Heading>
         <p>
           If you have any questions or concerns, please reach out to us at{' '}
-          <a className="text-sunbeam-gold underline" href="mailto:partner@java.no">
+          <a className="text-accent-primary underline" href="mailto:partner@java.no">
             partner@java.no
           </a>
           .
@@ -60,3 +61,4 @@ const PartnerPage = () => {
 }
 
 export default PartnerPage
+

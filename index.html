@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="retro">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta property="og:title" content="JavaZone 2026 - the biggest community-driven Java conference."/>
@@ -16,6 +16,18 @@
     <title>JavaZone 2026</title>
   </head>
   <body>
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme')
+        var theme =
+          stored === 'dark' || stored === 'light'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light'
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

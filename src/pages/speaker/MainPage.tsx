@@ -1,19 +1,20 @@
 import { Link } from 'react-router-dom'
 
-import { Card, Heading, LinkButton } from '@/components'
+import { BubbleIcons, Card, Heading, LinkButton } from '@/components'
 
 const gradients: [string, string][] = [
-  ['rgb(9,65,106)', 'rgb(10,56,90)'],
-  ['rgb(10,56,90)', 'rgb(7,49,81)'],
-  ['rgb(7,49,81)', 'rgb(4,44,74)'],
-  ['rgb(6,42,69)', 'rgb(6,39,64)'],
-  ['rgb(6,39,64)', 'rgb(7, 26, 43)'],
-  ['rgb(7, 26, 43)', 'rgb(4, 20, 34)'],
+  ['#1a7fd4', '#006bc4'],
+  ['#006bc4', '#005aaa'],
+  ['#005aaa', '#004490'],
+  ['#003d80', '#003370'],
+  ['#003370', '#002a5c'],
+  ['#002a5c', '#001d40'],
 ]
 
 const SpeakerMainPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
+      <BubbleIcons />
       <Heading level="h1">Call for Speakers</Heading>
 
       <section className="text-left max-w-2xl w-full space-y-4">
@@ -33,7 +34,7 @@ const SpeakerMainPage = () => {
         </p>
 
         <div className="text-center pt-4">
-          <LinkButton title="Edit talk" link="https://talks.javazone.no/" />
+          <LinkButton title="Edit talk" variant="pop" link="https://talks.javazone.no/" />
         </div>
       </section>
 
@@ -57,7 +58,7 @@ const SpeakerMainPage = () => {
         </p>
 
         <div className="text-center pt-4">
-          <LinkButton title="Watch Videos" link="https://vimeo.com/javazone" />
+          <LinkButton title="Watch Videos" variant="pop" link="https://vimeo.com/javazone" />
         </div>
       </section>
 

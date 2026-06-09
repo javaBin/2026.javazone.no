@@ -1,10 +1,11 @@
-import { Card, Heading } from '@/components'
+import { BubbleIcons, Card, Heading } from '@/components'
 
 const HistoryPage = () => {
   const years = [2025, 2024, 2023, 2022]
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-12 mx-6 sm:mx-0">
+      <BubbleIcons />
       <Heading level="h1" className="z-10">
         JavaZone through the Ages
       </Heading>
