@@ -69,6 +69,9 @@
   --color-accent-primary: var(--sunbeam-gold);
   --color-accent-secondary: var(--blue-lagoon);
   --color-accent-tertiary: var(--coral-bloom);
+
+  --color-pop: var(--sunbeam-gold);
+  --color-pop-secondary: var(--abyss-navy);
 }
 
 @theme {

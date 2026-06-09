@@ -8,15 +8,10 @@ const MainPage = () => {
       <Submarine />
       <WaveBackground />
       <div className="z-40 p-4 max-w-7xl">
-        <div className="text-center flex flex-col items-center justify-center">
-          <img
-            src={Assets.images.dukeLogo}
-            alt="JavaZone 2026 Duke logo"
-            className="w-64 sm:w-80 md:w-96 mb-2 drop-shadow-xl"
-          />
+        <div className="flex flex-col items-center justify-center text-center">
+          <img src={Assets.images.dukeLogo} alt="JavaZone 2026 Duke logo" className="w-64 mb-2 sm:w-80 md:w-96 drop-shadow-xl" />
           <Heading level="h2" className="my-2">
-            September 2<sup className="font-semibold">nd</sup>
-            <span className="font-semibold"> – </span>3<sup className="font-semibold">rd</sup> 2026
+            September 2–3, 2026
             <br />
             NOVA Spektrum, Lillestrøm
           </Heading>
