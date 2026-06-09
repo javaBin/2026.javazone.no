@@ -3,6 +3,7 @@ import Autodesk from '../../../public/partners/autodesk.svg'
 import Bekk from '../../../public/partners/bekk.svg'
 import Bouvet from '../../../public/partners/bouvet.svg'
 import Capra from '../../../public/partners/capra.svg'
+import CGI from '../../../public/partners/CGI_logo.svg'
 import Cloudberries from '../../../public/partners/cloudberries.svg'
 import Computas from '../../../public/partners/computas.svg'
 import Digdir from '../../../public/partners/digdir.svg'
@@ -58,7 +59,7 @@ export const partners: Partner[] = [
   { name: 'Bekk', homepageUrl: 'https://www.bekk.no', logoUrl: Bekk },
   { name: 'Bouvet', homepageUrl: 'https://www.bouvet.no', logoUrl: Bouvet },
   { name: 'Capra', homepageUrl: 'https://www.capraconsulting.no', logoUrl: Capra },
-  // { name: 'CGI', homepageUrl: 'https://www.cgi.com', logoUrl: CGI },
+  { name: 'CGI', homepageUrl: 'https://www.cgi.com/no/nb', logoUrl: CGI },
   { name: 'Cloudberries', homepageUrl: 'https://www.cloudberries.no', logoUrl: Cloudberries },
   { name: 'Computas', homepageUrl: 'https://computas.com', logoUrl: Computas },
   { name: 'DNB', homepageUrl: 'https://www.dnb.no', logoUrl: DNB },
