@@ -2,7 +2,6 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
-import { Assets } from '@/Assets'
 import useScrollingUp from '@/hooks/useScrollingUp.ts'
 import { useTheme } from '@/hooks/useTheme'
 
