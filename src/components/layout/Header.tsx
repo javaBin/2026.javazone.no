@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import { Assets } from '@/Assets'
-import { useTheme } from '@/hooks/useTheme'
 import useScrollingUp from '@/hooks/useScrollingUp.ts'
+import { useTheme } from '@/hooks/useTheme'
 
 const navLinks = [
   // {
@@ -79,9 +79,10 @@ const Header = () => {
         <a
           href="/"
           aria-label="JavaZone home"
-          className="flex items-center py-2 px-3 ml-1 rounded-2xl transition-opacity duration-200 hover:opacity-75 no-underline"
+          className="px-3 py-2 text-xl font-bold no-underline transition-all duration-200 bg-transparent text-primary sm:text-xl md:text-2xl md:px-4 rounded-3xl hover:underline hover:bg-transparent"
         >
-          <img src={Assets.images.dukeLogo} alt="JavaZone" className="h-12 w-auto" />
+          {/* <img src={Assets.images.dukeLogo} alt="JavaZone" className="w-auto h-12" /> */}
+          JavaZone
         </a>
 
         <nav className="flex-wrap px-2 py-4 hidden sm:!flex">
