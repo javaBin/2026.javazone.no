@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import AboutPage from '@/pages/AboutPage'
@@ -5,11 +6,14 @@ import HistoryPage from '@/pages/HistoryPage.tsx'
 import MainPage from '@/pages/MainPage.tsx'
 import PartnerPage from '@/pages/PartnerPage.tsx'
 import ProgramPage from '@/pages/ProgramPage'
-import TalkPage from '@/pages/TalkPage'
+import SanityPage from '@/pages/SanityPage'
 import StatusPage from '@/pages/StatusPage'
+import TalkPage from '@/pages/TalkPage'
 import TicketsPage from '@/pages/TicketsPage.tsx'
 import VolunteerPage from '@/pages/VolunteerPage'
 import { SpeakerRoutes } from '@/routes'
+
+const StudioPage = lazy(() => import('@/pages/StudioPage'))
 
 const AppRoutes = () => {
   return (
@@ -24,6 +28,15 @@ const AppRoutes = () => {
       <Route path="/volunteer" element={<VolunteerPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/status" element={<StatusPage />} />
+      <Route
+        path="/studio/*"
+        element={
+          <Suspense fallback={null}>
+            <StudioPage />
+          </Suspense>
+        }
+      />
+      <Route path="/pages/:slug" element={<SanityPage />} />
     </Routes>
   )
 }

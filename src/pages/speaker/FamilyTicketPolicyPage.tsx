@@ -144,5 +144,3 @@ const FamilyTicketPolicyPage = () => {
 }
 
 export default FamilyTicketPolicyPage
-
-

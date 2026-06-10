@@ -12,14 +12,7 @@ interface CardProps {
   className?: string
 }
 
-const Card = ({
-  title,
-  subtitle,
-  children,
-  glowColor = 'var(--glow-color)',
-  gradientColors = ['#1a7fd4', '#006bc4'],
-  className = '',
-}: CardProps) => {
+const Card = ({ title, subtitle, children, glowColor = 'var(--glow-color)', gradientColors = ['#1a7fd4', '#006bc4'], className = '' }: CardProps) => {
   const ref = useRef<HTMLElement | null>(null)
   const gradient = gradientColors && gradientColors.length > 0 ? `linear-gradient(to bottom, ${gradientColors.join(', ')})` : undefined
 

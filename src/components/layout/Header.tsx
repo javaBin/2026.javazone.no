@@ -1,11 +1,13 @@
 // Hamburger menu animation originally written by Tamino Martinius: https://www.sliderrevolution.com/resources/css-hamburger-menu/
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import useScrollingUp from '@/hooks/useScrollingUp.ts'
 import { useTheme } from '@/hooks/useTheme'
+import { client } from '@/sanity/client'
+import type { HeaderPage } from '@/sanity/types'
 
-const navLinks = [
+const STATIC_NAV_LINKS = [
   // {
   //   name: 'Program',
   //   href: '/program',
@@ -31,6 +33,8 @@ const navLinks = [
     href: '/tickets',
   },
 ]
+
+const HEADER_PAGES_QUERY = `*[_type == "page" && showInHeader == true] | order(title asc) { title, slug }`
 
 const SunIcon = () => (
   <svg
@@ -70,6 +74,16 @@ const Header = () => {
   const hidden = !isMainPage && !scrolled
   const [isOpen, setIsOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
+  const [sanityPages, setSanityPages] = useState<HeaderPage[]>([])
+
+  useEffect(() => {
+    client
+      .fetch<HeaderPage[]>(HEADER_PAGES_QUERY)
+      .then(setSanityPages)
+      .catch(() => undefined)
+  }, [])
+
+  const navLinks = [...STATIC_NAV_LINKS, ...sanityPages.map((p) => ({ name: p.title, href: `/pages/${p.slug.current}` }))]
 
   return (
     <header className={`${hidden ? 'slideUpHeader' : 'fixed top-0 z-50 w-full transition-transform duration-300 ease-in-out translate-y-0'}`}>

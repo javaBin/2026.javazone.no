@@ -6,11 +6,11 @@ import { Footer, Header } from '@/components'
 import { ThemeProvider } from '@/hooks/useTheme'
 import { AppRoutes, ScrollManager } from '@/routes'
 
-const STATUS_ROUTES = ['/status']
+const MINIMAL_ROUTES = ['/status', '/studio']
 
 const AppLayout = () => {
   const { pathname } = useLocation()
-  const isMinimalRoute = STATUS_ROUTES.includes(pathname)
+  const isMinimalRoute = MINIMAL_ROUTES.some((r) => pathname === r || pathname.startsWith(r + '/'))
 
   return (
     <div className="flex min-h-screen flex-col">

@@ -49,9 +49,7 @@ const SessionCard = ({ session, onClick }: { session: Session; onClick: () => vo
   }
   const onLeave = () => ref.current?.style.setProperty('--glow-opacity', '0')
 
-  const meta = [FORMAT_LABEL[session.format] ?? session.format, LANGUAGE_LABEL[session.language] ?? session.language]
-    .filter(Boolean)
-    .join(' · ')
+  const meta = [FORMAT_LABEL[session.format] ?? session.format, LANGUAGE_LABEL[session.language] ?? session.language].filter(Boolean).join(' · ')
 
   return (
     <article
