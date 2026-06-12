@@ -1,5 +1,3 @@
-import './BubbleSimple.css'
-
 import jellyfish from '@/assets/bubbles/JZ26-Icon-Jellyfish.svg'
 import octopus from '@/assets/bubbles/JZ26-Icon-Octopus.svg'
 import stingray from '@/assets/bubbles/JZ26-Icon-Stingray.svg'
