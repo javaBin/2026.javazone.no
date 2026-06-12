@@ -418,6 +418,6 @@ html[data-motion="reduced"] .bubble-4 {
 /* Mobile responsive */
 @media (max-width: 768px) {
   .submarine__container {
-    transform: scale(0.4) !important;
+    transform: scale(0.6) !important;
   }
 }

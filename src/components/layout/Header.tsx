@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
+import { Assets } from '@/Assets'
 import { useMotion } from '@/hooks/useMotion'
 import useScrollingUp from '@/hooks/useScrollingUp.ts'
 import { useTheme } from '@/hooks/useTheme'
@@ -101,10 +102,9 @@ const Header = () => {
         <a
           href="/"
           aria-label="JavaZone home"
-          className="px-3 py-2 text-xl font-bold no-underline transition-all duration-200 bg-transparent text-primary sm:text-xl md:text-2xl md:px-4 rounded-3xl hover:underline hover:bg-transparent"
+          className="px-3 py-2 no-underline transition-all duration-200 bg-transparent hover:bg-transparent hover:opacity-80 rounded-3xl md:px-4"
         >
-          {/* <img src={Assets.images.dukeLogo} alt="JavaZone" className="w-auto h-12" /> */}
-          JavaZone
+          <img src={Assets.images.wordmark} alt="JavaZone" className="h-6 w-auto" />
         </a>
 
         <nav className="flex-wrap px-2 py-4 hidden sm:!flex">
@@ -122,6 +122,15 @@ const Header = () => {
         <div className="flex items-center ml-auto">
           <button
             type="button"
+            onClick={toggleTheme}
+            aria-label={theme === 'dark' ? 'Bytt til lys modus' : 'Bytt til mørk modus'}
+            className={`flex items-center gap-2 px-3 py-1.5 mr-1 rounded-full border border-primary/50 text-primary text-sm font-medium cursor-pointer transition-all duration-200 hover:border-primary hover:bg-primary/10 ${theme === 'light' ? 'invisible' : ''}`}
+          >
+            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+            <span>{theme === 'dark' ? 'Lys modus' : 'Mørk modus'}</span>
+          </button>
+          <button
+            type="button"
             onClick={toggleMotion}
             aria-label="Toggle animations"
             aria-pressed={motionEnabled}
@@ -129,15 +138,6 @@ const Header = () => {
           >
             <SparklesIcon />
             <span className="hidden sm:inline">Animations</span>
-          </button>
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label={theme === 'dark' ? 'Bytt til lys modus' : 'Bytt til mørk modus'}
-            className={`flex items-center gap-2 px-3 py-1.5 mr-1 rounded-full border border-primary/50 text-primary text-sm font-medium cursor-pointer transition-all duration-200 hover:border-primary hover:bg-primary/10 ${theme === 'light' ? 'invisible' : ''}`}
-          >
-            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
-            <span>{theme === 'dark' ? 'Lys modus' : 'Mørk modus'}</span>
           </button>
           <button
             type="button"

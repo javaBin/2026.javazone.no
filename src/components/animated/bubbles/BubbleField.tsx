@@ -34,7 +34,7 @@ const ICONS: IconDef[] = [
 ]
 
 const BUBBLE_CONFIG = {
-  big: { target: 16, durationMin: 12, durationMax: 22 },
+  big: { target: 16, targetMobile: 9, durationMin: 12, durationMax: 22 },
   subtle: { target: 3, durationMin: 22, durationMax: 36 },
   iconRatio: 0.4,
   emptyMinSize: 24,
@@ -43,10 +43,10 @@ const BUBBLE_CONFIG = {
   emptyLargeChance: 0.15,
   swayMin: 20,
   swayMax: 60,
-  bigStaggerWindow: 4000,
+  bigStaggerWindow: 10000,
   subtleStaggerWindow: 2000,
-  respawnDelayMin: 1000,
-  respawnDelayMax: 4000,
+  respawnDelayMin: 500,
+  respawnDelayMax: 6000,
   particleCount: 7,
   staticCount: 4,
 } as const
@@ -289,7 +289,9 @@ export default function BubbleField({ variant, className }: BubbleFieldProps) {
       return
     }
 
-    const target = BUBBLE_CONFIG[variant].target
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    const cfg = BUBBLE_CONFIG[variant]
+    const target = variant === 'big' && isMobile ? BUBBLE_CONFIG.big.targetMobile : cfg.target
     const window_ = variant === 'big' ? BUBBLE_CONFIG.bigStaggerWindow : BUBBLE_CONFIG.subtleStaggerWindow
 
     for (let i = 0; i < target; i++) {

@@ -202,6 +202,14 @@
   }
 }
 
+/* ── Mobile: smaller bubbles ─────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .bf--big .bf__riser {
+    scale: 0.75;
+  }
+}
+
 /* ── Motion gating ───────────────────────────────────────────────────── */
 
 html[data-motion='reduced'] .bf__riser {
