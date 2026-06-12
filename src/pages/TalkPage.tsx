@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { BubbleIcons, Heading } from '@/components'
+import { BubbleField, Heading } from '@/components'
 import { fetchProgram, type Session } from '@/lib/fetchProgram'
 
 const FORMAT_LABEL: Record<string, string> = {
@@ -43,7 +43,7 @@ const TalkPage = () => {
 
   return (
     <div className="min-h-screen pt-20 pb-24">
-      <BubbleIcons />
+      <BubbleField variant="subtle" />
       <div className="px-4 mx-auto max-w-3xl md:px-8">
         <div className="py-8">
           <button

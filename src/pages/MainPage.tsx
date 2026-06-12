@@ -1,10 +1,10 @@
 import { Assets } from '@/Assets'
-import { BubbleSimple, Heading, LinkButton, Submarine, WaveBackground } from '@/components'
+import { BubbleField, Heading, LinkButton, Submarine, WaveBackground } from '@/components'
 
 const MainPage = () => {
   return (
     <div className="flex items-center justify-center flex-1 mt-14 text-base-content">
-      <BubbleSimple />
+      <BubbleField variant="big" />
       <Submarine />
       <WaveBackground />
       <div className="z-40 p-4 max-w-7xl">

@@ -1,9 +1,9 @@
-import { BubbleIcons, Heading, LinkButton } from '@/components'
+import { BubbleField, Heading, LinkButton } from '@/components'
 
 const AboutPage = () => {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-8 pt-20 mb-20 space-y-8">
-      <BubbleIcons />
+      <BubbleField variant="subtle" />
       <Heading level="h1">About JavaZone</Heading>
 
       <section className="w-full max-w-2xl space-y-4 text-left">
