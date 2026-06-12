@@ -9,6 +9,7 @@ import sharkSvg from '@/assets/icons/JZ26-Icon-Shark-free.svg?raw'
 import starfishSvg from '@/assets/icons/JZ26-Icon-Starfish-free.svg?raw'
 import stingraySvg from '@/assets/icons/JZ26-Icon-Stingray-free.svg?raw'
 import tropicalFishSvg from '@/assets/icons/JZ26-Icon-TropicalFish-free.svg?raw'
+import { useMotion } from '@/hooks/useMotion'
 
 export interface BubbleFieldProps {
   variant: 'big' | 'subtle'
@@ -117,7 +118,7 @@ function makeBubble(variant: 'big' | 'subtle'): BubbleData {
     id: _uid++,
     type: isIcon ? 'icon' : 'empty',
     iconIndex,
-    bubbleVariant: (randInt(1, 3) as 1 | 2 | 3),
+    bubbleVariant: randInt(1, 3) as 1 | 2 | 3,
     left: rand(2, 97),
     size,
     swayAmp: rand(BUBBLE_CONFIG.swayMin, BUBBLE_CONFIG.swayMax),
@@ -131,7 +132,7 @@ function makeStaticBubbles(): BubbleData[] {
     id: _uid++,
     type: 'empty' as const,
     iconIndex: 0,
-    bubbleVariant: (((i % 3) + 1) as 1 | 2 | 3),
+    bubbleVariant: ((i % 3) + 1) as 1 | 2 | 3,
     left: 10 + i * 25,
     size: rand(30, 70),
     swayAmp: 0,
@@ -140,7 +141,7 @@ function makeStaticBubbles(): BubbleData[] {
   }))
 }
 
-const BUBBLE_VARIANT_DOTS: Record<1 | 2 | 3, Array<{ cx: number; cy: number; r: number }>> = {
+const BUBBLE_VARIANT_DOTS: Record<1 | 2 | 3, { cx: number; cy: number; r: number }[]> = {
   1: [
     { cx: 183.2, cy: 520, r: 38.7 },
     { cx: 604.3, cy: 537, r: 56 },
@@ -190,7 +191,10 @@ export default function BubbleField({ variant, className }: BubbleFieldProps) {
   const variantRef = useRef(variant)
   variantRef.current = variant
 
-  const reducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const { motionEnabled } = useMotion()
+  const reducedMotion = !motionEnabled
+  const reducedMotionRef = useRef(reducedMotion)
+  reducedMotionRef.current = reducedMotion
 
   function addTimer(fn: () => void, ms: number) {
     const t = setTimeout(fn, ms)
@@ -199,6 +203,7 @@ export default function BubbleField({ variant, className }: BubbleFieldProps) {
   }
 
   const scheduleRespawn = useCallback(() => {
+    if (reducedMotionRef.current) return
     const delay = randInt(BUBBLE_CONFIG.respawnDelayMin, BUBBLE_CONFIG.respawnDelayMax)
     timers.current.push(
       setTimeout(() => {
@@ -229,7 +234,10 @@ export default function BubbleField({ variant, className }: BubbleFieldProps) {
       // Replace rising bubble with a frozen ghost at the captured position
       setBubbles((prev) => prev.filter((b) => b.id !== bubble.id))
       const ghostId = _uid++
-      setGhosts((prev) => [...prev, { id: ghostId, x: cx, y: cy, size: bubble.size, type: bubble.type, iconIndex: bubble.iconIndex, bubbleVariant: bubble.bubbleVariant }])
+      setGhosts((prev) => [
+        ...prev,
+        { id: ghostId, x: cx, y: cy, size: bubble.size, type: bubble.type, iconIndex: bubble.iconIndex, bubbleVariant: bubble.bubbleVariant },
+      ])
 
       // Particles
       const newParticles: ParticleData[] = Array.from({ length: BUBBLE_CONFIG.particleCount }, (_, i) => {
@@ -272,6 +280,10 @@ export default function BubbleField({ variant, className }: BubbleFieldProps) {
   )
 
   useEffect(() => {
+    timers.current.forEach(clearTimeout)
+    timers.current = []
+    setBubbles([])
+
     if (reducedMotion) {
       setBubbles(makeStaticBubbles())
       return
@@ -295,8 +307,7 @@ export default function BubbleField({ variant, className }: BubbleFieldProps) {
       timers.current.forEach(clearTimeout)
       timers.current = []
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [variant])
+  }, [variant, reducedMotion])
 
   return (
     <div ref={containerRef} className={`bf bf--${variant}${className ? ` ${className}` : ''}`} aria-hidden="true">

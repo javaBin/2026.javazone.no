@@ -75,4 +75,3 @@ const faq = [
 ]
 
 export default VolunteerPage
-

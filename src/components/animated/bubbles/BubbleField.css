@@ -86,10 +86,14 @@
   }
   75% {
     transform: translateY(-82vh) translateX(calc(var(--sway) * -1)) scale(1.04);
+    opacity: 0.85;
+  }
+  82% {
+    opacity: 0;
   }
   100% {
     transform: translateY(-116vh) translateX(0px) scale(1);
-    opacity: 1;
+    opacity: 0;
   }
 }
 
@@ -113,9 +117,18 @@
 }
 
 @keyframes bf-pop {
-  0%   { transform: scale(1);   opacity: 1; }
-  40%  { transform: scale(1.2); opacity: 0.75; }
-  100% { transform: scale(0);   opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
 }
 
 /* ── Icon drop after pop ─────────────────────────────────────────────── */
@@ -136,8 +149,14 @@
 }
 
 @keyframes bf-icon-drop {
-  0%   { transform: translateY(0)     rotate(0deg);  opacity: 1; }
-  100% { transform: translateY(175px) rotate(15deg); opacity: 0; }
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(175px) rotate(15deg);
+    opacity: 0;
+  }
 }
 
 /* ── Particle burst ──────────────────────────────────────────────────── */
@@ -152,8 +171,14 @@
 }
 
 @keyframes bf-particle-fly {
-  0%   { transform: translate(0, 0) scale(1);   opacity: 1; }
-  100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.2);
+    opacity: 0;
+  }
 }
 
 /* ── Ripple rings ────────────────────────────────────────────────────── */
@@ -167,12 +192,23 @@
 }
 
 @keyframes bf-ripple-expand {
-  0%   { transform: scale(1);   opacity: 0.8; }
-  100% { transform: scale(2.8); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
 }
 
-/* ── Reduced motion: static, no animation ───────────────────────────── */
+/* ── Motion gating ───────────────────────────────────────────────────── */
 
+html[data-motion='reduced'] .bf__riser {
+  animation-play-state: paused;
+}
+
+/* Fallback for no-JS environments */
 @media (prefers-reduced-motion: reduce) {
   .bf__riser {
     animation: none !important;

@@ -73,6 +73,12 @@
   animation-duration: 20s;
 }
 
+/* ── Motion gating ───────────────────────────────────────────────────── */
+
+html[data-motion="reduced"] .parallax use {
+  animation-play-state: paused;
+}
+
 @keyframes move-forever {
   0% {
     transform: translate3d(-90px, 0, 0);

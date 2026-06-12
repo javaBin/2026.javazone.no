@@ -403,6 +403,18 @@
   }
 }
 
+/* ── Motion gating ───────────────────────────────────────────────────── */
+
+html[data-motion="reduced"] .submarine__container,
+html[data-motion="reduced"] .propeller__perspective,
+html[data-motion="reduced"] .submarine__window,
+html[data-motion="reduced"] .bubble-1,
+html[data-motion="reduced"] .bubble-2,
+html[data-motion="reduced"] .bubble-3,
+html[data-motion="reduced"] .bubble-4 {
+  animation-play-state: paused;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .submarine__container {

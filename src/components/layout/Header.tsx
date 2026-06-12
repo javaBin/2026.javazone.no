@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
+import { useMotion } from '@/hooks/useMotion'
 import useScrollingUp from '@/hooks/useScrollingUp.ts'
 import { useTheme } from '@/hooks/useTheme'
 
@@ -63,6 +64,27 @@ const MoonIcon = () => (
   </svg>
 )
 
+const SparklesIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+    <path d="M5 3v4" />
+    <path d="M19 17v4" />
+    <path d="M3 5h4" />
+    <path d="M17 19h4" />
+  </svg>
+)
+
 const Header = () => {
   const scrolled = useScrollingUp()
   const { pathname } = useLocation()
@@ -70,6 +92,7 @@ const Header = () => {
   const hidden = !isMainPage && !scrolled
   const [isOpen, setIsOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
+  const { motionEnabled, toggleMotion } = useMotion()
 
   return (
     <header className={`${hidden ? 'slideUpHeader' : 'fixed top-0 z-50 w-full transition-transform duration-300 ease-in-out translate-y-0'}`}>
@@ -97,6 +120,16 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center ml-auto">
+          <button
+            type="button"
+            onClick={toggleMotion}
+            aria-label="Toggle animations"
+            aria-pressed={motionEnabled}
+            className={`flex items-center gap-2 px-3 py-1.5 mr-1 rounded-full border border-primary/50 text-primary text-sm font-medium cursor-pointer transition-all duration-200 hover:border-primary hover:bg-primary/10 ${motionEnabled ? '' : 'opacity-50'}`}
+          >
+            <SparklesIcon />
+            <span className="hidden sm:inline">Animations</span>
+          </button>
           <button
             type="button"
             onClick={toggleTheme}
