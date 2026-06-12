@@ -95,13 +95,42 @@ const Skeleton = () => (
   </div>
 )
 
+// ── ChevronIcon ───────────────────────────────────────────────────────────────
+
+const ChevronIcon = ({ collapsed }: { collapsed: boolean }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={`text-secondary transition-transform duration-300 shrink-0 ${collapsed ? '-rotate-90' : ''}`}
+  >
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+)
+
 // ── ProgramPage ───────────────────────────────────────────────────────────────
 
 const ProgramPage = () => {
   const [sessions, setSessions] = useState<Session[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [collapsedFormats, setCollapsedFormats] = useState<Set<string>>(new Set())
   const navigate = useNavigate()
+
+  const toggleFormat = (format: string) => {
+    setCollapsedFormats((prev) => {
+      const next = new Set(prev)
+      if (next.has(format)) next.delete(format)
+      else next.add(format)
+      return next
+    })
+  }
 
   useEffect(() => {
     fetchProgram()
@@ -136,21 +165,35 @@ const ProgramPage = () => {
 
         {!loading && !error && (
           <div className="flex flex-col gap-16">
-            {groups.map((group) => (
-              <section key={group.format}>
-                <div className="flex items-center gap-4 mb-8">
-                  <Heading level="h2">{group.label}</Heading>
-                  <div className="flex-1 h-px bg-primary/20" />
-                  <span className="text-xs text-secondary">{group.sessions.length}</span>
-                </div>
+            {groups.map((group) => {
+              const collapsed = collapsedFormats.has(group.format)
+              return (
+                <section key={group.format}>
+                  <button
+                    onClick={() => toggleFormat(group.format)}
+                    className="flex items-center w-full gap-4 cursor-pointer group"
+                  >
+                    <Heading level="h2">{group.label}</Heading>
+                    <div className="flex-1 h-px bg-primary/20" />
+                    <span className="text-xs text-secondary">{group.sessions.length}</span>
+                    <ChevronIcon collapsed={collapsed} />
+                  </button>
 
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-                  {group.sessions.map((s) => (
-                    <SessionCard key={s.sessionId} session={s} onClick={() => navigate(`/program/${s.sessionId}`)} />
-                  ))}
-                </div>
-              </section>
-            ))}
+                  <div
+                    className="grid transition-[grid-template-rows] duration-300 ease-in-out"
+                    style={{ gridTemplateRows: collapsed ? '0fr' : '1fr' }}
+                  >
+                    <div className="overflow-hidden min-h-0">
+                      <div className="grid grid-cols-1 gap-4 pt-8 md:grid-cols-2 xl:grid-cols-3">
+                        {group.sessions.map((s) => (
+                          <SessionCard key={s.sessionId} session={s} onClick={() => navigate(`/program/${s.sessionId}`)} />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              )
+            })}
           </div>
         )}
       </div>
