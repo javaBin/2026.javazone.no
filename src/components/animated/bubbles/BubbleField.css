@@ -1,0 +1,226 @@
+/* ── Container ───────────────────────────────────────────────────────── */
+
+.bf {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 15;
+  pointer-events: none;
+}
+
+/* Big: fade bubbles as they reach the "surface" (top 20%) */
+.bf--big {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+}
+
+/* ── Rising bubble wrapper (handles position + rise animation) ───────── */
+
+.bf__riser {
+  position: absolute;
+  bottom: -150px;
+  will-change: transform;
+  animation: bf-rise linear 1 both;
+}
+
+/* ── Bubble shell ────────────────────────────────────────────────────── */
+
+.bf__bubble {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bf__bubble > svg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bf__icon {
+  position: relative;
+  z-index: 1;
+  width: 72%;
+  height: 72%;
+  pointer-events: none;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bf__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Both variants are interactive — re-enable pointer events on risers */
+.bf__riser {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* ── Rise + sway + wobble keyframe ───────────────────────────────────── */
+/*    --sway and animation-duration are set per-bubble via inline style  */
+
+@keyframes bf-rise {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-26vh) translateX(var(--sway)) scale(1.04);
+  }
+  50% {
+    transform: translateY(-55vh) translateX(0px) scale(1);
+  }
+  75% {
+    transform: translateY(-82vh) translateX(calc(var(--sway) * -1)) scale(1.04);
+    opacity: 0.85;
+  }
+  82% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-116vh) translateX(0px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* ── Pop animation (applied to the ghost bubble on click) ────────────── */
+
+.bf__pop-ghost {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+  animation: bf-pop 0.32s ease-out forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bf__pop-ghost > svg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+@keyframes bf-pop {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* ── Icon drop after pop ─────────────────────────────────────────────── */
+
+.bf__icon-drop {
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bf-icon-drop 0.65s ease-in forwards;
+}
+
+.bf__icon-drop svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes bf-icon-drop {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(175px) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+/* ── Particle burst ──────────────────────────────────────────────────── */
+
+.bf__particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: bf-particle-fly 0.55s ease-out forwards;
+}
+
+@keyframes bf-particle-fly {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* ── Ripple rings ────────────────────────────────────────────────────── */
+
+.bf__ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 2px solid rgba(2, 223, 255, 0.6);
+  animation: bf-ripple-expand 0.7s ease-out forwards;
+}
+
+@keyframes bf-ripple-expand {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* ── Mobile: smaller bubbles ─────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .bf--big .bf__riser {
+    scale: 0.75;
+  }
+}
+
+/* ── Motion gating ───────────────────────────────────────────────────── */
+
+html[data-motion='reduced'] .bf__riser {
+  animation-play-state: paused;
+}
+
+/* Fallback for no-JS environments */
+@media (prefers-reduced-motion: reduce) {
+  .bf__riser {
+    animation: none !important;
+    bottom: auto;
+    opacity: 0.45;
+  }
+}

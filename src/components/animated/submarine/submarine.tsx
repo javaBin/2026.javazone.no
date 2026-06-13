@@ -3,7 +3,9 @@ import '@/components/animated/submarine/submarine.css'
 
 import { useEffect, useRef, useState } from 'react'
 
-const Submarine = () => {
+import { useMotion } from '@/hooks/useMotion'
+
+const SubmarineImpl = () => {
   const [position, setPosition] = useState({ x: 50, y: 120 })
   const [facingRight, setFacingRight] = useState(true)
   const [isAtTopLimit, setIsAtTopLimit] = useState(false)
@@ -111,6 +113,11 @@ const Submarine = () => {
       </div>
     </div>
   )
+}
+
+const Submarine = () => {
+  const { motionEnabled } = useMotion()
+  return motionEnabled ? <SubmarineImpl /> : null
 }
 
 export default Submarine

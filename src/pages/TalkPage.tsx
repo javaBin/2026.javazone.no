@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { BubbleIcons, Heading } from '@/components'
+import { BubbleField, Heading } from '@/components'
 import { fetchProgram, type Session } from '@/lib/fetchProgram'
 
 const FORMAT_LABEL: Record<string, string> = {
@@ -43,7 +43,7 @@ const TalkPage = () => {
 
   return (
     <div className="min-h-screen pt-20 pb-24">
-      <BubbleIcons />
+      <BubbleField variant="subtle" />
       <div className="px-4 mx-auto max-w-3xl md:px-8">
         <div className="py-8">
           <button
@@ -82,9 +82,7 @@ const TalkPage = () => {
                   {LANGUAGE_LABEL[session.language] ?? session.language}
                 </span>
                 {session.length && (
-                  <span className="px-3 py-1 text-xs font-semibold rounded-full bg-base-300 text-secondary">
-                    {session.length} min
-                  </span>
+                  <span className="px-3 py-1 text-xs font-semibold rounded-full bg-base-300 text-secondary">{session.length} min</span>
                 )}
               </div>
 
@@ -98,9 +96,7 @@ const TalkPage = () => {
                   {session.speakers.map((speaker) => (
                     <div key={speaker.name} className="flex flex-col gap-1.5">
                       <p className="m-0 text-lg font-semibold text-primary">{speaker.name}</p>
-                      {speaker.bio && (
-                        <p className="m-0 text-sm leading-relaxed text-secondary whitespace-pre-wrap">{speaker.bio}</p>
-                      )}
+                      {speaker.bio && <p className="m-0 text-sm leading-relaxed text-secondary whitespace-pre-wrap">{speaker.bio}</p>}
                       <div className="flex gap-3 mt-0.5">
                         {speaker.twitter && (
                           <a
