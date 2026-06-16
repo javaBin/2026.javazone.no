@@ -88,34 +88,31 @@ const AboutPage = () => {
       <section className="w-full max-w-2xl space-y-4 text-left">
         <Heading level="h2">Sustainable waste management and recycling at JavaZone</Heading>
         <p>
-          In an era where environmental consciousness is at the forefront, responsible waste management practices have become imperative. At Oslo
-          Spektrum, an innovative partnership with Oslo Municipality and Franzefoss ensures that waste is not just disposed of, but actively sorted
-          and recycled, promoting a greener future.
-        </p>
-
-        <p>
-          Upon entering JavaZone, attendees may not be immediately aware of the meticulous waste management system that operates behind the scenes.
-          Once waste is discarded, the process of responsible disposal begins. A comprehensive sorting mechanism is in place, designed to separate
-          recyclables from non-recyclable materials.
+          At a time when sustainability and environmental awareness are high on the agenda, responsible waste management is an important part of
+          hosting events at NOVA Spektrum. Through close collaboration with Norsk Gjenvinning, we ensure that waste from JavaZone is not only handled
+          properly but also utilized as a resource—contributing to a more circular and sustainable future.
         </p>
         <p>
-          One notable aspect of this waste management initiative is the sorting and collection of beverage containers for deposit refund, known as
-          &quot;pant&quot; in Norway. The bottles and cans are systematically collected, sorted, and sent for recycling, embodying the ethos of
-          resource efficiency.
-        </p>
-        <h3 className="text-lg font-semibold">Where does it all end up?</h3>
-        <p>
-          Considerable portions of waste generated during JavaZone are earmarked for recycling. Through a blend of advanced waste separation
-          technology and dedicated staff, materials like paper, plastic, glass, and metal are carefully segregated.
+          For attendees, what happens behind the scenes is not always visible. However, the moment waste is discarded, a well-planned and structured
+          process is set in motion. A comprehensive sorting system has been established to ensure a high degree of source separation, with materials
+          such as paper, plastic, glass, and metal separated and sent for recycling.
         </p>
         <p>
-          The residual waste is further sorted at the Franzefoss plant in Haraldsrud and the remaining 70% is ground up and converted into FOB
-          (refined waste fuel). Franzefoss has an agreement with Norcem for the delivery of FOB and this is used by Norcem as a high-value fuel for
-          cement production.
+          A key element is also the collection and sorting of beverage containers. Bottles and cans are systematically collected and returned for
+          recycling through Norway’s deposit-return system—a concrete and visible measure that helps reduce waste and improve resource utilization.
+        </p>
+        <h3 className="text-lg font-semibold">Where does the waste go?</h3>
+        <p>
+          A large portion of the waste generated during JavaZone is sent for material recycling. In cooperation with Norsk Gjenvinning, we ensure the
+          efficient handling and processing of the various waste streams.
         </p>
         <p>
-          The food waste/wet organic waste delivered is used for biogas and fertilizer on grain fields. This not only reduces the environmental impact
-          of JavaZone but also sets an example for attendees and the wider community.
+          Residual waste is further processed for energy recovery, where it is used as a resource in energy production. Organic food and biodegradable
+          waste is either composted (to improve soil quality), converted into feedstock for biogas facilities, or recovered for energy production.
+        </p>
+        <p>
+          This holistic approach helps reduce the environmental footprint of the event while also setting a clear standard for the sustainable
+          execution of large conferences and events at NOVA Spektrum.
         </p>
       </section>
     </div>
