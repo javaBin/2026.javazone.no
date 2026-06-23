@@ -139,11 +139,7 @@ const SpeakerMainPage = () => {
           <p>
             As a JavaZone speaker, you get free admission to the conference. Additionally, you are also invited to the speakers' dinner, held on
             September 1<sup>st</sup>.
-          </p>
-          <p>
-            All accepted speakers can apply to join us at JourneyZone, our famous speakers' tour into the Norwegian wilderness. More details will be
-            available soon.
-          </p>
+          </p>      
         </Card>
 
         <Card title="Coverage of expenses" gradientColors={gradients[4]}>

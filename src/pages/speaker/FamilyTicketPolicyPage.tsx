@@ -71,7 +71,7 @@ const FamilyTicketPolicyPage = () => {
           </ul>
           <p className="mt-4">
             The family member will be registered as a <strong>regular participant</strong> (not as a speaker) and will not be eligible for speaker
-            benefits such as JourneyZone, Speakers dinner or reimbursements.
+            benefits such as Speakers dinner or reimbursements.
           </p>
         </Card>
       </section>
