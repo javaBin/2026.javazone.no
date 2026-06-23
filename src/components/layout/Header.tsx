@@ -21,6 +21,10 @@ const navLinks = [
     href: '/partner',
   },
   {
+    name: 'Program',
+    href: '/program',
+  },
+  {
     name: 'Speakers',
     href: '/speaker',
   },
