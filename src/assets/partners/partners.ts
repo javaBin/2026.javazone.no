@@ -11,6 +11,7 @@ import DNB from '../../../public/partners/dnb.svg'
 import ElOgIt from '../../../public/partners/elogit.svg'
 import Embriq from '../../../public/partners/embriq.svg'
 import Entur from '../../../public/partners/entur.svg'
+import Eclipse from '../../../public/partners/eclipse.svg'
 import VEND from '../../../public/partners/finn.svg'
 import Fremtind from '../../../public/partners/fremtind.svg'
 import GE from '../../../public/partners/GE.svg'
@@ -27,7 +28,6 @@ import L321 from '../../../public/partners/L321.svg'
 import NAV from '../../../public/partners/nav.svg'
 import PolitietPIT from '../../../public/partners/politietpit.svg'
 import PostenBring from '../../../public/partners/postenbring.svg'
-import Randstad from '../../../public/partners/randstad-digital.svg'
 import Scelto from '../../../public/partners/scelto.svg'
 import Scienta from '../../../public/partners/scienta.svg'
 import Skatteetaten from '../../../public/partners/skatteetaten.svg'
@@ -63,6 +63,7 @@ export const partners: Partner[] = [
   { name: 'Cloudberries', homepageUrl: 'https://www.cloudberries.no', logoUrl: Cloudberries },
   { name: 'Computas', homepageUrl: 'https://computas.com', logoUrl: Computas },
   { name: 'DNB', homepageUrl: 'https://www.dnb.no', logoUrl: DNB },
+  { name: 'Eclipe', homepageUrl: 'https://jakarta.ee/', logoUrl: Eclipse },
   { name: 'Embriq', homepageUrl: 'https://www.embriq.no', logoUrl: Embriq },
   { name: 'Entur', homepageUrl: 'https://www.entur.no', logoUrl: Entur },
   { name: 'Vend', homepageUrl: 'https://www.finn.no', logoUrl: VEND },
@@ -72,7 +73,6 @@ export const partners: Partner[] = [
   { name: 'Kantega', homepageUrl: 'https://www.kantega.no', logoUrl: Kantega },
   { name: 'Knowit', homepageUrl: 'https://www.knowit.no', logoUrl: Knowit },
   { name: 'Posten Bring', homepageUrl: 'https://www.bring.no', logoUrl: PostenBring },
-  { name: 'Randstad', homepageUrl: 'https://www.randstad.no', logoUrl: Randstad },
   // { name: 'Red Hat', homepageUrl: 'https://www.redhat.com', logoUrl: RedHat },
   { name: 'Scelto', homepageUrl: 'https://www.scelto.no', logoUrl: Scelto },
   { name: 'Scienta', homepageUrl: 'https://www.scienta.no', logoUrl: Scienta },

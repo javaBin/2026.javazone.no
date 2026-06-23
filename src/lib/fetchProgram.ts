@@ -29,7 +29,7 @@ export interface Session {
 }
 
 export async function fetchProgram(): Promise<Session[]> {
-  const res = await fetch('https://sleepingpill.javazone.no/public/allSessions/javazone_2025')
+  const res = await fetch('https://sleepingpill.javazone.no/public/allSessions/javazone_2026')
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
   const data: { sessions: Session[] } = await res.json()
   if (!Array.isArray(data?.sessions)) throw new Error('Unexpected response shape')

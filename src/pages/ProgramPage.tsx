@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { BubbleIcons, Heading } from '@/components'
+import { BubbleField, Heading } from '@/components'
 import { fetchProgram, type Session } from '@/lib/fetchProgram'
 
 // ── constants ─────────────────────────────────────────────────────────────────
@@ -119,7 +119,7 @@ const ProgramPage = () => {
 
   return (
     <div className="min-h-screen pt-20 pb-24">
-      <BubbleIcons />
+      <BubbleField variant="subtle" />
       <div className="px-4 mx-auto max-w-7xl md:px-8">
         <div className="py-8">
           <Heading level="h1">Program</Heading>

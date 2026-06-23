@@ -3,6 +3,7 @@ import '@/App.css'
 import { BrowserRouter, useLocation } from 'react-router-dom'
 
 import { Footer, Header } from '@/components'
+import { MotionProvider } from '@/hooks/useMotion'
 import { ThemeProvider } from '@/hooks/useTheme'
 import { AppRoutes, ScrollManager } from '@/routes'
 
@@ -35,9 +36,11 @@ const AppLayout = () => {
 const App = () => {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <AppLayout />
-      </BrowserRouter>
+      <MotionProvider>
+        <BrowserRouter>
+          <AppLayout />
+        </BrowserRouter>
+      </MotionProvider>
     </ThemeProvider>
   )
 }

@@ -1,10 +1,10 @@
-import { BubbleIcons, Heading, LinkButton, Packages } from '@/components'
+import { BubbleField, Heading, LinkButton, Packages } from '@/components'
 import { PartnerBanner } from '@/components/PartnerBanner.tsx'
 
 const PartnerPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
-      <BubbleIcons />
+      <BubbleField variant="subtle" />
       <Heading level="h1" className="mb-20">
         JavaZone 2026 partner
       </Heading>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BubbleIcons, Heading, LinkButton } from '@/components'
+import { BubbleField, Heading, LinkButton } from '@/components'
 
 const faq: { q: string; a: React.ReactNode }[] = [
   {
@@ -53,7 +53,7 @@ const faq: { q: string; a: React.ReactNode }[] = [
 const TicketsPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
-      <BubbleIcons />
+      <BubbleField variant="subtle" />
       <Heading level="h1">Tickets</Heading>
       <section className="text-center max-w-2xl w-full space-y-4">
         <Heading level="h2" className="mt-2 text-left">
