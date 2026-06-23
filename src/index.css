@@ -267,3 +267,19 @@
   transform: translateY(-100%);
   transition: transform 0.3s ease;
 }
+
+.aweZone-list li {
+  background-image: url('src/assets/graphics/fish-1.svg');
+  background-repeat: no-repeat;
+  background-position: left center; /* Align icon vertically */
+  background-size: 30px 30px; /* Fixed size for fish icons */
+  padding-left: 35px; /* Push text to the right of the icon */
+}
+
+.aweZone-list li:nth-child(2) {
+  background-image: url('src/assets/graphics/fish-2.svg');
+}
+
+.aweZone-list li:nth-child(3) {
+  background-image: url('src/assets/graphics/fish-3.svg');
+}

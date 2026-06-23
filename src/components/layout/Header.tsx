@@ -25,6 +25,10 @@ const navLinks = [
     href: '/speaker',
   },
   {
+    name: 'AweZone',
+    href: '/awezone',
+  },
+  {
     name: 'Volunteers',
     href: '/volunteer',
   },

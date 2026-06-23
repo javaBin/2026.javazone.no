@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 
 import AboutPage from '@/pages/AboutPage'
+import AweZonePage from '@/pages/AweZonePage.tsx'
 import HistoryPage from '@/pages/HistoryPage.tsx'
 import MainPage from '@/pages/MainPage.tsx'
 import PartnerPage from '@/pages/PartnerPage.tsx'
@@ -21,6 +22,7 @@ const AppRoutes = () => {
       <Route path="/partner" element={<PartnerPage />} />
       <Route path="/history" element={<HistoryPage />} />
       <Route path="/speaker/*" element={<SpeakerRoutes />} />
+      <Route path="/awezone" element={<AweZonePage />} />
       <Route path="/volunteer" element={<VolunteerPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/status" element={<StatusPage />} />
