@@ -1,8 +1,9 @@
-import { Heading, LinkButton } from '@/components'
+import { BubbleField, Heading, LinkButton } from '@/components'
 
 const VolunteerPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
+      <BubbleField variant="subtle" />
       <Heading level="h1" className="mb-20">
         Volunteer at Javazone?
       </Heading>
@@ -14,7 +15,7 @@ const VolunteerPage = () => {
         </p>
 
         <div className="flex items-center justify-center mt-6">
-          <LinkButton title="Sign up here" link="https://forms.gle/CsR71mRvs4T8wXpq8" />
+          <LinkButton title="Sign up here" variant="pop" link="https://forms.gle/CsR71mRvs4T8wXpq8" />
         </div>
       </section>
 
@@ -25,7 +26,7 @@ const VolunteerPage = () => {
           {faq.map((item, idx) => (
             <div key={idx} className="space-y-2">
               <h3 className="text-xl md:text-2xl font-semibold leading-snug text-primary">{item.q}</h3>
-              <p className="text-base md:text-lg text-justify text-cloud-dancer">{item.a}</p>
+              <p className="text-base md:text-lg text-justify text-secondary">{item.a}</p>
             </div>
           ))}
         </dl>

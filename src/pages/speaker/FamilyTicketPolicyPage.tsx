@@ -1,13 +1,14 @@
-import { Card, Heading } from '@/components'
+import { BubbleField, Card, Heading } from '@/components'
 
 const gradients: [string, string][] = [
-  ['rgb(9,65,106)', 'rgb(10,56,90)'],
-  ['rgb(10,56,90)', 'rgb(6,40,66)'],
+  ['#1a7fd4', '#006bc4'],
+  ['#006bc4', '#004d90'],
 ]
 
 const FamilyTicketPolicyPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
+      <BubbleField variant="subtle" />
       <Heading level="h1">Family Ticket Policy</Heading>
 
       <section className="text-left max-w-2xl w-full space-y-4">
@@ -84,7 +85,7 @@ const FamilyTicketPolicyPage = () => {
           </li>
           <li>
             Send an email to{' '}
-            <a href="mailto:refund@java.no?subject=Family ticket request – [Your Name]" className="text-sunbeam-gold underline">
+            <a href="mailto:refund@java.no?subject=Family ticket request – [Your Name]" className="text-accent-primary underline">
               refund@java.no
             </a>{' '}
             with the subject line:

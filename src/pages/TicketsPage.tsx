@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Heading, LinkButton } from '@/components'
+import { BubbleField, Heading, LinkButton } from '@/components'
 
 const faq: { q: string; a: React.ReactNode }[] = [
   {
@@ -53,6 +53,7 @@ const faq: { q: string; a: React.ReactNode }[] = [
 const TicketsPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
+      <BubbleField variant="subtle" />
       <Heading level="h1">Tickets</Heading>
       <section className="text-center max-w-2xl w-full space-y-4">
         <Heading level="h2" className="mt-2 text-left">
@@ -62,7 +63,7 @@ const TicketsPage = () => {
           JavaZone 2026 takes place September 2<sup>nd</sup>–3<sup>rd</sup> at NOVA Spektrum, Lillestrøm. Secure your spot as soon as tickets go on
           sale.
         </p>
-        <p className="text-sm md:text-base mt-4 text-cloud-dancer">
+        <p className="text-sm md:text-base mt-4 text-secondary">
           If you're buying tickets on behalf of one of our partners this year, see the{' '}
           <a href="/partner" className="underline hover:opacity-80">
             partner page
@@ -70,7 +71,7 @@ const TicketsPage = () => {
           instead.
         </p>
         <div className="flex items-center justify-center mt-4">
-          <LinkButton title="Buy tickets" size="large" link="https://event.checkin.no/215065/javazone-2026" className="max-w-md" />
+          <LinkButton title="Buy tickets" size="large" variant="pop" link="https://event.checkin.no/215065/javazone-2026" className="max-w-md" />
         </div>
       </section>
 
@@ -80,7 +81,7 @@ const TicketsPage = () => {
           {faq.map((item, idx) => (
             <div key={idx} className="space-y-2">
               <dt className="text-xl md:text-2xl font-semibold leading-snug text-primary">{item.q}</dt>
-              <dd className="text-base md:text-lg text-justify text-cloud-dancer">{item.a}</dd>
+              <dd className="text-base md:text-lg text-justify text-secondary">{item.a}</dd>
             </div>
           ))}
         </dl>

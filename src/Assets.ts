@@ -1,6 +1,7 @@
 import fish_1 from '@/assets/graphics/fish-1.svg'
 import fish_2 from '@/assets/graphics/fish-2.svg'
 import fish_3 from '@/assets/graphics/fish-3.svg'
+import wordmark from '@/assets/graphics/JZ26-Logo-OnlyText-transp.png'
 import submarine from '@/assets/graphics/submarine.svg'
 import coral from '@/assets/icons/coral.svg'
 import jellyfish from '@/assets/icons/jellyfish.svg'
@@ -12,10 +13,13 @@ import swirledShell from '@/assets/icons/swirled-shell.svg'
 import tritonHead from '@/assets/icons/triton-head.svg'
 import waves from '@/assets/icons/waves.svg'
 import cityscape from '@/assets/jz26-logo-bg-uten-ting-rektangel-transp.png'
+import dukeLogo from '@/assets/jz26-logo-duke-transparent-large.png'
 
 export const Assets = {
   images: {
     cityscape,
+    dukeLogo,
+    wordmark,
   },
   animated: {
     fish_1: {

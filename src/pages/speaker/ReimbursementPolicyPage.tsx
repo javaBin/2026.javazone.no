@@ -1,8 +1,9 @@
-import { Heading } from '@/components'
+import { BubbleField, Heading } from '@/components'
 
 const ReimbursementPolicyPage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
+      <BubbleField variant="subtle" />
       <Heading level="h1">Reimbursement Policy</Heading>
 
       <section className="text-left max-w-2xl w-full space-y-4">
@@ -21,7 +22,7 @@ const ReimbursementPolicyPage = () => {
         <p>
           The first thing to note is that you need to apply for reimbursement of costs. This is necessary for our budget planning. If you require
           financial support, please reach out to{' '}
-          <a href="mailto:refund@java.no" className="text-sunbeam-gold underline">
+          <a href="mailto:refund@java.no" className="text-accent-primary underline">
             refund@java.no
           </a>{' '}
           after your session or workshop is accepted.
@@ -41,7 +42,7 @@ const ReimbursementPolicyPage = () => {
         <Heading level="h2">Confirmation & Reimbursement</Heading>
         <p>
           Applications must be confirmed explicitly via{' '}
-          <a href="mailto:refund@java.no" className="text-sunbeam-gold underline">
+          <a href="mailto:refund@java.no" className="text-accent-primary underline">
             refund@java.no
           </a>{' '}
           and are only accepted prior to our conference. Reimbursements are provided after the conference. For this, we require you to send us copies

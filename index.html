@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="retro">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta property="og:title" content="JavaZone 2026 - the biggest community-driven Java conference."/>
@@ -14,8 +14,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Numans&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/javabinfaviccon.ico" />
     <title>JavaZone 2026</title>
+    <script>
+      (function () {
+        var stored = localStorage.getItem('jz-motion')
+        var reduced = stored ? stored === 'reduced' : window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        document.documentElement.dataset.motion = reduced ? 'reduced' : 'full'
+      })()
+    </script>
   </head>
   <body>
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme')
+        var theme =
+          stored === 'dark' || stored === 'light'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light'
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
