@@ -1,0 +1,47 @@
+import { Heading, Packages } from '@/components'
+
+const PartnerInfoPage = () => {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
+      <section className="text-left max-w-2xl w-full space-y-4">
+        <Heading level="h2">The first partner meeting</Heading>
+        <div className="w-full overflow-hidden rounded-lg bg-black" style={{ position: 'relative', paddingTop: '56.25%' }}>
+          {' '}
+          <iframe
+            src="https://player.vimeo.com/video/1146207302"
+            title="Partner meeting video"
+            allow="autoplay; fullscreen; picture-in-picture"
+            referrerPolicy="strict-origin-when-cross-origin"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              border: 0,
+            }}
+            allowFullScreen
+          />
+        </div>
+      </section>
+
+      <section className="text-left max-w-2xl w-full space-y-4">
+        <Heading level="h2">Packages and tickets</Heading>
+        <Packages />
+      </section>
+
+      <section className="text-left max-w-2xl w-full space-y-4">
+        <Heading level="h2">Contact us</Heading>
+        <p>
+          If you have any questions or concerns, please reach out to us at{' '}
+          <a className="text-sunbeam-gold underline" href="mailto:partner@java.no">
+            partner@java.no
+          </a>
+          .
+        </p>
+      </section>
+    </div>
+  )
+}
+
+export default PartnerInfoPage
