@@ -283,3 +283,7 @@
 .aweZone-list li:nth-child(3) {
   background-image: url('src/assets/graphics/fish-3.svg');
 }
+
+.test-class {
+  color: var(--color-accent);
+}

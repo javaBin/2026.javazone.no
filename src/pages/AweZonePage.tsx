@@ -28,7 +28,7 @@ const AweZonePage = () => {
       </section>
 
       <section className="w-full max-w-2xl space-y-4 text-left">
-        <Heading level="h4" className={'text-accent-primary'}>
+        <Heading level="h4" className={'test-class'}>
           Partner bands
         </Heading>
 
