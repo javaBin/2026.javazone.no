@@ -1,5 +1,3 @@
-import '@/App.css'
-
 import { BrowserRouter, useLocation } from 'react-router-dom'
 
 import { Footer, Header } from '@/components'
