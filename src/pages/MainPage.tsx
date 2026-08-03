@@ -21,13 +21,6 @@ const MainPage = () => {
 
           <LinkButton title="Buy tickets" size="large" variant="pop" link="/tickets" className="mt-6 max-w-md min-w-[320px] pointer-events-auto" />
           <LinkButton
-            title="Register as partner"
-            size="large"
-            variant="pop"
-            link="https://event.checkin.no/215047/javazone-2026-partnership"
-            className="mt-3 max-w-md min-w-[320px] pointer-events-auto"
-          />
-          <LinkButton
             title="Become a volunteer"
             size="large"
             variant="pop-outline"
