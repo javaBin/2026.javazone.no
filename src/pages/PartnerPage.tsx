@@ -8,11 +8,6 @@ const PartnerPage = () => {
       <Heading level="h1" className="mb-20">
         JavaZone 2026 partner
       </Heading>
-      <section className="text-center max-w-2xl w-full space-y-4">
-        <div className="flex items-center justify-center mt-4">
-          <LinkButton title="Register as partner" size="medium" variant="pop" link="https://event.checkin.no/215047/javazone-2026-partnership" />
-        </div>
-      </section>
 
       <section className="text-center max-w-2xl w-full space-y-4">
         <div className="flex items-center justify-center mt-4">
@@ -21,6 +16,13 @@ const PartnerPage = () => {
       </section>
 
       <PartnerBanner />
+
+      <p className="text-center max-w-2xl w-full">
+        If you&apos;re interested in becoming a JavaZone partner, please email us at{' '}
+        <a className="text-sunbeam-gold underline" href="mailto:partner@java.no">
+          partner@java.no
+        </a>
+      </p>
     </div>
   )
 }
