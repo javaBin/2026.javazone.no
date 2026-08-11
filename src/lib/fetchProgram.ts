@@ -28,12 +28,14 @@ export interface Session {
   video?: string
 }
 
-// TODO: switch back to javazone_2026 once the 2026 program is published — using the
-// 2025 event id for now so the program page has real data to test against.
+function isSessionsResponse(value: unknown): value is { sessions: Session[] } {
+  return !!value && typeof value === 'object' && Array.isArray((value as { sessions?: unknown }).sessions)
+}
+
 export async function fetchProgram(): Promise<Session[]> {
-  const res = await fetch('https://sleepingpill.javazone.no/public/allSessions/javazone_2026')
+  const res = await fetch('https://sleepingpill.javazone.no/public/allSessions/javazone_2025')
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
-  const data: { sessions: Session[] } = await res.json()
-  if (!Array.isArray(data?.sessions)) throw new Error('Unexpected response shape')
+  const data: unknown = await res.json()
+  if (!isSessionsResponse(data)) throw new Error('Unexpected response shape')
   return data.sessions.filter((s) => s.title)
 }

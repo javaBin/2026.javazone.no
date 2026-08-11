@@ -3,11 +3,13 @@ const FilterGroup = ({
   options,
   selected,
   onToggle,
+  labels,
 }: {
   title: string
   options: string[]
   selected: Set<string>
   onToggle: (value: string) => void
+  labels?: Record<string, string>
 }) => {
   if (!options.length) return null
 
@@ -28,7 +30,7 @@ const FilterGroup = ({
                   : 'bg-base-100/40 border-base-content/10 text-secondary hover:border-accent-primary/50'
               }`}
             >
-              {value}
+              {labels?.[value] ?? value}
             </button>
           )
         })}

@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 import { fetchProgram, type Session } from '@/lib/fetchProgram'
 
 const CACHE_KEY = 'jz-program-cache-v1'
+const REVALIDATE_INTERVAL_MS = 5 * 60 * 1000 // keeps a long-lived tab fresh during the live event
+const MIN_REVALIDATE_GAP_MS = 30 * 1000 // avoid refetching on every quick remount/navigation
 
 let cache: Session[] | null = null
+let liveSince: number | null = null // set once a live fetch has actually succeeded this tab session
 let inFlight: Promise<Session[]> | null = null
+let lastFetchAttemptAt = 0
 
 function readCache(): Session[] | null {
   try {
@@ -25,25 +29,38 @@ function writeCache(sessions: Session[]) {
 }
 
 export function useProgram() {
-  const [sessions, setSessions] = useState<Session[]>(cache ?? [])
-  const [loading, setLoading] = useState(!cache)
+  // Seed instantly from whatever we've got (in-memory this tab, or last session's
+  // localStorage copy) instead of always blocking on a network round-trip.
+  const [sessions, setSessions] = useState<Session[]>(() => {
+    cache ??= readCache()
+    return cache ?? []
+  })
+  const [loading, setLoading] = useState<boolean>(() => cache === null)
   const [error, setError] = useState<string | null>(null)
-  const [stale, setStale] = useState(false)
+  const [stale, setStale] = useState<boolean>(() => cache !== null && liveSince === null)
 
-  const load = () => {
-    setLoading(true)
+  const load = useCallback((opts?: { silent?: boolean }) => {
+    const silent = opts?.silent ?? false
+    if (silent && Date.now() - lastFetchAttemptAt < MIN_REVALIDATE_GAP_MS) return
+    lastFetchAttemptAt = Date.now()
+    if (!silent) setLoading(true)
+
+    const hadLiveData = liveSince !== null
     inFlight ??= fetchProgram()
 
     inFlight
       .then((data) => {
         cache = data
+        liveSince = Date.now()
         writeCache(data)
         setSessions(data)
         setError(null)
         setStale(false)
       })
       .catch((err: unknown) => {
-        const cached = readCache()
+        // A background revalidation hiccup shouldn't nuke data we already confirmed live.
+        if (hadLiveData) return
+        const cached = cache ?? readCache()
         if (cached) {
           cache = cached
           setSessions(cached)
@@ -54,14 +71,25 @@ export function useProgram() {
       })
       .finally(() => {
         inFlight = null
-        setLoading(false)
+        if (!silent) setLoading(false)
       })
-  }
-
-  useEffect(() => {
-    if (cache) return
-    load()
   }, [])
 
-  return { sessions, loading, error, stale, retry: load }
+  useEffect(() => {
+    load({ silent: cache !== null })
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') load({ silent: true })
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+
+    const interval = setInterval(() => load({ silent: true }), REVALIDATE_INTERVAL_MS)
+
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+      clearInterval(interval)
+    }
+  }, [load])
+
+  return { sessions, loading, error, stale, retry: () => load() }
 }

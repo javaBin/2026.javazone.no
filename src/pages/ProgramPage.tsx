@@ -56,7 +56,7 @@ const ProgramPage = () => {
     })
   }
 
-  const clearFilters = () => setFilters((f) => ({ ...f, formats: new Set(), rooms: new Set(), keywords: new Set(), languages: new Set() }))
+  const clearFilters = () => setFilters((f) => ({ ...f, formats: new Set(), rooms: new Set(), languages: new Set() }))
 
   return (
     <div className="min-h-screen pt-20 pb-24">
@@ -85,8 +85,11 @@ const ProgramPage = () => {
         {loading && <ProgramSkeleton />}
 
         {stale && !loading && (
-          <div className="px-4 py-3 mb-6 text-sm rounded-2xl bg-accent-secondary/10 text-accent-secondary">
-            Showing the last loaded program — couldn't reach the live schedule just now.
+          <div className="flex items-center justify-between gap-3 px-4 py-3 mb-6 text-sm rounded-2xl bg-accent-secondary/10 text-accent-secondary">
+            <span>Showing the last loaded program — couldn't reach the live schedule just now.</span>
+            <button type="button" onClick={retry} className="font-semibold underline shrink-0 hover:opacity-80">
+              Retry
+            </button>
           </div>
         )}
 
@@ -107,7 +110,9 @@ const ProgramPage = () => {
         {!loading && !error && filtered.length === 0 && (
           <div className="px-5 py-12 text-center rounded-3xl bg-base-200">
             <p className="m-0 text-secondary">
-              {view === 'my-schedule' ? 'No favorites yet. Tap the ☆ on any session to add it to your schedule.' : 'No sessions match your filters.'}
+              {view === 'my-schedule'
+                ? 'No favorites yet. Tap the favorite icon on any session to add it to your schedule.'
+                : 'No sessions match your filters.'}
             </p>
           </div>
         )}

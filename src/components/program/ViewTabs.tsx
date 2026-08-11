@@ -7,6 +7,7 @@ const ViewTabs = ({ view, favoriteCount, onChange }: { view: ProgramView; favori
     {TABS.map((v) => (
       <button
         key={v}
+        type="button"
         role="tab"
         aria-selected={view === v}
         onClick={() => onChange(v)}

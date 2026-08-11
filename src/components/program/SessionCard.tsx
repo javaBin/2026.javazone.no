@@ -1,4 +1,4 @@
-import { type MouseEvent, useRef } from 'react'
+import { type KeyboardEvent, type MouseEvent, useRef } from 'react'
 
 import FavoriteButton from '@/components/program/FavoriteButton'
 import { ClockIcon, LanguageIcon, RoomIcon } from '@/components/program/icons'
@@ -32,6 +32,13 @@ const SessionCard = ({
   }
   const onLeave = () => ref.current?.style.setProperty('--glow-opacity', '0')
 
+  const onKeyDown = (e: KeyboardEvent<HTMLElement>) => {
+    if (e.target !== e.currentTarget) return
+    if (e.key !== 'Enter' && e.key !== ' ') return
+    e.preventDefault()
+    onOpen()
+  }
+
   const duration = formatDuration(getDurationMinutes(session))
   const formatLabel = getFormatLabel(session)
   const languageLabel = session.language.slice(0, 2).toUpperCase()
@@ -40,10 +47,13 @@ const SessionCard = ({
   return (
     <article
       ref={ref}
+      role="button"
+      tabIndex={0}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       onClick={onOpen}
-      className={`flex flex-col h-full gap-3 px-5 py-4 shadow-xl cursor-pointer glow-card rounded-3xl bg-base-200 ${
+      onKeyDown={onKeyDown}
+      className={`flex flex-col h-full gap-3 px-5 py-4 shadow-xl cursor-pointer glow-card rounded-3xl bg-base-200 outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
         isConflict ? 'ring-1 ring-accent-secondary/30' : ''
       }`}
     >

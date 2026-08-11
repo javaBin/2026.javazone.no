@@ -1,11 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { BubbleField, Heading } from '@/components'
+import FavoriteButton from '@/components/program/FavoriteButton'
+import { ClockIcon, LanguageIcon, RoomIcon } from '@/components/program/icons'
+import MetaBadge from '@/components/program/MetaBadge'
 import { useFavorites } from '@/hooks/useFavorites'
 import { useProgram } from '@/hooks/useProgram'
-import { getFormatLabel, getKeywords } from '@/lib/program'
-
-const LANGUAGE_LABEL: Record<string, string> = { no: 'Norwegian', en: 'English' }
+import { formatDuration, getDurationMinutes, getFormatLabel, getKeywords, getLanguageLabel } from '@/lib/program'
 
 // ── TalkPage ──────────────────────────────────────────────────────────────────
 
@@ -19,6 +20,7 @@ const TalkPage = () => {
   const error = loadError ?? (!loading && !session ? 'Talk not found' : null)
 
   const keywords = session ? getKeywords(session) : []
+  const duration = session ? formatDuration(getDurationMinutes(session)) : null
 
   return (
     <div className="min-h-screen pt-20 pb-24">
@@ -27,6 +29,7 @@ const TalkPage = () => {
         <div className="py-8">
           <div className="flex items-center justify-between mb-10">
             <button
+              type="button"
               onClick={() => navigate('/program')}
               className="flex items-center gap-2 text-sm font-medium transition-opacity text-secondary hover:opacity-70"
             >
@@ -34,17 +37,11 @@ const TalkPage = () => {
             </button>
 
             {session && (
-              <button
-                type="button"
-                onClick={() => toggleFavorite(session.sessionId)}
-                aria-pressed={favorites.has(session.sessionId)}
-                aria-label="Toggle favorite"
-                className={`text-2xl leading-none transition-colors ${
-                  favorites.has(session.sessionId) ? 'text-accent-primary' : 'text-secondary/50 hover:text-secondary'
-                }`}
-              >
-                {favorites.has(session.sessionId) ? '★' : '☆'}
-              </button>
+              <FavoriteButton
+                sessionId={session.sessionId}
+                isFavorite={favorites.has(session.sessionId)}
+                onToggle={() => toggleFavorite(session.sessionId)}
+              />
             )}
           </div>
 
@@ -68,20 +65,47 @@ const TalkPage = () => {
 
           {session && (
             <div className="flex flex-col gap-8">
-              {/* Format / language badges */}
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary">{getFormatLabel(session)}</span>
-                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-base-300 text-secondary">
-                  {LANGUAGE_LABEL[session.language] ?? session.language}
-                </span>
-                {session.length && (
-                  <span className="px-3 py-1 text-xs font-semibold rounded-full bg-base-300 text-secondary">{session.length} min</span>
-                )}
-              </div>
-
               <Heading level="h1" className="!text-left">
                 {session.title}
               </Heading>
+
+              {/* Format / room / duration / language badges */}
+              <div className="flex flex-wrap gap-2">
+                {session.room && <MetaBadge size="md" icon={<RoomIcon className="w-4 h-4 shrink-0" />} label={session.room} />}
+                {duration && <MetaBadge size="md" icon={<ClockIcon className="w-4 h-4 shrink-0" />} label={duration} />}
+                <MetaBadge size="md" label={getFormatLabel(session)} accent />
+                <MetaBadge size="md" icon={<LanguageIcon className="w-4 h-4 shrink-0" />} label={getLanguageLabel(session)} />
+              </div>
+
+              {/* Keywords */}
+              {keywords.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {keywords.map((k) => (
+                    <span key={k} className="text-xs badge badge-outline">
+                      {k}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Abstract */}
+              {session.abstract && (
+                <div className="flex flex-col gap-3">
+                  <p className="m-0 text-xs font-semibold tracking-widest uppercase text-secondary">About this talk</p>
+                  <p className="m-0 text-base leading-relaxed text-primary/90 whitespace-pre-wrap">{session.abstract}</p>
+                </div>
+              )}
+
+              {/* Intended audience */}
+              {session.intendedAudience && (
+                <div className="flex flex-col gap-2">
+                  <p className="m-0 text-xs font-semibold tracking-widest uppercase text-secondary">Intended audience</p>
+                  <p className="m-0 text-sm leading-relaxed text-primary/80">{session.intendedAudience}</p>
+                </div>
+              )}
+
+              {/* Divider */}
+              <div className="h-px bg-base-content/10" />
 
               {/* Speakers */}
               {session.speakers.length > 0 && (
@@ -123,36 +147,6 @@ const TalkPage = () => {
                         )}
                       </div>
                     </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Divider */}
-              <div className="h-px bg-base-content/10" />
-
-              {/* Abstract */}
-              {session.abstract && (
-                <div className="flex flex-col gap-3">
-                  <p className="m-0 text-xs font-semibold tracking-widest uppercase text-secondary">About this talk</p>
-                  <p className="m-0 text-base leading-relaxed text-primary/90 whitespace-pre-wrap">{session.abstract}</p>
-                </div>
-              )}
-
-              {/* Intended audience */}
-              {session.intendedAudience && (
-                <div className="flex flex-col gap-2">
-                  <p className="m-0 text-xs font-semibold tracking-widest uppercase text-secondary">Intended audience</p>
-                  <p className="m-0 text-sm leading-relaxed text-primary/80">{session.intendedAudience}</p>
-                </div>
-              )}
-
-              {/* Keywords */}
-              {keywords.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {keywords.map((k) => (
-                    <span key={k} className="text-xs badge badge-outline">
-                      {k}
-                    </span>
                   ))}
                 </div>
               )}
