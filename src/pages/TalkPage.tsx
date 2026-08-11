@@ -1,14 +1,9 @@
-import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { BubbleField, Heading } from '@/components'
-import { fetchProgram, type Session } from '@/lib/fetchProgram'
-
-const FORMAT_LABEL: Record<string, string> = {
-  'lightning-talk': 'Lightning Talk',
-  presentation: 'Presentation',
-  workshop: 'Workshop',
-}
+import { useFavorites } from '@/hooks/useFavorites'
+import { useProgram } from '@/hooks/useProgram'
+import { getFormatLabel, getKeywords } from '@/lib/program'
 
 const LANGUAGE_LABEL: Record<string, string> = { no: 'Norwegian', en: 'English' }
 
@@ -17,41 +12,41 @@ const LANGUAGE_LABEL: Record<string, string> = { no: 'Norwegian', en: 'English' 
 const TalkPage = () => {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const [session, setSession] = useState<Session | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const { sessions, loading, error: loadError } = useProgram()
+  const { favorites, toggle: toggleFavorite } = useFavorites()
 
-  useEffect(() => {
-    fetchProgram()
-      .then((data) => {
-        const found = data.find((s) => s.sessionId === id)
-        if (found) setSession(found)
-        else setError('Talk not found')
-        setLoading(false)
-      })
-      .catch((err: unknown) => {
-        setError(err instanceof Error ? err.message : 'Unknown error')
-        setLoading(false)
-      })
-  }, [id])
+  const session = sessions.find((s) => s.sessionId === id) ?? null
+  const error = loadError ?? (!loading && !session ? 'Talk not found' : null)
 
-  const keywords =
-    session?.suggestedKeywords
-      ?.split(',')
-      .map((k) => k.trim())
-      .filter(Boolean) ?? []
+  const keywords = session ? getKeywords(session) : []
 
   return (
     <div className="min-h-screen pt-20 pb-24">
       <BubbleField variant="subtle" />
       <div className="px-4 mx-auto max-w-3xl md:px-8">
         <div className="py-8">
-          <button
-            onClick={() => navigate('/program')}
-            className="flex items-center gap-2 mb-10 text-sm font-medium transition-opacity text-secondary hover:opacity-70"
-          >
-            ← Back to program
-          </button>
+          <div className="flex items-center justify-between mb-10">
+            <button
+              onClick={() => navigate('/program')}
+              className="flex items-center gap-2 text-sm font-medium transition-opacity text-secondary hover:opacity-70"
+            >
+              ← Back to program
+            </button>
+
+            {session && (
+              <button
+                type="button"
+                onClick={() => toggleFavorite(session.sessionId)}
+                aria-pressed={favorites.has(session.sessionId)}
+                aria-label="Toggle favorite"
+                className={`text-2xl leading-none transition-colors ${
+                  favorites.has(session.sessionId) ? 'text-accent-primary' : 'text-secondary/50 hover:text-secondary'
+                }`}
+              >
+                {favorites.has(session.sessionId) ? '★' : '☆'}
+              </button>
+            )}
+          </div>
 
           {loading && (
             <div className="flex flex-col gap-5 animate-pulse">
@@ -75,9 +70,7 @@ const TalkPage = () => {
             <div className="flex flex-col gap-8">
               {/* Format / language badges */}
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary">
-                  {FORMAT_LABEL[session.format] ?? session.format}
-                </span>
+                <span className="px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary">{getFormatLabel(session)}</span>
                 <span className="px-3 py-1 text-xs font-semibold rounded-full bg-base-300 text-secondary">
                   {LANGUAGE_LABEL[session.language] ?? session.language}
                 </span>

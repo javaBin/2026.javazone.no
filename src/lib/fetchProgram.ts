@@ -28,6 +28,8 @@ export interface Session {
   video?: string
 }
 
+// TODO: switch back to javazone_2026 once the 2026 program is published — using the
+// 2025 event id for now so the program page has real data to test against.
 export async function fetchProgram(): Promise<Session[]> {
   const res = await fetch('https://sleepingpill.javazone.no/public/allSessions/javazone_2026')
   if (!res.ok) throw new Error(`HTTP ${res.status}`)

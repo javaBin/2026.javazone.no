@@ -22,7 +22,7 @@
   --coral-bloom: #f06a6a;
   --blue-lagoon: #57c4d1;
 
-  --ocean-linear-gradient: linear-gradient(to bottom, var(--deep-ocean) 0%, var(--deep-ocean) 50%, var(--abyss-navy) 80%, black 100%);
+  --ocean-linear-gradient: linear-gradient(to bottom, var(--deep-ocean) 0, var(--deep-ocean) 100vh, var(--abyss-navy) 80%, black 100%);
 
   /* ── Blue palette (light mode raw values used by wave / gradients) ── */
   --color-lightest: #e6f0ff;
@@ -35,8 +35,8 @@
 
   --site-gradient: linear-gradient(
     to bottom,
-    var(--color-mid) 0%,
-    var(--color-brand) 20%,
+    var(--color-mid) 0,
+    var(--color-brand) 100vh,
     var(--color-brand) 80%,
     color-mix(in srgb, var(--color-brand) 65%, black) 100%
   );
@@ -177,6 +177,37 @@
 
 .hover\:text-primary-content:hover {
   color: var(--color-brand);
+}
+
+/* Favorite icon (starfish) — force the multi-color illustration to a single silhouette
+   that follows the button's text color, so favorite/not-favorite is just color+opacity. */
+.favorite-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 150ms ease;
+}
+
+/* Not favorited: flatten the illustration into a monochrome "shadow" of its shape. */
+.favorite-icon[aria-pressed='false'] .st0 {
+  fill: none;
+}
+
+.favorite-icon[aria-pressed='false'] .st1,
+.favorite-icon[aria-pressed='false'] .st2,
+.favorite-icon[aria-pressed='false'] .st3,
+.favorite-icon[aria-pressed='false'] .st4 {
+  fill: currentColor;
+}
+
+.favorite-icon[aria-pressed='false'] svg {
+  transform: scale(0.8);
+}
+
+/* Favorited: the illustration's outline (st2) is the same brand blue as the card
+   background, so it disappears at the edges — lighten it a step on the palette. */
+.favorite-icon[aria-pressed='true'] .st2 {
+  fill: var(--color-mid);
 }
 
 /* Mouse glow overlay */
