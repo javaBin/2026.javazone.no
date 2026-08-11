@@ -204,10 +204,35 @@
   transform: scale(0.8);
 }
 
-/* Favorited: the illustration's outline (st2) is the same brand blue as the card
-   background, so it disappears at the edges — lighten it a step on the palette. */
-.favorite-icon[aria-pressed='true'] .st2 {
+/* Favorited on a card: the illustration's outline (st2) is the same brand blue as the
+   card background, so it disappears at the edges — lighten it a step on the palette.
+   Scoped to the card variant only; elsewhere (e.g. the talk page CTA) keeps its original edge color. */
+.favorite-icon--card[aria-pressed='true'] .st2 {
   fill: var(--color-mid);
+}
+
+/* Back-to-program arrow (stingray icon rotated on its side) — constantly darts quickly
+   toward the direction it's pointing (left), then drifts slowly back to rest, like a
+   little flick of the tail. translateX is listed BEFORE rotate so the dart happens in
+   real screen-space (horizontal) before the static tilt is applied — the other order
+   would translate along the icon's own (rotated) local axis, making it bob vertically. */
+.back-arrow-icon {
+  display: block;
+  animation: back-arrow-pulse 2s infinite;
+}
+
+@keyframes back-arrow-pulse {
+  0% {
+    transform: translateX(0) rotate(-90deg);
+    animation-timing-function: ease-out;
+  }
+  30% {
+    transform: translateX(-6px) rotate(-90deg);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: translateX(0) rotate(-90deg);
+  }
 }
 
 /* Mouse glow overlay */

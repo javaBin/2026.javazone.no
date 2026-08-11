@@ -10,6 +10,10 @@ export interface ProgramFilters {
 
 export type ProgramView = 'schedule' | 'my-schedule'
 
+// Sentinel `day` value meaning "don't filter by day at all" — distinct from `null`,
+// which means "no explicit choice yet" and gets auto-resolved to the first real day.
+export const ALL_DAYS = 'all'
+
 export const FORMAT_LABEL: Record<string, string> = {
   'lightning-talk': 'Lightning Talk',
   presentation: 'Presentation',
@@ -20,10 +24,6 @@ export const LANGUAGE_LABEL: Record<string, string> = { no: 'Norwegian', en: 'En
 
 export function getFormatLabel(session: Session): string {
   return FORMAT_LABEL[session.format] ?? session.format
-}
-
-export function getLanguageLabel(session: Session): string {
-  return LANGUAGE_LABEL[session.language] ?? session.language
 }
 
 export function createEmptyFilters(): ProgramFilters {
@@ -96,7 +96,12 @@ export function getDurationMinutes(session: Session): number | null {
 }
 
 export function formatDuration(minutes: number | null): string | null {
-  return minutes ? `${minutes} min` : null
+  if (!minutes) return null
+  if (minutes < 60) return `${minutes} min`
+
+  const hours = Math.floor(minutes / 60)
+  const remainder = minutes % 60
+  return remainder === 0 ? `${hours}h` : `${hours}h ${remainder}min`
 }
 
 export function getKeywords(session: Session): string[] {
@@ -118,12 +123,16 @@ export interface SessionGroup {
   sessions: Session[]
 }
 
-export function groupSessionsByTime(sessions: Session[]): SessionGroup[] {
-  const sorted = [...sessions].sort((a, b) => {
+export function sortSessionsByStart(sessions: Session[]): Session[] {
+  return [...sessions].sort((a, b) => {
     const at = getSessionStart(a)?.getTime() ?? Infinity
     const bt = getSessionStart(b)?.getTime() ?? Infinity
     return at - bt
   })
+}
+
+export function groupSessionsByTime(sessions: Session[]): SessionGroup[] {
+  const sorted = sortSessionsByStart(sessions)
 
   const groups = new Map<string, Session[]>()
   for (const s of sorted) {
@@ -159,7 +168,7 @@ export function getFacets(sessions: Session[]): ProgramFacets {
 
 export function matchesFilters(session: Session, filters: ProgramFilters, view: ProgramView, favorites: Set<string>): boolean {
   if (view === 'my-schedule' && !favorites.has(session.sessionId)) return false
-  if (filters.day && getDayKey(session) !== filters.day) return false
+  if (filters.day && filters.day !== ALL_DAYS && getDayKey(session) !== filters.day) return false
   if (filters.formats.size && !filters.formats.has(session.format)) return false
   if (filters.rooms.size && !(session.room && filters.rooms.has(session.room))) return false
   if (filters.languages.size && !filters.languages.has(session.language)) return false
@@ -176,6 +185,22 @@ export function matchesFilters(session: Session, filters: ProgramFilters, view: 
 
 export function activeFilterCount(filters: ProgramFilters): number {
   return filters.formats.size + filters.rooms.size + filters.languages.size
+}
+
+export type SessionTiming = 'now' | 'soon' | null
+
+const SOON_WINDOW_MS = 30 * 60 * 1000
+
+export function getSessionTiming(session: Session, now: Date): SessionTiming {
+  const start = getSessionStart(session)
+  if (!start) return null
+  const end = getSessionEnd(session)
+  const nowMs = now.getTime()
+  const startMs = start.getTime()
+
+  if (end && nowMs >= startMs && nowMs < end.getTime()) return 'now'
+  if (nowMs < startMs && startMs - nowMs <= SOON_WINDOW_MS) return 'soon'
+  return null
 }
 
 export function computeConflicts(sessions: Session[], favorites: Set<string>): Set<string> {

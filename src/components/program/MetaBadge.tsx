@@ -5,12 +5,25 @@ const SIZE_CLASSES = {
   md: 'gap-1.5 px-3 py-1 text-sm',
 } as const
 
-const MetaBadge = ({ icon, label, accent, size = 'sm' }: { icon?: ReactNode; label: string; accent?: boolean; size?: keyof typeof SIZE_CLASSES }) => (
-  <span
-    className={`inline-flex items-center font-medium rounded-full whitespace-nowrap shrink-0 ${SIZE_CLASSES[size]} ${
-      accent ? 'bg-accent-primary/20 text-accent-primary' : 'bg-base-100/40 text-secondary'
-    }`}
-  >
+const TONE_CLASSES = {
+  default: 'bg-base-100/60 text-primary',
+  accent: 'bg-accent-primary/20 text-accent-primary',
+  pop: 'bg-pop text-pop-secondary',
+  'pop-outline': 'bg-transparent border border-pop text-pop',
+} as const
+
+const MetaBadge = ({
+  icon,
+  label,
+  tone = 'default',
+  size = 'sm',
+}: {
+  icon?: ReactNode
+  label: string
+  tone?: keyof typeof TONE_CLASSES
+  size?: keyof typeof SIZE_CLASSES
+}) => (
+  <span className={`inline-flex items-center font-semibold rounded-full whitespace-nowrap shrink-0 ${SIZE_CLASSES[size]} ${TONE_CLASSES[tone]}`}>
     {icon}
     {label}
   </span>

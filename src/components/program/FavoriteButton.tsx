@@ -12,6 +12,26 @@ function getRotation(id: string): number {
   return ROTATION_MIN + (Math.abs(hash) % (range + 1))
 }
 
+// The starfish silhouette itself — favorited shows its full multi-color illustration,
+// unfavorited flattens to a monochrome shade of whatever text color the caller applies.
+export const FavoriteStarfishIcon = ({
+  sessionId,
+  isFavorite,
+  className = 'w-11 h-11',
+}: {
+  sessionId: string
+  isFavorite: boolean
+  className?: string
+}) => (
+  <span
+    aria-hidden="true"
+    aria-pressed={isFavorite}
+    className={`favorite-icon inline-block shrink-0 ${className}`}
+    style={{ transform: `rotate(${getRotation(sessionId)}deg)` }}
+    dangerouslySetInnerHTML={{ __html: starfishSvg }}
+  />
+)
+
 const FavoriteButton = ({ sessionId, isFavorite, onToggle }: { sessionId: string; isFavorite: boolean; onToggle: () => void }) => (
   <button
     type="button"
@@ -21,10 +41,14 @@ const FavoriteButton = ({ sessionId, isFavorite, onToggle }: { sessionId: string
     }}
     aria-pressed={isFavorite}
     aria-label="Toggle favorite"
-    className={`shrink-0 -m-3 w-11 h-11 favorite-icon transition-opacity ${isFavorite ? '' : 'text-secondary opacity-40 hover:opacity-60'}`}
-    style={{ transform: `rotate(${getRotation(sessionId)}deg)` }}
-    dangerouslySetInnerHTML={{ __html: starfishSvg }}
-  />
+    className="shrink-0 -m-3 w-11 h-11 group"
+  >
+    <FavoriteStarfishIcon
+      sessionId={sessionId}
+      isFavorite={isFavorite}
+      className={`favorite-icon--card w-11 h-11 transition-opacity ${isFavorite ? '' : 'text-secondary opacity-40 group-hover:opacity-60'}`}
+    />
+  </button>
 )
 
 export default FavoriteButton

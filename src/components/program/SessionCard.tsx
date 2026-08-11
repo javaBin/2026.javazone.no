@@ -1,11 +1,12 @@
-import { type KeyboardEvent, type MouseEvent, useRef } from 'react'
+import { type MouseEvent, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 import FavoriteButton from '@/components/program/FavoriteButton'
 import { ClockIcon, LanguageIcon, RoomIcon } from '@/components/program/icons'
 import KeywordTags from '@/components/program/KeywordTags'
 import MetaBadge from '@/components/program/MetaBadge'
 import { type Session } from '@/lib/fetchProgram'
-import { formatDuration, getDurationMinutes, getFormatLabel, getKeywords } from '@/lib/program'
+import { formatDuration, getDurationMinutes, getFormatLabel, getKeywords, getSessionTiming } from '@/lib/program'
 
 const SessionCard = ({
   session,
@@ -13,12 +14,14 @@ const SessionCard = ({
   isConflict,
   onToggleFavorite,
   onOpen,
+  now,
 }: {
   session: Session
   isFavorite: boolean
   isConflict: boolean
   onToggleFavorite: () => void
   onOpen: () => void
+  now: Date
 }) => {
   const ref = useRef<HTMLElement | null>(null)
 
@@ -32,46 +35,46 @@ const SessionCard = ({
   }
   const onLeave = () => ref.current?.style.setProperty('--glow-opacity', '0')
 
-  const onKeyDown = (e: KeyboardEvent<HTMLElement>) => {
-    if (e.target !== e.currentTarget) return
-    if (e.key !== 'Enter' && e.key !== ' ') return
-    e.preventDefault()
-    onOpen()
-  }
-
   const duration = formatDuration(getDurationMinutes(session))
   const formatLabel = getFormatLabel(session)
   const languageLabel = session.language.slice(0, 2).toUpperCase()
   const keywords = getKeywords(session)
+  const timing = getSessionTiming(session, now)
 
   return (
     <article
       ref={ref}
-      role="button"
-      tabIndex={0}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       onClick={onOpen}
-      onKeyDown={onKeyDown}
-      className={`flex flex-col h-full gap-3 px-5 py-4 shadow-xl cursor-pointer glow-card rounded-3xl bg-base-200 outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
+      className={`flex flex-col h-full gap-3 px-5 py-4 shadow-xl cursor-pointer glow-card rounded-3xl bg-base-200 ${
         isConflict ? 'ring-1 ring-accent-secondary/30' : ''
       }`}
     >
       <div className="flex items-start justify-between gap-2">
         <div className="flex flex-nowrap min-w-0 gap-1.5 overflow-x-auto">
+          {timing && <MetaBadge label={timing === 'now' ? 'Now' : 'Soon'} tone={timing === 'now' ? 'pop' : 'pop-outline'} />}
           {session.room && <MetaBadge icon={<RoomIcon />} label={session.room} />}
           {duration && <MetaBadge icon={<ClockIcon />} label={duration} />}
-          {formatLabel && <MetaBadge label={formatLabel} accent />}
+          {formatLabel && <MetaBadge label={formatLabel} tone="accent" />}
           {languageLabel && <MetaBadge icon={<LanguageIcon />} label={languageLabel} />}
         </div>
         <FavoriteButton sessionId={session.sessionId} isFavorite={isFavorite} onToggle={onToggleFavorite} />
       </div>
 
-      <h3 className="flex-1 m-0 text-base font-bold leading-snug text-primary">{session.title}</h3>
+      <h3 className="flex-1 m-0 text-base font-bold leading-snug text-primary">
+        <Link
+          to={`/program/${session.sessionId}`}
+          onClick={(e) => e.stopPropagation()}
+          className="text-primary no-underline rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+        >
+          {session.title}
+        </Link>
+      </h3>
 
       <div className="relative flex flex-col gap-0.5">
         {session.speakers.map((s) => (
-          <p key={s.name} className="m-0 text-sm italic text-left text-primary/80">
+          <p key={s.name} className="m-0 text-sm italic text-left text-primary/90">
             {s.name}
           </p>
         ))}

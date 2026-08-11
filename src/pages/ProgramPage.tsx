@@ -10,9 +10,11 @@ import ScheduleList from '@/components/program/ScheduleList'
 import SearchToolbar from '@/components/program/SearchToolbar'
 import ViewTabs from '@/components/program/ViewTabs'
 import { useFavorites } from '@/hooks/useFavorites'
+import { useNow } from '@/hooks/useNow'
 import { useProgram } from '@/hooks/useProgram'
 import {
   activeFilterCount,
+  ALL_DAYS,
   computeConflicts,
   createEmptyFilters,
   getDays,
@@ -21,12 +23,14 @@ import {
   matchesFilters,
   type ProgramFilters,
   type ProgramView,
+  sortSessionsByStart,
 } from '@/lib/program'
 
 const ProgramPage = () => {
   const { sessions, loading, error, stale, retry } = useProgram()
   const { favorites, toggle: toggleFavorite } = useFavorites()
   const navigate = useNavigate()
+  const now = useNow()
 
   const [view, setView] = useState<ProgramView>('schedule')
   const [filterPanelOpen, setFilterPanelOpen] = useState(false)
@@ -38,13 +42,17 @@ const ProgramPage = () => {
 
   useEffect(() => {
     if (!days.length) return
-    if (!filters.day || !days.includes(filters.day)) {
+    if (!filters.day || (filters.day !== ALL_DAYS && !days.includes(filters.day))) {
       setFilters((f) => ({ ...f, day: days[0] }))
     }
   }, [days, filters.day])
 
   const filtered = useMemo(() => sessions.filter((s) => matchesFilters(s, filters, view, favorites)), [sessions, filters, view, favorites])
-  const groups = useMemo(() => groupSessionsByTime(filtered), [filtered])
+  const showTimeHeaders = filters.day !== ALL_DAYS
+  const groups = useMemo(
+    () => (showTimeHeaders ? groupSessionsByTime(filtered) : [{ time: 'all', sessions: sortSessionsByStart(filtered) }]),
+    [filtered, showTimeHeaders],
+  )
   const filterCount = activeFilterCount(filters)
 
   const toggleFilterValue = (key: FilterKey, value: string) => {
@@ -124,6 +132,8 @@ const ProgramPage = () => {
             conflicts={conflicts}
             onToggleFavorite={toggleFavorite}
             onOpenSession={(session) => navigate(`/program/${session.sessionId}`)}
+            showTimeHeaders={showTimeHeaders}
+            now={now}
           />
         )}
       </div>

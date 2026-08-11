@@ -9,20 +9,26 @@ const ScheduleList = ({
   conflicts,
   onToggleFavorite,
   onOpenSession,
+  showTimeHeaders = true,
+  now,
 }: {
   groups: SessionGroup[]
   favorites: Set<string>
   conflicts: Set<string>
   onToggleFavorite: (sessionId: string) => void
   onOpenSession: (session: Session) => void
+  showTimeHeaders?: boolean
+  now: Date
 }) => (
   <div className="flex flex-col gap-10">
     {groups.map((group) => (
       <section key={group.time}>
-        <div className="flex items-center gap-4 mb-4">
-          <Heading level="h2">{group.time}</Heading>
-          <div className="flex-1 h-px bg-primary/20" />
-        </div>
+        {showTimeHeaders && (
+          <div className="flex items-center gap-4 mb-4">
+            <Heading level="h2">{group.time}</Heading>
+            <div className="flex-1 h-px bg-primary/20" />
+          </div>
+        )}
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
           {group.sessions.map((s) => (
@@ -33,6 +39,7 @@ const ScheduleList = ({
               isConflict={conflicts.has(s.sessionId)}
               onToggleFavorite={() => onToggleFavorite(s.sessionId)}
               onOpen={() => onOpenSession(s)}
+              now={now}
             />
           ))}
         </div>
