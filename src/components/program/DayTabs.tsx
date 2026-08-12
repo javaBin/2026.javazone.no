@@ -35,7 +35,7 @@ const DayTabs = ({ days, activeDay, onSelect }: { days: string[]; activeDay: str
           onClick={() => onSelect(d)}
           onKeyDown={(e) => onKeyDown(e, index)}
           className={`shrink-0 px-4 py-1.5 text-xs font-semibold rounded-full transition-colors outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
-            activeDay === d ? 'bg-accent-primary text-base-200' : 'bg-base-200 text-secondary hover:text-primary'
+            activeDay === d ? 'bg-accent-primary text-base-300' : 'bg-base-200 text-secondary hover:text-primary'
           }`}
         >
           {d === ALL_DAYS ? 'All' : formatDayLabel(d)}

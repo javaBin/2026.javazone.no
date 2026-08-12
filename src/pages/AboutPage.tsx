@@ -1,6 +1,11 @@
 import { BubbleField, Heading, LinkButton } from '@/components'
+import { useMetaDescription } from '@/hooks/useMetaDescription'
 
 const AboutPage = () => {
+  useMetaDescription(
+    'About JavaZone, the community-driven Java conference organized by javaBin since 2001 — our principles, code of conduct, food, and sustainability efforts.',
+  )
+
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-8 pt-20 mb-20 space-y-8">
       <BubbleField variant="subtle" />

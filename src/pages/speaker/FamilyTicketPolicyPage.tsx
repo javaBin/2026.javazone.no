@@ -1,4 +1,5 @@
 import { BubbleField, Card, Heading } from '@/components'
+import { useMetaDescription } from '@/hooks/useMetaDescription'
 
 const gradients: [string, string][] = [
   ['#1a7fd4', '#006bc4'],
@@ -6,6 +7,10 @@ const gradients: [string, string][] = [
 ]
 
 const FamilyTicketPolicyPage = () => {
+  useMetaDescription(
+    "JavaZone 2026 speaker family ticket policy — who's eligible, the short-visit pass and discounted full conference ticket, and how to request one.",
+  )
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
       <BubbleField variant="subtle" />

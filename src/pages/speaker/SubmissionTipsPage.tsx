@@ -1,4 +1,5 @@
 import { BubbleField, Card, Heading } from '@/components'
+import { useMetaDescription } from '@/hooks/useMetaDescription'
 
 const gradients: [string, string][] = [
   ['#0080e8', '#007adf'],
@@ -22,6 +23,8 @@ const gradients: [string, string][] = [
 ]
 
 const SubmissionTipsPage = () => {
+  useMetaDescription('Tips for writing a strong JavaZone talk or workshop proposal, plus the most common reasons submissions get rejected.')
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
       <BubbleField variant="subtle" />

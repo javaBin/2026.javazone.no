@@ -1,7 +1,12 @@
 import { Assets } from '@/Assets'
 import { BubbleField, Heading, LinkButton, Submarine, WaveBackground } from '@/components'
+import { useMetaDescription } from '@/hooks/useMetaDescription'
 
 const MainPage = () => {
+  useMetaDescription(
+    'JavaZone 2026 takes place September 2–3 at NOVA Spektrum, Lillestrøm, Norway. Explore the program and get your ticket to the biggest community-driven Java conference.',
+  )
+
   return (
     <div className="flex items-center justify-center flex-1 mt-14 text-base-content">
       <BubbleField variant="big" />

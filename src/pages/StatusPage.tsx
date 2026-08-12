@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { Heading } from '@/components'
 import statusData from '@/data/statusData.json'
+import { useMetaDescription } from '@/hooks/useMetaDescription'
 
 interface Talk {
   id: string
@@ -48,6 +49,8 @@ const TalkCard = ({ talk, dim = false }: { talk: Talk; dim?: boolean }) => {
 }
 
 const StatusPage = () => {
+  useMetaDescription("Live JavaZone 2026 status board showing what's on stage now and what's coming up next across all rooms.")
+
   const [time, setTime] = useState(new Date())
 
   useEffect(() => {
