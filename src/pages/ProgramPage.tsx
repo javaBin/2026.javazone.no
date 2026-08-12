@@ -1,158 +1,201 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useMemo, useState } from 'react'
 
 import { BubbleField, Heading } from '@/components'
-import { fetchProgram, type Session } from '@/lib/fetchProgram'
-
-// ── constants ─────────────────────────────────────────────────────────────────
-
-const FORMAT_ORDER = ['lightning-talk', 'presentation', 'workshop'] as const
-type KnownFormat = (typeof FORMAT_ORDER)[number]
-
-const FORMAT_LABEL: Record<string, string> = {
-  'lightning-talk': 'Lightning Talks',
-  presentation: 'Presentations',
-  workshop: 'Workshops',
-}
-
-const LANGUAGE_LABEL: Record<string, string> = { no: 'Norwegian', en: 'English' }
-
-// ── helpers ───────────────────────────────────────────────────────────────────
-
-function groupByFormat(sessions: Session[]): { format: string; label: string; sessions: Session[] }[] {
-  const buckets = new Map<string, Session[]>(FORMAT_ORDER.map((f) => [f, []]))
-
-  for (const s of sessions) {
-    const key: string = (FORMAT_ORDER as readonly string[]).includes(s.format) ? s.format : 'presentation'
-    buckets.get(key)!.push(s)
-  }
-
-  return FORMAT_ORDER.map((format: KnownFormat) => ({
-    format,
-    label: FORMAT_LABEL[format],
-    sessions: buckets.get(format) ?? [],
-  })).filter((g) => g.sessions.length > 0)
-}
-
-// ── SessionCard ───────────────────────────────────────────────────────────────
-
-const SessionCard = ({ session, onClick }: { session: Session; onClick: () => void }) => {
-  const ref = useRef<HTMLElement | null>(null)
-
-  const onMove = (e: React.MouseEvent<HTMLElement>) => {
-    const el = ref.current
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    el.style.setProperty('--glow-x', `${e.clientX - rect.left}px`)
-    el.style.setProperty('--glow-y', `${e.clientY - rect.top}px`)
-    el.style.setProperty('--glow-opacity', '1')
-  }
-  const onLeave = () => ref.current?.style.setProperty('--glow-opacity', '0')
-
-  const meta = [FORMAT_LABEL[session.format] ?? session.format, LANGUAGE_LABEL[session.language] ?? session.language].filter(Boolean).join(' · ')
-
-  return (
-    <article
-      ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      onClick={onClick}
-      className="flex flex-col h-full gap-3 px-5 py-4 shadow-xl cursor-pointer glow-card rounded-3xl bg-base-200"
-    >
-      <p className="m-0 text-xs font-medium text-left text-secondary">{meta}</p>
-
-      <h3 className="flex-1 m-0 text-base font-bold leading-snug text-primary">{session.title}</h3>
-
-      <div className="flex flex-col gap-0.5">
-        {session.speakers.map((s) => (
-          <p key={s.name} className="m-0 text-sm italic text-left text-primary/80">
-            {s.name}
-          </p>
-        ))}
-      </div>
-    </article>
-  )
-}
-
-// ── Loading skeleton ──────────────────────────────────────────────────────────
-
-const Skeleton = () => (
-  <div className="flex flex-col gap-10">
-    {Array.from({ length: 3 }).map((_, i) => (
-      <div key={i} className="flex flex-col gap-4">
-        <div className="w-32 h-8 rounded-full bg-base-100/60 animate-pulse" />
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {Array.from({ length: 6 }).map((_, j) => (
-            <div key={j} className="flex flex-col gap-3 px-5 py-4 rounded-3xl bg-base-200 animate-pulse h-32">
-              <div className="h-2.5 w-1/2 rounded-full bg-base-300/60" />
-              <div className="w-5/6 h-4 rounded-full bg-base-300/40" />
-              <div className="h-2.5 w-1/3 rounded-full bg-base-300/30" />
-            </div>
-          ))}
-        </div>
-      </div>
-    ))}
-  </div>
-)
-
-// ── ProgramPage ───────────────────────────────────────────────────────────────
+import DayTabs from '@/components/program/DayTabs'
+import { type FilterKey } from '@/components/program/FilterPanel'
+import FilterPanel from '@/components/program/FilterPanel'
+import LiveCountdown from '@/components/program/LiveCountdown'
+import ProgramSkeleton from '@/components/program/ProgramSkeleton'
+import ScheduleList from '@/components/program/ScheduleList'
+import SearchToolbar from '@/components/program/SearchToolbar'
+import TimetableGrid from '@/components/program/TimetableGrid'
+import ViewTabs from '@/components/program/ViewTabs'
+import { useFavorites } from '@/hooks/useFavorites'
+import { useMetaDescription } from '@/hooks/useMetaDescription'
+import { useNow } from '@/hooks/useNow'
+import { useProgram } from '@/hooks/useProgram'
+import {
+  activeFilterCount,
+  ALL_DAYS,
+  computeConflicts,
+  createEmptyFilters,
+  getConferenceStart,
+  getDays,
+  getFacets,
+  groupSessionsByDayAndTime,
+  groupSessionsByTime,
+  matchesFilters,
+  partitionLiveSessions,
+  type ProgramFilters,
+  type ProgramView,
+  type SessionGroup,
+  sortSessionsByStart,
+} from '@/lib/program'
 
 const ProgramPage = () => {
-  const [sessions, setSessions] = useState<Session[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-  const navigate = useNavigate()
+  useMetaDescription(
+    "Browse the full JavaZone 2026 schedule — search and filter talks and workshops, build your personal schedule, and see what's happening live at NOVA Spektrum.",
+  )
+
+  const { sessions, loading, error, retry } = useProgram()
+  const { favorites, toggle: toggleFavorite } = useFavorites()
+  const now = useNow()
+
+  const [view, setView] = useState<ProgramView>('schedule')
+  const [filterPanelOpen, setFilterPanelOpen] = useState(false)
+  const [filters, setFilters] = useState<ProgramFilters>(createEmptyFilters)
+
+  const days = useMemo(() => getDays(sessions), [sessions])
+  const facets = useMemo(() => getFacets(sessions), [sessions])
+  const conflicts = useMemo(() => computeConflicts(sessions, favorites), [sessions, favorites])
+  const conferenceStart = useMemo(() => getConferenceStart(sessions), [sessions])
 
   useEffect(() => {
-    fetchProgram()
-      .then((data) => {
-        setSessions(data)
-        setLoading(false)
-      })
-      .catch((err: unknown) => {
-        setError(err instanceof Error ? err.message : 'Unknown error')
-        setLoading(false)
-      })
-  }, [])
+    if (!days.length) return
+    if (!filters.day || (filters.day !== ALL_DAYS && !days.includes(filters.day))) {
+      setFilters((f) => ({ ...f, day: days[0] }))
+    }
+  }, [days, filters.day])
 
-  const groups = groupByFormat(sessions)
+  const isLiveView = view === 'live'
+  const isMyScheduleView = view === 'my-schedule'
+  const filtered = useMemo(() => sessions.filter((s) => matchesFilters(s, filters, view, favorites)), [sessions, filters, view, favorites])
+  const isFirstDaySelected = !isLiveView && !isMyScheduleView && days.length > 0 && filters.day === days[0]
+  const showTimeHeaders = filters.day !== ALL_DAYS
+  const groups = useMemo(
+    () => (showTimeHeaders ? groupSessionsByTime(filtered) : [{ time: 'all', sessions: sortSessionsByStart(filtered) }]),
+    [filtered, showTimeHeaders],
+  )
+  const dayGroups = useMemo(() => (isMyScheduleView ? groupSessionsByDayAndTime(filtered) : []), [isMyScheduleView, filtered])
+  const liveGroups = useMemo(() => {
+    if (!isLiveView) return []
+    const { current, upNext } = partitionLiveSessions(filtered, now)
+    const result: SessionGroup[] = []
+    if (current.length) result.push({ time: 'Happening now', sessions: current })
+    if (upNext.length) result.push({ time: 'Up next', sessions: upNext })
+    return result
+  }, [isLiveView, filtered, now])
+  const filterCount = activeFilterCount(filters)
+  const hasStarted = !conferenceStart || now.getTime() >= conferenceStart.getTime()
+  const showCountdown = isLiveView && !hasStarted
+
+  const toggleFilterValue = (key: FilterKey, value: string) => {
+    setFilters((f) => {
+      const next = new Set(f[key])
+      if (next.has(value)) next.delete(value)
+      else next.add(value)
+      return { ...f, [key]: next }
+    })
+  }
+
+  const clearFilters = () => setFilters((f) => ({ ...f, formats: new Set(), rooms: new Set(), languages: new Set() }))
+  const isEmpty = isLiveView ? liveGroups.length === 0 : filtered.length === 0
 
   return (
     <div className="min-h-screen pt-20 pb-24">
       <BubbleField variant="subtle" />
-      <div className="px-4 mx-auto max-w-7xl md:px-8">
+      <div className="relative z-20 px-4 mx-auto max-w-7xl md:px-8">
         <div className="py-8">
           <Heading level="h1">Program</Heading>
         </div>
 
-        {loading && <Skeleton />}
+        <ViewTabs view={view} favoriteCount={favorites.size} onChange={setView} />
 
-        {error && (
-          <div className="px-5 py-12 text-center rounded-3xl bg-base-200">
-            <p className="m-0 font-semibold text-primary">Could not load program</p>
-            <p className="m-0 mt-2 text-sm text-center text-secondary">{error}</p>
-          </div>
+        <SearchToolbar
+          query={filters.query}
+          onQueryChange={(query) => setFilters((f) => ({ ...f, query }))}
+          filterPanelOpen={filterPanelOpen}
+          onToggleFilterPanel={() => setFilterPanelOpen((v) => !v)}
+          filterCount={filterCount}
+        />
+
+        {filterPanelOpen && (
+          <FilterPanel facets={facets} filters={filters} filterCount={filterCount} onToggle={toggleFilterValue} onClear={clearFilters} />
         )}
 
-        {!loading && !error && (
-          <div className="flex flex-col gap-16">
-            {groups.map((group) => (
-              <section key={group.format}>
-                <div className="flex items-center gap-4 mb-8">
-                  <Heading level="h2">{group.label}</Heading>
-                  <div className="flex-1 h-px bg-primary/20" />
-                  <span className="text-xs text-secondary">{group.sessions.length}</span>
-                </div>
-
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-                  {group.sessions.map((s) => (
-                    <SessionCard key={s.sessionId} session={s} onClick={() => navigate(`/program/${s.sessionId}`)} />
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
+        {days.length > 1 && !isLiveView && !isMyScheduleView && (
+          <DayTabs days={days} activeDay={filters.day} onSelect={(day) => setFilters((f) => ({ ...f, day }))} />
         )}
+
+        <div id="program-panel" role="tabpanel" aria-label="Program results">
+          {loading && <ProgramSkeleton />}
+
+          {error && !loading && (
+            <div role="status" className="px-5 py-12 text-center rounded-3xl bg-base-200">
+              <p className="m-0 font-semibold text-primary">Could not load program</p>
+              <p className="m-0 mt-2 text-sm text-secondary">{error}</p>
+              <button
+                type="button"
+                onClick={retry}
+                title="Try loading the program again"
+                className="px-4 py-2 mt-4 text-sm font-semibold rounded-2xl outline-none bg-accent-primary/20 text-accent-primary hover:bg-accent-primary/30 focus-visible:ring-2 focus-visible:ring-accent-primary"
+              >
+                Retry
+              </button>
+            </div>
+          )}
+
+          {!loading && !error && showCountdown && conferenceStart && <LiveCountdown target={conferenceStart} />}
+
+          {!loading && !error && !showCountdown && isEmpty && (
+            <div role="status" className="px-5 py-12 text-center rounded-3xl bg-base-200">
+              <p className="m-0 text-secondary">
+                {view === 'my-schedule'
+                  ? 'No favorites yet. Tap the favorite icon on any session to add it to your schedule.'
+                  : isLiveView
+                    ? "Nothing's happening right now, and nothing's on the horizon yet."
+                    : 'No sessions match your filters.'}
+              </p>
+            </div>
+          )}
+
+          {!loading && !error && !showCountdown && isLiveView && !isEmpty && (
+            <ScheduleList groups={liveGroups} favorites={favorites} conflicts={conflicts} onToggleFavorite={toggleFavorite} now={now} />
+          )}
+
+          {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
+            <div className="mb-4">
+              <Heading level="h2">Workshops</Heading>
+            </div>
+          )}
+
+          {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
+            <TimetableGrid sessions={filtered} favorites={favorites} conflicts={conflicts} onToggleFavorite={toggleFavorite} now={now} />
+          )}
+
+          {!loading && !error && !isLiveView && !isMyScheduleView && !isEmpty && (
+            <div className={isFirstDaySelected ? 'md:hidden' : ''}>
+              <ScheduleList
+                groups={groups}
+                favorites={favorites}
+                conflicts={conflicts}
+                onToggleFavorite={toggleFavorite}
+                showTimeHeaders={showTimeHeaders}
+                now={now}
+              />
+            </div>
+          )}
+
+          {!loading && !error && isMyScheduleView && !isEmpty && (
+            <div className="flex flex-col gap-10">
+              {dayGroups.map((dayGroup) => (
+                <section key={dayGroup.day}>
+                  <Heading level="h2" className="mb-4">
+                    {dayGroup.label}
+                  </Heading>
+                  <ScheduleList
+                    groups={dayGroup.timeGroups}
+                    favorites={favorites}
+                    conflicts={conflicts}
+                    onToggleFavorite={toggleFavorite}
+                    timeHeadingLevel="h3"
+                    now={now}
+                  />
+                </section>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

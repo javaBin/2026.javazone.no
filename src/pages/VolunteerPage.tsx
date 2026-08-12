@@ -1,6 +1,11 @@
 import { BubbleField, Heading, LinkButton } from '@/components'
+import { useMetaDescription } from '@/hooks/useMetaDescription'
 
 const VolunteerPage = () => {
+  useMetaDescription(
+    'Volunteer at JavaZone 2026 — find out what volunteers do, who can apply, and answers to frequently asked questions, then sign up.',
+  )
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
       <BubbleField variant="subtle" />

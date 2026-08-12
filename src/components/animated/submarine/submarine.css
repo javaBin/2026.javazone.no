@@ -16,23 +16,6 @@
   --submarine-bubble: #5c9eff;
 }
 
-[data-theme='dark'] {
-  --submarine-body: #1a4a7a;
-  --submarine-sail: color-mix(in srgb, #0e3660 65%, black);
-  --submarine-shadow: color-mix(in srgb, #0e3660 45%, black);
-  --submarine-highlight: #2a6aaa;
-  --submarine-periscope: #0e3660;
-
-  --submarine-propeller-dark: #a8c8e8;
-  --submarine-propeller-light: #ddeefa;
-
-  --submarine-window-base: #a8c8e8;
-  --submarine-window-light: #ddeefa;
-
-  --submarine-spotlight: #ddeefa;
-  --submarine-bubble: #a8c8e8;
-}
-
 .submarine__container {
   position: fixed;
   width: 400px;

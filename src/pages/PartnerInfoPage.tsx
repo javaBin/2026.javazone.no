@@ -1,6 +1,11 @@
 import { Heading, Packages } from '@/components'
+import { useMetaDescription } from '@/hooks/useMetaDescription'
 
 const PartnerInfoPage = () => {
+  useMetaDescription(
+    'Detailed information for JavaZone 2026 partners — the first partner meeting recording, available packages and tickets, and how to contact the partner team.',
+  )
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
       <section className="text-left max-w-2xl w-full space-y-4">

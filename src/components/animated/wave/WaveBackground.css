@@ -22,11 +22,6 @@
   mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
 
-/* Dark mode: replace light sky gradient with deep ocean */
-[data-theme='dark'] .wave-container {
-  --wave-bg: var(--ocean-linear-gradient);
-}
-
 .waves {
   position: absolute;
   bottom: 0;

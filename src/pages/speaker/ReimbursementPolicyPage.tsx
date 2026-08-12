@@ -1,6 +1,11 @@
 import { BubbleField, Heading } from '@/components'
+import { useMetaDescription } from '@/hooks/useMetaDescription'
 
 const ReimbursementPolicyPage = () => {
+  useMetaDescription(
+    "JavaZone 2026 speaker reimbursement policy — how to apply for travel and accommodation coverage, deadlines, and what's included.",
+  )
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
       <BubbleField variant="subtle" />

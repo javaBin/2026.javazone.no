@@ -4,7 +4,6 @@ import { BrowserRouter, useLocation } from 'react-router-dom'
 
 import { Footer, Header } from '@/components'
 import { MotionProvider } from '@/hooks/useMotion'
-import { ThemeProvider } from '@/hooks/useTheme'
 import { AppRoutes, ScrollManager } from '@/routes'
 
 const STATUS_ROUTES = ['/status']
@@ -35,13 +34,11 @@ const AppLayout = () => {
 
 const App = () => {
   return (
-    <ThemeProvider>
-      <MotionProvider>
-        <BrowserRouter>
-          <AppLayout />
-        </BrowserRouter>
-      </MotionProvider>
-    </ThemeProvider>
+    <MotionProvider>
+      <BrowserRouter>
+        <AppLayout />
+      </BrowserRouter>
+    </MotionProvider>
   )
 }
 
