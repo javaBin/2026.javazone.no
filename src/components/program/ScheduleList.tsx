@@ -8,6 +8,7 @@ const ScheduleList = ({
   conflicts,
   onToggleFavorite,
   showTimeHeaders = true,
+  timeHeadingLevel = 'h2',
   now,
 }: {
   groups: SessionGroup[]
@@ -15,6 +16,7 @@ const ScheduleList = ({
   conflicts: Set<string>
   onToggleFavorite: (sessionId: string) => void
   showTimeHeaders?: boolean
+  timeHeadingLevel?: 'h2' | 'h3'
   now: Date
 }) => (
   <div className="flex flex-col gap-10">
@@ -22,7 +24,7 @@ const ScheduleList = ({
       <section key={group.time}>
         {showTimeHeaders && (
           <div className="flex items-center gap-4 mb-4">
-            <Heading level="h2">{group.time}</Heading>
+            <Heading level={timeHeadingLevel}>{group.time}</Heading>
             <div className="flex-1 h-px bg-primary/20" />
           </div>
         )}

@@ -104,24 +104,44 @@ export function formatDuration(minutes: number | null): string | null {
   return remainder === 0 ? `${hours}h` : `${hours}h ${remainder}min`
 }
 
+// Some speakers filled the keyword field in with a single string using #, -, ;, · or ' as an
+// informal separator instead of commas (the ' case is each tag individually quoted, e.g.
+// "'Linux' 'Containers'" — splitting on it and dropping the now-empty bits between quotes
+// recovers the tags). A single dash or apostrophe is often legitimate (e.g. "front-end",
+// "O'Reilly"), so only treat a character as the real separator once it shows up more than twice.
+const KEYWORD_MISUSE_DELIMITERS = ['#', '-', ';', '·', "'"]
+const KEYWORD_MISUSE_THRESHOLD = 2
+
+function splitMisusedKeyword(keyword: string): string[] {
+  for (const delimiter of KEYWORD_MISUSE_DELIMITERS) {
+    if (keyword.split(delimiter).length - 1 > KEYWORD_MISUSE_THRESHOLD) {
+      return keyword
+        .split(delimiter)
+        .map((k) => k.trim())
+        .filter(Boolean)
+    }
+  }
+  return [keyword]
+}
+
 export function getKeywords(session: Session): string[] {
   return (
     session.suggestedKeywords
       ?.split(',')
       .map((k) => k.trim())
-      .filter(Boolean) ?? []
+      .filter(Boolean)
+      .flatMap(splitMisusedKeyword) ?? []
   )
 }
 
-// "stream api" -> "#StreamApi" — capitalizes just the first letter of each word (so an
-// already-uppercase acronym like "API" survives untouched), then strips the spaces.
+// "stream api" -> "Stream Api" — capitalizes just the first letter of each word (so an
+// already-uppercase acronym like "API" survives untouched), keeping the spaces between them.
 export function formatKeywordTag(keyword: string): string {
-  const titled = keyword
+  return keyword
     .split(/\s+/)
     .filter(Boolean)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('')
-  return `#${titled}`
+    .join(' ')
 }
 
 export function getDays(sessions: Session[]): string[] {
@@ -147,6 +167,27 @@ const LIGHTNING_TALK_FORMAT = 'lightning-talk'
 // to, which would otherwise land them in their own sparse, single-talk time group. Fold
 // a lightning-only group into the slot right before it as long as it starts soon after.
 const LIGHTNING_MERGE_WINDOW_MS = 60 * 60 * 1000
+
+export interface DayGroup {
+  day: string
+  label: string
+  timeGroups: SessionGroup[]
+}
+
+// My schedule view: group favorites by day (ignoring the day tab/filter entirely) with
+// each day's sessions further broken down by time, same as the regular schedule view.
+export function groupSessionsByDayAndTime(sessions: Session[]): DayGroup[] {
+  const byDay = new Map<string, Session[]>()
+  for (const s of sessions) {
+    const day = getDayKey(s)
+    if (!byDay.has(day)) byDay.set(day, [])
+    byDay.get(day)!.push(s)
+  }
+
+  return Array.from(byDay.keys())
+    .sort()
+    .map((day) => ({ day, label: formatDayLabel(day), timeGroups: groupSessionsByTime(byDay.get(day)!) }))
+}
 
 export function groupSessionsByTime(sessions: Session[]): SessionGroup[] {
   const sorted = sortSessionsByStart(sessions)
@@ -241,9 +282,9 @@ export function getFacets(sessions: Session[]): ProgramFacets {
 
 export function matchesFilters(session: Session, filters: ProgramFilters, view: ProgramView, favorites: Set<string>): boolean {
   if (view === 'my-schedule' && !favorites.has(session.sessionId)) return false
-  // Live view looks at the whole event, not just whichever day tab happens to be
-  // selected — "what's on right now" shouldn't depend on that unrelated UI state.
-  if (view !== 'live' && filters.day && filters.day !== ALL_DAYS && getDayKey(session) !== filters.day) return false
+  // Live view and My schedule both look across the whole event, not just whichever day
+  // tab happens to be selected — that's unrelated UI state neither view exposes.
+  if (view !== 'live' && view !== 'my-schedule' && filters.day && filters.day !== ALL_DAYS && getDayKey(session) !== filters.day) return false
   if (filters.formats.size && !filters.formats.has(session.format)) return false
   if (filters.rooms.size && !(session.room && filters.rooms.has(session.room))) return false
   if (filters.languages.size && !filters.languages.has(session.language)) return false

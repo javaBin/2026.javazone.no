@@ -62,7 +62,7 @@ const FavoriteButton = ({
     <FavoriteStarfishIcon
       sessionId={sessionId}
       isFavorite={isFavorite}
-      className={`favorite-icon--card ${SIZE_CLASSES[size].icon} transition-opacity ${isFavorite ? '' : 'text-secondary opacity-40 group-hover:opacity-60'}`}
+      className={`favorite-icon--card ${SIZE_CLASSES[size].icon} transition-opacity ${isFavorite ? '' : 'text-primary opacity-70 group-hover:opacity-90'}`}
     />
   </button>
 )

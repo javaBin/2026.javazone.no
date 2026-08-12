@@ -21,6 +21,7 @@ import {
   getConferenceStart,
   getDays,
   getFacets,
+  groupSessionsByDayAndTime,
   groupSessionsByTime,
   matchesFilters,
   partitionLiveSessions,
@@ -52,13 +53,15 @@ const ProgramPage = () => {
   }, [days, filters.day])
 
   const isLiveView = view === 'live'
+  const isMyScheduleView = view === 'my-schedule'
   const filtered = useMemo(() => sessions.filter((s) => matchesFilters(s, filters, view, favorites)), [sessions, filters, view, favorites])
-  const isFirstDaySelected = !isLiveView && days.length > 0 && filters.day === days[0]
+  const isFirstDaySelected = !isLiveView && !isMyScheduleView && days.length > 0 && filters.day === days[0]
   const showTimeHeaders = filters.day !== ALL_DAYS
   const groups = useMemo(
     () => (showTimeHeaders ? groupSessionsByTime(filtered) : [{ time: 'all', sessions: sortSessionsByStart(filtered) }]),
     [filtered, showTimeHeaders],
   )
+  const dayGroups = useMemo(() => (isMyScheduleView ? groupSessionsByDayAndTime(filtered) : []), [isMyScheduleView, filtered])
   const liveGroups = useMemo(() => {
     if (!isLiveView) return []
     const { current, upNext } = partitionLiveSessions(filtered, now)
@@ -105,65 +108,89 @@ const ProgramPage = () => {
           <FilterPanel facets={facets} filters={filters} filterCount={filterCount} onToggle={toggleFilterValue} onClear={clearFilters} />
         )}
 
-        {days.length > 1 && !isLiveView && <DayTabs days={days} activeDay={filters.day} onSelect={(day) => setFilters((f) => ({ ...f, day }))} />}
-
-        {loading && <ProgramSkeleton />}
-
-        {error && !loading && (
-          <div className="px-5 py-12 text-center rounded-3xl bg-base-200">
-            <p className="m-0 font-semibold text-primary">Could not load program</p>
-            <p className="m-0 mt-2 text-sm text-secondary">{error}</p>
-            <button
-              type="button"
-              onClick={retry}
-              title="Try loading the program again"
-              className="px-4 py-2 mt-4 text-sm font-semibold rounded-2xl outline-none bg-accent-primary/20 text-accent-primary hover:bg-accent-primary/30 focus-visible:ring-2 focus-visible:ring-accent-primary"
-            >
-              Retry
-            </button>
-          </div>
+        {days.length > 1 && !isLiveView && !isMyScheduleView && (
+          <DayTabs days={days} activeDay={filters.day} onSelect={(day) => setFilters((f) => ({ ...f, day }))} />
         )}
 
-        {!loading && !error && showCountdown && conferenceStart && <LiveCountdown target={conferenceStart} />}
+        <div id="program-panel" role="tabpanel" aria-label="Program results">
+          {loading && <ProgramSkeleton />}
 
-        {!loading && !error && !showCountdown && isEmpty && (
-          <div className="px-5 py-12 text-center rounded-3xl bg-base-200">
-            <p className="m-0 text-secondary">
-              {view === 'my-schedule'
-                ? 'No favorites yet. Tap the favorite icon on any session to add it to your schedule.'
-                : isLiveView
-                  ? "Nothing's happening right now, and nothing's on the horizon yet."
-                  : 'No sessions match your filters.'}
-            </p>
-          </div>
-        )}
+          {error && !loading && (
+            <div role="status" className="px-5 py-12 text-center rounded-3xl bg-base-200">
+              <p className="m-0 font-semibold text-primary">Could not load program</p>
+              <p className="m-0 mt-2 text-sm text-secondary">{error}</p>
+              <button
+                type="button"
+                onClick={retry}
+                title="Try loading the program again"
+                className="px-4 py-2 mt-4 text-sm font-semibold rounded-2xl outline-none bg-accent-primary/20 text-accent-primary hover:bg-accent-primary/30 focus-visible:ring-2 focus-visible:ring-accent-primary"
+              >
+                Retry
+              </button>
+            </div>
+          )}
 
-        {!loading && !error && !showCountdown && isLiveView && !isEmpty && (
-          <ScheduleList groups={liveGroups} favorites={favorites} conflicts={conflicts} onToggleFavorite={toggleFavorite} now={now} />
-        )}
+          {!loading && !error && showCountdown && conferenceStart && <LiveCountdown target={conferenceStart} />}
 
-        {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
-          <div className="mb-4">
-            <Heading level="h2">Workshops</Heading>
-          </div>
-        )}
+          {!loading && !error && !showCountdown && isEmpty && (
+            <div role="status" className="px-5 py-12 text-center rounded-3xl bg-base-200">
+              <p className="m-0 text-secondary">
+                {view === 'my-schedule'
+                  ? 'No favorites yet. Tap the favorite icon on any session to add it to your schedule.'
+                  : isLiveView
+                    ? "Nothing's happening right now, and nothing's on the horizon yet."
+                    : 'No sessions match your filters.'}
+              </p>
+            </div>
+          )}
 
-        {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
-          <TimetableGrid sessions={filtered} favorites={favorites} conflicts={conflicts} onToggleFavorite={toggleFavorite} now={now} />
-        )}
+          {!loading && !error && !showCountdown && isLiveView && !isEmpty && (
+            <ScheduleList groups={liveGroups} favorites={favorites} conflicts={conflicts} onToggleFavorite={toggleFavorite} now={now} />
+          )}
 
-        {!loading && !error && !isLiveView && !isEmpty && (
-          <div className={isFirstDaySelected ? 'md:hidden' : ''}>
-            <ScheduleList
-              groups={groups}
-              favorites={favorites}
-              conflicts={conflicts}
-              onToggleFavorite={toggleFavorite}
-              showTimeHeaders={showTimeHeaders}
-              now={now}
-            />
-          </div>
-        )}
+          {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
+            <div className="mb-4">
+              <Heading level="h2">Workshops</Heading>
+            </div>
+          )}
+
+          {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
+            <TimetableGrid sessions={filtered} favorites={favorites} conflicts={conflicts} onToggleFavorite={toggleFavorite} now={now} />
+          )}
+
+          {!loading && !error && !isLiveView && !isMyScheduleView && !isEmpty && (
+            <div className={isFirstDaySelected ? 'md:hidden' : ''}>
+              <ScheduleList
+                groups={groups}
+                favorites={favorites}
+                conflicts={conflicts}
+                onToggleFavorite={toggleFavorite}
+                showTimeHeaders={showTimeHeaders}
+                now={now}
+              />
+            </div>
+          )}
+
+          {!loading && !error && isMyScheduleView && !isEmpty && (
+            <div className="flex flex-col gap-10">
+              {dayGroups.map((dayGroup) => (
+                <section key={dayGroup.day}>
+                  <Heading level="h2" className="mb-4">
+                    {dayGroup.label}
+                  </Heading>
+                  <ScheduleList
+                    groups={dayGroup.timeGroups}
+                    favorites={favorites}
+                    conflicts={conflicts}
+                    onToggleFavorite={toggleFavorite}
+                    timeHeadingLevel="h3"
+                    now={now}
+                  />
+                </section>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

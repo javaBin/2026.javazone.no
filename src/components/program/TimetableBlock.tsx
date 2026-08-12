@@ -2,8 +2,9 @@ import { Link, useLocation } from 'react-router-dom'
 
 import FavoriteButton from '@/components/program/FavoriteButton'
 import { LanguageIcon } from '@/components/program/icons'
+import KeywordTags from '@/components/program/KeywordTags'
 import { type Session } from '@/lib/fetchProgram'
-import { formatTime, getSessionStart, getSessionTiming, LANGUAGE_LABEL } from '@/lib/program'
+import { formatTime, getKeywords, getSessionStart, getSessionTiming, LANGUAGE_LABEL } from '@/lib/program'
 
 // Compact session card for the Gantt-style timetable, where width is proportional to
 // duration and can be quite narrow (a 15min lightning talk vs. a 3hr workshop) — but there's
@@ -27,6 +28,7 @@ const TimetableBlock = ({
   const titleId = `timetable-title-${session.sessionId}`
   const timing = getSessionTiming(session, now)
   const languageLabel = session.language.slice(0, 2).toUpperCase()
+  const keywords = getKeywords(session)
 
   return (
     <article
@@ -38,7 +40,7 @@ const TimetableBlock = ({
         to={`/program/${session.sessionId}`}
         state={{ background: location }}
         aria-labelledby={titleId}
-        className="absolute inset-0 z-0 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+        className="absolute inset-0 z-0 outline-none rounded-xl focus-visible:ring-2 focus-visible:ring-accent-primary"
       />
 
       <div className="flex items-start justify-between gap-1 pointer-events-none">
@@ -54,21 +56,22 @@ const TimetableBlock = ({
             {languageLabel}
           </span>
         </div>
-        <div className="relative z-10 shrink-0 pointer-events-auto">
+        <div className="relative z-10 pointer-events-auto shrink-0">
           <FavoriteButton sessionId={session.sessionId} isFavorite={isFavorite} onToggle={onToggleFavorite} size="sm" />
         </div>
       </div>
 
-      <h4 id={titleId} className="m-0 text-base font-bold leading-snug text-primary pointer-events-none line-clamp-2">
+      <h4 id={titleId} className="m-0 text-base font-bold leading-snug pointer-events-none text-primary line-clamp-2">
         {session.title}
         {isConflict && <span className="sr-only"> — overlaps another favorite</span>}
       </h4>
 
-      {session.speakers.length > 0 && (
-        <p className="m-0 mt-auto text-sm italic leading-snug truncate text-primary/90 pointer-events-none">
-          {session.speakers.map((s) => s.name).join(', ')}
-        </p>
-      )}
+      <div className="flex flex-col gap-1 mt-auto pointer-events-none">
+        {session.speakers.length > 0 && (
+          <p className="m-0 text-sm italic leading-snug truncate text-primary/90">{session.speakers.map((s) => s.name).join(', ')}</p>
+        )}
+        <KeywordTags keywords={keywords} maxVisible={3} maxCombinedLength={27} alwaysShowFirst={false} />
+      </div>
     </article>
   )
 }

@@ -13,7 +13,7 @@ import { formatDuration, formatKeywordTag, getDurationMinutes, getFormatLabel, g
 // deep links) and TalkModal (opened over the program list). Only the "close/back" control
 // in the header (and optionally the title size) differs between the two, so they're passed
 // in rather than hardcoded here.
-const TalkDetails = ({ closeControl, titleClassName = '' }: { closeControl: ReactNode; titleClassName?: string }) => {
+const TalkDetails = ({ closeControl, titleClassName = '', titleId }: { closeControl: ReactNode; titleClassName?: string; titleId?: string }) => {
   const { id } = useParams<{ id: string }>()
   const { sessions, loading, error: loadError } = useProgram()
   const { favorites, toggle: toggleFavorite } = useFavorites()
@@ -58,7 +58,7 @@ const TalkDetails = ({ closeControl, titleClassName = '' }: { closeControl: Reac
 
       {session && (
         <div className="flex flex-col gap-8">
-          <Heading level="h1" className={`!pt-0 !text-left ${titleClassName}`}>
+          <Heading level="h1" id={titleId} className={`!pt-0 !text-left ${titleClassName}`}>
             {session.title}
           </Heading>
 
@@ -119,7 +119,7 @@ const TalkDetails = ({ closeControl, titleClassName = '' }: { closeControl: Reac
                         target="_blank"
                         rel="noopener noreferrer"
                         title={`${speaker.name} on Twitter (opens in a new tab)`}
-                        className="text-xs underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
+                        className="inline-block py-1.5 -my-1.5 text-xs underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
                       >
                         Twitter
                         <span className="sr-only"> (opens in a new tab)</span>
@@ -131,7 +131,7 @@ const TalkDetails = ({ closeControl, titleClassName = '' }: { closeControl: Reac
                         target="_blank"
                         rel="noopener noreferrer"
                         title={`${speaker.name} on LinkedIn (opens in a new tab)`}
-                        className="text-xs underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
+                        className="inline-block py-1.5 -my-1.5 text-xs underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
                       >
                         LinkedIn
                         <span className="sr-only"> (opens in a new tab)</span>
@@ -143,7 +143,7 @@ const TalkDetails = ({ closeControl, titleClassName = '' }: { closeControl: Reac
                         target="_blank"
                         rel="noopener noreferrer"
                         title={`${speaker.name} on Bluesky (opens in a new tab)`}
-                        className="text-xs underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
+                        className="inline-block py-1.5 -my-1.5 text-xs underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
                       >
                         Bluesky
                         <span className="sr-only"> (opens in a new tab)</span>

@@ -1,11 +1,8 @@
 import { useLocation } from 'react-router-dom'
 
-import { useTheme } from '@/hooks/useTheme'
-
 const Footer = () => {
   const { pathname } = useLocation()
   const blur = pathname !== '/' && pathname !== '/test'
-  const { theme, setTheme } = useTheme()
 
   return (
     <footer className="relative w-full z-40 mt-8">
@@ -33,15 +30,6 @@ const Footer = () => {
         >
           Code of conduct
         </a>
-        {theme === 'light' && (
-          <button
-            type="button"
-            aria-hidden="true"
-            tabIndex={-1}
-            onClick={() => setTheme('dark')}
-            className="absolute right-0 bottom-0 w-8 h-8 opacity-0 cursor-default"
-          />
-        )}
       </div>
     </footer>
   )

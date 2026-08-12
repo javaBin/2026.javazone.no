@@ -12,12 +12,15 @@ const SearchToolbar = ({
   filterCount: number
 }) => (
   <div className="flex items-center gap-3 mb-6">
+    <label htmlFor="program-search" className="sr-only">
+      Search sessions
+    </label>
     <input
+      id="program-search"
       type="search"
       value={query}
       onChange={(e) => onQueryChange(e.target.value)}
       placeholder="Search talks, speakers, keywords…"
-      aria-label="Search sessions"
       className="flex-1 min-w-0 px-4 py-2 text-sm rounded-2xl bg-base-200 text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent-primary/50"
     />
     <button

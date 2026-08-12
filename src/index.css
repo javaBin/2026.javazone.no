@@ -2,31 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 /*
-  Legacy ocean variables are always present so components can reference them
-  directly (e.g. wave SVG stops, glow-card). The @theme block defines the
-  light-mode defaults. [data-theme="dark"] overrides @theme vars back to the
-  ocean palette.
-
-  --color-brand (#006bc4) serves as the main dark surface (bg-base-200) in
-  light mode, so Tailwind's --color-primary is reserved for light text (#e6f0ff).
+  --color-brand (#006bc4) serves as the main dark surface (bg-base-200), so
+  Tailwind's --color-primary is reserved for light text (#e6f0ff).
 */
 :root {
-  /* ── Legacy ocean tokens ─────────────────────────────────────────── */
-  --abyss-navy: rgb(7, 26, 43);
-  --deep-ocean: rgb(11, 53, 84);
+  /* Used by the notch-color-scroll animation below, not by any theme switching. */
   --reef-teal: #094d55;
-  --sea-mist: #bee8e6;
-  --cloud-dancer: #f0eee9;
-  --slate-blue-gray: #8fb2c6;
-  --sunbeam-gold: #f2c14e;
-  --coral-bloom: #f06a6a;
-  --blue-lagoon: #57c4d1;
 
-  --ocean-linear-gradient: linear-gradient(to bottom, var(--deep-ocean) 0, var(--deep-ocean) 100vh, var(--abyss-navy) 80%, black 100%);
-
-  /* ── Blue palette (light mode raw values used by wave / gradients) ── */
+  /* ── Blue palette (raw values used by wave / gradients) ── */
   --color-lightest: #e6f0ff;
-  --color-light: #aecfff;
+  --color-light: #dfeeff;
   --color-mid: #5c9eff;
   --color-brand: #006bc4;
   --color-accent: #02dfff;
@@ -40,38 +25,6 @@
     var(--color-brand) 80%,
     color-mix(in srgb, var(--color-brand) 65%, black) 100%
   );
-}
-
-/* ── Dark mode: map raw palette + @theme vars to the ocean tokens ───── */
-[data-theme='dark'] h1 {
-  --text-gradient: -webkit-linear-gradient(var(--color-accent), var(--color-lightest));
-}
-
-[data-theme='dark'] {
-  /* Raw palette – inherited by wave CSS, site-gradient, gradients */
-  --color-lightest: var(--sea-mist);
-  --color-light: var(--blue-lagoon);
-  --color-mid: var(--reef-teal);
-  --color-brand: var(--abyss-navy);
-
-  --site-gradient: var(--ocean-linear-gradient);
-
-  /* Tailwind @theme overrides */
-  --color-base-100: var(--deep-ocean);
-  --color-base-200: var(--abyss-navy);
-  --color-base-300: var(--reef-teal);
-
-  --color-primary: var(--sea-mist);
-  --color-secondary: var(--cloud-dancer);
-  --color-tertiary: var(--slate-blue-gray);
-  --color-base-content: var(--cloud-dancer);
-
-  --color-accent-primary: var(--sunbeam-gold);
-  --color-accent-secondary: var(--blue-lagoon);
-  --color-accent-tertiary: var(--coral-bloom);
-
-  --color-pop: var(--sunbeam-gold);
-  --color-pop-secondary: var(--abyss-navy);
 }
 
 @theme {
@@ -209,6 +162,13 @@
    Scoped to the card variant only; elsewhere (e.g. the talk page CTA) keeps its original edge color. */
 .favorite-icon--card[data-favorite='true'] .st2 {
   fill: var(--color-mid);
+}
+
+/* Same problem on the talk modal's favorite CTA: the dialog background is the same brand
+   blue as the illustration's outline. Darken the outline a step (rather than lightening,
+   as the card does) so it reads as a rim around the shape instead of washing out. */
+.favorite-icon--cta[data-favorite='true'] .st2 {
+  fill: var(--color-base-300);
 }
 
 /* Back-to-program arrow (stingray icon rotated on its side) — constantly darts quickly

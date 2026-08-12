@@ -6,6 +6,7 @@ interface HeadingProps {
   level: HeadingLevel
   children: React.ReactNode
   className?: string
+  id?: string
 }
 
 const defaultClasses: Record<HeadingLevel, string> = {
@@ -17,9 +18,13 @@ const defaultClasses: Record<HeadingLevel, string> = {
   h6: 'text-base md:text-lg font-medium leading-normal text-secondary',
 }
 
-const Heading = ({ level = 'h1', children, className = '' }: HeadingProps) => {
+const Heading = ({ level = 'h1', children, className = '', id }: HeadingProps) => {
   const Tag = level
-  return <Tag className={`${defaultClasses[level]} ${className}`.trim()}>{children}</Tag>
+  return (
+    <Tag id={id} className={`${defaultClasses[level]} ${className}`.trim()}>
+      {children}
+    </Tag>
+  )
 }
 
 export default Heading

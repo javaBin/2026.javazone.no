@@ -32,7 +32,7 @@ const FilterPanel = ({
           type="button"
           onClick={onClear}
           title="Remove all active filters"
-          className="text-xs font-medium underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
+          className="inline-block py-1.5 -my-1.5 text-xs font-medium underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
         >
           Clear all filters
         </button>

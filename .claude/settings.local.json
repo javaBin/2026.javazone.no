@@ -32,7 +32,13 @@
       "Bash(curl *)",
       "Bash(node *)",
       "Bash(npx prettier *)",
-      "Bash(xargs -I{} echo {})"
+      "Bash(xargs -I{} echo {})",
+      "Bash(git stash *)",
+      "Bash(npx --no-install chromium-cli --version)",
+      "Bash(npx --no-install playwright --version)",
+      "Bash(npx --yes playwright install chromium)",
+      "Bash(git show *)",
+      "Bash(git checkout *)"
     ]
   }
 }

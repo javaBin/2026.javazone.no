@@ -22,12 +22,14 @@ const DayTabs = ({ days, activeDay, onSelect }: { days: string[]; activeDay: str
       {tabs.map((d, index) => (
         <button
           key={d}
+          id={`day-tab-${d}`}
           ref={(el) => {
             tabRefs.current[d] = el
           }}
           role="tab"
           title={d === ALL_DAYS ? 'Show sessions from every day' : `Show sessions from ${formatDayLabel(d)}`}
           aria-selected={activeDay === d}
+          aria-controls="program-panel"
           tabIndex={activeDay === d ? 0 : -1}
           type="button"
           onClick={() => onSelect(d)}

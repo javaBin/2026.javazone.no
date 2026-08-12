@@ -35,6 +35,7 @@ const ViewTabs = ({ view, favoriteCount, onChange }: { view: ProgramView; favori
       {TABS.map((v, index) => (
         <button
           key={v}
+          id={`view-tab-${v}`}
           ref={(el) => {
             tabRefs.current[v] = el
           }}
@@ -42,6 +43,7 @@ const ViewTabs = ({ view, favoriteCount, onChange }: { view: ProgramView; favori
           role="tab"
           title={TAB_TITLE[v]}
           aria-selected={view === v}
+          aria-controls="program-panel"
           tabIndex={view === v ? 0 : -1}
           onClick={() => onChange(v)}
           onKeyDown={(e) => onKeyDown(e, index)}
