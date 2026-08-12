@@ -1,4 +1,5 @@
 import Accenture from '../../../public/partners/accenture.svg'
+import Aiven from '../../../public/partners/aiven.svg'
 import Autodesk from '../../../public/partners/autodesk.svg'
 import Bekk from '../../../public/partners/bekk.svg'
 import Bouvet from '../../../public/partners/bouvet.svg'
@@ -12,7 +13,7 @@ import ElOgIt from '../../../public/partners/elogit.svg'
 import Embriq from '../../../public/partners/embriq.svg'
 import Entur from '../../../public/partners/entur.svg'
 import Eclipse from '../../../public/partners/eclipse.svg'
-import VEND from '../../../public/partners/finn.svg'
+import VEND from '../../../public/partners/vend_logo.svg'
 import Fremtind from '../../../public/partners/fremtind.svg'
 import GE from '../../../public/partners/GE.svg'
 import Gjensidige from '../../../public/partners/gjensidige.svg'
@@ -42,7 +43,7 @@ import Telenor from '../../../public/partners/telenor.svg'
 import Tietobanktech from '../../../public/partners/tietobanktech.svg'
 import Tolletaten from '../../../public/partners/tolletaten.svg'
 import Tomra from '../../../public/partners/tomra.svg'
-import Vaadin from '../../../public/partners/vaadin.svg'
+import Vaadin from '../../../public/partners/vaadin_v2.svg'
 import VY from '../../../public/partners/vy.svg'
 import Webstep from '../../../public/partners/webstep.svg'
 
@@ -55,6 +56,7 @@ interface Partner {
 export const partners: Partner[] = [
   { name: '321', homepageUrl: 'https://www.321.no/', logoUrl: L321 },
   { name: 'Accenture', homepageUrl: 'https://www.accenture.com', logoUrl: Accenture },
+  { name: 'Aiven', homepageUrl: 'https://aiven.io/', logoUrl: Aiven },
   { name: 'Autodesk', homepageUrl: 'https://www.autodesk.com/no', logoUrl: Autodesk },
   { name: 'Bekk', homepageUrl: 'https://www.bekk.no', logoUrl: Bekk },
   { name: 'Bouvet', homepageUrl: 'https://www.bouvet.no', logoUrl: Bouvet },
@@ -66,7 +68,7 @@ export const partners: Partner[] = [
   { name: 'Eclipe', homepageUrl: 'https://jakarta.ee/', logoUrl: Eclipse },
   { name: 'Embriq', homepageUrl: 'https://www.embriq.no', logoUrl: Embriq },
   { name: 'Entur', homepageUrl: 'https://www.entur.no', logoUrl: Entur },
-  { name: 'Vend', homepageUrl: 'https://www.finn.no', logoUrl: VEND },
+  { name: 'Vend', homepageUrl: 'https://vend.com', logoUrl: VEND },
   { name: 'Fremtind', homepageUrl: 'https://www.fremtind.no', logoUrl: Fremtind },
   { name: 'Gjensidige', homepageUrl: 'https://www.gjensidige.no', logoUrl: Gjensidige },
   { name: 'Husbanken', homepageUrl: 'https://www.husbanken.no', logoUrl: Husbanken },
