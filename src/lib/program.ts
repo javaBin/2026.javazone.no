@@ -8,7 +8,7 @@ export interface ProgramFilters {
   languages: Set<string>
 }
 
-export type ProgramView = 'schedule' | 'my-schedule'
+export type ProgramView = 'schedule' | 'my-schedule' | 'live'
 
 // Sentinel `day` value meaning "don't filter by day at all" — distinct from `null`,
 // which means "no explicit choice yet" and gets auto-resolved to the first real day.
@@ -76,7 +76,7 @@ export function getDayKey(session: Session): string {
 }
 
 export function formatDayLabel(key: string): string {
-  if (key === 'unknown') return 'Unscheduled'
+  if (key === 'unknown') return 'Talks'
   const [year, month, day] = key.split('-').map(Number)
   return new Date(year, month - 1, day).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })
 }
@@ -113,6 +113,17 @@ export function getKeywords(session: Session): string[] {
   )
 }
 
+// "stream api" -> "#StreamApi" — capitalizes just the first letter of each word (so an
+// already-uppercase acronym like "API" survives untouched), then strips the spaces.
+export function formatKeywordTag(keyword: string): string {
+  const titled = keyword
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join('')
+  return `#${titled}`
+}
+
 export function getDays(sessions: Session[]): string[] {
   const days = new Set(sessions.map(getDayKey))
   return Array.from(days).sort()
@@ -131,18 +142,80 @@ export function sortSessionsByStart(sessions: Session[]): Session[] {
   })
 }
 
+const LIGHTNING_TALK_FORMAT = 'lightning-talk'
+// Lightning talks are often scheduled a few minutes after the "main" slot they belong
+// to, which would otherwise land them in their own sparse, single-talk time group. Fold
+// a lightning-only group into the slot right before it as long as it starts soon after.
+const LIGHTNING_MERGE_WINDOW_MS = 60 * 60 * 1000
+
 export function groupSessionsByTime(sessions: Session[]): SessionGroup[] {
   const sorted = sortSessionsByStart(sessions)
 
-  const groups = new Map<string, Session[]>()
+  const order: string[] = []
+  const byLabel = new Map<string, Session[]>()
   for (const s of sorted) {
     const start = getSessionStart(s)
     const label = start ? formatTime(start) : 'Time TBA'
-    if (!groups.has(label)) groups.set(label, [])
-    groups.get(label)!.push(s)
+    if (!byLabel.has(label)) {
+      byLabel.set(label, [])
+      order.push(label)
+    }
+    byLabel.get(label)!.push(s)
   }
 
-  return Array.from(groups.entries()).map(([time, sessions]) => ({ time, sessions }))
+  const merged: { time: string; sessions: Session[]; anchorMs: number | null }[] = []
+  for (const label of order) {
+    const groupSessions = byLabel.get(label)!
+    const isLightningOnly = groupSessions.every((s) => s.format === LIGHTNING_TALK_FORMAT)
+    const startMs = getSessionStart(groupSessions[0])?.getTime() ?? null
+
+    const prev = merged[merged.length - 1]
+    if (isLightningOnly && prev?.anchorMs != null && startMs != null && startMs - prev.anchorMs <= LIGHTNING_MERGE_WINDOW_MS) {
+      prev.sessions.push(...groupSessions)
+    } else {
+      merged.push({ time: label, sessions: groupSessions, anchorMs: startMs })
+    }
+  }
+
+  return merged.map(({ time, sessions }) => ({ time, sessions: sortSessionsByStart(sessions) }))
+}
+
+const UNKNOWN_ROOM = 'Other'
+
+export interface TimetableLane {
+  room: string
+  sessions: Session[]
+}
+
+export interface TimetableLayout {
+  lanes: TimetableLane[]
+  startMs: number
+  endMs: number
+}
+
+// Room-by-time layout for a day with a lot of concurrent sessions (e.g. parallel workshop
+// tracks) — one lane per room, sessions positioned by actual start time and duration so a
+// caller can render a proportional Gantt-style timeline instead of a plain grouped list.
+// Sessions with no resolvable start/end time are dropped, since they can't be positioned.
+export function buildTimetableLayout(sessions: Session[]): TimetableLayout | null {
+  const timed = sessions
+    .map((s) => ({ session: s, start: getSessionStart(s), end: getSessionEnd(s) }))
+    .filter((t): t is { session: Session; start: Date; end: Date } => t.start !== null && t.end !== null)
+
+  if (!timed.length) return null
+
+  const roomOf = (s: Session) => s.room ?? UNKNOWN_ROOM
+  const rooms = Array.from(new Set(timed.map((t) => roomOf(t.session)))).sort((a, b) => a.localeCompare(b))
+
+  const lanes = rooms.map((room) => ({
+    room,
+    sessions: sortSessionsByStart(timed.filter((t) => roomOf(t.session) === room).map((t) => t.session)),
+  }))
+
+  const startMs = Math.min(...timed.map((t) => t.start.getTime()))
+  const endMs = Math.max(...timed.map((t) => t.end.getTime()))
+
+  return { lanes, startMs, endMs }
 }
 
 export interface ProgramFacets {
@@ -168,7 +241,9 @@ export function getFacets(sessions: Session[]): ProgramFacets {
 
 export function matchesFilters(session: Session, filters: ProgramFilters, view: ProgramView, favorites: Set<string>): boolean {
   if (view === 'my-schedule' && !favorites.has(session.sessionId)) return false
-  if (filters.day && filters.day !== ALL_DAYS && getDayKey(session) !== filters.day) return false
+  // Live view looks at the whole event, not just whichever day tab happens to be
+  // selected — "what's on right now" shouldn't depend on that unrelated UI state.
+  if (view !== 'live' && filters.day && filters.day !== ALL_DAYS && getDayKey(session) !== filters.day) return false
   if (filters.formats.size && !filters.formats.has(session.format)) return false
   if (filters.rooms.size && !(session.room && filters.rooms.has(session.room))) return false
   if (filters.languages.size && !filters.languages.has(session.language)) return false
@@ -201,6 +276,49 @@ export function getSessionTiming(session: Session, now: Date): SessionTiming {
   if (end && nowMs >= startMs && nowMs < end.getTime()) return 'now'
   if (nowMs < startMs && startMs - nowMs <= SOON_WINDOW_MS) return 'soon'
   return null
+}
+
+export interface LiveSessions {
+  current: Session[]
+  upNext: Session[]
+}
+
+// "Happening now" and "up next" for the Live view. Up-next isn't bound to a fixed lookahead
+// window (unlike getSessionTiming's "soon") — it's always whatever starts earliest after now,
+// so the view stays useful across breaks/gaps, not just in the last 30 minutes before a slot.
+export function partitionLiveSessions(sessions: Session[], now: Date): LiveSessions {
+  const nowMs = now.getTime()
+  const current: Session[] = []
+  let nextStartMs: number | null = null
+  const upcoming: { session: Session; startMs: number }[] = []
+
+  for (const s of sessions) {
+    const start = getSessionStart(s)
+    if (!start) continue
+    const startMs = start.getTime()
+    const end = getSessionEnd(s)
+
+    if (end && nowMs >= startMs && nowMs < end.getTime()) {
+      current.push(s)
+    } else if (startMs > nowMs) {
+      upcoming.push({ session: s, startMs })
+      if (nextStartMs === null || startMs < nextStartMs) nextStartMs = startMs
+    }
+  }
+
+  const upNext = nextStartMs === null ? [] : upcoming.filter((u) => u.startMs === nextStartMs).map((u) => u.session)
+  return { current: sortSessionsByStart(current), upNext: sortSessionsByStart(upNext) }
+}
+
+// Earliest resolvable start time across the whole program — used to tell whether the
+// conference has started yet at all, regardless of the currently selected day/filters.
+export function getConferenceStart(sessions: Session[]): Date | null {
+  let earliest: Date | null = null
+  for (const s of sessions) {
+    const start = getSessionStart(s)
+    if (start && (!earliest || start.getTime() < earliest.getTime())) earliest = start
+  }
+  return earliest
 }
 
 export function computeConflicts(sessions: Session[], favorites: Set<string>): Set<string> {

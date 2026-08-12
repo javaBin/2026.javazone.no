@@ -33,7 +33,7 @@ function isSessionsResponse(value: unknown): value is { sessions: Session[] } {
 }
 
 export async function fetchProgram(): Promise<Session[]> {
-  const res = await fetch('https://sleepingpill.javazone.no/public/allSessions/javazone_2025')
+  const res = await fetch('https://sleepingpill.javazone.no/public/allSessions/javazone_2026')
   if (!res.ok) throw new Error(`HTTP ${res.status}`)
   const data: unknown = await res.json()
   if (!isSessionsResponse(data)) throw new Error('Unexpected response shape')

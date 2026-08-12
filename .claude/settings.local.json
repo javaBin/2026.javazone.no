@@ -31,7 +31,8 @@
       "Bash(python3 -c ' *)",
       "Bash(curl *)",
       "Bash(node *)",
-      "Bash(npx prettier *)"
+      "Bash(npx prettier *)",
+      "Bash(xargs -I{} echo {})"
     ]
   }
 }

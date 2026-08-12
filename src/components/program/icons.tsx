@@ -27,3 +27,9 @@ export const LanguageIcon = ({ className = 'w-3 h-3 shrink-0' }: { className?: s
     <path d="M3 12h18M12 3c2.4 2.6 3.8 5.8 3.8 9s-1.4 6.4-3.8 9c-2.4-2.6-3.8-5.8-3.8-9s1.4-6.4 3.8-9Z" />
   </svg>
 )
+
+export const CloseIcon = ({ className = 'w-5 h-5 shrink-0' }: { className?: string }) => (
+  <svg {...iconProps} aria-hidden="true" className={className}>
+    <path d="M6 6l12 12M18 6 6 18" />
+  </svg>
+)

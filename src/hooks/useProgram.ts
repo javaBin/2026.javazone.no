@@ -37,7 +37,6 @@ export function useProgram() {
   })
   const [loading, setLoading] = useState<boolean>(() => cache === null)
   const [error, setError] = useState<string | null>(null)
-  const [stale, setStale] = useState<boolean>(() => cache !== null && liveSince === null)
 
   const load = useCallback((opts?: { silent?: boolean }) => {
     const silent = opts?.silent ?? false
@@ -55,7 +54,6 @@ export function useProgram() {
         writeCache(data)
         setSessions(data)
         setError(null)
-        setStale(false)
       })
       .catch((err: unknown) => {
         // A background revalidation hiccup shouldn't nuke data we already confirmed live.
@@ -64,7 +62,6 @@ export function useProgram() {
         if (cached) {
           cache = cached
           setSessions(cached)
-          setStale(true)
         } else {
           setError(err instanceof Error ? err.message : 'Unknown error')
         }
@@ -91,5 +88,5 @@ export function useProgram() {
     }
   }, [load])
 
-  return { sessions, loading, error, stale, retry: () => load() }
+  return { sessions, loading, error, retry: () => load() }
 }

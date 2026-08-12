@@ -1,6 +1,5 @@
 import { Heading } from '@/components'
 import SessionCard from '@/components/program/SessionCard'
-import { type Session } from '@/lib/fetchProgram'
 import { type SessionGroup } from '@/lib/program'
 
 const ScheduleList = ({
@@ -8,7 +7,6 @@ const ScheduleList = ({
   favorites,
   conflicts,
   onToggleFavorite,
-  onOpenSession,
   showTimeHeaders = true,
   now,
 }: {
@@ -16,7 +14,6 @@ const ScheduleList = ({
   favorites: Set<string>
   conflicts: Set<string>
   onToggleFavorite: (sessionId: string) => void
-  onOpenSession: (session: Session) => void
   showTimeHeaders?: boolean
   now: Date
 }) => (
@@ -38,7 +35,6 @@ const ScheduleList = ({
               isFavorite={favorites.has(s.sessionId)}
               isConflict={conflicts.has(s.sessionId)}
               onToggleFavorite={() => onToggleFavorite(s.sessionId)}
-              onOpen={() => onOpenSession(s)}
               now={now}
             />
           ))}

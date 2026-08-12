@@ -28,7 +28,12 @@ const FilterPanel = ({
     <FilterGroup title="Room" options={facets.rooms} selected={filters.rooms} onToggle={(v) => onToggle('rooms', v)} />
     {filterCount > 0 && (
       <div className="sm:col-span-2">
-        <button type="button" onClick={onClear} className="text-xs font-medium underline text-secondary hover:text-primary">
+        <button
+          type="button"
+          onClick={onClear}
+          title="Remove all active filters"
+          className="text-xs font-medium underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
+        >
           Clear all filters
         </button>
       </div>

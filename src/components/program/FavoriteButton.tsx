@@ -25,14 +25,29 @@ export const FavoriteStarfishIcon = ({
 }) => (
   <span
     aria-hidden="true"
-    aria-pressed={isFavorite}
+    data-favorite={isFavorite}
     className={`favorite-icon inline-block shrink-0 ${className}`}
     style={{ transform: `rotate(${getRotation(sessionId)}deg)` }}
     dangerouslySetInnerHTML={{ __html: starfishSvg }}
   />
 )
 
-const FavoriteButton = ({ sessionId, isFavorite, onToggle }: { sessionId: string; isFavorite: boolean; onToggle: () => void }) => (
+const SIZE_CLASSES = {
+  sm: { button: 'shrink-0 -m-1.5 w-7 h-7', icon: 'w-7 h-7' },
+  md: { button: 'shrink-0 -m-3 w-11 h-11', icon: 'w-11 h-11' },
+} as const
+
+const FavoriteButton = ({
+  sessionId,
+  isFavorite,
+  onToggle,
+  size = 'md',
+}: {
+  sessionId: string
+  isFavorite: boolean
+  onToggle: () => void
+  size?: keyof typeof SIZE_CLASSES
+}) => (
   <button
     type="button"
     onClick={(e) => {
@@ -40,13 +55,14 @@ const FavoriteButton = ({ sessionId, isFavorite, onToggle }: { sessionId: string
       onToggle()
     }}
     aria-pressed={isFavorite}
-    aria-label="Toggle favorite"
-    className="shrink-0 -m-3 w-11 h-11 group"
+    aria-label={isFavorite ? 'Remove from my schedule' : 'Add to my schedule'}
+    title={isFavorite ? 'Remove from my schedule' : 'Add to my schedule'}
+    className={`${SIZE_CLASSES[size].button} group rounded-full outline-none focus-visible:ring-2 focus-visible:ring-accent-primary`}
   >
     <FavoriteStarfishIcon
       sessionId={sessionId}
       isFavorite={isFavorite}
-      className={`favorite-icon--card w-11 h-11 transition-opacity ${isFavorite ? '' : 'text-secondary opacity-40 group-hover:opacity-60'}`}
+      className={`favorite-icon--card ${SIZE_CLASSES[size].icon} transition-opacity ${isFavorite ? '' : 'text-secondary opacity-40 group-hover:opacity-60'}`}
     />
   </button>
 )

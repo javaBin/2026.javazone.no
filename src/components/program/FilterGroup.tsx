@@ -24,7 +24,8 @@ const FilterGroup = ({
               key={value}
               type="button"
               onClick={() => onToggle(value)}
-              className={`px-3 py-1 text-xs font-medium transition-colors rounded-full border ${
+              aria-pressed={active}
+              className={`px-3 py-1 text-xs font-medium transition-colors rounded-full border outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
                 active
                   ? 'bg-accent-primary/20 border-accent-primary text-accent-primary'
                   : 'bg-base-100/40 border-base-content/10 text-secondary hover:border-accent-primary/50'

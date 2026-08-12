@@ -189,25 +189,25 @@
 }
 
 /* Not favorited: flatten the illustration into a monochrome "shadow" of its shape. */
-.favorite-icon[aria-pressed='false'] .st0 {
+.favorite-icon[data-favorite='false'] .st0 {
   fill: none;
 }
 
-.favorite-icon[aria-pressed='false'] .st1,
-.favorite-icon[aria-pressed='false'] .st2,
-.favorite-icon[aria-pressed='false'] .st3,
-.favorite-icon[aria-pressed='false'] .st4 {
+.favorite-icon[data-favorite='false'] .st1,
+.favorite-icon[data-favorite='false'] .st2,
+.favorite-icon[data-favorite='false'] .st3,
+.favorite-icon[data-favorite='false'] .st4 {
   fill: currentColor;
 }
 
-.favorite-icon[aria-pressed='false'] svg {
+.favorite-icon[data-favorite='false'] svg {
   transform: scale(0.8);
 }
 
 /* Favorited on a card: the illustration's outline (st2) is the same brand blue as the
    card background, so it disappears at the edges — lighten it a step on the palette.
    Scoped to the card variant only; elsewhere (e.g. the talk page CTA) keeps its original edge color. */
-.favorite-icon--card[aria-pressed='true'] .st2 {
+.favorite-icon--card[data-favorite='true'] .st2 {
   fill: var(--color-mid);
 }
 
@@ -233,6 +233,15 @@
   100% {
     transform: translateX(0) rotate(-90deg);
   }
+}
+
+/* Scrollable containers that shouldn't show a visible scrollbar (e.g. the talk modal) */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Mouse glow overlay */

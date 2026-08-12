@@ -11,20 +11,21 @@ const SearchToolbar = ({
   onToggleFilterPanel: () => void
   filterCount: number
 }) => (
-  <div className="flex flex-col gap-3 mb-6 sm:flex-row sm:items-center">
+  <div className="flex items-center gap-3 mb-6">
     <input
       type="search"
       value={query}
       onChange={(e) => onQueryChange(e.target.value)}
       placeholder="Search talks, speakers, keywords…"
       aria-label="Search sessions"
-      className="flex-1 px-4 py-2 text-sm rounded-2xl bg-base-200 text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent-primary/50"
+      className="flex-1 min-w-0 px-4 py-2 text-sm rounded-2xl bg-base-200 text-primary placeholder:text-secondary/60 focus:outline-none focus:ring-2 focus:ring-accent-primary/50"
     />
     <button
       type="button"
       onClick={onToggleFilterPanel}
       aria-expanded={filterPanelOpen}
-      className={`flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium transition-colors rounded-2xl ${
+      title={filterPanelOpen ? 'Hide filters' : 'Show format, room, and language filters'}
+      className={`flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors rounded-2xl shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
         filterPanelOpen ? 'bg-accent-primary/20 text-accent-primary' : 'bg-base-200 text-secondary hover:text-primary'
       }`}
     >

@@ -7,7 +7,8 @@ const FavoriteCallToAction = ({ sessionId, isFavorite, onToggle }: { sessionId: 
     type="button"
     onClick={onToggle}
     aria-pressed={isFavorite}
-    className={`relative inline-flex items-center justify-end w-52 h-14 pl-2 pr-14 text-xs font-semibold whitespace-nowrap bg-transparent transition-colors sm:w-72 sm:h-24 sm:pr-24 sm:text-sm ${
+    title={isFavorite ? 'Remove from my schedule' : 'Add to my schedule'}
+    className={`relative inline-flex items-center justify-end w-52 h-14 pl-2 pr-14 text-xs font-semibold whitespace-nowrap bg-transparent transition-colors outline-none rounded-2xl focus-visible:ring-2 focus-visible:ring-accent-primary sm:w-72 sm:h-24 sm:pr-24 sm:text-sm ${
       isFavorite ? 'text-accent-primary' : 'text-primary hover:text-accent-primary hover:underline'
     }`}
   >

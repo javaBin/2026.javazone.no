@@ -17,13 +17,20 @@ const MetaBadge = ({
   label,
   tone = 'default',
   size = 'sm',
+  title,
+  className = '',
 }: {
   icon?: ReactNode
   label: string
   tone?: keyof typeof TONE_CLASSES
   size?: keyof typeof SIZE_CLASSES
+  title?: string
+  className?: string
 }) => (
-  <span className={`inline-flex items-center font-semibold rounded-full whitespace-nowrap shrink-0 ${SIZE_CLASSES[size]} ${TONE_CLASSES[tone]}`}>
+  <span
+    title={title}
+    className={`inline-flex items-center font-semibold rounded-full whitespace-nowrap shrink-0 ${SIZE_CLASSES[size]} ${TONE_CLASSES[tone]} ${className}`}
+  >
     {icon}
     {label}
   </span>
