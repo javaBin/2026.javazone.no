@@ -102,6 +102,14 @@ const TalkDetails = ({ closeControl, titleClassName = '', titleId }: { closeCont
             </div>
           )}
 
+          {/* Workshop prerequisites */}
+          {session.workshopPrerequisites && (
+            <div className="flex flex-col gap-2">
+              <p className="m-0 text-xs font-semibold tracking-widest uppercase text-secondary">Prerequisites</p>
+              <p className="m-0 text-sm leading-relaxed whitespace-pre-wrap text-primary/80">{session.workshopPrerequisites}</p>
+            </div>
+          )}
+
           {/* Divider */}
           <div className="h-px bg-base-content/10" />
 

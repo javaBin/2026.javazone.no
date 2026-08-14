@@ -17,6 +17,7 @@ export interface Session {
   length: string
   intendedAudience: string
   suggestedKeywords: string
+  workshopPrerequisites?: string
   speakers: Speaker[]
   room?: string
   startTime?: string
