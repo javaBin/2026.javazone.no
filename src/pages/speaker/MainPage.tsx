@@ -144,7 +144,7 @@ const SpeakerMainPage = () => {
           <p>
             As a JavaZone speaker, you get free admission to the conference. Additionally, you are also invited to the speakers' dinner, held on
             September 1<sup>st</sup>.
-          </p>      
+          </p>
         </Card>
 
         <Card title="Coverage of expenses" gradientColors={gradients[4]}>

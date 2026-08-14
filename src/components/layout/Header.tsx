@@ -16,6 +16,10 @@ const navLinks = [
     href: '/about',
   },
   {
+    name: 'Info',
+    href: '/info',
+  },
+  {
     name: 'Partners',
     href: '/partner',
   },
