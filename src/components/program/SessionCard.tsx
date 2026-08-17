@@ -6,7 +6,19 @@ import { ClockIcon, LanguageIcon, RoomIcon } from '@/components/program/icons'
 import KeywordTags from '@/components/program/KeywordTags'
 import MetaBadge from '@/components/program/MetaBadge'
 import { type Session } from '@/lib/fetchProgram'
-import { formatDuration, getDurationMinutes, getFormatLabel, getKeywords, getSessionTiming, LANGUAGE_LABEL } from '@/lib/program'
+import {
+  formatDuration,
+  formatTime,
+  getDurationMinutes,
+  getFormatLabel,
+  getKeywords,
+  getSessionStart,
+  getSessionTiming,
+  isLightningTalk,
+  isWorkshop,
+  LANGUAGE_LABEL,
+  LIGHTNING_TALK_LABEL,
+} from '@/lib/program'
 
 const SessionCard = ({
   session,
@@ -36,10 +48,14 @@ const SessionCard = ({
   const onLeave = () => ref.current?.style.setProperty('--glow-opacity', '0')
 
   const duration = formatDuration(getDurationMinutes(session))
-  const formatLabel = getFormatLabel(session)
+  const formatLabel = isWorkshop(session) ? getFormatLabel(session) : null
   const languageLabel = session.language.slice(0, 2).toUpperCase()
   const keywords = getKeywords(session)
   const timing = getSessionTiming(session, now)
+  // Lightning talks are grouped under the time slot they follow (see groupSessionsByTime),
+  // which can start earlier than the talk itself — call out its actual start time so it
+  // doesn't read as starting alongside the rest of the slot.
+  const startTime = isLightningTalk(session) ? formatTime(getSessionStart(session)) : null
 
   return (
     <article
@@ -82,9 +98,12 @@ const SessionCard = ({
         </div>
       </div>
 
-      <h3 id={titleId} className="flex-1 m-0 text-base font-bold leading-snug text-primary pointer-events-none">
+      <h3 id={titleId} className="flex-1 m-0 text-base font-bold leading-snug pointer-events-none text-primary line-clamp-3">
+        {isLightningTalk(session) && <span className="text-accent-primary">{LIGHTNING_TALK_LABEL}</span>}
         {session.title}
       </h3>
+
+      {startTime && <p className="m-0 text-sm font-semibold text-accent-primary pointer-events-none">Starts {startTime}</p>}
 
       <div className="relative flex flex-col gap-0.5 pointer-events-none">
         {session.speakers.map((s) => (

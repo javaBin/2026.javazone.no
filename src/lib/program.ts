@@ -162,11 +162,36 @@ export function sortSessionsByStart(sessions: Session[]): Session[] {
   })
 }
 
-const LIGHTNING_TALK_FORMAT = 'lightning-talk'
+export const LIGHTNING_TALK_FORMAT = 'lightning-talk'
 // Lightning talks are often scheduled a few minutes after the "main" slot they belong
 // to, which would otherwise land them in their own sparse, single-talk time group. Fold
 // a lightning-only group into the slot right before it as long as it starts soon after.
 const LIGHTNING_MERGE_WINDOW_MS = 60 * 60 * 1000
+
+export function isLightningTalk(session: Session): boolean {
+  return session.format === LIGHTNING_TALK_FORMAT
+}
+
+export const WORKSHOP_FORMAT = 'workshop'
+
+export function isWorkshop(session: Session): boolean {
+  return session.format === WORKSHOP_FORMAT
+}
+
+// Lightning talks aren't called out with a format badge (see isWorkshop callers), so their
+// title carries this label instead — kept as its own constant so callers can style it
+// distinctly from the rest of the title (see SessionCard/TalkDetails).
+export const LIGHTNING_TALK_LABEL = 'Lightning Talk: '
+
+// Within a displayed time slot, lightning talks are folded in alongside (or after) the
+// "main" sessions for that slot — see groupSessionsByTime below — so they're pushed to the
+// end of the group rather than sorted purely by start time, keeping the main sessions
+// together up top. Each half stays sorted by start time internally.
+function sortWithLightningLast(sessions: Session[]): Session[] {
+  const main = sortSessionsByStart(sessions.filter((s) => !isLightningTalk(s)))
+  const lightning = sortSessionsByStart(sessions.filter(isLightningTalk))
+  return [...main, ...lightning]
+}
 
 export interface DayGroup {
   day: string
@@ -207,7 +232,7 @@ export function groupSessionsByTime(sessions: Session[]): SessionGroup[] {
   const merged: { time: string; sessions: Session[]; anchorMs: number | null }[] = []
   for (const label of order) {
     const groupSessions = byLabel.get(label)!
-    const isLightningOnly = groupSessions.every((s) => s.format === LIGHTNING_TALK_FORMAT)
+    const isLightningOnly = groupSessions.every(isLightningTalk)
     const startMs = getSessionStart(groupSessions[0])?.getTime() ?? null
 
     const prev = merged[merged.length - 1]
@@ -218,7 +243,7 @@ export function groupSessionsByTime(sessions: Session[]): SessionGroup[] {
     }
   }
 
-  return merged.map(({ time, sessions }) => ({ time, sessions: sortSessionsByStart(sessions) }))
+  return merged.map(({ time, sessions }) => ({ time, sessions: sortWithLightningLast(sessions) }))
 }
 
 const UNKNOWN_ROOM = 'Other'
