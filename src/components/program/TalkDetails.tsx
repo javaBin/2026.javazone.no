@@ -1,13 +1,28 @@
 import type { ReactNode } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { Heading } from '@/components'
+import { Heading, LinkButton } from '@/components'
 import FavoriteCallToAction from '@/components/program/FavoriteCallToAction'
 import { ClockIcon, LanguageIcon, RoomIcon } from '@/components/program/icons'
 import MetaBadge from '@/components/program/MetaBadge'
 import { useFavorites } from '@/hooks/useFavorites'
 import { useProgram } from '@/hooks/useProgram'
-import { formatDuration, formatKeywordTag, getDurationMinutes, getFormatLabel, getKeywords, LANGUAGE_LABEL } from '@/lib/program'
+import {
+  formatDayLabel,
+  formatDuration,
+  formatKeywordTag,
+  formatTime,
+  getDayKey,
+  getDurationMinutes,
+  getFormatLabel,
+  getKeywords,
+  getSessionStart,
+  isLightningTalk,
+  isWorkshop,
+  LANGUAGE_LABEL,
+  LIGHTNING_TALK_LABEL,
+  WORKSHOP_SIGNUP_URL,
+} from '@/lib/program'
 
 // Shared talk-detail content — rendered both by the full-page TalkPage (direct navigation,
 // deep links) and TalkModal (opened over the program list). Only the "close/back" control
@@ -23,6 +38,8 @@ const TalkDetails = ({ closeControl, titleClassName = '', titleId }: { closeCont
 
   const keywords = session ? getKeywords(session) : []
   const duration = session ? formatDuration(getDurationMinutes(session)) : null
+  const sessionStart = session ? getSessionStart(session) : null
+  const startTime = sessionStart && session ? `${formatTime(sessionStart)} ${formatDayLabel(getDayKey(session))}` : null
 
   return (
     <>
@@ -59,14 +76,17 @@ const TalkDetails = ({ closeControl, titleClassName = '', titleId }: { closeCont
       {session && (
         <div className="flex flex-col gap-8">
           <Heading level="h1" id={titleId} className={`!pt-0 !text-left ${titleClassName}`}>
+            {isLightningTalk(session) && <span className="text-accent-primary">{LIGHTNING_TALK_LABEL}</span>}
             {session.title}
           </Heading>
+
+          {startTime && <p className="m-0 -mt-6 text-lg font-semibold text-accent-primary">{startTime}</p>}
 
           {/* Format / room / duration / language badges */}
           <div className="flex flex-wrap gap-2">
             {session.room && <MetaBadge size="md" icon={<RoomIcon className="w-4 h-4 shrink-0" />} label={session.room} />}
             {duration && <MetaBadge size="md" icon={<ClockIcon className="w-4 h-4 shrink-0" />} label={duration} />}
-            <MetaBadge size="md" label={getFormatLabel(session)} tone="accent" />
+            {isWorkshop(session) && <MetaBadge size="md" label={getFormatLabel(session)} tone="accent" />}
             <MetaBadge
               size="md"
               icon={<LanguageIcon className="w-4 h-4 shrink-0" />}
@@ -74,6 +94,9 @@ const TalkDetails = ({ closeControl, titleClassName = '', titleId }: { closeCont
               title={`Language: ${LANGUAGE_LABEL[session.language] ?? session.language}`}
             />
           </div>
+
+          {/* Workshop sign-up */}
+          {isWorkshop(session) && <LinkButton title="Sign up here!" link={WORKSHOP_SIGNUP_URL} size="small" className="self-start" />}
 
           {/* Keywords */}
           {keywords.length > 0 && (

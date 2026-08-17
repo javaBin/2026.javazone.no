@@ -5,7 +5,7 @@ import { type Session } from '@/lib/fetchProgram'
 import { buildTimetableLayout, formatTime, getSessionEnd, getSessionStart } from '@/lib/program'
 
 const MIN_BLOCK_MINUTES = 30 // width floor (as a share of the day) so short lightning talks stay legible
-const LANE_HEIGHT_PX = 132
+const LANE_HEIGHT_PX = 152
 const ROOM_COLUMN_WIDTH_PX = 96
 
 // Gantt-style room-by-time timeline for days with a lot of concurrent sessions (parallel

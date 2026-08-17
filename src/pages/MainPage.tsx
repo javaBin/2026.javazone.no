@@ -25,6 +25,13 @@ const MainPage = () => {
           </Heading>
           <LinkButton title="See Program" size="large" variant="pop" link="/program" className="mt-6 max-w-md min-w-[320px] pointer-events-auto" />
           <LinkButton
+            title="Sign up for Workshops"
+            size="large"
+            variant="pop"
+            link="https://event.checkin.no/226598/java-zone-workshops-2026"
+            className="mt-6 max-w-md min-w-[320px] pointer-events-auto"
+          />
+          <LinkButton
             title="Buy tickets"
             size="large"
             variant="primary"
