@@ -39,7 +39,9 @@
       "Bash(npx --yes playwright install chromium)",
       "Bash(git show *)",
       "Bash(git checkout *)",
-      "Bash(grep -n \"^h1\\\\|h1 {\\\\|h1,\\\\|pt-\" src/index.css)"
+      "Bash(grep -n \"^h1\\\\|h1 {\\\\|h1,\\\\|pt-\" src/index.css)",
+      "Bash(command -v chromium-cli)",
+      "Read(//c/Users/**)"
     ]
   }
 }

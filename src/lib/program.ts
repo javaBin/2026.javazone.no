@@ -154,11 +154,14 @@ export interface SessionGroup {
   sessions: Session[]
 }
 
+// Sessions starting at the same time (parallel tracks) are then ordered by room, ascending
+// (e.g. "Room 2" before "Room 10" — {numeric: true} keeps that natural rather than lexical).
 export function sortSessionsByStart(sessions: Session[]): Session[] {
   return [...sessions].sort((a, b) => {
     const at = getSessionStart(a)?.getTime() ?? Infinity
     const bt = getSessionStart(b)?.getTime() ?? Infinity
-    return at - bt
+    if (at !== bt) return at - bt
+    return (a.room ?? '').localeCompare(b.room ?? '', undefined, { numeric: true })
   })
 }
 
@@ -272,7 +275,7 @@ export function buildTimetableLayout(sessions: Session[]): TimetableLayout | nul
   if (!timed.length) return null
 
   const roomOf = (s: Session) => s.room ?? UNKNOWN_ROOM
-  const rooms = Array.from(new Set(timed.map((t) => roomOf(t.session)))).sort((a, b) => a.localeCompare(b))
+  const rooms = Array.from(new Set(timed.map((t) => roomOf(t.session)))).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
 
   const lanes = rooms.map((room) => ({
     room,
