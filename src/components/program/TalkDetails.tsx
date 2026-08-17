@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { Heading } from '@/components'
+import { Heading, LinkButton } from '@/components'
 import FavoriteCallToAction from '@/components/program/FavoriteCallToAction'
 import { ClockIcon, LanguageIcon, RoomIcon } from '@/components/program/icons'
 import MetaBadge from '@/components/program/MetaBadge'
@@ -21,6 +21,7 @@ import {
   isWorkshop,
   LANGUAGE_LABEL,
   LIGHTNING_TALK_LABEL,
+  WORKSHOP_SIGNUP_URL,
 } from '@/lib/program'
 
 // Shared talk-detail content — rendered both by the full-page TalkPage (direct navigation,
@@ -93,6 +94,9 @@ const TalkDetails = ({ closeControl, titleClassName = '', titleId }: { closeCont
               title={`Language: ${LANGUAGE_LABEL[session.language] ?? session.language}`}
             />
           </div>
+
+          {/* Workshop sign-up */}
+          {isWorkshop(session) && <LinkButton title="Sign up here!" link={WORKSHOP_SIGNUP_URL} size="small" className="self-start" />}
 
           {/* Keywords */}
           {keywords.length > 0 && (

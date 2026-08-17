@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
-import { BubbleField, Heading } from '@/components'
+import { BubbleField, Heading, LinkButton } from '@/components'
 import DayTabs from '@/components/program/DayTabs'
 import { type FilterKey } from '@/components/program/FilterPanel'
 import FilterPanel from '@/components/program/FilterPanel'
@@ -30,6 +30,7 @@ import {
   type ProgramView,
   type SessionGroup,
   sortSessionsByStart,
+  WORKSHOP_SIGNUP_URL,
 } from '@/lib/program'
 
 const ProgramPage = () => {
@@ -161,6 +162,12 @@ const ProgramPage = () => {
 
           {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
             <TimetableGrid sessions={filtered} favorites={favorites} conflicts={conflicts} onToggleFavorite={toggleFavorite} now={now} />
+          )}
+
+          {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
+            <div className="flex justify-center mb-10">
+              <LinkButton title="Sign up here!" link={WORKSHOP_SIGNUP_URL} size="medium" />
+            </div>
           )}
 
           {!loading && !error && !isLiveView && !isMyScheduleView && !isEmpty && (

@@ -173,6 +173,7 @@ export function isLightningTalk(session: Session): boolean {
 }
 
 export const WORKSHOP_FORMAT = 'workshop'
+export const WORKSHOP_SIGNUP_URL = 'https://event.checkin.no/226598/java-zone-workshops-2026'
 
 export function isWorkshop(session: Session): boolean {
   return session.format === WORKSHOP_FORMAT
