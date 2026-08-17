@@ -38,6 +38,13 @@ const MainPage = () => {
             link="/tickets"
             className="mt-6 max-w-md min-w-[320px] pointer-events-auto"
           />
+          <LinkButton
+            title="javaBin Kids"
+            size="large"
+            variant="pop-outline"
+            link="https://kids.java.no/arrangementer/33daa75d-660b-4921-9b05-825596211c5c"
+            className="mt-6 max-w-md min-w-[320px] pointer-events-auto"
+          />
         </div>
       </div>
     </div>
