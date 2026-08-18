@@ -33,7 +33,7 @@ function subscribe(listener: () => void) {
   return () => listeners.delete(listener)
 }
 
-function getSnapshot() {
+function getSnapshot(): ReadonlySet<string> {
   return favorites
 }
 
