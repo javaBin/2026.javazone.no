@@ -39,11 +39,14 @@ function getSnapshot(): ReadonlySet<string> {
 
 // The native `storage` event only fires in OTHER tabs/windows when localStorage changes here,
 // which is exactly what's needed to pick up favorites saved elsewhere.
-window.addEventListener('storage', (event) => {
-  if (event.key !== FAV_KEY) return
-  favorites = loadFavorites()
-  emitChange()
-})
+if (typeof window !== 'undefined') {
+  window.addEventListener('storage', (event) => {
+    // `event.key` is null when another tab clears storage; reload favorites in that case too.
+    if (event.key !== FAV_KEY && event.key !== null) return
+    favorites = loadFavorites()
+    emitChange()
+  })
+}
 
 function toggleFavorite(id: string) {
   const next = new Set(favorites)
