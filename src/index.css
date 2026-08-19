@@ -292,3 +292,7 @@
   transform: translateY(-100%);
   transition: transform 0.3s ease;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+  filter: brightness(0) saturate(100%) invert(99%) sepia(79%) saturate(900%) hue-rotate(100deg) brightness(65%) contrast(200%);
+}
