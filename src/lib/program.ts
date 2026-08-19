@@ -309,7 +309,7 @@ export function getFacets(sessions: Session[]): ProgramFacets {
   return { formats: sort(formats), rooms: sort(rooms), languages: sort(languages) }
 }
 
-export function matchesFilters(session: Session, filters: ProgramFilters, view: ProgramView, favorites: Set<string>): boolean {
+export function matchesFilters(session: Session, filters: ProgramFilters, view: ProgramView, favorites: ReadonlySet<string>): boolean {
   if (view === 'my-schedule' && !favorites.has(session.sessionId)) return false
   // Live view and My schedule both look across the whole event, not just whichever day
   // tab happens to be selected — that's unrelated UI state neither view exposes.
@@ -330,6 +330,24 @@ export function matchesFilters(session: Session, filters: ProgramFilters, view: 
 
 export function activeFilterCount(filters: ProgramFilters): number {
   return filters.formats.size + filters.rooms.size + filters.languages.size
+}
+
+// How many sessions match the current search/filters on each day, ignoring the day tab
+// itself — lets the day tabs show a result count and lets callers detect when the selected
+// day has gone empty so they can jump to a day that still has matches.
+export function countSessionsByDay(
+  sessions: Session[],
+  filters: ProgramFilters,
+  view: ProgramView,
+  favorites: ReadonlySet<string>,
+): Map<string, number> {
+  const counts = new Map<string, number>()
+  for (const session of sessions) {
+    if (!matchesFilters(session, { ...filters, day: ALL_DAYS }, view, favorites)) continue
+    const day = getDayKey(session)
+    counts.set(day, (counts.get(day) ?? 0) + 1)
+  }
+  return counts
 }
 
 export type SessionTiming = 'now' | 'soon' | null
@@ -391,7 +409,7 @@ export function getConferenceStart(sessions: Session[]): Date | null {
   return earliest
 }
 
-export function computeConflicts(sessions: Session[], favorites: Set<string>): Set<string> {
+export function computeConflicts(sessions: Session[], favorites: ReadonlySet<string>): Set<string> {
   const favSessions = sessions
     .filter((s) => favorites.has(s.sessionId))
     .map((s) => ({ session: s, start: getSessionStart(s), end: getSessionEnd(s) }))
