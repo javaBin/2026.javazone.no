@@ -21,8 +21,8 @@ const TimetableGrid = ({
   now,
 }: {
   sessions: Session[]
-  favorites: Set<string>
-  conflicts: Set<string>
+  favorites: ReadonlySet<string>
+  conflicts: ReadonlySet<string>
   onToggleFavorite: (sessionId: string) => void
   now: Date
 }) => {

@@ -12,8 +12,8 @@ const ScheduleList = ({
   now,
 }: {
   groups: SessionGroup[]
-  favorites: Set<string>
-  conflicts: Set<string>
+  favorites: ReadonlySet<string>
+  conflicts: ReadonlySet<string>
   onToggleFavorite: (sessionId: string) => void
   showTimeHeaders?: boolean
   timeHeadingLevel?: 'h2' | 'h3'
