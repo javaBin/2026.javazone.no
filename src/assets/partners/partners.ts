@@ -1,3 +1,4 @@
+import L321 from '../../../public/partners/321-wh.svg'
 import Accenture from '../../../public/partners/accenture.svg'
 import Aiven from '../../../public/partners/aiven.svg'
 import Autodesk from '../../../public/partners/autodesk.svg'
@@ -9,11 +10,10 @@ import Cloudberries from '../../../public/partners/cloudberries.svg'
 import Computas from '../../../public/partners/computas.svg'
 import Digdir from '../../../public/partners/digdir.svg'
 import DNB from '../../../public/partners/dnb.svg'
+import Eclipse from '../../../public/partners/eclipse.svg'
 import ElOgIt from '../../../public/partners/elogit.svg'
 import Embriq from '../../../public/partners/embriq.svg'
 import Entur from '../../../public/partners/entur.svg'
-import Eclipse from '../../../public/partners/eclipse.svg'
-import VEND from '../../../public/partners/vend_logo.svg'
 import Fremtind from '../../../public/partners/fremtind.svg'
 import GE from '../../../public/partners/GE.svg'
 import Gjensidige from '../../../public/partners/gjensidige.svg'
@@ -25,10 +25,10 @@ import Kartverket from '../../../public/partners/kartverket.svg'
 import KLP from '../../../public/partners/klp.svg'
 import Knowit from '../../../public/partners/knowit.svg'
 import KSDigitaleFellestjenester from '../../../public/partners/ks-digitale-fellestjenester.svg'
-import L321 from '../../../public/partners/321-wh.svg'
 import NAV from '../../../public/partners/nav.svg'
 import PolitietPIT from '../../../public/partners/politietpit.svg'
 import PostenBring from '../../../public/partners/postenbring.svg'
+import redHat from '../../../public/partners/redhat.svg'
 import Scelto from '../../../public/partners/scelto.svg'
 import Scienta from '../../../public/partners/scienta.svg'
 import Skatteetaten from '../../../public/partners/skatteetaten.svg'
@@ -43,7 +43,10 @@ import Telenor from '../../../public/partners/telenor.svg'
 import Tietobanktech from '../../../public/partners/tietobanktech.svg'
 import Tolletaten from '../../../public/partners/tolletaten.svg'
 import Tomra from '../../../public/partners/tomra.svg'
+import unleash from '../../../public/partners/unleash.svg'
+import uptime from '../../../public/partners/uptime_logo.svg'
 import Vaadin from '../../../public/partners/vaadin_v2.svg'
+import VEND from '../../../public/partners/vend_logo.svg'
 import VY from '../../../public/partners/vy.svg'
 import Webstep from '../../../public/partners/webstep.svg'
 
@@ -103,4 +106,7 @@ export const partners: Partner[] = [
   { name: 'KLP', homepageUrl: 'https://www.klp.no', logoUrl: KLP },
   { name: 'Digdir', homepageUrl: 'https://www.digdir.no', logoUrl: Digdir },
   { name: 'Vy', homepageUrl: 'https://www.vy.no', logoUrl: VY },
+  { name: 'Red Hat', homepageUrl: 'https://www.redhat.com', logoUrl: redHat },
+  { name: 'Unleash', homepageUrl: 'https://www.unleash.run', logoUrl: unleash },
+  { name: 'Uptime Consulting', homepageUrl: 'https://www.uptimeconsulting.no/', logoUrl: uptime },
 ]
