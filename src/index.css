@@ -31,6 +31,9 @@
   --color-base-100: var(--color-mid);
   --color-base-200: var(--color-brand);
   --color-base-300: color-mix(in srgb, var(--color-brand) 65%, black);
+  /* Tag/chip fill on bg-base-200: darker than the card so it reads as a distinct pill,
+     but only enough to keep text-primary at ~4.5:1+ contrast (WCAG AA). */
+  --color-base-250: color-mix(in srgb, var(--color-brand) 90%, black);
 
   --color-primary: var(--color-lightest);
   --color-secondary: var(--color-light);
@@ -115,7 +118,7 @@
 
 @layer components {
   .badge {
-    @apply inline-flex items-center px-3 py-1 text-sm font-semibold rounded-full bg-accent-primary text-base-200;
+    @apply inline-flex items-center px-3 py-1 text-sm font-semibold rounded-full bg-accent-primary text-base-300;
   }
 
   .badge-outline {

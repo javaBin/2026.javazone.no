@@ -44,7 +44,7 @@ const KeywordTags = ({
   return (
     <div className="flex mt-auto gap-1.5 overflow-hidden flex-nowrap">
       {visible.map((tag) => (
-        <span key={tag} className="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-base-100/60 text-primary whitespace-nowrap shrink-0">
+        <span key={tag} className="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-base-250 text-primary whitespace-nowrap shrink-0">
           {tag}
         </span>
       ))}
