@@ -61,10 +61,10 @@ const TimetableBlock = ({
         </div>
       </div>
 
-      <h4 id={titleId} className="m-0 text-base font-bold leading-snug pointer-events-none text-primary line-clamp-3">
+      <h3 id={titleId} className="m-0 text-base font-bold leading-snug pointer-events-none text-primary line-clamp-3">
         {session.title}
         {isConflict && <span className="sr-only"> — overlaps another favorite</span>}
-      </h4>
+      </h3>
 
       <div className="flex flex-col gap-1 mt-auto pointer-events-none">
         {session.speakers.length > 0 && (

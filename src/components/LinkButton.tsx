@@ -12,8 +12,8 @@ interface LinkButtonProps {
 }
 
 const variants: Record<ButtonVariant, string> = {
-  primary: 'bg-accent-primary text-base-200 hover:brightness-110 hover:shadow-lg',
-  'primary-outline': 'bg-transparent border-accent-primary border text-accent-primary hover:bg-accent-primary hover:text-base-200',
+  primary: 'bg-accent-primary text-base-300 hover:brightness-110 hover:shadow-lg',
+  'primary-outline': 'bg-transparent border-accent-primary border text-accent-primary hover:bg-accent-primary hover:text-base-300',
   pop: 'bg-pop text-pop-secondary hover:brightness-110 hover:shadow-lg',
   'pop-outline': 'bg-transparent border-pop border text-pop hover:bg-pop hover:text-pop-secondary',
 }
