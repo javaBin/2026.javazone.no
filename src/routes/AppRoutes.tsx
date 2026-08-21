@@ -7,7 +7,6 @@ import MainPage from '@/pages/MainPage.tsx'
 import PartnerInfoPage from '@/pages/PartnerInfoPage.tsx'
 import PartnerPage from '@/pages/PartnerPage.tsx'
 import ProgramPage from '@/pages/ProgramPage'
-import StatusPage from '@/pages/StatusPage'
 import TalkPage from '@/pages/TalkPage'
 import TicketsPage from '@/pages/TicketsPage.tsx'
 import VolunteerPage from '@/pages/VolunteerPage'
@@ -37,7 +36,6 @@ const AppRoutes = () => {
         <Route path="/speaker/*" element={<SpeakerRoutes />} />
         <Route path="/volunteer" element={<VolunteerPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/status" element={<StatusPage />} />
       </Routes>
 
       {background && (

@@ -7,10 +7,11 @@ const PartnerInfoPage = () => {
   )
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
-      <section className="text-left max-w-2xl w-full space-y-4">
+    <div className="relative flex flex-col items-center justify-center min-h-screen p-8 pt-20 mb-20 space-y-8">
+      <section className="w-full max-w-2xl space-y-4 text-left">
+        <Heading level="h1">Partner information</Heading>
         <Heading level="h2">The first partner meeting</Heading>
-        <div className="w-full overflow-hidden rounded-lg bg-black" style={{ position: 'relative', paddingTop: '56.25%' }}>
+        <div className="w-full overflow-hidden bg-black rounded-lg" style={{ position: 'relative', paddingTop: '56.25%' }}>
           {' '}
           <iframe
             src="https://player.vimeo.com/video/1146207302"
@@ -30,16 +31,16 @@ const PartnerInfoPage = () => {
         </div>
       </section>
 
-      <section className="text-left max-w-2xl w-full space-y-4">
+      <section className="w-full max-w-2xl space-y-4 text-left">
         <Heading level="h2">Packages and tickets</Heading>
         <Packages />
       </section>
 
-      <section className="text-left max-w-2xl w-full space-y-4">
+      <section className="w-full max-w-2xl space-y-4 text-left">
         <Heading level="h2">Contact us</Heading>
         <p>
           If you have any questions or concerns, please reach out to us at{' '}
-          <a className="text-sunbeam-gold underline" href="mailto:partner@java.no">
+          <a className="underline text-sunbeam-gold" href="mailto:partner@java.no">
             partner@java.no
           </a>
           .
