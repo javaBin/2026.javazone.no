@@ -6,7 +6,7 @@ const SIZE_CLASSES = {
 } as const
 
 const TONE_CLASSES = {
-  default: 'bg-base-100/60 text-primary',
+  default: 'bg-base-250 text-primary',
   accent: 'bg-accent-primary/20 text-accent-primary',
   pop: 'bg-pop text-pop-secondary',
   'pop-outline': 'bg-transparent border border-pop text-pop',

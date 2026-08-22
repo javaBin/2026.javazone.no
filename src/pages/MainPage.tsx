@@ -14,7 +14,9 @@ const MainPage = () => {
       <WaveBackground />
       <div className="z-40 p-4 pointer-events-none max-w-7xl">
         <div className="flex flex-col items-center justify-center text-center">
-          <img src={Assets.images.dukeLogo} alt="JavaZone 2026 Duke logo" className="w-64 mb-2 sm:w-80 md:w-96 drop-shadow-xl" />
+          <h1 className="m-0">
+            <img src={Assets.images.dukeLogo} alt="JavaZone 2026" className="w-64 mb-2 sm:w-80 md:w-96 drop-shadow-xl" />
+          </h1>
           <Heading level="h2" className="my-2">
             September 2–3, 2026
             <br />
