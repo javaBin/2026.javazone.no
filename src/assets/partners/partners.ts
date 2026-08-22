@@ -40,6 +40,7 @@ import STOE from '../../../public/partners/stoe.svg'
 import Storebrand from '../../../public/partners/storebrand.svg'
 import Systek from '../../../public/partners/systek-logo-2026.svg'
 import Telenor from '../../../public/partners/telenor.svg'
+import TetDigital from '../../../public/partners/tet-digital.svg'
 import Tietobanktech from '../../../public/partners/tietobanktech.svg'
 import Tolletaten from '../../../public/partners/tolletaten.svg'
 import Tomra from '../../../public/partners/tomra.svg'
@@ -109,4 +110,5 @@ export const partners: Partner[] = [
   { name: 'Red Hat', homepageUrl: 'https://www.redhat.com', logoUrl: redHat },
   { name: 'Unleash', homepageUrl: 'https://www.unleash.run', logoUrl: unleash },
   { name: 'Uptime Consulting', homepageUrl: 'https://www.uptimeconsulting.no/', logoUrl: uptime },
+  { name: 'Tet Digital', homepageUrl: 'https://www.tetdigital.no/', logoUrl: TetDigital },
 ]
