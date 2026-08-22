@@ -74,6 +74,10 @@
     background: var(--site-gradient);
   }
 
+  button {
+    cursor: pointer;
+  }
+
   section p,
   section ol,
   section ul {

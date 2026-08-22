@@ -169,7 +169,7 @@ export const LIGHTNING_TALK_FORMAT = 'lightning-talk'
 // Lightning talks are often scheduled a few minutes after the "main" slot they belong
 // to, which would otherwise land them in their own sparse, single-talk time group. Fold
 // a lightning-only group into the slot right before it as long as it starts soon after.
-const LIGHTNING_MERGE_WINDOW_MS = 60 * 60 * 1000
+const LIGHTNING_MERGE_WINDOW_MS = 70 * 60 * 1000
 
 export function isLightningTalk(session: Session): boolean {
   return session.format === LIGHTNING_TALK_FORMAT
