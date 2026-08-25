@@ -62,8 +62,8 @@ const InfoPage = () => {
       <section className="w-full max-w-2xl space-y-4 text-left">
         <Heading level="h2">Workshops</Heading>
         <p>
-          Workshops take place on Tuesday, September 1st, and are included in your conference ticket — seating is limited, and workshop registration
-          opens in the middle of August.
+          Workshops take place on Tuesday, September 1st, at Rebel in Oslo centre (Universitetsgata 2, 0164 Oslo) The workshops are included in your
+          conference ticket, but seating is limited so make sure to register early.
         </p>
       </section>
 
