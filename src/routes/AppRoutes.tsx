@@ -3,7 +3,9 @@ import { type Location, Route, Routes, useLocation } from 'react-router-dom'
 import TalkModal from '@/components/program/TalkModal'
 import AboutPage from '@/pages/AboutPage'
 import FoodPage from '@/pages/FoodPage'
+import AwezonePage from '@/pages/AwezonePage'
 import HistoryPage from '@/pages/HistoryPage.tsx'
+import InfoPage from '@/pages/InfoPage.tsx'
 import MainPage from '@/pages/MainPage.tsx'
 import PartnerInfoPage from '@/pages/PartnerInfoPage.tsx'
 import PartnerPage from '@/pages/PartnerPage.tsx'
@@ -32,12 +34,14 @@ const AppRoutes = () => {
         <Route path="/program/:id" element={<TalkPage />} />
         <Route path="/tickets" element={<TicketsPage />} />
         <Route path="/partner" element={<PartnerPage />} />
+        <Route path="/food" element={<FoodPage />} />
         <Route path="/partner/info" element={<PartnerInfoPage />} />
         <Route path="/history" element={<HistoryPage />} />
-        <Route path="/food" element={<FoodPage />} />
+        <Route path="/info" element={<InfoPage />} />
         <Route path="/speaker/*" element={<SpeakerRoutes />} />
         <Route path="/volunteer" element={<VolunteerPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/awezone" element={<AwezonePage />} />
       </Routes>
 
       {background && (

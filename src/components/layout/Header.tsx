@@ -16,12 +16,24 @@ const navLinks = [
     href: '/about',
   },
   {
-    name: 'Partners',
-    href: '/partner',
+    name: 'Info',
+    href: '/info',
   },
   {
     name: 'Program',
     href: '/program',
+  },
+  {
+    name: 'Partners',
+    href: '/partner',
+  },
+  {
+    name: 'Food',
+    href: '/food',
+  },
+  {
+    name: 'AweZone',
+    href: '/awezone',
   },
   {
     name: 'Speakers',
@@ -30,10 +42,6 @@ const navLinks = [
   {
     name: 'Volunteers',
     href: '/volunteer',
-  },
-  {
-    name: 'Food',
-    href: '/food',
   },
   {
     name: 'Tickets',
