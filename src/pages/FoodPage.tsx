@@ -102,14 +102,22 @@ const MenuDayCarousel = ({ vendorName, sections }: { vendorName: string; section
   )
 }
 
-const VendorSection = ({ vendor }: { vendor: MenuVendor }) => {
+const VendorSection = ({ vendor, index }: { vendor: MenuVendor; index: number }) => {
   const id = vendorId(vendor)
   const headingId = `${id}-heading`
   const hasDayMenus = vendor.sections.length > 1
+  const bubbleDuration = BUBBLE_DURATIONS[index % BUBBLE_DURATIONS.length]
 
   return (
     <section id={id} aria-labelledby={headingId} className="relative px-4 py-2 text-center scroll-mt-32 md:py-10">
       <Card title="" className="w-full max-w-2xl mx-auto food-card" gradientColors={[CARD_COLOR, CARD_COLOR]}>
+        <img
+          src={bubbleIcon}
+          alt=""
+          aria-hidden="true"
+          className="food-card-bubble top-4 left-4 w-8 h-8 md:top-5 md:left-5 md:w-10 md:h-10"
+          style={{ '--bubble-duration': bubbleDuration } as CSSProperties}
+        />
         {vendor.company && (
           <span className="absolute text-sm font-semibold right-5 top-5 text-primary/70 md:right-6 md:top-6 md:text-base">{vendor.company}</span>
         )}
@@ -140,18 +148,12 @@ const FoodPage = () => {
       <BubbleField variant="subtle" />
 
       <header className="relative z-10 flex flex-col items-center gap-2 px-6 pt-24 pb-6 text-center">
-        <span aria-hidden="true" className="corner-bubble top-8 left-4 w-4 h-4" style={{ '--bubble-duration': '4.2s' } as CSSProperties} />
-        <span
-          aria-hidden="true"
-          className="corner-bubble top-16 left-10 w-2.5 h-2.5"
-          style={{ '--bubble-duration': '3s', '--bubble-delay': '0.8s' } as CSSProperties}
-        />
         <Heading level="h1">{menu.title}</Heading>
       </header>
 
       <div className="relative z-20 pb-16">
-        {menu.vendors.map((vendor) => (
-          <VendorSection key={vendor.name} vendor={vendor} />
+        {menu.vendors.map((vendor, index) => (
+          <VendorSection key={vendor.name} vendor={vendor} index={index} />
         ))}
       </div>
     </div>
