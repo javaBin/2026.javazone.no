@@ -16,8 +16,8 @@ const Card = ({ title, subtitle, children, glowColor = 'var(--glow-color)', grad
   const ref = useRef<HTMLElement | null>(null)
   const gradient = gradientColors && gradientColors.length > 0 ? `linear-gradient(to bottom, ${gradientColors.join(', ')})` : undefined
 
-  const onMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (!glowColor) return
+  const onMove = (e: React.PointerEvent<HTMLElement>) => {
+    if (!glowColor || e.pointerType !== 'mouse') return
     const el = ref.current
     if (!el) return
 
@@ -36,8 +36,8 @@ const Card = ({ title, subtitle, children, glowColor = 'var(--glow-color)', grad
   return (
     <article
       ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
+      onPointerMove={onMove}
+      onPointerLeave={onLeave}
       className={`
         glow-card shadow-xl p-6 my-8 rounded-3xl
         bg-base-200

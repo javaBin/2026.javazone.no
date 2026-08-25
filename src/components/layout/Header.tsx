@@ -32,6 +32,10 @@ const navLinks = [
     href: '/volunteer',
   },
   {
+    name: 'Food',
+    href: '/food',
+  },
+  {
     name: 'Tickets',
     href: '/tickets',
   },
@@ -124,12 +128,13 @@ const Header = () => {
           backdrop-blur-lg rounded-b-3xl overflow-hidden transition-all
           duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
           [mask-image:linear-gradient(to_top,black_85%,transparent_100%)] !flex
-          ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none '}
+          ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none '}
         `}
       >
         {navLinks.map((link, id) => (
           <Link
             key={id}
+            onClick={() => setIsOpen(false)}
             className="w-full px-4 py-3 text-lg font-medium no-underline bg-transparent text-primary rounded-xl hover:opacity-90 hover:underline hover:bg-transparent"
             to={link.href}
           >

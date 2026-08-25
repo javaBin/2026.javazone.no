@@ -1,4 +1,4 @@
-import { type MouseEvent, useRef } from 'react'
+import { type PointerEvent, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import FavoriteButton from '@/components/program/FavoriteButton'
@@ -37,7 +37,8 @@ const SessionCard = ({
   const location = useLocation()
   const titleId = `session-title-${session.sessionId}`
 
-  const onMove = (e: MouseEvent<HTMLElement>) => {
+  const onMove = (e: PointerEvent<HTMLElement>) => {
+    if (e.pointerType !== 'mouse') return
     const el = ref.current
     if (!el) return
     const rect = el.getBoundingClientRect()
@@ -60,8 +61,8 @@ const SessionCard = ({
   return (
     <article
       ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
+      onPointerMove={onMove}
+      onPointerLeave={onLeave}
       className={`relative flex flex-col h-full gap-3 px-5 py-4 shadow-xl cursor-pointer glow-card rounded-3xl bg-base-200 ${
         isConflict ? 'ring-1 ring-accent-secondary/30' : ''
       }`}
@@ -79,7 +80,7 @@ const SessionCard = ({
       />
 
       <div className="flex items-start justify-between gap-2 pointer-events-none">
-        <div className="flex flex-nowrap min-w-0 gap-1.5 overflow-x-auto">
+        <div className="flex flex-nowrap min-w-0 gap-1.5 overflow-x-auto no-scrollbar">
           {timing && <MetaBadge label={timing === 'now' ? 'Now' : 'Soon'} tone={timing === 'now' ? 'pop' : 'pop-outline'} />}
           {session.room && <MetaBadge icon={<RoomIcon />} label={session.room} />}
           {duration && <MetaBadge icon={<ClockIcon />} label={duration} />}

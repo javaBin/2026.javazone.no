@@ -35,7 +35,7 @@ const DayTabs = ({
   }
 
   return (
-    <div role="tablist" aria-label="Conference day" className="flex gap-2 mb-8 overflow-x-auto">
+    <div role="tablist" aria-label="Conference day" className="flex gap-2 mb-8 overflow-x-auto no-scrollbar">
       {tabs.map((d, index) => {
         const label = d === ALL_DAYS ? 'All' : formatDayLabel(d)
         const count = countFor(d)

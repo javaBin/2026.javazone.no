@@ -1,0 +1,308 @@
+{
+  "title": "JavaZone Menu",
+  "vendors": [
+    {
+      "name": "Breakfast",
+      "anchor": "Breakfast",
+      "sections": [
+        {
+          "label": null,
+          "items": [
+            {
+              "name": "Pain Au Chocolat",
+              "description": null,
+              "allergens": ["Wheat", "Egg", "Milk"]
+            },
+            {
+              "name": "Overnight Oats",
+              "description": "Fresh Berries",
+              "allergens": ["Wheat", "Milk"]
+            },
+            {
+              "name": "Muesli Bread Sandwich (Vegan)",
+              "description": "Cheese & Bell Pepper",
+              "allergens": ["Wheat", "Nuts"]
+            },
+            {
+              "name": "Muesli Bread Sandwich",
+              "description": "Cheese & Ham",
+              "allergens": ["Wheat", "Milk", "Nuts"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "eatIT",
+      "anchor": "Knowit",
+      "company": "Knowit",
+      "sections": [
+        {
+          "label": null,
+          "items": [
+            {
+              "name": "Margherita",
+              "description": "San Marzano Tomatoes, Mozzarella Fior Di Latte & Basil",
+              "allergens": ["Wheat", "Milk", "Garlic"]
+            },
+            {
+              "name": "Chicken Basil & Lemon",
+              "description": "White Sauce, Mozzarella Fior Di Latte, Chicken & Basil Sauce with Lemon",
+              "allergens": ["Wheat", "Milk", "Garlic", "Onions"]
+            },
+            {
+              "name": "Spicy Nduja & Onion Marmalade",
+              "description": "San Marzano Tomatoes & Mozzarella Fior Di Latte",
+              "allergens": ["Wheat", "Soy", "Milk", "Sulfites", "Garlic", "Onions"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bouvets Burgershak",
+      "anchor": "Bouvet",
+      "company": "Bouvet",
+      "sections": [
+        {
+          "label": "Wednesday",
+          "items": [
+            {
+              "name": "Pulled Veggie Slider",
+              "description": "Spicy Pasilla Mayo, Tomato & Onion Salsa",
+              "allergens": ["Wheat", "Egg", "Soy", "Milk", "Mustard", "Sulfites", "Garlic", "Onions"]
+            },
+            {
+              "name": "Pulled Beef Slider (Halal)",
+              "description": "Spicy Pasilla Mayo, Tomato & Onion Salsa",
+              "allergens": ["Wheat", "Egg", "Soy", "Mustard", "Sulfites", "Garlic", "Onions"]
+            }
+          ]
+        },
+        {
+          "label": "Thursday",
+          "items": [
+            {
+              "name": "Beyond Burger",
+              "description": "Caramelized Onions, Cheddar Cream & Pickled Cucumber",
+              "allergens": ["Wheat", "Egg", "Soy", "Milk", "Mustard", "Sulfites", "Onions"]
+            },
+            {
+              "name": "Cheeseburger Slider",
+              "description": "Caramelized Onions, Cheddar Cream & Pickled Cucumber",
+              "allergens": ["Wheat", "Egg", "Soy", "Milk", "Mustard", "Sulfites", "Onions"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Golden Crust",
+      "anchor": "Goldencrust",
+      "sections": [
+        {
+          "label": "Wednesday",
+          "items": [
+            {
+              "name": "Dirty Fries",
+              "description": "Chili Mayo, Jalapeño, Spring Onion & Cheddar",
+              "allergens": ["Egg", "Milk", "Mustard", "Sulfites", "Garlic", "Onions"]
+            },
+            {
+              "name": "Fish & Chips",
+              "description": "Remoulade & Lemon",
+              "allergens": ["Wheat", "Egg", "Fish", "Mustard", "Sulfites", "Onions"]
+            }
+          ]
+        },
+        {
+          "label": "Thursday",
+          "items": [
+            {
+              "name": "Fried Eggplant",
+              "description": "Chili Mayo & Tomato Salad",
+              "allergens": ["Wheat", "Egg", "Mustard", "Sulfites", "Garlic", "Onions"]
+            },
+            {
+              "name": "Fried Chicken",
+              "description": "Chili Mayo, Steamed Rice & Asian Salad",
+              "allergens": ["Egg", "Fish (Fish Sauce)", "Mustard", "Sulfites", "Garlic"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Aloha",
+      "anchor": "Aloha",
+      "sections": [
+        {
+          "label": "Wednesday",
+          "items": [
+            {
+              "name": "Poké Bowl Vegetarian",
+              "description": "Teriyaki Marinated Tofu, Shiitake, Edamame Beans, Pickled Red Cabbage, Pickled Ginger & Citrus Aioli",
+              "allergens": ["Soy", "Sesame Seeds", "Mustard", "Sulfites", "Garlic", "Onions"]
+            },
+            {
+              "name": "Poké Bowl Tuna",
+              "description": "Tuna, Pineapple Salsa, Pickled Red Cabbage, Sea Weed Salad, Edamame Beans & Citrus Aioli",
+              "allergens": ["Egg", "Fish", "Soy", "Sesame Seeds", "Mustard", "Garlic", "Onions"]
+            }
+          ]
+        },
+        {
+          "label": "Thursday",
+          "items": [
+            {
+              "name": "Poké Bowl Vegetarian",
+              "description": "Sweet Chili Marinated Tofu, Pickled Red Cabbage, Pineapple Salsa, Pickled Ginger, Edamame Beans & Jalapeño Aioli",
+              "allergens": ["Soy", "Sesame Seeds", "Mustard", "Sulfites", "Garlic", "Onions"]
+            },
+            {
+              "name": "Poké Bowl Salmon",
+              "description": "Salmon, Pineapple Salsa, Pickled Red Cabbage, Pickled Ginger, Edamame Beans & Jalapeño Aioli",
+              "allergens": ["Egg", "Fish", "Soy", "Sesame Seeds", "Mustard", "Sulfites", "Garlic", "Onions"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Masala House",
+      "anchor": "Masalahouse",
+      "sections": [
+        {
+          "label": "Wednesday",
+          "items": [
+            {
+              "name": "Masoor Dal",
+              "description": "Rice",
+              "allergens": ["Garlic", "Onions"]
+            },
+            {
+              "name": "Butter Chicken",
+              "description": "Rice",
+              "allergens": ["Milk", "Nuts (Cashew)", "Garlic", "Onions"]
+            }
+          ]
+        },
+        {
+          "label": "Thursday",
+          "items": [
+            {
+              "name": "Masoor Dal",
+              "description": "Rice",
+              "allergens": ["Garlic", "Onions"]
+            },
+            {
+              "name": "Lamb Tikka Masala",
+              "description": "Rice",
+              "allergens": ["Milk", "Garlic", "Onions"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Focacceria del Mare",
+      "anchor": "Bekk",
+      "company": "Bekk",
+      "sections": [
+        {
+          "label": null,
+          "items": [
+            {
+              "name": "Celeriac (Vegan)",
+              "description": "Cornichons, Tarragon & Coleslaw",
+              "allergens": ["Wheat", "Celery", "Garlic"]
+            },
+            {
+              "name": "Pastrami",
+              "description": "Cornichons, Tarragon & Coleslaw",
+              "allergens": ["Wheat", "Egg", "Mustard", "Sulfites", "Garlic"]
+            },
+            {
+              "name": "Skagen",
+              "description": "Skagen Shrimp Salad, Horseradish & Dill",
+              "allergens": ["Wheat", "Shellfish", "Egg", "Mustard", "Sulfites", "Onions"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Brisen",
+      "anchor": "Brisen",
+      "sections": [
+        {
+          "label": "Time: 11 AM - 4 PM",
+          "items": [
+            {
+              "name": "Bacalao",
+              "description": "Olive & Norwegian Klippfisk (Salted Cod) & Aioli",
+              "allergens": ["Egg", "Fish", "Mustard", "Sulfites", "Garlic", "Onions"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Shore",
+      "anchor": "Sweetshore",
+      "sections": [
+        {
+          "label": null,
+          "items": [
+            {
+              "name": "Sweet Potato Spice Cake (Vegan)",
+              "description": "Vegan Gryr Cream with Lime",
+              "allergens": ["Wheat", "Soy"]
+            },
+            {
+              "name": "Passion Fruit Mousse",
+              "description": "Passion Fruit Jelly With Mango & Toasted Coconut",
+              "allergens": ["Egg", "Milk"]
+            },
+            {
+              "name": "Homemade Chocolate Truffles",
+              "description": "Valrhona Chocolate",
+              "allergens": ["Egg", "Milk"]
+            },
+            {
+              "name": "Brownie",
+              "description": "Milk Chocolate Cream",
+              "allergens": ["Wheat", "Egg", "Milk", "Nuts"]
+            },
+            {
+              "name": "Freshly Baked Financier",
+              "description": "French Almond Cake",
+              "allergens": ["Wheat", "Egg", "Milk", "Nuts"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Late Night Snack",
+      "anchor": null,
+      "sections": [
+        {
+          "label": null,
+          "items": [
+            {
+              "name": "Chili Sin Carne",
+              "description": "Nachos, Sour Cream & Rice",
+              "allergens": ["Soy", "Milk", "Sulfites", "Garlic", "Onions"]
+            },
+            {
+              "name": "Chili Con Carne (Halal)",
+              "description": "Nachos, Sour Cream & Rice",
+              "allergens": ["Milk", "Sulfites", "Garlic", "Onions"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

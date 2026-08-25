@@ -235,6 +235,41 @@
   transition: opacity 120ms ease;
 }
 
+/* Food page cards: on phones each vendor already reads as its own full-width strip, so the
+   card's box shadow just adds visual noise — drop it there while keeping the rounded corners
+   and dark gradient fill (still needed for contrast with the light text), and keep the full
+   card look from tablet up. Unlayered (not @layer) so it reliably beats the Card component's
+   Tailwind utility classes. */
+@media (max-width: 767px) {
+  .food-card {
+    box-shadow: none;
+  }
+}
+
+/* The little bubble icon bobbing in each food card's corner. Each card sets its own
+   --bubble-duration/--bubble-delay so the bubbles across the page drift out of sync
+   instead of mirroring each other. */
+.food-card-bubble {
+  position: absolute;
+  pointer-events: none;
+  animation: food-card-bubble-bob var(--bubble-duration, 4s) ease-in-out infinite;
+  animation-delay: var(--bubble-delay, 0s);
+}
+
+@keyframes food-card-bubble-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+html[data-motion='reduced'] .food-card-bubble {
+  animation-play-state: paused;
+}
+
 /* Hamburger menu */
 .hamburger-menu svg {
   display: block;

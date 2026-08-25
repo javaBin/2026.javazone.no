@@ -147,7 +147,7 @@ const ProgramPage = () => {
                 type="button"
                 onClick={retry}
                 title="Try loading the program again"
-                className="px-4 py-2 mt-4 text-sm font-semibold rounded-2xl outline-none bg-accent-primary/20 text-accent-primary hover:bg-accent-primary/30 focus-visible:ring-2 focus-visible:ring-accent-primary"
+                className="px-4 py-2 mt-4 text-sm font-semibold outline-none rounded-2xl bg-accent-primary/20 text-accent-primary hover:bg-accent-primary/30 focus-visible:ring-2 focus-visible:ring-accent-primary"
               >
                 Retry
               </button>
@@ -175,6 +175,7 @@ const ProgramPage = () => {
           {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
             <div className="mb-4">
               <Heading level="h2">Workshops</Heading>
+              <p className="text-md text-secondary">All workshops take place at Rebel in Oslo and require pre-registration.</p>
             </div>
           )}
 
