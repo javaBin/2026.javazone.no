@@ -23,7 +23,7 @@ const MainPage = () => {
             NOVA Spektrum, Lillestrøm
           </Heading>
           <Heading level="h3" className="my-2 text-secondary">
-            Program is now ready! Check out the schedule and start planning your conference experience.
+            Doors open at 08:00, talks start at 09:00. Don't miss the exciting morning show at 08:30
           </Heading>
           <LinkButton title="See Program" size="large" variant="pop" link="/program" className="mt-6 max-w-md min-w-[320px] pointer-events-auto" />
           <LinkButton
