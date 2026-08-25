@@ -1,4 +1,4 @@
-import { type CSSProperties, useState } from 'react'
+import { type CSSProperties, type TouchEvent, useEffect, useRef, useState } from 'react'
 
 import bubbleIcon from '@/assets/icons/JZ26-Icon-Bubble1.svg'
 import { BubbleField, Card, Heading } from '@/components'
@@ -48,7 +48,49 @@ const CONFERENCE_DAY_TWO = new Date('2026-09-03T00:00:00')
 const DEFAULT_MENU_DAY = new Date() >= CONFERENCE_DAY_TWO ? 'Thursday' : 'Wednesday'
 
 // Bob durations cycled across cards so the bubbles don't all move in lockstep down the page.
-const BUBBLE_DURATIONS = ['3.4s', '4.2s', '5s']
+const BUBBLE_DURATIONS = ['4.4s', '5.2s', '6s']
+
+// How long the pop animation (bf-pop + bf-ripple-expand, both defined in BubbleField.css)
+// takes to play before the (now empty) bubble is removed for good.
+const POP_DURATION_MS = 700
+
+// The bobbing bubble icon in each food card's corner — clicking it pops it, reusing the
+// same pop/ripple visuals as the ambient background bubbles. Once popped it stays gone
+// for the rest of the page's lifetime; only a reload brings it back.
+const FoodCardBubble = ({ duration, delay, className }: { duration: string; delay?: string; className: string }) => {
+  const [state, setState] = useState<'idle' | 'popping' | 'gone'>('idle')
+
+  useEffect(() => {
+    if (state !== 'popping') return
+    const timeout = setTimeout(() => setState('gone'), POP_DURATION_MS)
+    return () => clearTimeout(timeout)
+  }, [state])
+
+  if (state === 'gone') return null
+
+  return (
+    <span aria-hidden="true" className={`absolute pointer-events-none ${className}`}>
+      <span className="relative block w-full h-full">
+        {state === 'popping' ? (
+          <>
+            <span className="bf__pop-ghost absolute inset-0 block w-full h-full">
+              <img src={bubbleIcon} alt="" className="block w-full h-full" />
+            </span>
+            <span className="bf__ripple absolute inset-0 block w-full h-full" />
+          </>
+        ) : (
+          <img
+            src={bubbleIcon}
+            alt=""
+            onClick={() => setState('popping')}
+            className="food-card-bubble block w-full h-full"
+            style={{ '--bubble-duration': duration, '--bubble-delay': delay } as CSSProperties}
+          />
+        )}
+      </span>
+    </span>
+  )
+}
 
 const DayDivider = ({ label }: { label: string }) => (
   <div className="flex items-center gap-3 my-6 first:mt-0">
@@ -70,17 +112,39 @@ const MenuItemList = ({ items }: { items: MenuItem[] }) => (
   </dl>
 )
 
+// Minimum horizontal drag (px) before a touch gesture counts as a swipe rather than a tap
+// or an incidental wobble while scrolling.
+const SWIPE_THRESHOLD_PX = 40
+
 // Menu carousel for vendors serving a different menu per conference day: one tab per
-// section.label, showing only the active day's items.
+// section.label, showing only the active day's items. Swipeable on touch devices in
+// addition to the tabs, so it behaves like an actual carousel on phones.
 const MenuDayCarousel = ({ vendorName, sections }: { vendorName: string; sections: MenuSection[] }) => {
   const defaultIndex = Math.max(
     sections.findIndex((s) => s.label === DEFAULT_MENU_DAY),
     0,
   )
   const [activeIndex, setActiveIndex] = useState(defaultIndex)
+  const touchStartX = useRef<number | null>(null)
+
+  const onTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const onTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
+    const startX = touchStartX.current
+    touchStartX.current = null
+    if (startX === null) return
+
+    const deltaX = e.changedTouches[0].clientX - startX
+    if (Math.abs(deltaX) < SWIPE_THRESHOLD_PX) return
+
+    const direction = deltaX < 0 ? 1 : -1
+    setActiveIndex((i) => Math.min(Math.max(i + direction, 0), sections.length - 1))
+  }
 
   return (
-    <div>
+    <div onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <div role="tablist" aria-label={`${vendorName} menu day`} className="flex justify-center gap-2 mt-4 mb-6">
         {sections.map((section, index) => (
           <button
@@ -106,21 +170,14 @@ const VendorSection = ({ vendor, index }: { vendor: MenuVendor; index: number })
   const id = vendorId(vendor)
   const headingId = `${id}-heading`
   const hasDayMenus = vendor.sections.length > 1
-  const bubbleDuration = BUBBLE_DURATIONS[index % BUBBLE_DURATIONS.length]
+  const bubbleDurationA = BUBBLE_DURATIONS[index % BUBBLE_DURATIONS.length]
+  const bubbleDurationB = BUBBLE_DURATIONS[(index + 1) % BUBBLE_DURATIONS.length]
 
   return (
-    <section id={id} aria-labelledby={headingId} className="relative px-4 py-2 text-center scroll-mt-32 md:py-10">
+    <section id={id} aria-labelledby={headingId} className="relative px-4 py-2 text-center scroll-mt-20 md:py-10 md:scroll-mt-32">
       <Card title="" className="w-full max-w-2xl mx-auto food-card" gradientColors={[CARD_COLOR, CARD_COLOR]}>
-        <img
-          src={bubbleIcon}
-          alt=""
-          aria-hidden="true"
-          className="food-card-bubble top-4 left-4 w-8 h-8 md:top-5 md:left-5 md:w-10 md:h-10"
-          style={{ '--bubble-duration': bubbleDuration } as CSSProperties}
-        />
-        {vendor.company && (
-          <span className="absolute text-sm font-semibold right-5 top-5 text-primary/70 md:right-6 md:top-6 md:text-base">{vendor.company}</span>
-        )}
+        <FoodCardBubble duration={bubbleDurationA} className="top-4 right-5 w-8 h-8 md:top-5 md:right-6 md:w-10 md:h-10" />
+        <FoodCardBubble duration={bubbleDurationB} delay="0.6s" className="top-14 right-10 w-5 h-5 md:top-16 md:right-14 md:w-6 md:h-6" />
         <h2 id={headingId} className="text-4xl font-bold leading-tight text-center text-primary md:text-4xl">
           {vendor.name}
         </h2>
@@ -151,7 +208,7 @@ const FoodPage = () => {
         <Heading level="h1">{menu.title}</Heading>
       </header>
 
-      <div className="relative z-20 pb-16">
+      <div className="relative z-20 pb-16 food-card-list">
         {menu.vendors.map((vendor, index) => (
           <VendorSection key={vendor.name} vendor={vendor} index={index} />
         ))}

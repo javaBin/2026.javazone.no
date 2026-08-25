@@ -246,12 +246,26 @@
   }
 }
 
+/* The vendor list sits in a higher stacking context than the ambient background bubbles
+   (so the bubbles read as sitting behind the cards), but as a plain full-bleed container
+   its empty space — the margins around each centered card, the gaps between them — would
+   otherwise still intercept clicks meant for the bubbles beneath. Make that container
+   click-through and hand pointer-events back to the actual card content. */
+.food-card-list {
+  pointer-events: none;
+}
+
+.food-card {
+  pointer-events: auto;
+}
+
 /* The little bubble icon bobbing in each food card's corner. Each card sets its own
    --bubble-duration/--bubble-delay so the bubbles across the page drift out of sync
-   instead of mirroring each other. */
+   instead of mirroring each other. Sits inside a pointer-events-none wrapper (positions
+   it in the corner) so this is what re-enables clicking, same split as .bf/.bf__riser. */
 .food-card-bubble {
-  position: absolute;
-  pointer-events: none;
+  cursor: pointer;
+  pointer-events: auto;
   animation: food-card-bubble-bob var(--bubble-duration, 4s) ease-in-out infinite;
   animation-delay: var(--bubble-delay, 0s);
 }

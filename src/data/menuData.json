@@ -3,7 +3,7 @@
   "vendors": [
     {
       "name": "Breakfast",
-      "anchor": "Breakfast",
+      "anchor": "breakfast",
       "sections": [
         {
           "label": null,
@@ -34,7 +34,7 @@
     },
     {
       "name": "eatIT",
-      "anchor": "Knowit",
+      "anchor": "knowit",
       "company": "Knowit",
       "sections": [
         {
@@ -61,7 +61,7 @@
     },
     {
       "name": "Bouvets Burgershak",
-      "anchor": "Bouvet",
+      "anchor": "bouvet",
       "company": "Bouvet",
       "sections": [
         {
@@ -98,7 +98,7 @@
     },
     {
       "name": "Golden Crust",
-      "anchor": "Goldencrust",
+      "anchor": "goldencrust",
       "sections": [
         {
           "label": "Wednesday",
@@ -134,7 +134,7 @@
     },
     {
       "name": "Aloha",
-      "anchor": "Aloha",
+      "anchor": "aloha",
       "sections": [
         {
           "label": "Wednesday",
@@ -170,7 +170,7 @@
     },
     {
       "name": "Masala House",
-      "anchor": "Masalahouse",
+      "anchor": "masalahouse",
       "sections": [
         {
           "label": "Wednesday",
@@ -206,8 +206,8 @@
     },
     {
       "name": "Focacceria del Mare",
-      "anchor": "Bekk",
-      "company": "Bekk",
+      "anchor": "focacceria-del-mare",
+      "company": "Focacceria del Mare",
       "sections": [
         {
           "label": null,
@@ -233,7 +233,7 @@
     },
     {
       "name": "Brisen",
-      "anchor": "Brisen",
+      "anchor": "brisen",
       "sections": [
         {
           "label": "Time: 11 AM - 4 PM",
@@ -249,7 +249,7 @@
     },
     {
       "name": "Sweet Shore",
-      "anchor": "Sweetshore",
+      "anchor": "sweetshore",
       "sections": [
         {
           "label": null,
@@ -285,7 +285,7 @@
     },
     {
       "name": "Late Night Snack",
-      "anchor": null,
+      "anchor": "snack",
       "sections": [
         {
           "label": null,
