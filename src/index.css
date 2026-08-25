@@ -31,6 +31,9 @@
   --color-base-100: var(--color-mid);
   --color-base-200: var(--color-brand);
   --color-base-300: color-mix(in srgb, var(--color-brand) 65%, black);
+  /* Tag/chip fill on bg-base-200: darker than the card so it reads as a distinct pill,
+     but only enough to keep text-primary at ~4.5:1+ contrast (WCAG AA). */
+  --color-base-250: color-mix(in srgb, var(--color-brand) 90%, black);
 
   --color-primary: var(--color-lightest);
   --color-secondary: var(--color-light);
@@ -69,6 +72,10 @@
     @apply p-0 m-0 text-base-content;
     font-family: 'Montserrat', sans-serif;
     background: var(--site-gradient);
+  }
+
+  button {
+    cursor: pointer;
   }
 
   section p,
@@ -115,7 +122,7 @@
 
 @layer components {
   .badge {
-    @apply inline-flex items-center px-3 py-1 text-sm font-semibold rounded-full bg-accent-primary text-base-200;
+    @apply inline-flex items-center px-3 py-1 text-sm font-semibold rounded-full bg-accent-primary text-base-300;
   }
 
   .badge-outline {
@@ -291,4 +298,8 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transform: translateY(-100%);
   transition: transform 0.3s ease;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  filter: brightness(0) saturate(100%) invert(99%) sepia(79%) saturate(900%) hue-rotate(100deg) brightness(65%) contrast(200%);
 }

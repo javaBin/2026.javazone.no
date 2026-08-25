@@ -28,6 +28,7 @@ import KSDigitaleFellestjenester from '../../../public/partners/ks-digitale-fell
 import NAV from '../../../public/partners/nav.svg'
 import PolitietPIT from '../../../public/partners/politietpit.svg'
 import PostenBring from '../../../public/partners/postenbring.svg'
+import redHat from '../../../public/partners/redhat.svg'
 import Scelto from '../../../public/partners/scelto.svg'
 import Scienta from '../../../public/partners/scienta.svg'
 import Skatteetaten from '../../../public/partners/skatteetaten.svg'
@@ -39,9 +40,12 @@ import STOE from '../../../public/partners/stoe.svg'
 import Storebrand from '../../../public/partners/storebrand.svg'
 import Systek from '../../../public/partners/systek-logo-2026.svg'
 import Telenor from '../../../public/partners/telenor.svg'
+import TetDigital from '../../../public/partners/tet-digital.svg'
 import Tietobanktech from '../../../public/partners/tietobanktech.svg'
 import Tolletaten from '../../../public/partners/tolletaten.svg'
 import Tomra from '../../../public/partners/tomra.svg'
+import unleash from '../../../public/partners/unleash.svg'
+import uptime from '../../../public/partners/uptime_logo.svg'
 import Vaadin from '../../../public/partners/vaadin_v2.svg'
 import VEND from '../../../public/partners/vend_logo.svg'
 import VY from '../../../public/partners/vy.svg'
@@ -103,4 +107,8 @@ export const partners: Partner[] = [
   { name: 'KLP', homepageUrl: 'https://www.klp.no', logoUrl: KLP },
   { name: 'Digdir', homepageUrl: 'https://www.digdir.no', logoUrl: Digdir },
   { name: 'Vy', homepageUrl: 'https://www.vy.no', logoUrl: VY },
+  { name: 'Red Hat', homepageUrl: 'https://www.redhat.com', logoUrl: redHat },
+  { name: 'Unleash', homepageUrl: 'https://www.unleash.run', logoUrl: unleash },
+  { name: 'Uptime Consulting', homepageUrl: 'https://www.uptimeconsulting.no/', logoUrl: uptime },
+  { name: 'Tet Digital', homepageUrl: 'https://www.tetdigital.no/', logoUrl: TetDigital },
 ]

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
-import { BubbleField, Heading } from '@/components'
+import { BubbleField, Heading, LinkButton } from '@/components'
 import DayTabs from '@/components/program/DayTabs'
 import { type FilterKey } from '@/components/program/FilterPanel'
 import FilterPanel from '@/components/program/FilterPanel'
@@ -18,6 +18,7 @@ import {
   activeFilterCount,
   ALL_DAYS,
   computeConflicts,
+  countSessionsByDay,
   createEmptyFilters,
   getConferenceStart,
   getDays,
@@ -30,6 +31,7 @@ import {
   type ProgramView,
   type SessionGroup,
   sortSessionsByStart,
+  WORKSHOP_SIGNUP_URL,
 } from '@/lib/program'
 
 const ProgramPage = () => {
@@ -49,6 +51,9 @@ const ProgramPage = () => {
   const facets = useMemo(() => getFacets(sessions), [sessions])
   const conflicts = useMemo(() => computeConflicts(sessions, favorites), [sessions, favorites])
   const conferenceStart = useMemo(() => getConferenceStart(sessions), [sessions])
+  const filterCount = activeFilterCount(filters)
+  const isSearchingOrFiltering = filters.query.trim().length > 0 || filterCount > 0
+  const dayCounts = useMemo(() => countSessionsByDay(sessions, filters, view, favorites), [sessions, filters, view, favorites])
 
   useEffect(() => {
     if (!days.length) return
@@ -56,6 +61,16 @@ const ProgramPage = () => {
       setFilters((f) => ({ ...f, day: days[0] }))
     }
   }, [days, filters.day])
+
+  // If a search/filter empties out the currently selected day, jump to the first day that
+  // still has a match rather than leaving the visitor stranded on an empty tab.
+  useEffect(() => {
+    if (!isSearchingOrFiltering) return
+    if (!filters.day || filters.day === ALL_DAYS) return
+    if ((dayCounts.get(filters.day) ?? 0) > 0) return
+    const dayWithMatches = days.find((d) => (dayCounts.get(d) ?? 0) > 0)
+    if (dayWithMatches) setFilters((f) => ({ ...f, day: dayWithMatches }))
+  }, [isSearchingOrFiltering, dayCounts, days, filters.day])
 
   const isLiveView = view === 'live'
   const isMyScheduleView = view === 'my-schedule'
@@ -75,7 +90,6 @@ const ProgramPage = () => {
     if (upNext.length) result.push({ time: 'Up next', sessions: upNext })
     return result
   }, [isLiveView, filtered, now])
-  const filterCount = activeFilterCount(filters)
   const hasStarted = !conferenceStart || now.getTime() >= conferenceStart.getTime()
   const showCountdown = isLiveView && !hasStarted
 
@@ -114,7 +128,12 @@ const ProgramPage = () => {
         )}
 
         {days.length > 1 && !isLiveView && !isMyScheduleView && (
-          <DayTabs days={days} activeDay={filters.day} onSelect={(day) => setFilters((f) => ({ ...f, day }))} />
+          <DayTabs
+            days={days}
+            activeDay={filters.day}
+            onSelect={(day) => setFilters((f) => ({ ...f, day }))}
+            counts={isSearchingOrFiltering ? dayCounts : undefined}
+          />
         )}
 
         <div id="program-panel" role="tabpanel" aria-label="Program results">
@@ -161,6 +180,12 @@ const ProgramPage = () => {
 
           {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
             <TimetableGrid sessions={filtered} favorites={favorites} conflicts={conflicts} onToggleFavorite={toggleFavorite} now={now} />
+          )}
+
+          {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
+            <div className="flex justify-center mb-10">
+              <LinkButton title="Sign up here!" link={WORKSHOP_SIGNUP_URL} size="medium" />
+            </div>
           )}
 
           {!loading && !error && !isLiveView && !isMyScheduleView && !isEmpty && (

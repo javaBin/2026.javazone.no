@@ -154,19 +154,48 @@ export interface SessionGroup {
   sessions: Session[]
 }
 
+// Sessions starting at the same time (parallel tracks) are then ordered by room, ascending
+// (e.g. "Room 2" before "Room 10" — {numeric: true} keeps that natural rather than lexical).
 export function sortSessionsByStart(sessions: Session[]): Session[] {
   return [...sessions].sort((a, b) => {
     const at = getSessionStart(a)?.getTime() ?? Infinity
     const bt = getSessionStart(b)?.getTime() ?? Infinity
-    return at - bt
+    if (at !== bt) return at - bt
+    return (a.room ?? '').localeCompare(b.room ?? '', undefined, { numeric: true })
   })
 }
 
-const LIGHTNING_TALK_FORMAT = 'lightning-talk'
+export const LIGHTNING_TALK_FORMAT = 'lightning-talk'
 // Lightning talks are often scheduled a few minutes after the "main" slot they belong
 // to, which would otherwise land them in their own sparse, single-talk time group. Fold
 // a lightning-only group into the slot right before it as long as it starts soon after.
-const LIGHTNING_MERGE_WINDOW_MS = 60 * 60 * 1000
+const LIGHTNING_MERGE_WINDOW_MS = 70 * 60 * 1000
+
+export function isLightningTalk(session: Session): boolean {
+  return session.format === LIGHTNING_TALK_FORMAT
+}
+
+export const WORKSHOP_FORMAT = 'workshop'
+export const WORKSHOP_SIGNUP_URL = 'https://event.checkin.no/226598/java-zone-workshops-2026'
+
+export function isWorkshop(session: Session): boolean {
+  return session.format === WORKSHOP_FORMAT
+}
+
+// Lightning talks aren't called out with a format badge (see isWorkshop callers), so their
+// title carries this label instead — kept as its own constant so callers can style it
+// distinctly from the rest of the title (see SessionCard/TalkDetails).
+export const LIGHTNING_TALK_LABEL = 'Lightning Talk: '
+
+// Within a displayed time slot, lightning talks are folded in alongside (or after) the
+// "main" sessions for that slot — see groupSessionsByTime below — so they're pushed to the
+// end of the group rather than sorted purely by start time, keeping the main sessions
+// together up top. Each half stays sorted by start time internally.
+function sortWithLightningLast(sessions: Session[]): Session[] {
+  const main = sortSessionsByStart(sessions.filter((s) => !isLightningTalk(s)))
+  const lightning = sortSessionsByStart(sessions.filter(isLightningTalk))
+  return [...main, ...lightning]
+}
 
 export interface DayGroup {
   day: string
@@ -207,7 +236,7 @@ export function groupSessionsByTime(sessions: Session[]): SessionGroup[] {
   const merged: { time: string; sessions: Session[]; anchorMs: number | null }[] = []
   for (const label of order) {
     const groupSessions = byLabel.get(label)!
-    const isLightningOnly = groupSessions.every((s) => s.format === LIGHTNING_TALK_FORMAT)
+    const isLightningOnly = groupSessions.every(isLightningTalk)
     const startMs = getSessionStart(groupSessions[0])?.getTime() ?? null
 
     const prev = merged[merged.length - 1]
@@ -218,7 +247,7 @@ export function groupSessionsByTime(sessions: Session[]): SessionGroup[] {
     }
   }
 
-  return merged.map(({ time, sessions }) => ({ time, sessions: sortSessionsByStart(sessions) }))
+  return merged.map(({ time, sessions }) => ({ time, sessions: sortWithLightningLast(sessions) }))
 }
 
 const UNKNOWN_ROOM = 'Other'
@@ -246,7 +275,7 @@ export function buildTimetableLayout(sessions: Session[]): TimetableLayout | nul
   if (!timed.length) return null
 
   const roomOf = (s: Session) => s.room ?? UNKNOWN_ROOM
-  const rooms = Array.from(new Set(timed.map((t) => roomOf(t.session)))).sort((a, b) => a.localeCompare(b))
+  const rooms = Array.from(new Set(timed.map((t) => roomOf(t.session)))).sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
 
   const lanes = rooms.map((room) => ({
     room,
@@ -280,7 +309,7 @@ export function getFacets(sessions: Session[]): ProgramFacets {
   return { formats: sort(formats), rooms: sort(rooms), languages: sort(languages) }
 }
 
-export function matchesFilters(session: Session, filters: ProgramFilters, view: ProgramView, favorites: Set<string>): boolean {
+export function matchesFilters(session: Session, filters: ProgramFilters, view: ProgramView, favorites: ReadonlySet<string>): boolean {
   if (view === 'my-schedule' && !favorites.has(session.sessionId)) return false
   // Live view and My schedule both look across the whole event, not just whichever day
   // tab happens to be selected — that's unrelated UI state neither view exposes.
@@ -301,6 +330,24 @@ export function matchesFilters(session: Session, filters: ProgramFilters, view: 
 
 export function activeFilterCount(filters: ProgramFilters): number {
   return filters.formats.size + filters.rooms.size + filters.languages.size
+}
+
+// How many sessions match the current search/filters on each day, ignoring the day tab
+// itself — lets the day tabs show a result count and lets callers detect when the selected
+// day has gone empty so they can jump to a day that still has matches.
+export function countSessionsByDay(
+  sessions: Session[],
+  filters: ProgramFilters,
+  view: ProgramView,
+  favorites: ReadonlySet<string>,
+): Map<string, number> {
+  const counts = new Map<string, number>()
+  for (const session of sessions) {
+    if (!matchesFilters(session, { ...filters, day: ALL_DAYS }, view, favorites)) continue
+    const day = getDayKey(session)
+    counts.set(day, (counts.get(day) ?? 0) + 1)
+  }
+  return counts
 }
 
 export type SessionTiming = 'now' | 'soon' | null
@@ -362,7 +409,7 @@ export function getConferenceStart(sessions: Session[]): Date | null {
   return earliest
 }
 
-export function computeConflicts(sessions: Session[], favorites: Set<string>): Set<string> {
+export function computeConflicts(sessions: Session[], favorites: ReadonlySet<string>): Set<string> {
   const favSessions = sessions
     .filter((s) => favorites.has(s.sessionId))
     .map((s) => ({ session: s, start: getSessionStart(s), end: getSessionEnd(s) }))
