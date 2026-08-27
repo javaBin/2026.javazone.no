@@ -161,19 +161,34 @@
 }
 
 .favorite-icon[data-favorite='false'] svg {
-  transform: scale(0.8);
+  transform: scale(0.7);
 }
 
-/* Favorited on a card: the illustration's outline (st2) is the same brand blue as the
-   card background, so it disappears at the edges — lighten it a step on the palette.
-   Scoped to the card variant only; elsewhere (e.g. the talk page CTA) keeps its original edge color. */
+/* Favorited: nudge the illustration slightly larger so the saved state reads as more
+   prominent, mirroring how the unfavorited state scales down. */
+.favorite-icon[data-favorite='true'] svg {
+  transform: scale(1.1);
+}
+
+/* Program cards/timetable only: recolor the favorited starfish into the "pop" palette
+   instead of the default blue illustration. Scoped to --card so the talk page CTA
+   (--cta) keeps the icon's original colors. */
+.favorite-icon--card[data-favorite='true'] .st1,
+.favorite-icon--card[data-favorite='true'] .st4 {
+  fill: color-mix(in srgb, var(--color-pop) 45%, white);
+}
+
 .favorite-icon--card[data-favorite='true'] .st2 {
-  fill: var(--color-mid);
+  fill: #995b5d;
 }
 
-/* Same problem on the talk modal's favorite CTA: the dialog background is the same brand
-   blue as the illustration's outline. Darken the outline a step (rather than lightening,
-   as the card does) so it reads as a rim around the shape instead of washing out. */
+.favorite-icon--card[data-favorite='true'] .st3 {
+  fill: var(--color-pop);
+}
+
+/* Favorited on the talk modal's favorite CTA: the dialog background is the same brand
+   blue as the illustration's outline, so it disappears at the edges — darken it a step
+   on the palette so it reads as a rim around the shape instead of washing out. */
 .favorite-icon--cta[data-favorite='true'] .st2 {
   fill: var(--color-base-300);
 }
