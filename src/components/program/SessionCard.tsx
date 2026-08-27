@@ -76,7 +76,7 @@ const SessionCard = ({
         to={`/program/${session.sessionId}`}
         state={{ background: location }}
         aria-labelledby={titleId}
-        className="absolute inset-0 z-0 rounded-3xl outline-none focus-visible:ring-2 focus-visible:ring-accent-primary"
+        className="absolute inset-0 z-0 outline-none rounded-3xl focus-visible:ring-2 focus-visible:ring-accent-primary"
       />
 
       <div className="flex items-start justify-between gap-2 pointer-events-none">
@@ -104,7 +104,7 @@ const SessionCard = ({
         {session.title}
       </h3>
 
-      {startTime && <p className="m-0 text-sm font-semibold text-accent-primary pointer-events-none">Starts {startTime}</p>}
+      {startTime && <p className="m-0 text-sm font-semibold pointer-events-none text-accent-primary">Starts {startTime}</p>}
 
       <div className="relative flex flex-col gap-0.5 pointer-events-none">
         {session.speakers.map((s) => (
@@ -113,9 +113,7 @@ const SessionCard = ({
           </p>
         ))}
 
-        {isConflict && (
-          <p className="absolute right-0 bottom-0 px-2 py-0.5 m-0 text-sm font-semibold rounded-full text-pop">Overlaps another favorite</p>
-        )}
+        {isConflict && <p className="absolute right-0 bottom-0 px-2 py-0.5 m-0 text-sm font-semibold rounded-full text-pop">Favorites overlap</p>}
       </div>
 
       <div className="pointer-events-none">

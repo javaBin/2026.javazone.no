@@ -17,7 +17,7 @@ const FavoriteCallToAction = ({ sessionId, isFavorite, onToggle }: { sessionId: 
       sessionId={sessionId}
       isFavorite={isFavorite}
       className={`favorite-icon--cta absolute right-0 inset-y-0 my-auto ${
-        isFavorite ? 'w-11 h-11 sm:w-20 sm:h-20' : 'w-9 h-9 text-secondary sm:w-16 sm:h-16 mr-2'
+        isFavorite ? 'w-11 h-11 sm:w-20 sm:h-20' : 'w-9 h-9 text-secondary sm:w-16 sm:h-16 mr-1'
       }`}
     />
   </button>
