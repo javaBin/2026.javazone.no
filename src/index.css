@@ -18,12 +18,13 @@
   --color-pop: #f79497;
   --color-pop-secondary: #5c2734;
 
+  /* Stops are viewport-relative (vh), not %, so the darken-to-darkest transition always
+     completes within 2 screen heights regardless of total page length. */
   --site-gradient: linear-gradient(
     to bottom,
     var(--color-mid) 0,
     var(--color-brand) 100vh,
-    var(--color-brand) 80%,
-    color-mix(in srgb, var(--color-brand) 65%, black) 100%
+    color-mix(in srgb, var(--color-brand) 65%, black) 200vh
   );
 }
 
