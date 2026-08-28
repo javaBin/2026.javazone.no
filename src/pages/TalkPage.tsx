@@ -3,15 +3,13 @@ import { Link } from 'react-router-dom'
 import stingraySvg from '@/assets/icons/JZ26-Icon-Stingray-free.svg'
 import { BubbleField } from '@/components'
 import TalkDetails from '@/components/program/TalkDetails'
-import { useMetaDescription } from '@/hooks/useMetaDescription'
 
 // ── TalkPage ──────────────────────────────────────────────────────────────────
 // Full-page presentation, used for direct navigation and deep links. When opened
 // from within the app (e.g. clicking a session card), TalkModal is used instead.
+// TalkDetails itself sets the page's Open Graph tags once the session data loads.
 
 const TalkPage = () => {
-  useMetaDescription('Details for a JavaZone 2026 session — see the abstract, speakers, room, and time, and add it to your personal schedule.')
-
   return (
     <div className="min-h-screen pt-20 pb-24">
       <BubbleField variant="subtle" />

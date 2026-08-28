@@ -1,5 +1,5 @@
 import { BubbleField, Card, Heading } from '@/components'
-import { useMetaDescription } from '@/hooks/useMetaDescription'
+import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const gradients: [string, string][] = [
   ['#0080e8', '#007adf'],
@@ -23,7 +23,10 @@ const gradients: [string, string][] = [
 ]
 
 const SubmissionTipsPage = () => {
-  useMetaDescription('Tips for writing a strong JavaZone talk or workshop proposal, plus the most common reasons submissions get rejected.')
+  useOpenGraph({
+    title: 'Submission Tips | JavaZone 2026',
+    description: 'Tips for writing a strong JavaZone talk or workshop proposal, plus the most common reasons submissions get rejected.',
+  })
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">

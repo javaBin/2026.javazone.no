@@ -6,6 +6,7 @@ import FavoriteCallToAction from '@/components/program/FavoriteCallToAction'
 import { ClockIcon, LanguageIcon, RoomIcon } from '@/components/program/icons'
 import MetaBadge from '@/components/program/MetaBadge'
 import { useFavorites } from '@/hooks/useFavorites'
+import { useOpenGraph } from '@/hooks/useOpenGraph'
 import { useProgram } from '@/hooks/useProgram'
 import {
   formatDayLabel,
@@ -28,13 +29,33 @@ import {
 // deep links) and TalkModal (opened over the program list). Only the "close/back" control
 // in the header (and optionally the title size) differs between the two, so they're passed
 // in rather than hardcoded here.
-const TalkDetails = ({ closeControl, titleClassName = '', titleId }: { closeControl: ReactNode; titleClassName?: string; titleId?: string }) => {
+const TalkDetails = ({
+  closeControl,
+  titleClassName = '',
+  titleId,
+  updatePageMeta = true,
+}: {
+  closeControl: ReactNode
+  titleClassName?: string
+  titleId?: string
+  /** False for TalkModal, which overlays a page that already set its own Open Graph tags. */
+  updatePageMeta?: boolean
+}) => {
   const { id } = useParams<{ id: string }>()
   const { sessions, loading, error: loadError } = useProgram()
   const { favorites, toggle: toggleFavorite } = useFavorites()
 
   const session = sessions.find((s) => s.sessionId === id) ?? null
   const error = loadError ?? (!loading && !session ? 'Talk not found' : null)
+
+  useOpenGraph({
+    title: session ? `${session.title} | JavaZone 2026` : 'Program | JavaZone 2026',
+    description: session
+      ? (session.abstract?.slice(0, 200) ?? `See the abstract, speakers, room, and time for ${session.title} at JavaZone 2026.`)
+      : 'Details for a JavaZone 2026 session — see the abstract, speakers, room, and time, and add it to your personal schedule.',
+    ogDescription: session ? "You don't want to miss this amazing session!" : undefined,
+    enabled: updatePageMeta,
+  })
 
   const keywords = session ? getKeywords(session) : []
   const duration = session ? formatDuration(getDurationMinutes(session)) : null

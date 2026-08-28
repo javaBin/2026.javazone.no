@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { BubbleField, Card, Heading, LinkButton } from '@/components'
-import { useMetaDescription } from '@/hooks/useMetaDescription'
+import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const gradients: [string, string][] = [
   ['#1a7fd4', '#006bc4'],
@@ -13,9 +13,11 @@ const gradients: [string, string][] = [
 ]
 
 const SpeakerMainPage = () => {
-  useMetaDescription(
-    'JavaZone 2026 Call for Speakers — talk formats, submission tips, evaluation process, and what speakers get in return for presenting at the conference.',
-  )
+  useOpenGraph({
+    title: 'Call for Speakers | JavaZone 2026',
+    description:
+      'JavaZone 2026 Call for Speakers — talk formats, submission tips, evaluation process, and what speakers get in return for presenting at the conference.',
+  })
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">

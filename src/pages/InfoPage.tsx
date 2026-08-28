@@ -1,10 +1,12 @@
 import { BubbleField, Heading } from '@/components'
-import { useMetaDescription } from '@/hooks/useMetaDescription'
+import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const InfoPage = () => {
-  useMetaDescription(
-    'Everything you need to know about JavaZone 2026 — venue, transportation, parking, workshops, accessibility, food, tickets, and AweZone.',
-  )
+  useOpenGraph({
+    title: 'Info | JavaZone 2026',
+    description:
+      'Everything you need to know about JavaZone 2026 — venue, transportation, parking, workshops, accessibility, food, tickets, and AweZone.',
+  })
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-8 pt-20 mb-20 space-y-8">

@@ -1,10 +1,12 @@
 import { BubbleField, Heading, LinkButton } from '@/components'
-import { useMetaDescription } from '@/hooks/useMetaDescription'
+import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const AwezonePage = () => {
-  useMetaDescription(
-    'AweZone, the JavaZone evening party — live performances from Matoma and partner bands, activities, and proper JavaZone party energy.',
-  )
+  useOpenGraph({
+    title: 'AweZone Party | JavaZone 2026',
+    description:
+      'AweZone, the JavaZone evening party — live performances from Matoma and partner bands, activities, and proper JavaZone party energy.',
+  })
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-8 pt-20 mb-20 space-y-8">
@@ -56,10 +58,10 @@ const AwezonePage = () => {
       </section>
 
       <section className="w-full max-w-2xl space-y-4 text-left">
-          <Heading level="h2">In summary</Heading>
+        <Heading level="h2">In summary</Heading>
         <p>The AweZone is about bringing the community together after a full day of learning, discussions and inspiration.</p>
         <p>Come for the partner bands. Stay for Matoma. Try the activities. Meet old friends and make some new ones.</p>
-          <p>We will party until midnight (Bar closes at 23:30)</p>
+        <p>We will party until midnight (Bar closes at 23:30)</p>
         <p className="font-semibold">See you at AweZone! 💃🕺</p>
         <div className="pt-4 text-center">
           <LinkButton title="Get your ticket" link="/tickets" variant="pop" />

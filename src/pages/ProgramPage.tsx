@@ -11,8 +11,8 @@ import SearchToolbar from '@/components/program/SearchToolbar'
 import TimetableGrid from '@/components/program/TimetableGrid'
 import ViewTabs from '@/components/program/ViewTabs'
 import { useFavorites } from '@/hooks/useFavorites'
-import { useMetaDescription } from '@/hooks/useMetaDescription'
 import { useNow } from '@/hooks/useNow'
+import { useOpenGraph } from '@/hooks/useOpenGraph'
 import { useProgram } from '@/hooks/useProgram'
 import {
   activeFilterCount,
@@ -35,9 +35,11 @@ import {
 } from '@/lib/program'
 
 const ProgramPage = () => {
-  useMetaDescription(
-    "Browse the full JavaZone 2026 schedule — search and filter talks and workshops, build your personal schedule, and see what's happening live at NOVA Spektrum.",
-  )
+  useOpenGraph({
+    title: 'Program | JavaZone 2026',
+    description:
+      "Browse the full JavaZone 2026 schedule — search and filter talks and workshops, build your personal schedule, and see what's happening live at NOVA Spektrum.",
+  })
 
   const { sessions, loading, error, retry } = useProgram()
   const { favorites, toggle: toggleFavorite } = useFavorites()

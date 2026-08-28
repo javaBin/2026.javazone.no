@@ -1,10 +1,12 @@
 import { Heading, Packages } from '@/components'
-import { useMetaDescription } from '@/hooks/useMetaDescription'
+import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const PartnerInfoPage = () => {
-  useMetaDescription(
-    'Detailed information for JavaZone 2026 partners — the first partner meeting recording, available packages and tickets, and how to contact the partner team.',
-  )
+  useOpenGraph({
+    title: 'Partner Information | JavaZone 2026',
+    description:
+      'Detailed information for JavaZone 2026 partners — the first partner meeting recording, available packages and tickets, and how to contact the partner team.',
+  })
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-8 pt-20 mb-20 space-y-8">

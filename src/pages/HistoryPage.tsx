@@ -1,8 +1,11 @@
 import { BubbleField, Card, Heading } from '@/components'
-import { useMetaDescription } from '@/hooks/useMetaDescription'
+import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const HistoryPage = () => {
-  useMetaDescription("Revisit past JavaZone conferences from 2022 to 2025, with links to each year's own site and program.")
+  useOpenGraph({
+    title: 'History | JavaZone 2026',
+    description: "Revisit past JavaZone conferences from 2022 to 2025, with links to each year's own site and program.",
+  })
 
   const years = [2025, 2024, 2023, 2022]
 

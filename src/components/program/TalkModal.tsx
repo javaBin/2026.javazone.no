@@ -66,6 +66,7 @@ const TalkModal = () => {
           <TalkDetails
             titleId={TITLE_ID}
             titleClassName="!text-4xl md:!text-5xl"
+            updatePageMeta={false}
             closeControl={
               <button
                 type="button"
