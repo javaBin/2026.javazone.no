@@ -42,7 +42,8 @@
       "Bash(grep -n \"^h1\\\\|h1 {\\\\|h1,\\\\|pt-\" src/index.css)",
       "Bash(command -v chromium-cli)",
       "Read(//c/Users/**)",
-      "Skill(claude-in-chrome)"
+      "Skill(claude-in-chrome)",
+      "Read(//Users/andersmacprivat/Downloads/**)"
     ]
   }
 }

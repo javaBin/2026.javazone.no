@@ -47,6 +47,12 @@ const MainPage = () => {
             link="https://kids.java.no/arrangementer/33daa75d-660b-4921-9b05-825596211c5c"
             className="mt-6 max-w-md min-w-[320px] pointer-events-auto"
           />
+          <a
+            href="/in-memoriam"
+            className="mt-8 px-4 py-2 text-sm text-primary underline pointer-events-auto rounded-3xl border border-primary/40 hover:border-primary hover:no-underline"
+          >
+            JavaZone following the passing of King Harald V
+          </a>
         </div>
       </div>
     </div>

@@ -77,6 +77,7 @@ const Header = () => {
   const hidden = !isMainPage && !scrolled
   const [isOpen, setIsOpen] = useState(false)
   const { motionEnabled, toggleMotion } = useMotion()
+  const showAnimationsToggle = pathname !== '/in-memoriam'
 
   return (
     <header className={`${hidden ? 'slideUpHeader' : 'fixed top-0 z-50 w-full transition-transform duration-300 ease-in-out translate-y-0'}`}>
@@ -103,16 +104,18 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center ml-auto">
-          <button
-            type="button"
-            onClick={toggleMotion}
-            aria-label="Toggle animations"
-            aria-pressed={motionEnabled}
-            className={`flex items-center gap-2 px-3 py-1.5 mr-1 rounded-full border border-primary/50 text-primary text-sm font-medium cursor-pointer transition-all duration-200 hover:border-primary hover:bg-primary/10 ${motionEnabled ? '' : 'opacity-50'}`}
-          >
-            <SparklesIcon />
-            <span className="hidden sm:inline">Animations</span>
-          </button>
+          {showAnimationsToggle && (
+            <button
+              type="button"
+              onClick={toggleMotion}
+              aria-label="Toggle animations"
+              aria-pressed={motionEnabled}
+              className={`flex items-center gap-2 px-3 py-1.5 mr-1 rounded-full border border-primary/50 text-primary text-sm font-medium cursor-pointer transition-all duration-200 hover:border-primary hover:bg-primary/10 ${motionEnabled ? '' : 'opacity-50'}`}
+            >
+              <SparklesIcon />
+              <span className="hidden sm:inline">Animations</span>
+            </button>
+          )}
           <button
             type="button"
             onClick={() => setIsOpen((v) => !v)}
