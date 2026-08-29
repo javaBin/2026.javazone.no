@@ -17,10 +17,18 @@ import pageMeta from '../src/data/pageMeta.json' with { type: 'json' }
 const DIST_DIR = new URL('../dist/', import.meta.url)
 const SESSIONS_URL = 'https://sleepingpill.javazone.no/public/allSessions/javazone_2026'
 const FALLBACK_ABSTRACT = (title) => `See the abstract, speakers, room, and time for ${title} at JavaZone 2026.`
-const TALK_OG_DESCRIPTION = "You don't want to miss this amazing session!"
 
 function escapeHtml(value) {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
+// Mirrors src/components/program/TalkDetails.tsx's truncateAtWord — kept in sync by hand since
+// this script runs as plain Node, outside the app's TS/Vite build.
+function truncateAtWord(text, maxLength) {
+  if (text.length <= maxLength) return text
+  const truncated = text.slice(0, maxLength)
+  const lastSpace = truncated.lastIndexOf(' ')
+  return `${truncated.slice(0, lastSpace > 0 ? lastSpace : maxLength)}…`
 }
 
 function applyMeta(template, { title, description, ogDescription }) {
@@ -78,8 +86,7 @@ async function main() {
       const pathname = `/program/${session.sessionId}`
       await writePage(template, pathname, {
         title: `${session.title} | JavaZone 2026`,
-        description: session.abstract?.slice(0, 200) || FALLBACK_ABSTRACT(session.title),
-        ogDescription: TALK_OG_DESCRIPTION,
+        description: session.abstract ? truncateAtWord(session.abstract, 200) : FALLBACK_ABSTRACT(session.title),
       })
     }
     console.log(`prerendered ${sessions.length} program/<id> pages`)

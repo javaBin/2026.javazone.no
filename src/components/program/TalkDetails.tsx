@@ -25,6 +25,15 @@ import {
   WORKSHOP_SIGNUP_URL,
 } from '@/lib/program'
 
+// Cuts at the last full word before maxLength instead of mid-word, since this feeds
+// meta/og:description tags where a hard mid-word cutoff reads as broken rather than shortened.
+function truncateAtWord(text: string, maxLength: number): string {
+  if (text.length <= maxLength) return text
+  const truncated = text.slice(0, maxLength)
+  const lastSpace = truncated.lastIndexOf(' ')
+  return `${truncated.slice(0, lastSpace > 0 ? lastSpace : maxLength)}…`
+}
+
 // Shared talk-detail content — rendered both by the full-page TalkPage (direct navigation,
 // deep links) and TalkModal (opened over the program list). Only the "close/back" control
 // in the header (and optionally the title size) differs between the two, so they're passed
@@ -51,9 +60,10 @@ const TalkDetails = ({
   useOpenGraph({
     title: session ? `${session.title} | JavaZone 2026` : 'Program | JavaZone 2026',
     description: session
-      ? (session.abstract?.slice(0, 200) ?? `See the abstract, speakers, room, and time for ${session.title} at JavaZone 2026.`)
+      ? session.abstract
+        ? truncateAtWord(session.abstract, 200)
+        : `See the abstract, speakers, room, and time for ${session.title} at JavaZone 2026.`
       : 'Details for a JavaZone 2026 session — see the abstract, speakers, room, and time, and add it to your personal schedule.',
-    ogDescription: session ? "You don't want to miss this amazing session!" : undefined,
     enabled: updatePageMeta,
   })
 
