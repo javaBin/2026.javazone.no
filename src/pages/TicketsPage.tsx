@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { BubbleField, Heading, LinkButton } from '@/components'
+import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const faq: { q: string; a: React.ReactNode }[] = [
@@ -52,11 +53,7 @@ const faq: { q: string; a: React.ReactNode }[] = [
 ]
 
 const TicketsPage = () => {
-  useOpenGraph({
-    title: 'Tickets | JavaZone 2026',
-    description:
-      "Buy your JavaZone 2026 ticket. Ticket prices, what's included, and answers to frequently asked questions about refunds, transfers, and partner tickets.",
-  })
+  useOpenGraph(pageMeta.tickets)
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">

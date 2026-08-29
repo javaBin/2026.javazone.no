@@ -1,0 +1,77 @@
+{
+  "main": {
+    "path": "/",
+    "title": "JavaZone 2026",
+    "description": "JavaZone 2026 takes place September 2–3 at NOVA Spektrum, Lillestrøm, Norway. Explore the program and get your ticket to the biggest community-driven Java conference."
+  },
+  "about": {
+    "path": "/about",
+    "title": "About | JavaZone 2026",
+    "description": "About JavaZone, the community-driven Java conference organized by javaBin since 2001 — our principles, code of conduct, food, and sustainability efforts."
+  },
+  "awezone": {
+    "path": "/awezone",
+    "title": "AweZone Party | JavaZone 2026",
+    "description": "AweZone, the JavaZone evening party — live performances from Matoma and partner bands, activities, and proper JavaZone party energy."
+  },
+  "food": {
+    "path": "/food",
+    "title": "Food | JavaZone 2026",
+    "description": "The full JavaZone 2026 food menu — every food stand and food truck, with dish descriptions and allergen info."
+  },
+  "history": {
+    "path": "/history",
+    "title": "History | JavaZone 2026",
+    "description": "Revisit past JavaZone conferences from 2022 to 2025, with links to each year's own site and program."
+  },
+  "info": {
+    "path": "/info",
+    "title": "Info | JavaZone 2026",
+    "description": "Everything you need to know about JavaZone 2026 — venue, transportation, parking, workshops, accessibility, food, tickets, and AweZone."
+  },
+  "partner": {
+    "path": "/partner",
+    "title": "Partner with Us | JavaZone 2026",
+    "description": "Become a JavaZone 2026 partner. Learn about partnership packages and how to get in touch with the team about sponsoring the conference."
+  },
+  "partnerInfo": {
+    "path": "/partner/info",
+    "title": "Partner Information | JavaZone 2026",
+    "description": "Detailed information for JavaZone 2026 partners — the first partner meeting recording, available packages and tickets, and how to contact the partner team."
+  },
+  "program": {
+    "path": "/program",
+    "title": "Program | JavaZone 2026",
+    "description": "Browse the full JavaZone 2026 schedule — search and filter talks and workshops, build your personal schedule, and see what's happening live at NOVA Spektrum."
+  },
+  "tickets": {
+    "path": "/tickets",
+    "title": "Tickets | JavaZone 2026",
+    "description": "Buy your JavaZone 2026 ticket. Ticket prices, what's included, and answers to frequently asked questions about refunds, transfers, and partner tickets."
+  },
+  "volunteer": {
+    "path": "/volunteer",
+    "title": "Volunteer | JavaZone 2026",
+    "description": "Volunteer at JavaZone 2026 — find out what volunteers do, who can apply, and answers to frequently asked questions, then sign up."
+  },
+  "speakerMain": {
+    "path": "/speaker",
+    "title": "Call for Speakers | JavaZone 2026",
+    "description": "JavaZone 2026 Call for Speakers — talk formats, submission tips, evaluation process, and what speakers get in return for presenting at the conference."
+  },
+  "speakerFamilyTicket": {
+    "path": "/speaker/family-ticket",
+    "title": "Family Ticket Policy | JavaZone 2026",
+    "description": "JavaZone 2026 speaker family ticket policy — who's eligible, the short-visit pass and discounted full conference ticket, and how to request one."
+  },
+  "speakerReimbursement": {
+    "path": "/speaker/reimbursement",
+    "title": "Reimbursement Policy | JavaZone 2026",
+    "description": "JavaZone 2026 speaker reimbursement policy — how to apply for travel and accommodation coverage, deadlines, and what's included."
+  },
+  "speakerTips": {
+    "path": "/speaker/tips",
+    "title": "Submission Tips | JavaZone 2026",
+    "description": "Tips for writing a strong JavaZone talk or workshop proposal, plus the most common reasons submissions get rejected."
+  }
+}

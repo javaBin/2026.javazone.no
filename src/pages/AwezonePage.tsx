@@ -1,12 +1,9 @@
 import { BubbleField, Heading, LinkButton } from '@/components'
+import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const AwezonePage = () => {
-  useOpenGraph({
-    title: 'AweZone Party | JavaZone 2026',
-    description:
-      'AweZone, the JavaZone evening party — live performances from Matoma and partner bands, activities, and proper JavaZone party energy.',
-  })
+  useOpenGraph(pageMeta.awezone)
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-8 pt-20 mb-20 space-y-8">

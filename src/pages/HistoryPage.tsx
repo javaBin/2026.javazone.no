@@ -1,11 +1,9 @@
 import { BubbleField, Card, Heading } from '@/components'
+import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const HistoryPage = () => {
-  useOpenGraph({
-    title: 'History | JavaZone 2026',
-    description: "Revisit past JavaZone conferences from 2022 to 2025, with links to each year's own site and program.",
-  })
+  useOpenGraph(pageMeta.history)
 
   const years = [2025, 2024, 2023, 2022]
 

@@ -1,13 +1,10 @@
 import { BubbleField, Heading, LinkButton } from '@/components'
 import { PartnerBanner } from '@/components/PartnerBanner.tsx'
+import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const PartnerPage = () => {
-  useOpenGraph({
-    title: 'Partner with Us | JavaZone 2026',
-    description:
-      'Become a JavaZone 2026 partner. Learn about partnership packages and how to get in touch with the team about sponsoring the conference.',
-  })
+  useOpenGraph(pageMeta.partner)
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">

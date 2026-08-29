@@ -1,4 +1,5 @@
 import { BubbleField, Card, Heading } from '@/components'
+import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const gradients: [string, string][] = [
@@ -7,11 +8,7 @@ const gradients: [string, string][] = [
 ]
 
 const FamilyTicketPolicyPage = () => {
-  useOpenGraph({
-    title: 'Family Ticket Policy | JavaZone 2026',
-    description:
-      "JavaZone 2026 speaker family ticket policy — who's eligible, the short-visit pass and discounted full conference ticket, and how to request one.",
-  })
+  useOpenGraph(pageMeta.speakerFamilyTicket)
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">

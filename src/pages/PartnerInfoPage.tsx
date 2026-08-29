@@ -1,12 +1,9 @@
 import { Heading, Packages } from '@/components'
+import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const PartnerInfoPage = () => {
-  useOpenGraph({
-    title: 'Partner Information | JavaZone 2026',
-    description:
-      'Detailed information for JavaZone 2026 partners — the first partner meeting recording, available packages and tickets, and how to contact the partner team.',
-  })
+  useOpenGraph(pageMeta.partnerInfo)
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen p-8 pt-20 mb-20 space-y-8">

@@ -3,6 +3,7 @@ import { type CSSProperties, type TouchEvent, useEffect, useRef, useState } from
 import bubbleIcon from '@/assets/icons/JZ26-Icon-Bubble1.svg'
 import { BubbleField, Card, Heading } from '@/components'
 import menuData from '@/data/menuData.json'
+import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 interface MenuItem {
@@ -198,10 +199,7 @@ const VendorSection = ({ vendor, index }: { vendor: MenuVendor; index: number })
 }
 
 const FoodPage = () => {
-  useOpenGraph({
-    title: 'Food | JavaZone 2026',
-    description: 'The full JavaZone 2026 food menu — every food stand and food truck, with dish descriptions and allergen info.',
-  })
+  useOpenGraph(pageMeta.food)
 
   return (
     <div className="relative">

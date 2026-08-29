@@ -1,11 +1,9 @@
 import { BubbleField, Heading, LinkButton } from '@/components'
+import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const VolunteerPage = () => {
-  useOpenGraph({
-    title: 'Volunteer | JavaZone 2026',
-    description: 'Volunteer at JavaZone 2026 — find out what volunteers do, who can apply, and answers to frequently asked questions, then sign up.',
-  })
+  useOpenGraph(pageMeta.volunteer)
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
