@@ -2,6 +2,7 @@ import fish_1 from '@/assets/graphics/fish-1.svg'
 import fish_2 from '@/assets/graphics/fish-2.svg'
 import fish_3 from '@/assets/graphics/fish-3.svg'
 import wordmark from '@/assets/graphics/JZ26-Logo-OnlyText-transp.png'
+import kingHaraldV from '@/assets/graphics/king-harald-v.jpg'
 import submarine from '@/assets/graphics/submarine.svg'
 import coral from '@/assets/icons/coral.svg'
 import jellyfish from '@/assets/icons/jellyfish.svg'
@@ -20,6 +21,12 @@ export const Assets = {
     cityscape,
     dukeLogo,
     wordmark,
+  },
+  photos: {
+    kingHaraldV: {
+      src: kingHaraldV,
+      attribute: 'Photo: The Royal Court of Norway / Det kongelige hoff',
+    },
   },
   animated: {
     fish_1: {
