@@ -43,7 +43,11 @@
       "Bash(command -v chromium-cli)",
       "Read(//c/Users/**)",
       "Skill(claude-in-chrome)",
-      "Read(//Users/andersmacprivat/Downloads/**)"
+      "Read(//Users/andersmacprivat/Downloads/**)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(nvm ls *)",
+      "Bash(brew list *)",
+      "Bash(brew info *)"
     ]
   }
 }

@@ -1,10 +1,13 @@
 import { useEffect } from 'react'
 
 import { Assets } from '@/Assets'
-import { useMetaDescription } from '@/hooks/useMetaDescription'
+import { useOpenGraph } from '@/hooks/useOpenGraph'
 
 const InMemoriamPage = () => {
-  useMetaDescription('JavaZone remembers His Majesty King Harald V.')
+  useOpenGraph({
+    title: 'In Memory of King Harald V | JavaZone',
+    description: 'JavaZone remembers His Majesty King Harald V.',
+  })
 
   // The footer is transparent and relies on the body's background showing through, so
   // this page needs to override the body's usual blue site gradient to stay black behind it too.
