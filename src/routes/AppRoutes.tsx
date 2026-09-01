@@ -1,4 +1,4 @@
-import { type Location, Route, Routes, useLocation } from 'react-router-dom'
+import { type Location, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 
 import TalkModal from '@/components/program/TalkModal'
 import AboutPage from '@/pages/AboutPage'
@@ -33,6 +33,8 @@ const AppRoutes = () => {
         <Route path="/" element={<MainPage />} />
         <Route path="/program" element={<ProgramPage />} />
         <Route path="/program/:id" element={<TalkPage />} />
+        {/* QR code on printed materials points here; the site has no /en/ locale routes */}
+        <Route path="/en/program" element={<Navigate to="/program" replace />} />
         <Route path="/tickets" element={<TicketsPage />} />
         <Route path="/partner" element={<PartnerPage />} />
         <Route path="/food" element={<FoodPage />} />
