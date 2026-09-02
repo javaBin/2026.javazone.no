@@ -37,6 +37,18 @@ const AboutPage = () => {
       </section>
 
       <section className="w-full max-w-2xl space-y-4 text-left">
+        <Heading level="h2" className={'text-center'}>
+          javaBin is 30, JavaZone is 25!
+        </Heading>
+
+        <img className={'mx-auto'} src="/public/javaBin30JavaZone25years/javaBinLogo.png" alt="javaBinFirstLogo" />
+
+        <div className="pt-4 text-center">
+          <LinkButton title="Read about how it all began" link="/javaBin30years" variant="pop" />
+        </div>
+      </section>
+
+      <section className="w-full max-w-2xl space-y-4 text-left">
         <Heading level="h2">A few very important principles</Heading>
 
         <p>

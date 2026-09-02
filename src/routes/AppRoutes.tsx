@@ -15,6 +15,7 @@ import TalkPage from '@/pages/TalkPage'
 import TicketsPage from '@/pages/TicketsPage.tsx'
 import VolunteerPage from '@/pages/VolunteerPage'
 import { SpeakerRoutes } from '@/routes'
+import JavaBinThirtyYears from "@/pages/JavaBinThirtyYears.tsx";
 
 interface NavigationState {
   background?: Location
@@ -46,6 +47,7 @@ const AppRoutes = () => {
         <Route path="/volunteer" element={<VolunteerPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/awezone" element={<AwezonePage />} />
+        <Route path="/javaBin30years" element={<JavaBinThirtyYears />} />
       </Routes>
 
       {background && (
