@@ -41,7 +41,11 @@ const AboutPage = () => {
           javaBin is 30, JavaZone is 25!
         </Heading>
 
-        <img className={'mx-auto'} src="/public/javaBin30JavaZone25years/javaBinLogo.png" alt="javaBinFirstLogo" />
+        <img
+          className={'mx-auto'}
+          src="/Users/Abdulquddous.Abdellaoui/dev/2026.javazone.no/public/javaBin30JavaZone25years/javaBinLogo.png"
+          alt="javaBinFirstLogo"
+        />
 
         <div className="pt-4 text-center">
           <LinkButton title="Read about how it all began" link="/javaBin30years" variant="pop" />
