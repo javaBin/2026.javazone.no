@@ -21,31 +21,7 @@ const MainPage = () => {
             <br />
             NOVA Spektrum, Lillestrøm
           </Heading>
-          <Heading level="h3" className="my-2 text-secondary">
-            Doors open at 08:00, talks start at 09:00. Don't miss the exciting morning show at 08:30
-          </Heading>
           <LinkButton title="See Program" size="large" variant="pop" link="/program" className="mt-6 max-w-md min-w-[320px] pointer-events-auto" />
-          <LinkButton
-            title="Sign up for Workshops"
-            size="large"
-            variant="pop"
-            link="https://event.checkin.no/226598/java-zone-workshops-2026"
-            className="mt-6 max-w-md min-w-[320px] pointer-events-auto"
-          />
-          <LinkButton
-            title="Buy tickets"
-            size="large"
-            variant="primary"
-            link="/tickets"
-            className="mt-6 max-w-md min-w-[320px] pointer-events-auto"
-          />
-          <LinkButton
-            title="javaBin Kids"
-            size="large"
-            variant="pop-outline"
-            link="https://kids.java.no/arrangementer/33daa75d-660b-4921-9b05-825596211c5c"
-            className="mt-6 max-w-md min-w-[320px] pointer-events-auto"
-          />
           <a
             href="/in-memoriam"
             className="mt-8 px-4 py-2 text-sm text-primary underline pointer-events-auto rounded-3xl border border-primary/40 hover:border-primary hover:no-underline"
