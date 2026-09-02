@@ -114,7 +114,7 @@ const AboutPage = () => {
 
       <b className={'text-[1.2rem]'}>
         Please contact us at{' '}
-        <a target={'_blank'} href="javabin.no">
+        <a target={'_blank'} href="https://javabin.no">
           javaBin
         </a>
         , if you want to know more about the User Group or JavaZone!
