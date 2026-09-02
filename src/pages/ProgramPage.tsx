@@ -24,6 +24,7 @@ import {
   getConferenceStart,
   getDays,
   getFacets,
+  getTodayKey,
   groupSessionsByDayAndTime,
   groupSessionsByTime,
   matchesFilters,
@@ -57,8 +58,10 @@ const ProgramPage = () => {
   useEffect(() => {
     if (!days.length) return
     if (!filters.day || (filters.day !== ALL_DAYS && !days.includes(filters.day))) {
-      setFilters((f) => ({ ...f, day: days[0] }))
+      const todayKey = getTodayKey(now)
+      setFilters((f) => ({ ...f, day: days.includes(todayKey) ? todayKey : days[0] }))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [days, filters.day])
 
   // If a search/filter empties out the currently selected day, jump to the first day that
