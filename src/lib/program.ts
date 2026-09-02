@@ -75,6 +75,13 @@ export function getDayKey(session: Session): string {
   return `${year}-${month}-${day}`
 }
 
+// Same day-key format as getDayKey, but for "now" rather than a session — used to default
+// the program page's day tab to today (in Oslo time) instead of always the first day.
+export function getTodayKey(now: Date): string {
+  const { year, month, day } = getOsloParts(now)
+  return `${year}-${month}-${day}`
+}
+
 export function formatDayLabel(key: string): string {
   if (key === 'unknown') return 'Talks'
   const [year, month, day] = key.split('-').map(Number)
