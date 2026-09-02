@@ -2,6 +2,9 @@ import { BubbleField, Heading, ImageCarousel } from '@/components'
 import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
+import screenShotOne from '../../public/javaBin30JavaZone25years/javaZone2002.png'
+import screenShotTwo from '../../public/javaBin30JavaZone25years/javaZone2003.png'
+
 const AboutPage = () => {
   useOpenGraph(pageMeta.about)
 
@@ -72,11 +75,7 @@ const AboutPage = () => {
       <section className="w-full max-w-2xl space-y-4 text-left">
         <Heading level="h2">26th September 2002</Heading>
         <p>The first JavaZone, a day with lectures and networking at Chateau Neuf in Oslo. The lectures were streamed from JavaOne.</p>
-        <img
-          className={'rounded-2xl'}
-          src="/Users/Abdulquddous.Abdellaoui/dev/2026.javazone.no/public/javaBin30JavaZone25years/javaZone2002.png"
-          alt="First JavaZone"
-        />
+        <img className={'rounded-2xl'} src={screenShotOne} alt="First JavaZone" />
       </section>
 
       <section className="w-full max-w-2xl space-y-4 text-left">
@@ -85,11 +84,7 @@ const AboutPage = () => {
           First JavaZone as a conference. There were about 400-500 participants at Chateau Neuf. The program had about 30 speakers, among them: Kent
           Beck, Joshua Bloch, Ward Cunningham, Rickard Öberg and Neal Gafter. It marked the start of Norway's biggest conference for developers.
         </p>
-        <img
-          className={'rounded-2xl'}
-          src="/Users/Abdulquddous.Abdellaoui/dev/2026.javazone.no/public/javaBin30JavaZone25years/javaZone2003.png"
-          alt="First JavaZone"
-        />
+        <img className={'rounded-2xl'} src={screenShotTwo} alt="First JavaZone" />
       </section>
 
       <section className="w-full max-w-2xl space-y-4 text-left">

@@ -2,6 +2,8 @@ import { BubbleField, Heading, LinkButton } from '@/components'
 import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
+import javaBinLogo from '../../public/javaBin30JavaZone25years/javaBinLogo.png'
+
 const AboutPage = () => {
   useOpenGraph(pageMeta.about)
 
@@ -41,11 +43,7 @@ const AboutPage = () => {
           javaBin is 30, JavaZone is 25!
         </Heading>
 
-        <img
-          className={'mx-auto'}
-          src="/Users/Abdulquddous.Abdellaoui/dev/2026.javazone.no/public/javaBin30JavaZone25years/javaBinLogo.png"
-          alt="javaBinFirstLogo"
-        />
+        <img className={'mx-auto'} src={javaBinLogo} alt="javaBinFirstLogo" />
 
         <div className="pt-4 text-center">
           <LinkButton title="Read about how it all began" link="/javaBin30years" variant="pop" />
