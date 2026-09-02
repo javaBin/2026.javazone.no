@@ -93,6 +93,7 @@ const SessionCard = ({
               className="pointer-events-auto"
             />
           )}
+          {session.video && <div>🎬</div>}
         </div>
         <div className="relative z-10 pointer-events-auto">
           <FavoriteButton sessionId={session.sessionId} isFavorite={isFavorite} onToggle={onToggleFavorite} />

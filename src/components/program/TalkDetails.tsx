@@ -216,6 +216,19 @@ const TalkDetails = ({
               ))}
             </div>
           )}
+
+          {session.video && (
+            <div className="pt-[56.25%] relative h-0 rounded-[1rem] overflow-hidden shadow-lg ">
+              <iframe
+                className="border-0 absolute top-0 left-0"
+                title="program video"
+                src={`https://player.vimeo.com/video/${session.video}`}
+                allowFullScreen
+                width={'100%'}
+                height={'100%'}
+              />
+            </div>
+          )}
         </div>
       )}
     </>
