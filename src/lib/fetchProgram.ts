@@ -27,6 +27,7 @@ export interface Session {
   startSlot?: string
   startSlotZulu?: string
   video?: string
+  feedback_url?: string
 }
 
 function isSessionsResponse(value: unknown): value is { sessions: Session[] } {
