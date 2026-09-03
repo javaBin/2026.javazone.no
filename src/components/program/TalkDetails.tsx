@@ -114,16 +114,24 @@ const TalkDetails = ({
           {startTime && <p className="m-0 -mt-6 text-lg font-semibold text-accent-primary">{startTime}</p>}
 
           {/* Format / room / duration / language badges */}
-          <div className="flex flex-wrap gap-2">
-            {session.room && <MetaBadge size="md" icon={<RoomIcon className="w-4 h-4 shrink-0" />} label={session.room} />}
-            {duration && <MetaBadge size="md" icon={<ClockIcon className="w-4 h-4 shrink-0" />} label={duration} />}
-            {isWorkshop(session) && <MetaBadge size="md" label={getFormatLabel(session)} tone="accent" />}
-            <MetaBadge
-              size="md"
-              icon={<LanguageIcon className="w-4 h-4 shrink-0" />}
-              label={session.language.slice(0, 2).toUpperCase()}
-              title={`Language: ${LANGUAGE_LABEL[session.language] ?? session.language}`}
-            />
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-2">
+              {session.room && <MetaBadge size="md" icon={<RoomIcon className="w-4 h-4 shrink-0" />} label={session.room} />}
+              {duration && <MetaBadge size="md" icon={<ClockIcon className="w-4 h-4 shrink-0" />} label={duration} />}
+              {isWorkshop(session) && <MetaBadge size="md" label={getFormatLabel(session)} tone="accent" />}
+              <MetaBadge
+                size="md"
+                icon={<LanguageIcon className="w-4 h-4 shrink-0" />}
+                label={session.language.slice(0, 2).toUpperCase()}
+                title={`Language: ${LANGUAGE_LABEL[session.language] ?? session.language}`}
+              />
+            </div>
+
+            <div>
+              {session.feedback_url && (
+                <LinkButton title={'Give feedback'} link={session.feedback_url} className="!px-3 !py-1 !text-sm !gap-1.5 !rounded-full" />
+              )}
+            </div>
           </div>
 
           {/* Workshop sign-up */}
@@ -215,10 +223,6 @@ const TalkDetails = ({
                 </div>
               ))}
             </div>
-          )}
-
-          {session.feedback_url && (
-            <LinkButton title={'Your opinion is useful, please gives us feedback by clicking here'} link={session.feedback_url} />
           )}
 
           {session.video && (
