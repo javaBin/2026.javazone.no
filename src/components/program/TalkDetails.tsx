@@ -217,6 +217,10 @@ const TalkDetails = ({
             </div>
           )}
 
+          {session.feedback_url && (
+            <LinkButton title={'Your opinion is useful, please gives us feedback by clicking here'} link={session.feedback_url} />
+          )}
+
           {session.video && (
             <div className="pt-[56.25%] relative h-0 rounded-[1rem] overflow-hidden shadow-lg ">
               <iframe
