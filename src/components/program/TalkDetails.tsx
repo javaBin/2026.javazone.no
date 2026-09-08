@@ -126,12 +126,6 @@ const TalkDetails = ({
                 title={`Language: ${LANGUAGE_LABEL[session.language] ?? session.language}`}
               />
             </div>
-
-            <div>
-              {session.feedback_url && (
-                <LinkButton title={'Give feedback'} link={session.feedback_url} className="!px-3 !py-1 !text-sm !gap-1.5 !rounded-full" />
-              )}
-            </div>
           </div>
 
           {/* Workshop sign-up */}
