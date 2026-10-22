@@ -32,25 +32,25 @@ const TimetableBlock = ({
 
   return (
     <article
-      className={`relative flex flex-col h-full gap-1 px-2.5 py-2 overflow-hidden rounded-xl shadow-md bg-base-200 ${
-        isConflict ? 'ring-1 ring-accent-secondary/40' : ''
+      className={`relative flex flex-col h-full gap-1 px-2.5 py-2 overflow-hidden rounded-xl shadow-md bg-surface ${
+        isConflict ? 'ring-1 ring-brand/40' : ''
       }`}
     >
       <Link
         to={`/program/${session.sessionId}`}
         state={{ background: location }}
         aria-labelledby={titleId}
-        className="absolute inset-0 z-0 outline-none rounded-xl focus-visible:ring-2 focus-visible:ring-accent-primary"
+        className="absolute inset-0 z-0 outline-none rounded-xl focus-visible:ring-2 focus-visible:ring-brand"
       />
 
       <div className="flex items-start justify-between gap-1 pointer-events-none">
         <div className="flex items-center min-w-0 gap-1.5">
-          <span className={`text-[11px] font-semibold whitespace-nowrap ${timing ? 'text-pop' : 'text-secondary'}`}>
+          <span className={`text-[11px] font-semibold whitespace-nowrap ${timing ? 'text-brand' : 'text-muted'}`}>
             {timing ? (timing === 'now' ? 'Now' : 'Soon') : formatTime(getSessionStart(session))}
           </span>
           <span
             title={`Language: ${LANGUAGE_LABEL[session.language] ?? session.language}`}
-            className="inline-flex items-center gap-0.5 text-[11px] font-semibold whitespace-nowrap pointer-events-auto text-secondary"
+            className="inline-flex items-center gap-0.5 text-[11px] font-semibold whitespace-nowrap pointer-events-auto text-muted"
           >
             <LanguageIcon className="w-3 h-3 shrink-0" />
             {languageLabel}
@@ -61,14 +61,14 @@ const TimetableBlock = ({
         </div>
       </div>
 
-      <h3 id={titleId} className="m-0 text-base font-bold leading-snug pointer-events-none text-primary line-clamp-3">
+      <h3 id={titleId} className="m-0 text-base font-bold leading-snug pointer-events-none text-ink line-clamp-3">
         {session.title}
         {isConflict && <span className="sr-only"> — overlaps another favorite</span>}
       </h3>
 
       <div className="flex flex-col gap-1 mt-auto pointer-events-none">
         {session.speakers.length > 0 && (
-          <p className="m-0 text-sm italic leading-snug truncate text-primary/90">{session.speakers.map((s) => s.name).join(', ')}</p>
+          <p className="m-0 text-sm italic leading-snug truncate text-ink/90">{session.speakers.map((s) => s.name).join(', ')}</p>
         )}
         <KeywordTags keywords={keywords} maxVisible={3} maxCombinedLength={27} alwaysShowFirst={false} />
       </div>

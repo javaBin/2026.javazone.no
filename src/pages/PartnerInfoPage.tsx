@@ -1,4 +1,4 @@
-import { Heading, Packages } from '@/components'
+import { Container, Packages, PageHeader } from '@/components'
 import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
@@ -6,46 +6,18 @@ const PartnerInfoPage = () => {
   useOpenGraph(pageMeta.partnerInfo)
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen p-8 pt-20 mb-20 space-y-8">
-      <section className="w-full max-w-2xl space-y-4 text-left">
-        <Heading level="h1">Partner information</Heading>
-        <Heading level="h2">The first partner meeting</Heading>
-        <div className="w-full overflow-hidden bg-black rounded-lg" style={{ position: 'relative', paddingTop: '56.25%' }}>
-          {' '}
-          <iframe
-            src="https://player.vimeo.com/video/1146207302"
-            title="Partner meeting video"
-            allow="autoplay; fullscreen; picture-in-picture"
-            referrerPolicy="strict-origin-when-cross-origin"
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              border: 0,
-            }}
-            allowFullScreen
-          />
-        </div>
-      </section>
-
-      <section className="w-full max-w-2xl space-y-4 text-left">
-        <Heading level="h2">Packages and tickets</Heading>
-        <Packages />
-      </section>
-
-      <section className="w-full max-w-2xl space-y-4 text-left">
-        <Heading level="h2">Contact us</Heading>
+    <>
+      <PageHeader eyebrow="Partners" title="Partner information">
         <p>
-          If you have any questions or concerns, please reach out to us at{' '}
-          <a className="underline text-sunbeam-gold" href="mailto:partner@java.no">
-            partner@java.no
-          </a>
-          .
+          Packages and tickets for JavaZone 2027 partners. If you have any questions or concerns, please reach out to us at{' '}
+          <a href="mailto:partner@java.no">partner@java.no</a>.
         </p>
-      </section>
-    </div>
+      </PageHeader>
+      <Container className="pb-24 lg:pb-32">
+        <h2 className="eyebrow m-0 mb-6">Packages and tickets</h2>
+        <Packages />
+      </Container>
+    </>
   )
 }
 

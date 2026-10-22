@@ -1,5 +1,4 @@
-// glow effect inspired by https://github.com/justalever/tailwind-mouse-glow/tree/main
-import React, { useRef } from 'react'
+import React from 'react'
 
 import { Heading } from '@/components'
 
@@ -7,49 +6,16 @@ interface CardProps {
   title: string
   subtitle?: React.ReactNode
   children: React.ReactNode
-  glowColor?: string
-  gradientColors?: [string, string]
   className?: string
 }
 
-const Card = ({ title, subtitle, children, glowColor = 'var(--glow-color)', gradientColors = ['#1a7fd4', '#006bc4'], className = '' }: CardProps) => {
-  const ref = useRef<HTMLElement | null>(null)
-  const gradient = gradientColors && gradientColors.length > 0 ? `linear-gradient(to bottom, ${gradientColors.join(', ')})` : undefined
-
-  const onMove = (e: React.PointerEvent<HTMLElement>) => {
-    if (!glowColor || e.pointerType !== 'mouse') return
-    const el = ref.current
-    if (!el) return
-
-    const rect = el.getBoundingClientRect()
-    el.style.setProperty('--glow-x', `${e.clientX - rect.left}px`)
-    el.style.setProperty('--glow-y', `${e.clientY - rect.top}px`)
-    el.style.setProperty('--glow-opacity', '1')
-    el.style.setProperty('--glow-color', glowColor)
-  }
-
-  const onLeave = () => {
-    if (!glowColor) return
-    ref.current?.style.setProperty('--glow-opacity', '0')
-  }
-
+// A titled block separated by a hairline rule rather than a filled box (style.md §6).
+const Card = ({ title, subtitle, children, className = '' }: CardProps) => {
   return (
-    <article
-      ref={ref}
-      onPointerMove={onMove}
-      onPointerLeave={onLeave}
-      className={`
-        glow-card shadow-xl p-6 my-8 rounded-3xl
-        bg-base-200
-        ${className}
-      `.trim()}
-      style={gradient ? { backgroundImage: gradient } : undefined}
-    >
-      <div className="flex flex-col justify-center w-full md:px-4 text-base md:text-lg">
-        {title.length === 0 ? null : <Heading level="h3">{title}</Heading>}
-        {subtitle ? <p className="mt-2 text-lg font-semibold leading-snug text-left md:text-xl text-secondary">{subtitle}</p> : null}
-        <div className="mt-4 space-y-2">{children}</div>
-      </div>
+    <article className={`border-t border-line pt-6 pb-2 ${className}`.trim()}>
+      {title.length === 0 ? null : <Heading level="h3">{title}</Heading>}
+      {subtitle ? <p className="mt-1 text-base font-medium text-muted">{subtitle}</p> : null}
+      <div className="mt-3 space-y-2 text-base md:text-lg">{children}</div>
     </article>
   )
 }

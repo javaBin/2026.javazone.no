@@ -60,8 +60,8 @@ const DayTabs = ({
             type="button"
             onClick={() => onSelect(d)}
             onKeyDown={(e) => onKeyDown(e, index)}
-            className={`shrink-0 px-4 py-1.5 text-xs font-semibold rounded-full transition-colors outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
-              activeDay === d ? 'bg-accent-primary text-base-300' : 'bg-base-200 text-secondary hover:text-primary'
+            className={`shrink-0 px-4 py-1.5 text-xs font-semibold rounded-full transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand ${
+              activeDay === d ? 'bg-brand text-white' : 'bg-surface text-muted hover:text-ink'
             }`}
           >
             {label}

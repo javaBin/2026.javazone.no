@@ -63,8 +63,8 @@ const SessionCard = ({
       ref={ref}
       onPointerMove={onMove}
       onPointerLeave={onLeave}
-      className={`relative flex flex-col h-full gap-3 px-5 py-4 shadow-xl cursor-pointer glow-card rounded-3xl bg-base-200 ${
-        isConflict ? 'ring-1 ring-accent-secondary/30' : ''
+      className={`relative flex flex-col h-full gap-3 px-5 py-4 shadow-xl cursor-pointer glow-card rounded-3xl bg-surface ${
+        isConflict ? 'ring-1 ring-brand/30' : ''
       }`}
     >
       {/* The whole card is a real link (WCAG: must be programmatically exposed as clickable,
@@ -76,7 +76,7 @@ const SessionCard = ({
         to={`/program/${session.sessionId}`}
         state={{ background: location }}
         aria-labelledby={titleId}
-        className="absolute inset-0 z-0 outline-none rounded-3xl focus-visible:ring-2 focus-visible:ring-accent-primary"
+        className="absolute inset-0 z-0 outline-none rounded-3xl focus-visible:ring-2 focus-visible:ring-brand"
       />
 
       <div className="flex items-start justify-between gap-2 pointer-events-none">
@@ -100,21 +100,21 @@ const SessionCard = ({
         </div>
       </div>
 
-      <h3 id={titleId} className="flex-1 m-0 text-base font-bold leading-snug pointer-events-none text-primary line-clamp-3">
-        {isLightningTalk(session) && <span className="text-accent-primary">{LIGHTNING_TALK_LABEL}</span>}
+      <h3 id={titleId} className="flex-1 m-0 text-base font-bold leading-snug pointer-events-none text-ink line-clamp-3">
+        {isLightningTalk(session) && <span className="text-brand">{LIGHTNING_TALK_LABEL}</span>}
         {session.title}
       </h3>
 
-      {startTime && <p className="m-0 text-sm font-semibold pointer-events-none text-accent-primary">Starts {startTime}</p>}
+      {startTime && <p className="m-0 text-sm font-semibold pointer-events-none text-brand">Starts {startTime}</p>}
 
       <div className="relative flex flex-col gap-0.5 pointer-events-none">
         {session.speakers.map((s) => (
-          <p key={s.name} className="m-0 text-sm italic text-left text-primary/90">
+          <p key={s.name} className="m-0 text-sm italic text-left text-ink/90">
             {s.name}
           </p>
         ))}
 
-        {isConflict && <p className="absolute right-0 bottom-0 px-2 py-0.5 m-0 text-sm font-semibold rounded-full text-pop">Favorites overlap</p>}
+        {isConflict && <p className="absolute right-0 bottom-0 px-2 py-0.5 m-0 text-sm font-semibold rounded-full text-brand">Favorites overlap</p>}
       </div>
 
       <div className="pointer-events-none">

@@ -31,7 +31,7 @@ const ViewTabs = ({ view, favoriteCount, onChange }: { view: ProgramView; favori
   }
 
   return (
-    <div role="tablist" aria-label="Program view" className="flex gap-6 mb-6 border-b border-base-content/10">
+    <div role="tablist" aria-label="Program view" className="flex gap-6 mb-6 border-b border-line">
       {TABS.map((v, index) => (
         <button
           key={v}
@@ -47,12 +47,12 @@ const ViewTabs = ({ view, favoriteCount, onChange }: { view: ProgramView; favori
           tabIndex={view === v ? 0 : -1}
           onClick={() => onChange(v)}
           onKeyDown={(e) => onKeyDown(e, index)}
-          className={`flex items-center gap-2 pb-3 -mb-px text-sm font-semibold transition-colors border-b-2 rounded-t outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
-            view === v ? 'border-accent-primary text-primary' : 'border-transparent text-secondary hover:text-primary'
+          className={`flex items-center gap-2 pb-3 -mb-px text-sm font-semibold transition-colors border-b-2 rounded-t outline-none focus-visible:ring-2 focus-visible:ring-brand ${
+            view === v ? 'border-brand text-ink' : 'border-transparent text-muted hover:text-ink'
           }`}
         >
           {TAB_LABEL[v]}
-          {v === 'my-schedule' && <span className="px-2 py-0.5 text-[11px] rounded-full bg-base-200 text-secondary">{favoriteCount}</span>}
+          {v === 'my-schedule' && <span className="px-2 py-0.5 text-[11px] rounded-full bg-surface text-muted">{favoriteCount}</span>}
         </button>
       ))}
     </div>

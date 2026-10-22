@@ -2,33 +2,18 @@
 // no server-side rendering, so link-unfurling bots (Slack, X/Twitter, Facebook, iMessage) never
 // execute the JS that sets per-page Open Graph tags (see src/hooks/useOpenGraph.ts) — they only
 // ever see dist/index.html's static tags, for every route. This script writes a real
-// <route>/index.html for each known static page (from src/data/pageMeta.json) and each current
-// program session, with the correct tags baked in, so those bots see the right preview.
-//
-// Caveat: talk-page files are generated from a live fetch of the sleepingpill API at build time.
-// A session added or edited after this build ran won't get a prerendered file until the next
-// deploy — it still works fine for real visitors (falls through to the SPA's client-side tags),
-// just without a bot-visible preview until then.
+// <route>/index.html for each known static page (from src/data/pageMeta.json), with the correct
+// tags baked in, so those bots see the right preview.
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
 
 import pageMeta from '../src/data/pageMeta.json' with { type: 'json' }
 
 const DIST_DIR = new URL('../dist/', import.meta.url)
-const SESSIONS_URL = 'https://sleepingpill.javazone.no/public/allSessions/javazone_2026'
-const FALLBACK_ABSTRACT = (title) => `See the abstract, speakers, room, and time for ${title} at JavaZone 2026.`
+const SITE_URL = 'https://2027.javazone.no'
 
 function escapeHtml(value) {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
-}
-
-// Mirrors src/components/program/TalkDetails.tsx's truncateAtWord — kept in sync by hand since
-// this script runs as plain Node, outside the app's TS/Vite build.
-function truncateAtWord(text, maxLength) {
-  if (text.length <= maxLength) return text
-  const truncated = text.slice(0, maxLength)
-  const lastSpace = truncated.lastIndexOf(' ')
-  return `${truncated.slice(0, lastSpace > 0 ? lastSpace : maxLength)}…`
 }
 
 function applyMeta(template, { title, description, ogDescription }) {
@@ -53,7 +38,7 @@ function applyMeta(template, { title, description, ogDescription }) {
 }
 
 function setOgUrl(html, pathname) {
-  return html.replace(/<meta property="og:url" content="[^"]*"\s*\/>/, `<meta property="og:url" content="https://2026.javazone.no${pathname}"/>`)
+  return html.replace(/<meta property="og:url" content="[^"]*"\s*\/>/, `<meta property="og:url" content="${SITE_URL}${pathname}"/>`)
 }
 
 async function writePage(template, pathname, meta) {
@@ -63,36 +48,14 @@ async function writePage(template, pathname, meta) {
   await writeFile(new URL('index.html', dir), html)
 }
 
-async function fetchSessions() {
-  const res = await fetch(SESSIONS_URL)
-  if (!res.ok) throw new Error(`HTTP ${res.status}`)
-  const data = await res.json()
-  if (!data || !Array.isArray(data.sessions)) throw new Error('Unexpected response shape')
-  return data.sessions.filter((s) => s.title && s.sessionId)
-}
-
 async function main() {
   const template = await readFile(new URL('index.html', DIST_DIR), 'utf-8')
 
   for (const meta of Object.values(pageMeta)) {
     if (meta.path === '/') continue // already dist/index.html itself
+    if (meta.prerender === false) continue // page exists in code but isn't routed yet
     await writePage(template, meta.path, meta)
     console.log(`prerendered ${meta.path}`)
-  }
-
-  try {
-    const sessions = await fetchSessions()
-    for (const session of sessions) {
-      const pathname = `/program/${session.sessionId}`
-      await writePage(template, pathname, {
-        title: `${session.title} | JavaZone 2026`,
-        description: session.abstract ? truncateAtWord(session.abstract, 200) : FALLBACK_ABSTRACT(session.title),
-      })
-    }
-    console.log(`prerendered ${sessions.length} program/<id> pages`)
-  } catch (err) {
-    // Non-fatal: talk pages just keep relying on the client-side tags until the next build.
-    console.warn(`prerender-meta: could not prerender program sessions (${err.message}) — skipping, build continues`)
   }
 }
 

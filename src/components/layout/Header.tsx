@@ -1,157 +1,112 @@
-// Hamburger menu animation originally written by Tamino Martinius: https://www.sliderrevolution.com/resources/css-hamburger-menu/
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useEffect, useId, useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 
-import { Assets } from '@/Assets'
-import { useMotion } from '@/hooks/useMotion'
-import useScrollingUp from '@/hooks/useScrollingUp.ts'
+import Container from '@/components/layout/Container'
 
-const navLinks = [
-  // {
-  //   name: 'Program',
-  //   href: '/program',
-  // },
-  {
-    name: 'About',
-    href: '/about',
-  },
-  {
-    name: 'Info',
-    href: '/info',
-  },
-  {
-    name: 'Program',
-    href: '/program',
-  },
-  {
-    name: 'Partners',
-    href: '/partner',
-  },
-  {
-    name: 'Food',
-    href: '/food',
-  },
-  {
-    name: 'AweZone',
-    href: '/awezone',
-  },
-  {
-    name: 'Speakers',
-    href: '/speaker',
-  },
-  {
-    name: 'Volunteers',
-    href: '/volunteer',
-  },
-  {
-    name: 'Tickets',
-    href: '/tickets',
-  },
+interface NavItem {
+  name: string
+  href: string
+  /** At most one item gets the pill treatment (style.md §5.2). */
+  emphasis?: boolean
+}
+
+const navLinks: NavItem[] = [
+  { name: 'About', href: '/about' },
+  { name: 'Info', href: '/info' },
+  { name: 'Partners', href: '/partner' },
+  { name: 'Speakers', href: '/speaker' },
+  { name: 'Volunteers', href: '/volunteer' },
+  { name: 'Tickets', href: '/tickets', emphasis: true },
 ]
 
-const SparklesIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
-    <path d="M5 3v4" />
-    <path d="M19 17v4" />
-    <path d="M3 5h4" />
-    <path d="M17 19h4" />
+const linkClass = ({ isActive }: { isActive: boolean }) =>
+  `text-[15px] font-medium text-ink no-underline decoration-1 underline-offset-[6px] transition-colors duration-200 ease-standard hover:text-brand ${
+    isActive ? 'underline' : ''
+  }`
+
+const pillClass =
+  'inline-flex items-center min-h-11 px-5 rounded-full bg-brand text-white text-[15px] font-medium no-underline transition-colors duration-200 ease-standard hover:bg-brand-hover hover:text-white'
+
+const mobileLinkClass = ({ isActive }: { isActive: boolean }) =>
+  `flex items-center min-h-14 text-lg font-medium no-underline transition-colors duration-200 ease-standard hover:text-brand ${
+    isActive ? 'text-brand' : 'text-ink'
+  }`
+
+const MenuIcon = ({ open }: { open: boolean }) => (
+  <svg aria-hidden="true" viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+    {open ? (
+      <>
+        <path d="M6 6l12 12" />
+        <path d="M18 6L6 18" />
+      </>
+    ) : (
+      <>
+        <path d="M4 8h16" />
+        <path d="M4 16h16" />
+      </>
+    )}
   </svg>
 )
 
 const Header = () => {
-  const scrolled = useScrollingUp()
-  const { pathname } = useLocation()
-  const isMainPage = pathname === '/'
-  const hidden = !isMainPage && !scrolled
   const [isOpen, setIsOpen] = useState(false)
-  const { motionEnabled, toggleMotion } = useMotion()
-  const showAnimationsToggle = pathname !== '/in-memoriam'
+  const { pathname } = useLocation()
+  const menuId = useId()
+
+  // Close the mobile menu on navigation and on Escape.
+  useEffect(() => setIsOpen(false), [pathname])
+  useEffect(() => {
+    if (!isOpen) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [isOpen])
 
   return (
-    <header className={`${hidden ? 'slideUpHeader' : 'fixed top-0 z-50 w-full transition-transform duration-300 ease-in-out translate-y-0'}`}>
-      <div className="pointer-events-none absolute inset-0 backdrop-blur-sm [mask-image:linear-gradient(to_bottom,black_75%,transparent_100%)]" />
-      <div className="relative flex items-center">
-        <Link
-          to="/"
-          aria-label="JavaZone home"
-          className="px-3 py-2 no-underline transition-all duration-200 bg-transparent hover:bg-transparent hover:opacity-80 rounded-3xl md:px-4"
-        >
-          <img src={Assets.images.wordmark} alt="JavaZone" className="h-6 w-auto" />
+    <header className="relative z-50 border-b border-line bg-canvas">
+      <Container className="flex items-center justify-between h-16 lg:h-20">
+        <Link to="/" className="text-xl font-semibold tracking-tight text-ink no-underline hover:text-ink">
+          JavaZone
         </Link>
 
-        <nav className="flex-wrap px-2 py-4 hidden sm:!flex">
-          {navLinks.map((link, id) => (
-            <Link
-              key={id}
-              className="px-3 py-2 text-xl font-medium no-underline transition-all duration-200 bg-transparent text-primary sm:text-md md:text-xl md:px-4 rounded-3xl hover:underline hover:bg-transparent"
-              to={link.href}
-            >
-              {link.name}
-            </Link>
-          ))}
+        <nav aria-label="Main" className="hidden lg:block">
+          <ul className="flex items-center gap-8 m-0 p-0 list-none">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <NavLink to={link.href} className={link.emphasis ? pillClass : linkClass}>
+                  {link.name}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
         </nav>
 
-        <div className="flex items-center ml-auto">
-          {showAnimationsToggle && (
-            <button
-              type="button"
-              onClick={toggleMotion}
-              aria-label="Toggle animations"
-              aria-pressed={motionEnabled}
-              className={`flex items-center gap-2 px-3 py-1.5 mr-1 rounded-full border border-primary/50 text-primary text-sm font-medium cursor-pointer transition-all duration-200 hover:border-primary hover:bg-primary/10 ${motionEnabled ? '' : 'opacity-50'}`}
-            >
-              <SparklesIcon />
-              <span className="hidden sm:inline">Animations</span>
-            </button>
-          )}
-          <button
-            type="button"
-            onClick={() => setIsOpen((v) => !v)}
-            aria-label="Toggle menu"
-            aria-expanded={isOpen}
-            className={`sm:!hidden hamburger-menu text-primary cursor-pointer transition ${isOpen ? 'is-open' : ''}`}
-          >
-            <svg viewBox="0 0 100 100" aria-hidden="true" className="w-20 h-20">
-              <circle cx="50" cy="50" r="30" />
-              <path className="line--1" d="M0 40h62c13 0 6 28-4 18L35 35" />
-              <path className="line--2" d="M0 50h70" />
-              <path className="line--3" d="M0 60h62c13 0 6-28-4-18L35 65" />
-            </svg>
-          </button>
-        </div>
-      </div>
-      <nav
-        inert={!isOpen}
-        className={`
-          relative w-full sm:!hidden flex-col items-start gap-2 px-4 py-4 -mt-2
-          backdrop-blur-lg rounded-b-3xl overflow-hidden transition-all
-          duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
-          [mask-image:linear-gradient(to_top,black_85%,transparent_100%)] !flex
-          ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none '}
-        `}
-      >
-        {navLinks.map((link, id) => (
-          <Link
-            key={id}
-            onClick={() => setIsOpen(false)}
-            className="w-full px-4 py-3 text-lg font-medium no-underline bg-transparent text-primary rounded-xl hover:opacity-90 hover:underline hover:bg-transparent"
-            to={link.href}
-          >
-            {link.name}
-          </Link>
-        ))}
+        <button
+          type="button"
+          onClick={() => setIsOpen((v) => !v)}
+          aria-expanded={isOpen}
+          aria-controls={menuId}
+          className="lg:hidden inline-flex items-center gap-2 min-h-11 -mr-3 px-3 text-[15px] font-medium text-ink"
+        >
+          Menu
+          <MenuIcon open={isOpen} />
+        </button>
+      </Container>
+
+      <nav id={menuId} aria-label="Main" hidden={!isOpen} className="lg:hidden absolute inset-x-0 top-full border-b border-line bg-canvas">
+        <Container>
+          <ul className="m-0 p-0 list-none divide-y divide-line">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <NavLink to={link.href} className={mobileLinkClass}>
+                  {link.name}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </Container>
       </nav>
     </header>
   )

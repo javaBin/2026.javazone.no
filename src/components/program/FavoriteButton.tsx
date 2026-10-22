@@ -1,4 +1,4 @@
-import starfishSvg from '@/assets/icons/JZ26-Icon-Starfish-free.svg?raw'
+import starSvg from '@/assets/icons/star.svg?raw'
 
 const ROTATION_MIN = -10
 const ROTATION_MAX = 35
@@ -12,9 +12,9 @@ function getRotation(id: string): number {
   return ROTATION_MIN + (Math.abs(hash) % (range + 1))
 }
 
-// The starfish silhouette itself — favorited shows its full multi-color illustration,
-// unfavorited flattens to a monochrome shade of whatever text color the caller applies.
-export const FavoriteStarfishIcon = ({
+// The star icon itself — favorited is filled, unfavorited is an outline,
+// both in whatever text color the caller applies.
+export const FavoriteStarIcon = ({
   sessionId,
   isFavorite,
   className = 'w-11 h-11',
@@ -28,7 +28,7 @@ export const FavoriteStarfishIcon = ({
     data-favorite={isFavorite}
     className={`favorite-icon inline-block shrink-0 ${className}`}
     style={{ transform: `rotate(${getRotation(sessionId)}deg)` }}
-    dangerouslySetInnerHTML={{ __html: starfishSvg }}
+    dangerouslySetInnerHTML={{ __html: starSvg }}
   />
 )
 
@@ -57,12 +57,12 @@ const FavoriteButton = ({
     aria-pressed={isFavorite}
     aria-label={isFavorite ? 'Remove from my schedule' : 'Add to my schedule'}
     title={isFavorite ? 'Remove from my schedule' : 'Add to my schedule'}
-    className={`${SIZE_CLASSES[size].button} group rounded-full outline-none focus-visible:ring-2 focus-visible:ring-accent-primary`}
+    className={`${SIZE_CLASSES[size].button} group rounded-full outline-none focus-visible:ring-2 focus-visible:ring-brand`}
   >
-    <FavoriteStarfishIcon
+    <FavoriteStarIcon
       sessionId={sessionId}
       isFavorite={isFavorite}
-      className={`favorite-icon--card ${SIZE_CLASSES[size].icon} transition-opacity ${isFavorite ? '' : 'text-primary opacity-70 group-hover:opacity-90'}`}
+      className={`favorite-icon--card ${SIZE_CLASSES[size].icon} transition-opacity ${isFavorite ? '' : 'text-ink opacity-70 group-hover:opacity-90'}`}
     />
   </button>
 )

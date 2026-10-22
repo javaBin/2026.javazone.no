@@ -1,7 +1,5 @@
 import { useEffect } from 'react'
 
-const DEFAULT_OG_IMAGE = '/og/javazone-2026-og-fallback.png'
-
 function setMetaByName(name: string, content: string) {
   let tag = document.querySelector<HTMLMetaElement>(`meta[name="${name}"]`)
   if (!tag) {
@@ -27,11 +25,11 @@ interface OpenGraphOptions {
   description: string
   /** Overrides og:description while leaving the SEO meta description as `description`. Defaults to `description`. */
   ogDescription?: string
-  /** Path or URL to an image; resolved against the current origin. Defaults to the site fallback image. */
+  /** Path or URL to an image; resolved against the current origin. Left untouched when omitted. */
   image?: string
   /**
-   * Set to false to skip updating tags — for content rendered as an overlay (e.g. TalkModal)
-   * over a page that already set its own tags, where the background page stays the "real" one.
+   * Set to false to skip updating tags — for content rendered as an overlay over a page that already
+   * set its own tags, where the background page stays the "real" one.
    */
   enabled?: boolean
 }
@@ -54,6 +52,6 @@ export function useOpenGraph({ title, description, ogDescription, image, enabled
     setMetaByProperty('og:title', title)
     setMetaByProperty('og:description', ogDescription ?? description)
     setMetaByProperty('og:url', window.location.href)
-    setMetaByProperty('og:image', new URL(image ?? DEFAULT_OG_IMAGE, window.location.origin).toString())
+    if (image) setMetaByProperty('og:image', new URL(image, window.location.origin).toString())
   }, [title, description, ogDescription, image, enabled])
 }

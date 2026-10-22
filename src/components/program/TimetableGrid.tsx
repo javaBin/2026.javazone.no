@@ -44,7 +44,7 @@ const TimetableGrid = ({
           {startTimes.map((t) => (
             <span
               key={t}
-              className="absolute top-0 pl-1.5 text-[11px] font-semibold border-l text-primary border-base-content/10"
+              className="absolute top-0 pl-1.5 text-[11px] font-semibold border-l text-ink border-line"
               style={{ left: `${((t - startMs) / 60000 / totalMinutes) * 100}%` }}
             >
               {formatTime(new Date(t))}
@@ -54,8 +54,8 @@ const TimetableGrid = ({
 
         {lanes.map((lane) => (
           <Fragment key={lane.room}>
-            <div className="flex items-center px-2 text-xs font-semibold border-t text-primary border-base-content/10">{lane.room}</div>
-            <div className="relative border-t border-base-content/10" style={{ height: LANE_HEIGHT_PX }}>
+            <div className="flex items-center px-2 text-xs font-semibold border-t text-ink border-line">{lane.room}</div>
+            <div className="relative border-t border-line" style={{ height: LANE_HEIGHT_PX }}>
               {lane.sessions.map((s) => {
                 const sessionStartMs = getSessionStart(s)!.getTime()
                 const sessionEndMs = getSessionEnd(s)?.getTime() ?? sessionStartMs + MIN_BLOCK_MINUTES * 60000

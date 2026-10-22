@@ -1,35 +1,16 @@
-import { BubbleField, Heading } from '@/components'
+import type { Topic } from '@/components'
+import { Container, PageHeader, TopicRows } from '@/components'
 import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
 
-const ReimbursementPolicyPage = () => {
-  useOpenGraph(pageMeta.speakerReimbursement)
-
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
-      <BubbleField variant="subtle" />
-      <Heading level="h1">Reimbursement Policy</Heading>
-
-      <section className="text-left max-w-2xl w-full space-y-4">
-        <Heading level="h2">What & How</Heading>
-        <p>
-          If your presentation or a workshop is accepted, you may apply for a refund for travel and accommodation. Read below to find out if you are
-          eligible.
-        </p>
-        <p className="font-bold">
-          Applications for speaker reimbursements must be submitted before August 1<sup>st</sup> 2026 .
-        </p>
-      </section>
-
-      <section className="text-left max-w-2xl w-full space-y-4">
-        <Heading level="h2">How to apply</Heading>
+const topics: Topic[] = [
+  {
+    title: 'How to apply',
+    body: (
+      <>
         <p>
           The first thing to note is that you need to apply for reimbursement of costs. This is necessary for our budget planning. If you require
-          financial support, please reach out to{' '}
-          <a href="mailto:refund@java.no" className="text-accent-primary underline">
-            refund@java.no
-          </a>{' '}
-          after your session or workshop is accepted.
+          financial support, please reach out to <a href="mailto:refund@java.no">refund@java.no</a> after your session or workshop is accepted.
         </p>
         <p>In this mail, provide an estimate of your travel expenses and the days you will be visiting Oslo during the conference.</p>
         <p>
@@ -40,25 +21,44 @@ const ReimbursementPolicyPage = () => {
           Please also note that we do not refund travel expenses for those holding lightning talks. However, speakers (including the ones holding
           lightning talks) will receive a free conference ticket.
         </p>
-      </section>
-
-      <section className="text-left max-w-2xl w-full space-y-4">
-        <Heading level="h2">Confirmation & Reimbursement</Heading>
+      </>
+    ),
+  },
+  {
+    title: 'Confirmation & reimbursement',
+    body: (
+      <>
         <p>
-          Applications must be confirmed explicitly via{' '}
-          <a href="mailto:refund@java.no" className="text-accent-primary underline">
-            refund@java.no
-          </a>{' '}
-          and are only accepted prior to our conference. Reimbursements are provided after the conference. For this, we require you to send us copies
-          of all receipts, the name of your bank and international account numbers (IBAN, BIC/SWIFT, if available). We reserve the right to decline a
-          refund application. Speakers living in proximity to Oslo are not eligible.
+          Applications must be confirmed explicitly via <a href="mailto:refund@java.no">refund@java.no</a> and are only accepted prior to our
+          conference. Reimbursements are provided after the conference. For this, we require you to send us copies of all receipts, the name of your
+          bank and international account numbers (IBAN, BIC/SWIFT, if available). We reserve the right to decline a refund application. Speakers
+          living in proximity to Oslo are not eligible.
         </p>
         <p>
           Reimbursements are processed and paid after the conference. We will reach out to speakers who applied for reimbursement and process the
           payments once payment details are provided.
         </p>
-      </section>
-    </div>
+      </>
+    ),
+  },
+]
+
+const ReimbursementPolicyPage = () => {
+  useOpenGraph(pageMeta.speakerReimbursement)
+
+  return (
+    <>
+      <PageHeader eyebrow="Speakers" title="Reimbursement policy">
+        <p>
+          If your presentation or a workshop is accepted, you may apply for a refund for travel and accommodation. Read below to find out if you are
+          eligible.
+        </p>
+        <p className="font-semibold text-ink">Application deadline for speaker reimbursements: TBA.</p>
+      </PageHeader>
+      <Container className="pb-24 lg:pb-32">
+        <TopicRows topics={topics} />
+      </Container>
+    </>
   )
 }
 

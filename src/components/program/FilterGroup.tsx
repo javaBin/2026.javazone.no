@@ -15,7 +15,7 @@ const FilterGroup = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <h3 className="m-0 text-xs font-semibold tracking-widest uppercase text-secondary">{title}</h3>
+      <h3 className="m-0 text-xs font-semibold tracking-widest uppercase text-muted">{title}</h3>
       <div className="flex flex-wrap gap-2">
         {options.map((value) => {
           const active = selected.has(value)
@@ -25,10 +25,8 @@ const FilterGroup = ({
               type="button"
               onClick={() => onToggle(value)}
               aria-pressed={active}
-              className={`px-3 py-1 text-xs font-medium transition-colors rounded-full border outline-none focus-visible:ring-2 focus-visible:ring-accent-primary ${
-                active
-                  ? 'bg-accent-primary/20 border-accent-primary text-accent-primary'
-                  : 'bg-base-100/40 border-base-content/10 text-secondary hover:border-accent-primary/50'
+              className={`px-3 py-1 text-xs font-medium transition-colors rounded-full border outline-none focus-visible:ring-2 focus-visible:ring-brand ${
+                active ? 'bg-brand/20 border-brand text-brand' : 'bg-canvas/40 border-line text-muted hover:border-brand/50'
               }`}
             >
               {labels?.[value] ?? value}

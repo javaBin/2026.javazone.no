@@ -1,43 +1,7 @@
-import { BubbleField, Heading, LinkButton } from '@/components'
+import type { Topic } from '@/components'
+import { Container, PageHeader, TopicRows } from '@/components'
 import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
-
-const VolunteerPage = () => {
-  useOpenGraph(pageMeta.volunteer)
-
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8 pt-20 relative space-y-8 mb-20">
-      <BubbleField variant="subtle" />
-      <Heading level="h1" className="mb-20">
-        Volunteer at Javazone?
-      </Heading>
-
-      <section className="text-left max-w-2xl w-full space-y-4">
-        <p>
-          JavaZone is the world's largest community-driven Java conference, with more than 3000 developers attending every year. Would you like to
-          contribute to making this event an amazing experience? Sign up to become a volunteer!
-        </p>
-
-        <div className="flex items-center justify-center mt-6">
-          <LinkButton title="Sign up here" variant="pop" link="https://forms.gle/CsR71mRvs4T8wXpq8" />
-        </div>
-      </section>
-
-      <section className="text-left max-w-2xl w-full space-y-4">
-        <Heading level="h2">Frequently Asked Questions</Heading>
-
-        <dl className="space-y-6">
-          {faq.map((item, idx) => (
-            <div key={idx} className="space-y-2">
-              <h3 className="text-xl md:text-2xl font-semibold leading-snug text-primary">{item.q}</h3>
-              <p className="text-base md:text-lg text-justify text-secondary">{item.a}</p>
-            </div>
-          ))}
-        </dl>
-      </section>
-    </div>
-  )
-}
 
 const faq = [
   {
@@ -70,12 +34,33 @@ const faq = [
   },
   {
     q: 'When do I need to show up as a volunteer?',
-    a: 'Training and info will be given on the 1st of September, and you need to show up both the 2nd and the 3rd for the conference.',
+    a: 'Training and info will be given the day before the conference, and you need to show up on both conference days. Dates TBA.',
   },
   {
     q: 'When is the application deadline?',
-    a: 'The application deadline is Sunday, June 7th.',
+    a: 'TBA.',
   },
 ]
+
+const topics: Topic[] = faq.map((item) => ({ title: item.q, body: <p>{item.a}</p> }))
+
+const VolunteerPage = () => {
+  useOpenGraph(pageMeta.volunteer)
+
+  return (
+    <>
+      <PageHeader eyebrow="Volunteers" title="Volunteer at JavaZone">
+        <p>
+          JavaZone is the world's largest community-driven developer conference, with more than 3000 developers attending every year. Would you like
+          to contribute to making this event an amazing experience? Volunteer sign-up for JavaZone 2027 opens later — check back here!
+        </p>
+      </PageHeader>
+      <Container className="pb-24 lg:pb-32">
+        <h2 className="m-0 mb-6 eyebrow">Frequently asked questions</h2>
+        <TopicRows topics={topics} as="h3" />
+      </Container>
+    </>
+  )
+}
 
 export default VolunteerPage
