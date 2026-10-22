@@ -34,8 +34,13 @@ const MainPage = () => {
           </div>
 
           <div className="col-span-full md:col-span-4 lg:col-span-5">
-            <p className="m-0 text-lg text-muted md:text-xl">Dates and venue will be announced. In the meantime, look back at previous JavaZones.</p>
-            <LinkButton title="Previous JavaZones" link="/history" variant="secondary" className="mt-4" />
+            <p className="m-0 text-lg text-muted md:text-xl">
+              Dates and venue will be announced. Until then, watch the talks from JavaZone 2026 or look back at earlier years.
+            </p>
+            <div className="flex flex-col items-start mt-4">
+              <LinkButton title="Watch the 2026 talks" link="https://2026.javazone.no/program" variant="secondary" />
+              <LinkButton title="Previous JavaZones" link="/history" variant="secondary" />
+            </div>
           </div>
 
           <dl className="m-0 border-t col-span-full md:col-span-4 md:col-start-5 lg:col-span-4 lg:col-start-9 border-line">
