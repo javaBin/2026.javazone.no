@@ -6,10 +6,10 @@ const SIZE_CLASSES = {
 } as const
 
 const TONE_CLASSES = {
-  default: 'bg-base-250 text-primary',
-  accent: 'bg-accent-primary/20 text-accent-primary',
-  pop: 'bg-pop text-pop-secondary',
-  'pop-outline': 'bg-transparent border border-pop text-pop',
+  default: 'bg-canvas text-ink',
+  accent: 'bg-brand/20 text-brand',
+  pop: 'bg-orange text-ink',
+  'pop-outline': 'bg-transparent border border-orange text-brand',
 } as const
 
 const MetaBadge = ({

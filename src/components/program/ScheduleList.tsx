@@ -25,7 +25,7 @@ const ScheduleList = ({
         {showTimeHeaders && (
           <div className="flex items-center gap-4 mb-4">
             <Heading level={timeHeadingLevel}>{group.time}</Heading>
-            <div className="flex-1 h-px bg-primary/20" />
+            <div className="flex-1 h-px bg-ink/20" />
           </div>
         )}
 

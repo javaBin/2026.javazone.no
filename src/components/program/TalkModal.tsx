@@ -60,7 +60,7 @@ const TalkModal = () => {
         aria-labelledby={TITLE_ID}
         tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
-        className="relative flex flex-col w-full h-full max-w-4xl overflow-y-auto bg-base-200 no-scrollbar outline-none sm:h-auto sm:max-h-[85vh] sm:rounded-3xl"
+        className="relative flex flex-col w-full h-full max-w-4xl overflow-y-auto bg-surface no-scrollbar outline-none sm:h-auto sm:max-h-[85vh] sm:rounded-3xl"
       >
         <div className="px-4 pt-6 pb-10 sm:px-8">
           <TalkDetails
@@ -68,13 +68,7 @@ const TalkModal = () => {
             titleClassName="!text-4xl md:!text-5xl"
             updatePageMeta={false}
             closeControl={
-              <button
-                type="button"
-                onClick={close}
-                aria-label="Close"
-                title="Close"
-                className="p-2 -m-2 rounded-full text-secondary hover:opacity-70"
-              >
+              <button type="button" onClick={close} aria-label="Close" title="Close" className="p-2 -m-2 rounded-full text-muted hover:opacity-70">
                 <CloseIcon className="w-6 h-6" />
               </button>
             }

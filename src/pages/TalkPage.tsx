@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import stingraySvg from '@/assets/icons/JZ26-Icon-Stingray-free.svg'
-import { BubbleField } from '@/components'
+import arrowLeftSvg from '@/assets/icons/arrow-left.svg?raw'
 import TalkDetails from '@/components/program/TalkDetails'
 
 // ── TalkPage ──────────────────────────────────────────────────────────────────
@@ -11,8 +10,7 @@ import TalkDetails from '@/components/program/TalkDetails'
 
 const TalkPage = () => {
   return (
-    <div className="min-h-screen pt-20 pb-24">
-      <BubbleField variant="subtle" />
+    <div className="min-h-screen pt-12 pb-24 lg:pt-16">
       <div className="max-w-3xl px-4 mx-auto md:px-8">
         <div className="pt-2 pb-8 sm:pt-6">
           <TalkDetails
@@ -21,9 +19,9 @@ const TalkPage = () => {
                 to="/program"
                 aria-label="Back to program"
                 title="Back to program"
-                className="inline-block p-2 -m-4 no-underline back-link text-secondary hover:opacity-70"
+                className="inline-block p-2 -m-4 no-underline back-link text-muted hover:opacity-70"
               >
-                <img src={stingraySvg} alt="" className="w-18 h-18 back-arrow-icon" />
+                <span aria-hidden="true" className="w-18 h-18 back-arrow-icon" dangerouslySetInnerHTML={{ __html: arrowLeftSvg }} />
               </Link>
             }
           />

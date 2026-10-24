@@ -58,12 +58,12 @@ const TalkDetails = ({
   const error = loadError ?? (!loading && !session ? 'Talk not found' : null)
 
   useOpenGraph({
-    title: session ? `${session.title} | JavaZone 2026` : 'Program | JavaZone 2026',
+    title: session ? `${session.title} | JavaZone 2027` : 'Program | JavaZone 2027',
     description: session
       ? session.abstract
         ? truncateAtWord(session.abstract, 200)
-        : `See the abstract, speakers, room, and time for ${session.title} at JavaZone 2026.`
-      : 'Details for a JavaZone 2026 session — see the abstract, speakers, room, and time, and add it to your personal schedule.',
+        : `See the abstract, speakers, room, and time for ${session.title} at JavaZone 2027.`
+      : 'Details for a JavaZone 2027 session — see the abstract, speakers, room, and time, and add it to your personal schedule.',
     enabled: updatePageMeta,
   })
 
@@ -89,29 +89,29 @@ const TalkDetails = ({
       {loading && (
         <div className="flex flex-col gap-5 animate-pulse">
           <div className="flex gap-2">
-            <div className="h-6 rounded-full w-28 bg-base-200" />
-            <div className="w-20 h-6 rounded-full bg-base-200" />
+            <div className="h-6 rounded-full w-28 bg-surface" />
+            <div className="w-20 h-6 rounded-full bg-surface" />
           </div>
-          <div className="w-3/4 h-10 rounded-2xl bg-base-200" />
-          <div className="w-1/3 h-5 rounded-full bg-base-200" />
-          <div className="w-full h-40 rounded-3xl bg-base-200" />
+          <div className="w-3/4 h-10 rounded-2xl bg-surface" />
+          <div className="w-1/3 h-5 rounded-full bg-surface" />
+          <div className="w-full h-40 rounded-3xl bg-surface" />
         </div>
       )}
 
       {error && !loading && (
-        <div className="px-5 py-12 text-center rounded-3xl bg-base-200">
-          <p className="m-0 font-semibold text-primary">{error}</p>
+        <div className="px-5 py-12 text-center rounded-3xl bg-surface">
+          <p className="m-0 font-semibold text-ink">{error}</p>
         </div>
       )}
 
       {session && (
         <div className="flex flex-col gap-8">
           <Heading level="h1" id={titleId} className={`!pt-0 !text-left ${titleClassName}`}>
-            {isLightningTalk(session) && <span className="text-accent-primary">{LIGHTNING_TALK_LABEL}</span>}
+            {isLightningTalk(session) && <span className="text-brand">{LIGHTNING_TALK_LABEL}</span>}
             {session.title}
           </Heading>
 
-          {startTime && <p className="m-0 -mt-6 text-lg font-semibold text-accent-primary">{startTime}</p>}
+          {startTime && <p className="m-0 -mt-6 text-lg font-semibold text-brand">{startTime}</p>}
 
           {/* Format / room / duration / language badges */}
           <div className="flex flex-wrap items-center justify-between gap-4">
@@ -151,37 +151,37 @@ const TalkDetails = ({
           {/* Abstract */}
           {session.abstract && (
             <div className="flex flex-col gap-3">
-              <p className="m-0 text-xs font-semibold tracking-widest uppercase text-secondary">About this talk</p>
-              <p className="m-0 text-base leading-relaxed whitespace-pre-wrap text-primary/90">{session.abstract}</p>
+              <p className="m-0 text-xs font-semibold tracking-widest uppercase text-muted">About this talk</p>
+              <p className="m-0 text-base leading-relaxed whitespace-pre-wrap text-ink/90">{session.abstract}</p>
             </div>
           )}
 
           {/* Intended audience */}
           {session.intendedAudience && (
             <div className="flex flex-col gap-2">
-              <p className="m-0 text-xs font-semibold tracking-widest uppercase text-secondary">Intended audience</p>
-              <p className="m-0 text-sm leading-relaxed text-primary/80">{session.intendedAudience}</p>
+              <p className="m-0 text-xs font-semibold tracking-widest uppercase text-muted">Intended audience</p>
+              <p className="m-0 text-sm leading-relaxed text-ink/80">{session.intendedAudience}</p>
             </div>
           )}
 
           {/* Workshop prerequisites */}
           {session.workshopPrerequisites && (
             <div className="flex flex-col gap-2">
-              <p className="m-0 text-xs font-semibold tracking-widest uppercase text-secondary">Prerequisites</p>
-              <p className="m-0 text-sm leading-relaxed whitespace-pre-wrap text-primary/80">{session.workshopPrerequisites}</p>
+              <p className="m-0 text-xs font-semibold tracking-widest uppercase text-muted">Prerequisites</p>
+              <p className="m-0 text-sm leading-relaxed whitespace-pre-wrap text-ink/80">{session.workshopPrerequisites}</p>
             </div>
           )}
 
           {/* Divider */}
-          <div className="h-px bg-base-content/10" />
+          <div className="h-px bg-line" />
 
           {/* Speakers */}
           {session.speakers.length > 0 && (
             <div className="flex flex-col gap-6">
               {session.speakers.map((speaker) => (
                 <div key={speaker.name} className="flex flex-col gap-1.5">
-                  <p className="m-0 text-lg font-semibold text-primary">{speaker.name}</p>
-                  {speaker.bio && <p className="m-0 text-sm leading-relaxed whitespace-pre-wrap text-secondary">{speaker.bio}</p>}
+                  <p className="m-0 text-lg font-semibold text-ink">{speaker.name}</p>
+                  {speaker.bio && <p className="m-0 text-sm leading-relaxed whitespace-pre-wrap text-muted">{speaker.bio}</p>}
                   <div className="flex gap-3 mt-0.5">
                     {speaker.twitter && (
                       <a
@@ -189,7 +189,7 @@ const TalkDetails = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         title={`${speaker.name} on Twitter (opens in a new tab)`}
-                        className="inline-block py-1.5 -my-1.5 text-xs underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
+                        className="inline-block py-1.5 -my-1.5 text-xs underline rounded-sm outline-none text-muted hover:text-ink focus-visible:ring-2 focus-visible:ring-brand"
                       >
                         Twitter
                         <span className="sr-only"> (opens in a new tab)</span>
@@ -201,7 +201,7 @@ const TalkDetails = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         title={`${speaker.name} on LinkedIn (opens in a new tab)`}
-                        className="inline-block py-1.5 -my-1.5 text-xs underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
+                        className="inline-block py-1.5 -my-1.5 text-xs underline rounded-sm outline-none text-muted hover:text-ink focus-visible:ring-2 focus-visible:ring-brand"
                       >
                         LinkedIn
                         <span className="sr-only"> (opens in a new tab)</span>
@@ -213,7 +213,7 @@ const TalkDetails = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         title={`${speaker.name} on Bluesky (opens in a new tab)`}
-                        className="inline-block py-1.5 -my-1.5 text-xs underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
+                        className="inline-block py-1.5 -my-1.5 text-xs underline rounded-sm outline-none text-muted hover:text-ink focus-visible:ring-2 focus-visible:ring-brand"
                       >
                         Bluesky
                         <span className="sr-only"> (opens in a new tab)</span>

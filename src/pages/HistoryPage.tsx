@@ -1,37 +1,28 @@
-import { BubbleField, Card, Heading } from '@/components'
+import type { IndexRow } from '@/components'
+import { Container, IndexRows, PageHeader } from '@/components'
 import pageMeta from '@/data/pageMeta.json'
 import { useOpenGraph } from '@/hooks/useOpenGraph'
+
+const years = [2026, 2025, 2024, 2023, 2022]
+
+const rows: IndexRow[] = years.map((year) => ({
+  title: String(year),
+  description: `${year}.javazone.no`,
+  href: `https://${year}.javazone.no`,
+}))
 
 const HistoryPage = () => {
   useOpenGraph(pageMeta.history)
 
-  const years = [2025, 2024, 2023, 2022]
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-12 mx-6 sm:mx-0">
-      <BubbleField variant="subtle" />
-      <Heading level="h1" className="z-10">
-        JavaZone through the Ages
-      </Heading>
-      <Card title="History" subtitle="Previous JavaZone conferences" className="w-full max-w-lg z-10">
-        <ul className="bg-base-200 rounded-4xl overflow-hidden w-full m-0 mt-4 py-2 list-none">
-          {years.map((year) => (
-            <li key={year} className="px-2">
-              <a
-                href={`https://${year}.javazone.no`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between py-3 px-4 rounded-3xl no-underline
-                                text-base-content transition-colors duration-200 hover:bg-base-300"
-              >
-                JavaZone {year}
-                <span className="badge badge-outline">Visit</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </Card>
-    </div>
+    <>
+      <PageHeader eyebrow="Archive" title="JavaZone through the ages">
+        <p>Previous JavaZone conferences, each with its own site and program.</p>
+      </PageHeader>
+      <Container className="pb-24 lg:pb-32">
+        <IndexRows rows={rows} size="large" />
+      </Container>
+    </>
   )
 }
 

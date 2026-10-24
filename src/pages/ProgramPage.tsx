@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
-import { BubbleField, Heading, LinkButton } from '@/components'
+import { Heading, LinkButton } from '@/components'
 import DayTabs from '@/components/program/DayTabs'
 import { type FilterKey } from '@/components/program/FilterPanel'
 import FilterPanel from '@/components/program/FilterPanel'
@@ -108,8 +108,7 @@ const ProgramPage = () => {
   const isEmpty = isLiveView ? liveGroups.length === 0 : filtered.length === 0
 
   return (
-    <div className="min-h-screen pt-20 pb-24">
-      <BubbleField variant="subtle" />
+    <div className="min-h-screen pt-12 pb-24 lg:pt-16">
       <div className="relative z-20 px-4 mx-auto max-w-7xl md:px-8">
         <div className="py-8">
           <Heading level="h1">Program</Heading>
@@ -142,14 +141,14 @@ const ProgramPage = () => {
           {loading && <ProgramSkeleton />}
 
           {error && !loading && (
-            <div role="status" className="px-5 py-12 text-center rounded-3xl bg-base-200">
-              <p className="m-0 font-semibold text-primary">Could not load program</p>
-              <p className="m-0 mt-2 text-sm text-secondary">{error}</p>
+            <div role="status" className="px-5 py-12 text-center rounded-3xl bg-surface">
+              <p className="m-0 font-semibold text-ink">Could not load program</p>
+              <p className="m-0 mt-2 text-sm text-muted">{error}</p>
               <button
                 type="button"
                 onClick={retry}
                 title="Try loading the program again"
-                className="px-4 py-2 mt-4 text-sm font-semibold outline-none rounded-2xl bg-accent-primary/20 text-accent-primary hover:bg-accent-primary/30 focus-visible:ring-2 focus-visible:ring-accent-primary"
+                className="px-4 py-2 mt-4 text-sm font-semibold outline-none rounded-2xl bg-brand/20 text-brand hover:bg-brand/30 focus-visible:ring-2 focus-visible:ring-brand"
               >
                 Retry
               </button>
@@ -159,8 +158,8 @@ const ProgramPage = () => {
           {!loading && !error && showCountdown && conferenceStart && <LiveCountdown target={conferenceStart} />}
 
           {!loading && !error && !showCountdown && isEmpty && (
-            <div role="status" className="px-5 py-12 text-center rounded-3xl bg-base-200">
-              <p className="m-0 text-secondary">
+            <div role="status" className="px-5 py-12 text-center rounded-3xl bg-surface">
+              <p className="m-0 text-muted">
                 {view === 'my-schedule'
                   ? 'No favorites yet. Tap the favorite icon on any session to add it to your schedule.'
                   : isLiveView
@@ -177,7 +176,7 @@ const ProgramPage = () => {
           {!loading && !error && !isLiveView && !isEmpty && isFirstDaySelected && (
             <div className="mb-4">
               <Heading level="h2">Workshops</Heading>
-              <p className="text-md text-secondary">All workshops take place at Rebel in Oslo and require pre-registration.</p>
+              <p className="text-md text-muted">All workshops take place at Rebel in Oslo and require pre-registration.</p>
             </div>
           )}
 

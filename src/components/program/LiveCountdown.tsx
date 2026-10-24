@@ -32,8 +32,8 @@ const LiveCountdown = ({ target }: { target: Date }) => {
   const { days, hours, minutes, seconds } = splitDuration(target.getTime() - now.getTime())
 
   return (
-    <div className="px-5 py-12 text-center rounded-3xl bg-base-200">
-      <p className="m-0 font-semibold text-primary">The conference hasn&apos;t started yet</p>
+    <div className="px-5 py-12 text-center rounded-3xl bg-surface">
+      <p className="m-0 font-semibold text-ink">The conference hasn&apos;t started yet</p>
 
       <div
         role="timer"
@@ -48,13 +48,13 @@ const LiveCountdown = ({ target }: { target: Date }) => {
           { label: 'seconds', value: seconds },
         ].map(({ label, value }) => (
           <div key={label} className="flex flex-col items-center min-w-14 sm:min-w-16">
-            <span className="text-3xl font-bold tabular-nums text-accent-primary sm:text-4xl">{String(value).padStart(2, '0')}</span>
-            <span className="text-xs tracking-widest uppercase text-secondary">{label}</span>
+            <span className="text-3xl font-bold tabular-nums text-brand sm:text-4xl">{String(value).padStart(2, '0')}</span>
+            <span className="text-xs tracking-widest uppercase text-muted">{label}</span>
           </div>
         ))}
       </div>
 
-      <p className="m-0 mt-6 text-sm text-secondary">Check back once the doors open to see what&apos;s happening live.</p>
+      <p className="m-0 mt-6 text-sm text-muted">Check back once the doors open to see what&apos;s happening live.</p>
     </div>
   )
 }

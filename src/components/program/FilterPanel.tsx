@@ -16,7 +16,7 @@ const FilterPanel = ({
   onToggle: (key: FilterKey, value: string) => void
   onClear: () => void
 }) => (
-  <div className="grid grid-cols-1 gap-6 p-5 mb-6 sm:grid-cols-2 rounded-3xl bg-base-200">
+  <div className="grid grid-cols-1 gap-6 p-5 mb-6 sm:grid-cols-2 rounded-3xl bg-surface">
     <FilterGroup title="Format" options={facets.formats} selected={filters.formats} onToggle={(v) => onToggle('formats', v)} labels={FORMAT_LABEL} />
     <FilterGroup
       title="Language"
@@ -32,7 +32,7 @@ const FilterPanel = ({
           type="button"
           onClick={onClear}
           title="Remove all active filters"
-          className="inline-block py-1.5 -my-1.5 text-xs font-medium underline rounded-sm outline-none text-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-accent-primary"
+          className="inline-block py-1.5 -my-1.5 text-xs font-medium underline rounded-sm outline-none text-muted hover:text-ink focus-visible:ring-2 focus-visible:ring-brand"
         >
           Clear all filters
         </button>

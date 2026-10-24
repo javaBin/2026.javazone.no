@@ -1,0 +1,21 @@
+/*
+  Off-season theme — used between conferences (see style.md).
+  Warm-neutral canvas, dark ink typography, burgundy as the signature colour and
+  orange as a rare micro-accent.
+
+  Every theme file defines the same colour tokens; src/index.css maps them onto Tailwind
+  (bg-canvas, text-ink, border-line, bg-brand, ...). To switch theme, change the theme
+  import at the top of src/index.css.
+*/
+:root {
+  --canvas: #f7f5f2; /* dominant page background */
+  --surface: #e8e3dd; /* soft contrast blocks, intentional grouping only */
+  --ink: #272525; /* main typography and icons */
+  --muted: #68635e; /* secondary typography — AA on canvas and surface */
+  --subtle: #6f6964; /* small supporting details — AA on canvas only; use --muted on surface */
+  --line: #d9d5cf; /* hairline rules and separators — decorative, never a control's only boundary */
+  --brand: #a91d3b; /* key emphasis and primary interactive elements */
+  --brand-hover: #87172f; /* hover / pressed emphasis */
+  --orange: #f5a623; /* rare micro-accent — never for text */
+  --white: #ffffff;
+}
