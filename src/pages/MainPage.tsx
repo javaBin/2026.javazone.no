@@ -35,7 +35,8 @@ const MainPage = () => {
 
           <div className="col-span-full md:col-span-4 lg:col-span-5">
             <p className="m-0 text-lg text-muted md:text-xl">
-              Dates and venue will be announced. Until then, watch the talks from JavaZone 2026 or look back at earlier years.
+              We're back for another year! JavaZone 2027 is happening! Get ready for another edition packed with inspiring talks, hands-on learning,
+              great conversations, and everything that makes JavaZone special. More details are coming soon. Stay tuned!
             </p>
             <div className="flex flex-col items-start mt-4">
               <LinkButton title="Watch the 2026 talks" link="https://2026.javazone.no/program" variant="secondary" />
